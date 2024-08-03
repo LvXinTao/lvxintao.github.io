@@ -20,4 +20,46 @@
         <tag>爸爸妈妈我出生了</tag>
       </tags>
   </entry>
+  <entry>
+    <title>简易的Selenium爬虫工具</title>
+    <url>/2024/08/03/%E7%AE%80%E6%98%93%E7%9A%84Selenium%E7%88%AC%E8%99%AB%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>尝试使用Selenium自动化测试库对Github中指定topic的所有库信息进行爬取！</p>
+<span id="more"></span>
+
+<p>首先简单介绍下<a href="https://selenium-python.readthedocs.io/index.html">Selenium库</a>。这是一个针对浏览器应用的自动化测试库，能够模拟人类的点击、敲击键盘、输入文字等操作，因此也能够很好地作为爬虫工具使用。Selenium的使用原理就是首先创建浏览器驱动<code>WebDriver</code>，并获取给定url的HTML，使用<code>Selector</code>对HTML元素进行选取，然后进行自定义的操作。</p>
+<p>本文中，我们将使用Selenium库对Github topics页面进行解析，并爬取指定topic下的所有库信息。这里以motion-generation这个主题为例。</p>
+<p>首先，我们需要创建<code>WebDriver</code>，并获取指定页面的HTML。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">topic = <span class="string">&quot;motion-generation&quot;</span></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">topic_url = <span class="string">&#x27;https://github.com/topics/&#x27;</span>+topic</span><br><span class="line">driver.get(topic_url)</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们需要对指定页面的HTML进行分析，以提取出我们想要的内容。在浏览器中<code>F12</code>打开开发者工具可以看到网页源码，并且鼠标悬停在代码上方可以在页面上看到对应区域高亮。这里我们需要提取的是库名字、库url、作者名字、star数以及库的描述信息，以其中一个为例：</p>
+<div aligh="center">
+<img src="/asset/1/html_1.jpg" class="lazyload" data-srcset="/asset/1/html_1.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/>
+</div>
+
+<p>可以观察到，所有文章项目都是在<code>//div[@class=&quot;col-md-8 col-lg-9&quot;]/article</code>便签下的，进一步点开可以看到各个项目所在标签。因此我们可以用下面的代码提取出所有的article便签及他们的各个属性。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extract the articles</span></span><br><span class="line">articles_tags = driver.find_elements(By.XPATH, <span class="string">&#x27;//div[@class=&quot;col-md-8 col-lg-9&quot;]/article&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> article <span class="keyword">in</span> articles_tags:</span><br><span class="line">        topic_item = TopicItems()</span><br><span class="line">        <span class="comment"># 一定得加&#x27;.&#x27;和&#x27;descendant&#x27;，否则会从根节点开始找！！！</span></span><br><span class="line">        topic_item.repo_name = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link text-bold wb-break-word&quot;]&#x27;</span>).text</span><br><span class="line">        topic_item.repo_url = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link text-bold wb-break-word&quot;]&#x27;</span>).get_attribute(<span class="string">&#x27;href&#x27;</span>)</span><br><span class="line">        topic_item.author_name = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link&quot;]&#x27;</span>).text</span><br><span class="line">        topic_item.stars = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::span[@id=&quot;repo-stars-counter-star&quot;]&#x27;</span>).text</span><br><span class="line">        <span class="comment"># Some articles do not have description</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            topic_item.description = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::div[@class=&quot;px-3 pt-3&quot;]/p&#x27;</span>).text</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            topic_item.description = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        results.append(topic_item)</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，这个页面使用AJAX来动态加载页面，当用户点击<code>Load more...</code>按钮时，AJAX会添加新的article到之前的article后面。因此我们可以先点击所有的<code>Load more...</code>，直到全部加载完之后再来抽取article标签。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        load_more_button = driver.find_element(By.XPATH, <span class="string">&#x27;//form[@class=&quot;ajax-pagination-form js-ajax-pagination&quot;]/button&#x27;</span>)</span><br><span class="line">        load_more_button.submit()</span><br><span class="line">        <span class="comment"># Wait for the next set of articles to load</span></span><br><span class="line">        WebDriverWait(driver, <span class="number">15</span>).until(</span><br><span class="line">            EC.presence_of_element_located((By.XPATH, <span class="string">&#x27;//div[@class=&quot;col-md-8 col-lg-9&quot;]/article&#x27;</span>))</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，AJAX加载需要时间，因此得显式地等待article标签加载出来，否则会爬取的不够全。<br>最后将爬取到的条目保存到JSON文件中，大功告成！</p>
+<div aligh="center">
+<img src="/asset/1/json_1.png" class="lazyload" data-srcset="/asset/1/json_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/>
+</div>
+
+<p>完整的代码参见：<a href="https://github.com/LvXinTao/simple-scraper">simple-scraper</a>。<br><strong>参考资料</strong>：</p>
+<ol>
+<li><a href="http://www.zvon.org/comp/r/tut-XPath_1.html#intro">XPath Tutorial</a></li>
+<li><a href="https://selenium-python.readthedocs.io/index.html">Selenium with Python</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Coding</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>Selenium</tag>
+        <tag>Crawler</tag>
+      </tags>
+  </entry>
 </search>
