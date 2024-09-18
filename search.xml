@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>简易的Selenium爬虫工具</title>
+    <url>/2024/08/03/%E7%AE%80%E6%98%93%E7%9A%84Selenium%E7%88%AC%E8%99%AB%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>尝试使用Selenium自动化测试库对Github中指定topic的所有库信息进行爬取！</p>
+<span id="more"></span>
+
+<p>首先简单介绍下<a href="https://selenium-python.readthedocs.io/index.html">Selenium库</a>。这是一个针对浏览器应用的自动化测试库，能够模拟人类的点击、敲击键盘、输入文字等操作，因此也能够很好地作为爬虫工具使用。Selenium的使用原理就是首先创建浏览器驱动<code>WebDriver</code>，并获取给定url的HTML，使用<code>Selector</code>对HTML元素进行选取，然后进行自定义的操作。</p>
+<p>本文中，我们将使用Selenium库对Github topics页面进行解析，并爬取指定topic下的所有库信息。这里以motion-generation这个主题为例。</p>
+<p>首先，我们需要创建<code>WebDriver</code>，并获取指定页面的HTML。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">topic = <span class="string">&quot;motion-generation&quot;</span></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">topic_url = <span class="string">&#x27;https://github.com/topics/&#x27;</span>+topic</span><br><span class="line">driver.get(topic_url)</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们需要对指定页面的HTML进行分析，以提取出我们想要的内容。在浏览器中<code>F12</code>打开开发者工具可以看到网页源码，并且鼠标悬停在代码上方可以在页面上看到对应区域高亮。这里我们需要提取的是库名字、库url、作者名字、star数以及库的描述信息，以其中一个为例：</p>
+<div aligh="center">
+<img src="/asset/1/html_1.jpg" class="lazyload" data-srcset="/asset/1/html_1.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/>
+</div>
+
+<p>可以观察到，所有文章项目都是在<code>//div[@class=&quot;col-md-8 col-lg-9&quot;]/article</code>便签下的，进一步点开可以看到各个项目所在标签。因此我们可以用下面的代码提取出所有的article便签及他们的各个属性。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extract the articles</span></span><br><span class="line">articles_tags = driver.find_elements(By.XPATH, <span class="string">&#x27;//div[@class=&quot;col-md-8 col-lg-9&quot;]/article&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> article <span class="keyword">in</span> articles_tags:</span><br><span class="line">        topic_item = TopicItems()</span><br><span class="line">        <span class="comment"># 一定得加&#x27;.&#x27;和&#x27;descendant&#x27;，否则会从根节点开始找！！！</span></span><br><span class="line">        topic_item.repo_name = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link text-bold wb-break-word&quot;]&#x27;</span>).text</span><br><span class="line">        topic_item.repo_url = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link text-bold wb-break-word&quot;]&#x27;</span>).get_attribute(<span class="string">&#x27;href&#x27;</span>)</span><br><span class="line">        topic_item.author_name = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link&quot;]&#x27;</span>).text</span><br><span class="line">        topic_item.stars = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::span[@id=&quot;repo-stars-counter-star&quot;]&#x27;</span>).text</span><br><span class="line">        <span class="comment"># Some articles do not have description</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            topic_item.description = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::div[@class=&quot;px-3 pt-3&quot;]/p&#x27;</span>).text</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            topic_item.description = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        results.append(topic_item)</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，这个页面使用AJAX来动态加载页面，当用户点击<code>Load more...</code>按钮时，AJAX会添加新的article到之前的article后面。因此我们可以先点击所有的<code>Load more...</code>，直到全部加载完之后再来抽取article标签。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        load_more_button = driver.find_element(By.XPATH, <span class="string">&#x27;//form[@class=&quot;ajax-pagination-form js-ajax-pagination&quot;]/button&#x27;</span>)</span><br><span class="line">        load_more_button.submit()</span><br><span class="line">        <span class="comment"># Wait for the next set of articles to load</span></span><br><span class="line">        WebDriverWait(driver, <span class="number">15</span>).until(</span><br><span class="line">            EC.presence_of_element_located((By.XPATH, <span class="string">&#x27;//div[@class=&quot;col-md-8 col-lg-9&quot;]/article&#x27;</span>))</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，AJAX加载需要时间，因此得显式地等待article标签加载出来，否则会爬取的不够全。<br>最后将爬取到的条目保存到JSON文件中，大功告成！</p>
+<div aligh="center">
+<img src="/asset/1/json_1.png" class="lazyload" data-srcset="/asset/1/json_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/>
+</div>
+
+<p>完整的代码参见：<a href="https://github.com/LvXinTao/simple-scraper">simple-scraper</a>。<br><strong>参考资料</strong>：</p>
+<ol>
+<li><a href="http://www.zvon.org/comp/r/tut-XPath_1.html#intro">XPath Tutorial</a></li>
+<li><a href="https://selenium-python.readthedocs.io/index.html">Selenium with Python</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Coding</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>Selenium</tag>
+        <tag>Crawler</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Indigo的博客出生啦！</title>
     <url>/2024/08/01/Indigo%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%94%9F%E5%95%A6%EF%BC%81/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>在经过一晚上的折腾后，终于在自己电脑上成功装上了Node.js和Hexo，并通过Github Page搭建起了自己的小站！</p>
@@ -32,7 +74,11 @@
 <p>均方误差（MSE,L2）:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">L=(y-\hat{y})^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> （回归任务常用，隐含的预设是数据误差符合高斯分布）<br>绝对误差（MAE,L1）:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi mathvariant="normal">∣</mi><mi>y</mi><mo>−</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">L=|y-\hat{y}|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mord">∣</span></span></span></span><br>二值交叉熵（BCE）：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><msub><mo>∑</mo><mi>i</mi></msub><mo>−</mo><mo stretchy="false">[</mo><msub><mi>y</mi><mi>i</mi></msub><mo>∗</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>∗</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L=\frac{1}{N}\sum_i -[ y_i* log(p_i)+(1-y_i)*log(1-p_i)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)]</span></span></span></span>;<br>交叉熵（CE）：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><msub><mo>∑</mo><mi>i</mi></msub><msubsup><mo>∑</mo><mrow><mi>c</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></msubsup><msub><mi>y</mi><mrow><mi>i</mi><mi>c</mi></mrow></msub><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mrow><mi>i</mi><mi>c</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L=\frac{1}{N}\sum_i\sum\limits_{c=1}^M y_{ic}log(p_{ic})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4954em;vertical-align:-0.9671em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5283em;"><span style="top:-2.1329em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>;（倾向于任务数据接近多项式分布）</p>
 </blockquote>
 </li>
+<li><p>Cross Entropy的推导过程</p>
+</li>
 <li><p>MAE和MSE的理解和区别</p>
+</li>
+<li><p>L1和L2正则化的区别？它们都能防止过拟合吗？</p>
 </li>
 <li><p>交叉熵伪代码</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">	exps = np.exp(x - np.<span class="built_in">max</span>(x)) <span class="comment"># 防止上溢</span></span><br><span class="line">    <span class="keyword">return</span> exps / np.<span class="built_in">sum</span>(exps)</span><br><span class="line">	</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cross_entropy_error</span>(<span class="params">p,y</span>):</span><br><span class="line">    <span class="keyword">assert</span> y.shape == y_hat.shape</span><br><span class="line">    delta=<span class="number">1e-7</span>       <span class="comment">#添加一个微小值可以防止负无限大(np.log(0))的发生。</span></span><br><span class="line">	p = softmax(p)   <span class="comment"># 通过 softmax 变为概率分布，并且sum(p) = 1</span></span><br><span class="line">    <span class="keyword">return</span> -np.<span class="built_in">sum</span>(y*np.log(p+delta))</span><br></pre></td></tr></table></figure></li>
@@ -62,6 +108,8 @@
 <blockquote>
 <p>P-R曲线：横轴是Recall，纵轴是Precision。<br>ROC曲线：横轴是FPR&#x3D;FP&#x2F;N，纵轴是TPR&#x3D;TP&#x2F;N。<br>AUC(Area Under Curve)：ROC曲线下的面积大小，AUC越大，说明分类器越可能把真正的正样本排在前面，分类性能越好。</p>
 </blockquote>
+</li>
+<li><p>解释AUC的定义，它解决了什么问题，优缺点是什么，工业界如何计算AUC？</p>
 </li>
 </ul>
 <h3 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h3><blockquote>
@@ -237,7 +285,21 @@ Softmax函数常在神经网络输出层充当激活函数，将输出层的值�
 <li>目标检测单双阶段</li>
 <li>Anchor-free和Anchor-based</li>
 <li>YoloV5和YoloV8的区别</li>
-<li>Focal loss</li>
+</ul>
+<h4 id="Focal-Loss"><a href="#Focal-Loss" class="headerlink" title="Focal Loss"></a>Focal Loss</h4><ul>
+<li><p>Focal loss解决的问题</p>
+<blockquote>
+<p>类别样本不均衡或Hard examples学习不好。<br>普通CE对Well-classified的sample的loss依旧很大，并且通常这些sample很多(background)，这导致模型对hard example的梯度反传较小。</p>
+</blockquote>
+</li>
+<li><p>Focal loss公式</p>
+<blockquote>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>L</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><msub><mi>α</mi><mi>t</mi></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>t</mi></msub><msup><mo stretchy="false">)</mo><mi>γ</mi></msup><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">FL(p_t) = -\alpha_t(1-p_t)^\gamma log(p_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>
+<p>通常,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span>取2时效果好;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>在正样本中取0.25，负样本中取0.75。</p>
+</blockquote>
+</li>
+<li><p>手撕Focal loss</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FocalLoss</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, gamma=<span class="number">0</span>, alpha=<span class="literal">None</span>, size_average=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(FocalLoss, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.gamma = gamma</span><br><span class="line">        <span class="variable language_">self</span>.alpha = alpha</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(alpha,(<span class="built_in">float</span>,<span class="built_in">int</span>,long)): <span class="variable language_">self</span>.alpha = torch.Tensor([alpha,<span class="number">1</span>-alpha])</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(alpha,<span class="built_in">list</span>): <span class="variable language_">self</span>.alpha = torch.Tensor(alpha)</span><br><span class="line">        <span class="variable language_">self</span>.size_average = size_average</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, <span class="built_in">input</span>, target</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">input</span>.dim()&gt;<span class="number">2</span>:</span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.view(<span class="built_in">input</span>.size(<span class="number">0</span>),<span class="built_in">input</span>.size(<span class="number">1</span>),-<span class="number">1</span>)  <span class="comment"># N,C,H,W =&gt; N,C,H*W</span></span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.transpose(<span class="number">1</span>,<span class="number">2</span>)    <span class="comment"># N,C,H*W =&gt; N,H*W,C</span></span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.contiguous().view(-<span class="number">1</span>,<span class="built_in">input</span>.size(<span class="number">2</span>))   <span class="comment"># N,H*W,C =&gt; N*H*W,C</span></span><br><span class="line">        target = target.view(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        logpt = F.log_softmax(<span class="built_in">input</span>)</span><br><span class="line">        logpt = logpt.gather(<span class="number">1</span>,target)</span><br><span class="line">        logpt = logpt.view(-<span class="number">1</span>)</span><br><span class="line">        pt = Variable(logpt.data.exp())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.alpha <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.alpha.<span class="built_in">type</span>()!=<span class="built_in">input</span>.data.<span class="built_in">type</span>():</span><br><span class="line">                <span class="variable language_">self</span>.alpha = <span class="variable language_">self</span>.alpha.type_as(<span class="built_in">input</span>.data)</span><br><span class="line">            at = <span class="variable language_">self</span>.alpha.gather(<span class="number">0</span>,target.data.view(-<span class="number">1</span>))</span><br><span class="line">            logpt = logpt * Variable(at)</span><br><span class="line"></span><br><span class="line">        loss = -<span class="number">1</span> * (<span class="number">1</span>-pt)**<span class="variable language_">self</span>.gamma * logpt</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.size_average: <span class="keyword">return</span> loss.mean()</span><br><span class="line">        <span class="keyword">else</span>: <span class="keyword">return</span> loss.<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h3><h4 id="Encoder-Decoder"><a href="#Encoder-Decoder" class="headerlink" title="Encoder,Decoder"></a>Encoder,Decoder</h4><ul>
 <li><p>Transformer结构描述</p>
@@ -264,9 +326,15 @@ Softmax函数常在神经网络输出层充当激活函数，将输出层的值�
 <p>Encoder的MHSA中需要对padding部分进行mask；Decoder部分的第一个MHSA是self-attention，并且这部分需要引入casual mask避免后面的序列看到前面的序列；Decoder部分的第二个MHA是Cross-attention，其中Q来自前一部分的输出，K,V来自Encoder的输出。</p>
 </blockquote>
 </li>
-<li><p>Decoder在预测Next word时要注意什么？</p>
+<li><p>Decoder在进行推理时的解码策略？</p>
 <blockquote>
-<p>解码策略：Random sampling, Greedy search, Beam search，Top-k。</p>
+<ul>
+<li>Random Sampling:按照概率分布随机选择一个单词。这种方法可以增加生成的多样性，但是可能会导致生成的文本不连贯和无意义.</li>
+<li>Greedy Search:直接选择概率最高的单词。这种方法简单高效，但是可能会导致生成的文本过于单调和重复。</li>
+<li>Beam Search:维护一个大小为 k 的候选序列集合，每一步从每个候选序列的概率分布中选择概率最高的 k 个单词，然后保留总概率最高的 k 个候选序列。这种方法可以平衡生成的质量和多样性，但是可能会导致生成的文本过于保守和不自然。</li>
+<li>Top-k sampling:是对贪心策略的优化，它从排名前 k 的 token 中进行抽样，允许其他分数或概率较高的token 也有机会被选中。在很多情况下，这种抽样带来的随机性有助于提高生成质量。在每一步，只从概率最高的 k 个单词中进行随机采样，而不考虑其他低概率的单词。</li>
+<li>Top-p sampling（也叫Nucleus sampling）:在每一步，只从累积概率超过某个阈值 p 的最小单词集合中进行随机采样，而不考虑其他低概率的单词。这种方法也被称为核采样（nucleus sampling），因为它只关注概率分布的核心部分，而忽略了尾部部分。</li>
+</ul>
 </blockquote>
 </li>
 <li><p>残差的作用</p>
@@ -626,26 +694,195 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </blockquote>
 </li>
 </ul>
-<h3 id="BEiT"><a href="#BEiT" class="headerlink" title="BEiT"></a>BEiT</h3><h3 id="ALBEF-BLIP-BLIP-2-InstructBLIP"><a href="#ALBEF-BLIP-BLIP-2-InstructBLIP" class="headerlink" title="ALBEF,BLIP,BLIP-2,InstructBLIP"></a>ALBEF,BLIP,BLIP-2,InstructBLIP</h3><ul>
-<li>BLIP,BLIP2架构和区别</li>
-<li>描述一下Q-former</li>
-<li>可学习的Query作用是什么？</li>
-<li>BLIP2时如何微调的？</li>
-<li>InstructBLIP</li>
+<h3 id="BLIP系列"><a href="#BLIP系列" class="headerlink" title="BLIP系列"></a>BLIP系列</h3><ul>
+<li><p>BLIP的主要贡献</p>
+<blockquote>
+<ol>
+<li>提出了一种Multimodal mixture of Encoder-Decoder(MED)的多模态预训练模式。</li>
+<li>提出了一种Captioning and Filtering的Dataset Bootstrapping机制，对原始数据集进行清洗。</li>
+<li>微调后在下游Image-text retrieval、Image captioning、VQA等任务上达到了SOTA。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>BLIP的模型架构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/blip.png" class="lazyload" data-srcset="/asset/2/blip.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+* Unimodal Vision Encoder：采用的是在ImageNet-1k预训练的ViT（与LLaVa使用的不同）。
+* Unimodal Text Encoder：采用的是Bert-base，取[CLS] token的特征作为文本特征。
+* Image-grounded Text Encoder：采用Bert，在SA和FFN中间加上Cross Attention层，和图像特征交融。对于文本的输入，会在开头加上task-specific的[Encode]。
+* Image-grounded Text Decoder：将Image-grounded Text Encoder中的Bi Self-Att改为Causal Self-Att,同时也会和图像特征通过CA交融。会在开头加上[Decoder]表示序列起点，以及[EOS]表示序列终点。
+* 后两部分除了Self-Att层不共享，其余部分参数共享。
+</blockquote>
+</li>
+<li><p>BLIP的预训练目标</p>
+<blockquote>
+<ul>
+<li>Image-Text Contrastive Loss：将文本和图像在特征空间对齐，使用的是InfoNCE。实现方式上采用了ALBEF中的Momentum encoder。</li>
+<li>Image-Text Matching Loss：学习文本和图像之间的细粒度匹配，使用的是BCE loss。实现方式上采用了ALBEF中的Hard negative mining策略，即对于一个batch中用于更高对比相似度的负样本，更容易被选择来计算loss。</li>
+<li>Language-modeling loss：以自回归的方式进行极大似然估计，使用的是CE loss。计算时候使用了0.1的label smoothing。</li>
 </ul>
-<h3 id="LLaVa"><a href="#LLaVa" class="headerlink" title="LLaVa"></a>LLaVa</h3><ul>
-<li>LLaVa的结构</li>
-<li>LLaVa和BLIP2区别</li>
-<li>LLaVa两阶段的训练过程和数据集的构建</li>
-<li>LLaVa1.5和1.6的改进</li>
+</blockquote>
+</li>
+<li><p>BLIP的CapFilt机制</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/capfilt.png" class="lazyload" data-srcset="/asset/2/capfilt.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+为了对含有噪声的Alt-text对进行过滤清洗，人工标注部分数据集得到高质量文本-图像对，然后分别微调得到一个Filter和一个Captioner，对原数据集进行重Caption与过滤，得到更高质量数据集再重新预训练MED。
+</blockquote>
+</li>
+<li><p>BLIP是如何微调的？</p>
+<blockquote>
+<ul>
+<li>Image-Text Retrieval：对预训练模型使用ITC和ITM loss，在COCO和Flickr30K上进行微调。</li>
+<li>Image Captioning：在COCO上使用LM loss进行微调。</li>
+<li>VQA：如下图，使用LM loss微调。<div aligh="center"><img src="/asset/2/blip_vqa.png" class="lazyload" data-srcset="/asset/2/blip_vqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
+<li>NLVR：略。</li>
+<li>VisDial：略。</li>
 </ul>
-<h3 id="Flamingo"><a href="#Flamingo" class="headerlink" title="Flamingo"></a>Flamingo</h3><h3 id="其它-1"><a href="#其它-1" class="headerlink" title="其它"></a>其它</h3><ul>
+</blockquote>
+</li>
+<li><p>BLIP预训练使用的数据集</p>
+<blockquote>
+<p>预训练数据集为:</p>
+<ul>
+<li>Conceptual Captions</li>
+<li>SBU Captions</li>
+<li>COCO</li>
+<li>Visual Genome<br>还引入了噪声更大的Conceptual 12M；还尝试了额外的Web数据集LAION.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP2与BLIP的区别</p>
+<blockquote>
+<p>BLIP2引入了Q-former作为预训练视觉模型与LLM之间的桥梁，大大减少了预训练的训练参数与训练成本。</p>
+</blockquote>
+</li>
+<li><p>BLIP2的模型架构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/blip2.png" class="lazyload" data-srcset="/asset/2/blip2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+由一个冻结的Vision Encoder，一个冻结的LLM，一个Q-Former和一个FC的Connector组成。其中在预训练过程中，Vision encoder和LLM始终冻结。其中Vision Encoder采用了两种 (1) CLIP-ViT-L/14 (2) EVA-CLIP-VIT-g/14。LLM有两种：(1) Decoder-based的OPT （2）Encoder-Decoder-based FlanT5。
+<div aligh="center"><img src="/asset/2/qformer.png" class="lazyload" data-srcset="/asset/2/qformer.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+Q-former 由两个Transformer子模块组成，两部分共享Self-attention层。Image transformer通过Cross attention与图片特征交互，Text transformer可以通过Self attention从可学习Queries获取视觉特征。根据预训练任务的不同，Self-attention的mask也会不同。Q-former的权重由预训练的BERT-base初始化来，而Cross attention部分随机初始化。BLIP-2中使用了32个Queries，每个维度768，这远小于提取到的图像特征(32x768 << 257x1024)。
+</blockquote>
+</li>
+<li><p>BLIP2的预训练过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/blip2_pretrain.png" class="lazyload" data-srcset="/asset/2/blip2_pretrain.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+由两阶段组成：第一阶段Vision-language表征学习，第二阶段Vision-to-language生成学习。
+
+<p>(1) 第一阶段：表征学习，将冻结的Image encoder和可学习的Q-former连在一起，同时优化三种优化目标。</p>
+<ul>
+<li>Image-Text Contrastive Learning：对齐文本与图像，最大化两者之间的互信息。这一部分采用的是Image transformer输出的Query representation和Text transformer输出的[CLS] token。由于Queries有32个，因此这里会每个计算相似度然后取最高的作为Image-Text similarity。为了避免信息泄露，这里采用的是Unimodal self-attention mask。</li>
+<li>Image-grounded Text Generation：训练Q-former根据图像生成文本。由于text transformer不能直接和视觉特征交互，因此首先由Queries提取视觉信息，然后通过Self attention传递给text token。这里采用了Multimodel causal Self-attention mask。同时也会将开头的[CLS] token更换为[DEC]。</li>
+<li>Image-Text Matching：对文本和图像进行更细粒度的对齐。这里采用了Bi-directional Self-attention mask，因此输出的query embedding能够捕获多模态信息。然后将query embedding输入二分类头获得logit后进行average得到输出的matching score。<br>(这一部分实现原理是：attenion时把query和text 拼接起来输入到一个self-attention模块,然后通过mask控制query和text之间的交互,然后attention之后再把query和text分开进行后面的操作，所以实际上是同一个Bert模型。参考BLIP2官方代码)</li>
+</ul>
+<p>(2) 第二阶段：视觉到语言生成学习。将Q-former和冻结的LLM连接，并通过FC对齐query embedding和text embedding的维度。然后将投影过的query embeddings附加在text input embedding的前面，作为Soft Visual Prompt，为LLM提供有用的视觉信息并去除无关的视觉信息。这里进行了两种LLM的实验，对于Decoder-based使用LM loss，对于Encoder-decoder的使用Prefix LM loss。</p>
+</blockquote>
+</li>
+<li><p>BLIP2预训练使用的数据集</p>
+<blockquote>
+<p>和BLIP一样使用下面6个数据集，图片加起来约为129M.</p>
+<ul>
+<li>Conceptual Captions</li>
+<li>SBU Captions</li>
+<li>COCO</li>
+<li>Visual Genome</li>
+<li>噪声更大的Conceptual 12M</li>
+<li>额外的Web数据集LAION400M的一部分。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP2是如何微调的？</p>
+<blockquote>
+<ul>
+<li><p>Image Cptioning：用”A photo of”作为初始输入给LLM，使用LM loss训练。<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong></p>
+</li>
+<li><p>VQA：<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong> 使用Open-ended answer generation loss微调。同时额外为Q-former注入question信息，能够知道Q-former在cross attention层聚焦于更含信息的区域。</p>
+<div aligh="center"><img src="/asset/2/blip2_vqa.png" class="lazyload" data-srcset="/asset/2/blip2_vqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</li>
+<li><p>Image-Text Retrieval：直接在第一阶段预训练模型上微调。同时微调Image encoder和Q-former。推理时，先根据Image-text feature similarity选出128个candidate，然后根据成对的Image-text matching scores进行重排序。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP-2的局限性</p>
+<blockquote>
+<p>LLM 一般具备 In-Contet Learning 的能力，但是在 In-Context VQA 的场景下，BLIP-2 没观察到好的结果。对于这种上下文学习能力的缺失，作者把原因归结为预训练数据集中的每个数据只包含一个图像-文本对，导致 LLM 无法从中学习单个序列中多个图像-文本对之间的相关性。</p>
+<p>BLIP-2 的图文生成能力不够令人满意，可能是 LLM 知识不准确带来的。同时 BLIP-2 继承了冻结参数的 LLM 的风险，比如输出攻击性语言，传播社会偏见。解决的办法是指令微调，或者过滤掉有害的数据集。</p>
+</blockquote>
+</li>
+<li><p>可学习的Query作用是什么？</p>
+<blockquote>
+<ul>
+<li>从视觉信息中提取与文本最相关的信息。</li>
+<li>使得提取出的信息能够被LLM理解</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Q-former和MLP的优劣在哪里？</p>
+<blockquote>
+<p>(1) Q-former会导致视觉token的有损压缩，会把任意长度的visual token转译成32个token，丢失部分空间信息。<br>(2) Q-former相比于MLP参数量更大，收敛更慢，小数据量不如MLP，大数据量对比MLP也没有优势。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="LLaVa系列"><a href="#LLaVa系列" class="headerlink" title="LLaVa系列"></a>LLaVa系列</h3><ul>
+<li><p>LLaVa数据集的构建</p>
+<blockquote>
+<p>根据COCO中的caption和bbox，可以利用language-only GPT-4生成三种instruction data.</p>
+<ul>
+<li>Conversation: 多轮对话，根据caption中的每一部分，生成一个人不断提问某张图片的instruction数据。</li>
+<li>Detailed description：详细描述，由原始caption生成详细的描述。</li>
+<li>Complex reasoning：对图片中内容的一些复杂推理。<br>LLaVa收集了158K的instruction-following数据，包括58K的conversations，23K的detailed description，77K的complex reasoning。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>LLaVa的结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/llava.png" class="lazyload" data-srcset="/asset/2/llava.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层特征;language decoder采用Vicuna。视觉与文本之间的对齐通过一层线性层对齐。</blockquote>
+</li>
+<li><p>LLaVa训练过程</p>
+<blockquote>
+<ul>
+<li>第一阶段：特征对齐预训练。训练数据为过滤后的595K对CC3M.每个图片文本对被视为单轮对话数据（即response为图片的caption）。该过程中冻结Vision encoder和LLM，仅训练Projector。</li>
+<li>第二阶段：端到端微调。这一过程中将Vision encoder冻结，训练LLM和projector。有两种场景的微调：多模态聊天机器人，使用前面采集的三种response作为训练数据，训练过程中均匀采样；SicenceQA，对于给定的问题提供完整的推理过程和选择的答案，训练数据以单轮对话形式输入。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>LLaVa实验设置</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/llava_exp.png" class="lazyload" data-srcset="/asset/2/llava_exp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>LLaVa1.5的改进</p>
+<blockquote>
+<ul>
+<li>结构改进：Projector换成了2层MLP，Vision encoder变成了CLIP-ViT-L-336px，LLM升级为Vicuna1.5。LLaVa-v1.5-HD版本增加了对高分辨率图片的支持，将高分辨率分成多个grid分别输入原始encoder，然后concat起来获得视觉信息。</li>
+<li>数据改进：</li>
+</ul>
+<ol>
+<li>增加了具有简单响应格式提示词的学术导向的VQA数据集，其中简单格式响应提示词例如：Answer the question using a single word or phrase，主要是为了配合数据集简短的答案，避免歧义。</li>
+<li>预训练数据集使用LAION&#x2F;COC&#x2F;SBU的子集，共558K；instruction数据集共665K，在1.0基础上增加了ShareGPT数据集、学术导向的VQA数据集、OCR数据集、Region-level的VQA数据集。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>LLaVa1.5存在的限制</p>
+<blockquote>
+<ul>
+<li>使用全图补丁，增加了训练时间。</li>
+<li>不能处理多图，因为缺少这样的指令微调数据，以及上下文长度的限制。</li>
+<li>在一些特定领域效果不佳。</li>
+<li>依旧存在幻觉和错误信息。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="其它-1"><a href="#其它-1" class="headerlink" title="其它"></a>其它</h3><ul>
 <li>常见的多模态大模型，ChatGLM</li>
 <li>多模态模型支持的任务类型</li>
 <li>多模态中特征对齐和融合方法有哪些</li>
 <li>其他对比学习方法（SimCLR等）</li>
 <li>对比学习的本质是在解决什么问题，目的是什么？<blockquote>
-<p>本质上是自监督学习，即学习一个编码器，此编码器对同类数据进行相似的编码，并使不同类的数据的编码结果尽可能的不同。</p>
+<p>本质上是自监督学习，即学习一个编码器，此编码器对同类数据进行相似的编码，并使不同类的数据的编码结果尽可能的不同。使模态间的互信息最大化。</p>
 </blockquote>
 </li>
 <li>对多模态领域的看法·</li>
@@ -798,7 +1035,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <li>BERT结构和预训练任务</li>
 <li>BERT和GPT区别</li>
 </ul>
-<h4 id="ChatGLM"><a href="#ChatGLM" class="headerlink" title="ChatGLM"></a>ChatGLM</h4><h4 id="Qwen"><a href="#Qwen" class="headerlink" title="Qwen"></a>Qwen</h4><h3 id="PEFT"><a href="#PEFT" class="headerlink" title="PEFT"></a>PEFT</h3><ul>
+<h4 id="ChatGLM"><a href="#ChatGLM" class="headerlink" title="ChatGLM"></a>ChatGLM</h4><h4 id="Qwen"><a href="#Qwen" class="headerlink" title="Qwen"></a>Qwen</h4><h4 id="InternLM"><a href="#InternLM" class="headerlink" title="InternLM"></a>InternLM</h4><h3 id="PEFT"><a href="#PEFT" class="headerlink" title="PEFT"></a>PEFT</h3><ul>
 <li><p>LoRA原理</p>
 <blockquote>
 <p>LoRA假设微调变化矩阵的内在秩远低于原矩阵维度d，因此将变化矩阵分解为B和A，而原矩阵的权重不发生变化。这样使得可训练参数数量极大减少，降低显存消耗量。见下图：</p>
@@ -825,7 +1062,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p>对于一般的任务，r&#x3D;1,2,4,8 就足够了。而一些领域差距比较大的任务可能需要更大的r 。</p>
 </blockquote>
 </li>
-<li><p>LoRA的几种变种（QLoRA，etc）</p>
+<li><p>LoRA的几种变种（QLoRA等）</p>
 </li>
 <li><p>LLaMa-Adapter介绍</p>
 </li>
@@ -835,10 +1072,10 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </li>
 </ul>
 <h4 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h4><ul>
+<li>如何计算训练大模型需要的显存？</li>
 <li>提示学习</li>
 <li>RAG流程</li>
 <li>如何处理长文本？</li>
-<li>LLM的解码方式</li>
 <li>Encoder-only，Decoder-only，Encoder-Decoder的几种模型</li>
 <li>Tokenizer的种类和区别</li>
 <li>Text转Embedding的过程</li>
@@ -850,7 +1087,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </ul>
 <h3 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h3><ul>
 <li>常见T2I模型<blockquote>
-<p>Stable Diffusion,Imagen,DALLE2</p>
+<p>Stable Diffusion,Imagen,DALLE,GLIDE</p>
 </blockquote>
 </li>
 <li>Stable Diffusion模型原理</li>
@@ -872,48 +1109,6 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
         <tag>八股文</tag>
         <tag>CV</tag>
         <tag>多模态</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>简易的Selenium爬虫工具</title>
-    <url>/2024/08/03/%E7%AE%80%E6%98%93%E7%9A%84Selenium%E7%88%AC%E8%99%AB%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>尝试使用Selenium自动化测试库对Github中指定topic的所有库信息进行爬取！</p>
-<span id="more"></span>
-
-<p>首先简单介绍下<a href="https://selenium-python.readthedocs.io/index.html">Selenium库</a>。这是一个针对浏览器应用的自动化测试库，能够模拟人类的点击、敲击键盘、输入文字等操作，因此也能够很好地作为爬虫工具使用。Selenium的使用原理就是首先创建浏览器驱动<code>WebDriver</code>，并获取给定url的HTML，使用<code>Selector</code>对HTML元素进行选取，然后进行自定义的操作。</p>
-<p>本文中，我们将使用Selenium库对Github topics页面进行解析，并爬取指定topic下的所有库信息。这里以motion-generation这个主题为例。</p>
-<p>首先，我们需要创建<code>WebDriver</code>，并获取指定页面的HTML。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">topic = <span class="string">&quot;motion-generation&quot;</span></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">topic_url = <span class="string">&#x27;https://github.com/topics/&#x27;</span>+topic</span><br><span class="line">driver.get(topic_url)</span><br></pre></td></tr></table></figure>
-
-<p>接下来我们需要对指定页面的HTML进行分析，以提取出我们想要的内容。在浏览器中<code>F12</code>打开开发者工具可以看到网页源码，并且鼠标悬停在代码上方可以在页面上看到对应区域高亮。这里我们需要提取的是库名字、库url、作者名字、star数以及库的描述信息，以其中一个为例：</p>
-<div aligh="center">
-<img src="/asset/1/html_1.jpg" class="lazyload" data-srcset="/asset/1/html_1.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/>
-</div>
-
-<p>可以观察到，所有文章项目都是在<code>//div[@class=&quot;col-md-8 col-lg-9&quot;]/article</code>便签下的，进一步点开可以看到各个项目所在标签。因此我们可以用下面的代码提取出所有的article便签及他们的各个属性。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extract the articles</span></span><br><span class="line">articles_tags = driver.find_elements(By.XPATH, <span class="string">&#x27;//div[@class=&quot;col-md-8 col-lg-9&quot;]/article&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> article <span class="keyword">in</span> articles_tags:</span><br><span class="line">        topic_item = TopicItems()</span><br><span class="line">        <span class="comment"># 一定得加&#x27;.&#x27;和&#x27;descendant&#x27;，否则会从根节点开始找！！！</span></span><br><span class="line">        topic_item.repo_name = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link text-bold wb-break-word&quot;]&#x27;</span>).text</span><br><span class="line">        topic_item.repo_url = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link text-bold wb-break-word&quot;]&#x27;</span>).get_attribute(<span class="string">&#x27;href&#x27;</span>)</span><br><span class="line">        topic_item.author_name = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::h3/a[@class=&quot;Link&quot;]&#x27;</span>).text</span><br><span class="line">        topic_item.stars = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::span[@id=&quot;repo-stars-counter-star&quot;]&#x27;</span>).text</span><br><span class="line">        <span class="comment"># Some articles do not have description</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            topic_item.description = article.find_element(By.XPATH, <span class="string">&#x27;.//descendant::div[@class=&quot;px-3 pt-3&quot;]/p&#x27;</span>).text</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            topic_item.description = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        results.append(topic_item)</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，这个页面使用AJAX来动态加载页面，当用户点击<code>Load more...</code>按钮时，AJAX会添加新的article到之前的article后面。因此我们可以先点击所有的<code>Load more...</code>，直到全部加载完之后再来抽取article标签。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        load_more_button = driver.find_element(By.XPATH, <span class="string">&#x27;//form[@class=&quot;ajax-pagination-form js-ajax-pagination&quot;]/button&#x27;</span>)</span><br><span class="line">        load_more_button.submit()</span><br><span class="line">        <span class="comment"># Wait for the next set of articles to load</span></span><br><span class="line">        WebDriverWait(driver, <span class="number">15</span>).until(</span><br><span class="line">            EC.presence_of_element_located((By.XPATH, <span class="string">&#x27;//div[@class=&quot;col-md-8 col-lg-9&quot;]/article&#x27;</span>))</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-<p>需要注意的是，AJAX加载需要时间，因此得显式地等待article标签加载出来，否则会爬取的不够全。<br>最后将爬取到的条目保存到JSON文件中，大功告成！</p>
-<div aligh="center">
-<img src="/asset/1/json_1.png" class="lazyload" data-srcset="/asset/1/json_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/>
-</div>
-
-<p>完整的代码参见：<a href="https://github.com/LvXinTao/simple-scraper">simple-scraper</a>。<br><strong>参考资料</strong>：</p>
-<ol>
-<li><a href="http://www.zvon.org/comp/r/tut-XPath_1.html#intro">XPath Tutorial</a></li>
-<li><a href="https://selenium-python.readthedocs.io/index.html">Selenium with Python</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Coding</category>
-        <category>爬虫</category>
-      </categories>
-      <tags>
-        <tag>爬虫</tag>
-        <tag>Selenium</tag>
-        <tag>Crawler</tag>
       </tags>
   </entry>
 </search>
