@@ -60,7 +60,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-09-24T10:33:42.000Z">
-<meta property="article:modified_time" content="2024-09-24T11:00:11.215Z">
+<meta property="article:modified_time" content="2024-09-25T16:59:18.038Z">
 <meta property="article:author" content="Xintao Lv">
 <meta property="article:tag" content="算法岗">
 <meta property="article:tag" content="八股文">
@@ -1924,7 +1924,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1727175680734),
+    lastupdate: new Date(1728513976946),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2852,6 +2852,35 @@ Encoder的embedding后接分类头，进行微调。
 相较于CoOp，CLIP-Adapter的训练方式更加轻量化，只有两个残差连接的MLP。将两部分按照一定比例进行blend。（为什么要用残差连接？为了保留CLIP的原始能力）(为什么不全参微调？容易Over-fit。)</blockquote>
 </li>
 </ul>
+<h2 id="Flamingo"><a href="#Flamingo" class="headerlink" title="Flamingo"></a>Flamingo</h2><ul>
+<li><p>Flamingo的贡献</p>
+<blockquote>
+<ol>
+<li>桥接预训练好的视觉模型和语言模型</li>
+<li>可以处理任意交错的图文对数据</li>
+<li>可以同时以图像和视频数据作为输入<br>Flamingo实现了多模态领域的Few-shot learning(in-context learning)能力，即多模态领域的GPT-3。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>Flamingo模型结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/flamingo.png" class="lazyload" data-srcset="/asset/2/flamingo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+通过Perceiver Resampler和Gated Xatten-dense，与新插入到LM中的层计算Cross-attention，从而将视觉信息注入的LM的生成过程中。</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>Perceiver Resampler:</p>
+<div aligh="center"><img src="/asset/2/perceiver.png" class="lazyload" data-srcset="/asset/2/perceiver.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+1. 可以接收任意多个的视频帧（如果是图像，可以视作是单帧视频），经过视觉编码器提取特征，加上time embedding 之后全部展平，得到一个视觉 token 序列.
+2. 同时有一个可学习的固定长度的latent query序列。
+3. 计算CA时，Q是learnable query,KV是query和image feature拼接起来的。（这里和Q-former区别，Q-former是Q是query，KV是视觉feature）
+4. 通过该模块，将视觉特征转成了少量低维度的query embedding。
+</blockquote>
+<blockquote>
+<p>Gated Xattn Dense</p>
+<div aligh="center"><img src="/asset/2/gated_xattn.png" class="lazyload" data-srcset="/asset/2/gated_xattn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+将固定长度的视觉 query 注入到语言模型。在预训练好的 LM 的各层交替地插入一些随机初始化的CA。Gated门控，指的是在每一新插入的层之后的残差链接之前添加一个 tanh gating，即tanh(a)，其中a是一个可学习的标量值，初始值为 0，从而保证初始化时的输出与原 LM 一致。
+</blockquote>
 <h2 id="BLIP系列"><a href="#BLIP系列" class="headerlink" title="BLIP系列"></a>BLIP系列</h2><h3 id="BLIP"><a href="#BLIP" class="headerlink" title="BLIP"></a>BLIP</h3><ul>
 <li><p>BLIP的主要贡献</p>
 <blockquote>
@@ -3077,7 +3106,58 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
 </blockquote>
 </li>
 </ul>
-<h2 id="Qwen-VL系列"><a href="#Qwen-VL系列" class="headerlink" title="Qwen-VL系列"></a>Qwen-VL系列</h2><h2 id="InternVL系列"><a href="#InternVL系列" class="headerlink" title="InternVL系列"></a>InternVL系列</h2><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<h2 id="Qwen-VL系列"><a href="#Qwen-VL系列" class="headerlink" title="Qwen-VL系列"></a>Qwen-VL系列</h2><h3 id="Qwen-VL"><a href="#Qwen-VL" class="headerlink" title="Qwen-VL"></a>Qwen-VL</h3><ul>
+<li><p>Qwen-VL的模型架构</p>
+<blockquote>
+<p>LLM：使用Qwen-7B初始化<br>Vision Encoder：采用OpenCLIP-ViT-bigG-14<br>Adapter：Position-aware VL Adapter。</p>
+<ul>
+<li>该adapter包含一个随机初始化的单层cross-attention模块，该模块使用一组可训练的embedding作为query向量，使用视觉编码器输出的图像特征作为key、value。</li>
+<li>另外，考虑到位置信息对细粒度图像理解的重要性，2D绝对位置编码被结合到cross-attention的query-key pairs中，以减轻压缩过程中位置细节的潜在损失。<br>作用：（1）对图片token数压缩，压缩到固定长度256；（2）同时与LLM文本模态对齐<div aligh="center"><img src="/asset/2/qwen-vl.png" class="lazyload" data-srcset="/asset/2/qwen-vl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen-VL的输入和输出</p>
+<blockquote>
+<p>输入：</p>
+<ul>
+<li>文本输入。</li>
+<li>图像输入：与其他MLM一样。</li>
+<li>bbox输入：为了增强模型对细粒度视觉理解和定位的能力，Qwen-VL的训练涉及区域描述、问题和检测的数据形式。对于任何给定的边界框，会进行归一化处理 (在[0,1000)范围内)，并转换为指定的字符串格式：”(X_{topleft},Y_{topleft}),(X_{bottomright},Y_{bottomright})”。该字符串作为文本被token化，不需要额外的位置词汇表。为了区分检测字符串和常规文本字符串，在边界框字符串的开头和结尾添加两个特殊token (<box>和</box>)。另外，为了适当地将边界框与其对应的描述词或句子相关联，引入了另一组特殊token (<ref>和</ref>)，标记边界框所指的内容。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen-VL的训练过程</p>
+<blockquote>
+<p>训练由三个阶段组成，见上图。<br>Stage 1：预训练。使用清洗后的图文对，原始有5B的数据，清洗后有1.4B。此阶段冻结LLM，训练视觉编码器和Adapter，输入分辨率224。</p>
+<div aligh="center"><img src="/asset/2/qwen-vl_ds1.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>Stage 2：多任务预训练。使用更好的图文对数据，包括captioning、VQA、Grounding、OCR等。此阶段所有部分都要训练。使用更大分辨率448.</p>
+<div aligh="center"><img src="/asset/2/qwen-vl_ds2.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>Stage 3：SFT。采用多模态数据和纯文本数据混合微调，得到350K指令微调数据，以增强其遵循指令和对话能力，得到Qwen-VL-Chat（数据中有多图数据，能够有多图对话的能力）。此阶段冻结视觉编码器，训练LLM和Adapter。这样的好处是，减弱文本能力的遗忘。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Qwen-VL2"><a href="#Qwen-VL2" class="headerlink" title="Qwen-VL2"></a>Qwen-VL2</h3><blockquote>
+<p>Qwen2-VL相对于Qwen1的改进主要体现在以下几个方面：</p>
+<ol>
+<li><strong>增强的图像理解能力</strong>：Qwen2-VL显著提高了模型理解和解释视觉信息的能力，为关键性能指标设定了新的基准 。</li>
+<li><strong>高级视频理解能力</strong>：Qwen2-VL具有卓越的在线流媒体功能，能够以很高的精度实时分析动态视频内容 。</li>
+<li><strong>集成的可视化agent功能</strong>：Qwen2-VL现在无缝整合了复杂的系统集成，将Qwen2-VL转变为能够进行复杂推理和决策的强大可视化代理 。</li>
+<li><strong>扩展的多语言支持</strong>：Qwen2-VL扩展了语言能力，以更好地服务于多样化的全球用户群，使Qwen2-VL在不同语言环境中更易于访问和有效 。</li>
+<li><strong>模型结构</strong>：Qwen2-VL实现了动态分辨率支持（Naive Dynamic Resolution support），能够处理任意分辨率的图像，而无需将其分割成块，从而确保模型输入与图像固有信息之间的一致性 。</li>
+<li><strong>Multimodal Rotary Position Embedding</strong>：通过将original rotary embedding分解为代表时间和空间（高度和宽度）信息的三个部分，M-ROPE使LLM能够同时捕获和集成1D文本、2D视觉和3D视频位置信息 。</li>
+<li><strong>模型效果</strong>：Qwen2-VL-7B在文档理解任务（例如DocVQA）和通过MTVQA评估的图像多语言文本理解方面表现出色，建立了非常优秀的性能 。</li>
+<li><strong>视频支持</strong>：Qwen2-VL增加了对视频的支持，能够理解长视频，并将其用于基于视频的问答、对话和内容创作等应用中 。</li>
+<li><strong>Visual Agent能力</strong>：Qwen2-VL提升了function call以及Agent能力，能够与环境实现交互，进行复杂任务的执行 。</li>
+</ol>
+</blockquote>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li><p>多模态的发展路径</p>
+<blockquote>
+<p>双塔型：CLIP,Prefix型：ViLT-&gt;多模态的GPT-3：Flamingo，先对齐再融合：ALBEF，多任务预训练：BLIP-&gt;使用LLM：BLIP-2,LLaVa,Instruct-BLIP,Qwen-VL等-&gt;全模态：ImageBind</p>
+</blockquote>
+</li>
 <li><p>多模态模型支持的任务类型</p>
 <blockquote>
 <ul>
@@ -3093,8 +3173,6 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
 <blockquote>
 <p>本质上是自监督学习，即学习一个编码器，此编码器对同类数据进行相似的编码，并使不同类的数据的编码结果尽可能的不同。使模态间的互信息最大化。</p>
 </blockquote>
-</li>
-<li><p>其他对比学习方法（SimCLR等）</p>
 </li>
 </ul>
 
@@ -3121,10 +3199,10 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-09-24T19:00:11+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-09-26T00:59:18+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年9月24日</p>
+    <p>更新于：2024年9月26日</p>
   </a>
 </div>
 
@@ -3207,30 +3285,41 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>算法岗知识汇总【机器学习】</p>
+        <a class='prev' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90LLM%E3%80%91/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>算法岗知识汇总【LLM】</p>
           <p class='content'>正在更新中……
 秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。
 
 
 
-损失函数
-常用损失函数
+GPT系列GPT-1
+简述一下GPT的训练过程。
 
-均方误差（MSE,L2）:L=(y−y^)2L=(y-\hat{y})^2L=(...</p>
+GPT的训练过程采用了预训练和微调的二段式训练策略。
+...</p>
         </a>
       
       
-        <a class='next' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E3%80%91/'>
-          <p class='title'>算法岗知识汇总【深度学习基础】<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+        <a class='next' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/'>
+          <p class='title'>算法岗知识汇总【AIGC】<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>正在更新中……
 秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。
 
 
-激活函数
-激活函数作用
+VAEVAE
+VAE模型
 
-如果不用激活函数，每一层输出都是上层输入的线性函数，无论神经网络有多少层，输出都是...</p>
+
+
+
+VAE公式推导
+
+见知乎文章。
+
+
+KL项的作用
+
+KL loss类似于一...</p>
         </a>
       
     </div>
@@ -3406,7 +3495,7 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CLIP"><span class="toc-text">CLIP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CLIP%E5%B0%91%E6%A0%B7%E6%9C%AC%E5%BE%AE%E8%B0%83"><span class="toc-text">CLIP少样本微调</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BLIP%E7%B3%BB%E5%88%97"><span class="toc-text">BLIP系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP"><span class="toc-text">BLIP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP2"><span class="toc-text">BLIP2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InstructBLIP"><span class="toc-text">InstructBLIP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLaVa%E7%B3%BB%E5%88%97"><span class="toc-text">LLaVa系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa"><span class="toc-text">LLaVa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa-v1-5"><span class="toc-text">LLaVa-v1.5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MiniGPT-4"><span class="toc-text">MiniGPT-4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qwen-VL%E7%B3%BB%E5%88%97"><span class="toc-text">Qwen-VL系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InternVL%E7%B3%BB%E5%88%97"><span class="toc-text">InternVL系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-text">其它</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CLIP"><span class="toc-text">CLIP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CLIP%E5%B0%91%E6%A0%B7%E6%9C%AC%E5%BE%AE%E8%B0%83"><span class="toc-text">CLIP少样本微调</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flamingo"><span class="toc-text">Flamingo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BLIP%E7%B3%BB%E5%88%97"><span class="toc-text">BLIP系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP"><span class="toc-text">BLIP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP2"><span class="toc-text">BLIP2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InstructBLIP"><span class="toc-text">InstructBLIP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLaVa%E7%B3%BB%E5%88%97"><span class="toc-text">LLaVa系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa"><span class="toc-text">LLaVa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa-v1-5"><span class="toc-text">LLaVa-v1.5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MiniGPT-4"><span class="toc-text">MiniGPT-4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qwen-VL%E7%B3%BB%E5%88%97"><span class="toc-text">Qwen-VL系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Qwen-VL"><span class="toc-text">Qwen-VL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qwen-VL2"><span class="toc-text">Qwen-VL2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-text">其它</span></a></li></ol>
     </div>
   </section>
 
@@ -4074,7 +4163,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【多模态】/","name":"算法岗知识汇总【多模态】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【多模态】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-09-24T11:00:11.215Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【多模态】/","name":"算法岗知识汇总【多模态】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【多模态】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-09-25T16:59:18.038Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Indigo的博客出生啦！</title>
-    <url>/2024/08/01/Indigo%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%94%9F%E5%95%A6%EF%BC%81/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>在经过一晚上的折腾后，终于在自己电脑上成功装上了Node.js和Hexo，并通过Github Page搭建起了自己的小站！</p>
-<span id="more"></span>
-
-<p>在此鸣谢</p>
-<center><div class="tag link"><a class="link-card" title="Volantis主题" href="https://github.com/volantis-x/hexo-theme-volantis"><div class="left"><img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></div><div class="right"><p class="text">Volantis主题</p><p class="url">https://github.com/volantis-x/hexo-theme-volantis</p></div></a></div></center>
-<center><div class="tag link"><a class="link-card" title="Hexo框架" href="https://hexo.io/zh-cn/"><div class="left"><img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></div><div class="right"><p class="text">Hexo框架</p><p class="url">https://hexo.io/zh-cn/</p></div></a></div></center>
-<center><div class="tag link"><a class="link-card" title="强大的node.js、npm、nvm" href="https://nodejs.org/zh-cn"><div class="left"><img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></div><div class="right"><p class="text">强大的node.js、npm、nvm</p><p class="url">https://nodejs.org/zh-cn</p></div></a></div></center>
-它们的文档详尽且有效，使得前端小白能够无痛建站！
-]]></content>
-      <categories>
-        <category>碎碎念</category>
-      </categories>
-      <tags>
-        <tag>发疯</tag>
-        <tag>爸爸妈妈我出生了</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>简易的Selenium爬虫工具</title>
     <url>/2024/08/03/%E7%AE%80%E6%98%93%E7%9A%84Selenium%E7%88%AC%E8%99%AB%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>尝试使用Selenium自动化测试库对Github中指定topic的所有库信息进行爬取！</p>
@@ -63,70 +43,23 @@
       </tags>
   </entry>
   <entry>
-    <title>算法岗知识汇总【AIGC】</title>
-    <url>/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>正在更新中……</p>
-<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
+    <title>Indigo的博客出生啦！</title>
+    <url>/2024/08/01/Indigo%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%94%9F%E5%95%A6%EF%BC%81/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>在经过一晚上的折腾后，终于在自己电脑上成功装上了Node.js和Hexo，并通过Github Page搭建起了自己的小站！</p>
 <span id="more"></span>
 
-<h2 id="VAE"><a href="#VAE" class="headerlink" title="VAE"></a>VAE</h2><ul>
-<li>VQ-GAN和VQ-VAE</li>
-<li>VAE公式推导</li>
-</ul>
-<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><ul>
-<li>GAN和Diffsuion的优势，从分布映射的角度讲</li>
-<li>为什么GAN不稳定，如何解决？</li>
-<li>GAN为什么会出现Mode collapse？<blockquote>
-<p>生成对抗网络（GAN）中的模式崩塌是指生成器网络只能生成有限的几种样本，而不能生成更多的样本。这种情况通常发生在训练过程中，生成器网络只学习到了一部分数据的特征，而没有学习到其他数据的特征。这导致生成器网络只能生成与这些数据相似的样本，而无法生成其他样本。</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>模式崩塌的原因可能是由于训练数据集过小或者过于相似，导致生成器网络只能学习到少量的数据特征。此外，GAN中的优化问题也可能导致模式崩塌。GAN的训练过程是一个非常复杂的优化问题，需要同时优化生成器和判别器网络。如果优化过程不充分或者不平衡，可能会导致生成器网络无法学习到更多的数据特征，从而出现模式崩塌。</p>
-</blockquote>
-<ul>
-<li>GAN怎么做Inversion</li>
-</ul>
-<h2 id="Diffusion"><a href="#Diffusion" class="headerlink" title="Diffusion"></a>Diffusion</h2><ul>
-<li><p>DDPM原理</p>
-<div aligh="center"><img src="/asset/2/ddpm_1.png" class="lazyload" data-srcset="/asset/2/ddpm_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-<div aligh="center"><img src="/asset/2/ddpm_2.png" class="lazyload" data-srcset="/asset/2/ddpm_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</li>
-<li><p>去噪网络预测的是什么？</p>
-<blockquote>
-<p>原始DDPM论文预测的是每一步的噪声，但是直接预测x0的方法也有。</p>
-</blockquote>
-</li>
-<li><p>DDIM原理</p>
-<div aligh="center"><img src="/asset/2/ddim_1.png" class="lazyload" data-srcset="/asset/2/ddim_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-<div aligh="center"><img src="/asset/2/ddim_2.png" class="lazyload" data-srcset="/asset/2/ddim_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</li>
-<li><p>其他的加速采样方法DPM+,DPM++</p>
-</li>
-<li><p>Score-based Diffusion</p>
-</li>
-<li><p>Classifier guidance和Classifier-free guidance的区别和原理</p>
-</li>
-</ul>
-<h2 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h2><ul>
-<li>常见T2I模型<blockquote>
-<p>Stable Diffusion,Imagen,DALLE,GLIDE</p>
-</blockquote>
-</li>
-<li>Stable Diffusion模型原理</li>
-<li>Stable Diffusion生成结果如何评价，定量指标</li>
-<li>Stable Diffusion训练推理过程</li>
-<li>Stable Diffusion的各个模块</li>
-<li>简述一下ControlNet，DreamBooth，LoRA，Adapter的原理，各自的优缺点</li>
-</ul>
+<p>在此鸣谢</p>
+<center><div class="tag link"><a class="link-card" title="Volantis主题" href="https://github.com/volantis-x/hexo-theme-volantis"><div class="left"><img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></div><div class="right"><p class="text">Volantis主题</p><p class="url">https://github.com/volantis-x/hexo-theme-volantis</p></div></a></div></center>
+<center><div class="tag link"><a class="link-card" title="Hexo框架" href="https://hexo.io/zh-cn/"><div class="left"><img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></div><div class="right"><p class="text">Hexo框架</p><p class="url">https://hexo.io/zh-cn/</p></div></a></div></center>
+<center><div class="tag link"><a class="link-card" title="强大的node.js、npm、nvm" href="https://nodejs.org/zh-cn"><div class="left"><img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/256/safari.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/></div><div class="right"><p class="text">强大的node.js、npm、nvm</p><p class="url">https://nodejs.org/zh-cn</p></div></a></div></center>
+它们的文档详尽且有效，使得前端小白能够无痛建站！
 ]]></content>
       <categories>
-        <category>算法岗</category>
-        <category>八股文</category>
+        <category>碎碎念</category>
       </categories>
       <tags>
-        <tag>算法岗</tag>
-        <tag>八股文</tag>
+        <tag>发疯</tag>
+        <tag>爸爸妈妈我出生了</tag>
       </tags>
   </entry>
   <entry>
@@ -170,7 +103,7 @@
 <li><p>手撕Focal loss</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FocalLoss</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, gamma=<span class="number">0</span>, alpha=<span class="literal">None</span>, size_average=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(FocalLoss, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.gamma = gamma</span><br><span class="line">        <span class="variable language_">self</span>.alpha = alpha</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(alpha,(<span class="built_in">float</span>,<span class="built_in">int</span>,long)): <span class="variable language_">self</span>.alpha = torch.Tensor([alpha,<span class="number">1</span>-alpha])</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(alpha,<span class="built_in">list</span>): <span class="variable language_">self</span>.alpha = torch.Tensor(alpha)</span><br><span class="line">        <span class="variable language_">self</span>.size_average = size_average</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, <span class="built_in">input</span>, target</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">input</span>.dim()&gt;<span class="number">2</span>:</span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.view(<span class="built_in">input</span>.size(<span class="number">0</span>),<span class="built_in">input</span>.size(<span class="number">1</span>),-<span class="number">1</span>)  <span class="comment"># N,C,H,W =&gt; N,C,H*W</span></span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.transpose(<span class="number">1</span>,<span class="number">2</span>)    <span class="comment"># N,C,H*W =&gt; N,H*W,C</span></span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.contiguous().view(-<span class="number">1</span>,<span class="built_in">input</span>.size(<span class="number">2</span>))   <span class="comment"># N,H*W,C =&gt; N*H*W,C</span></span><br><span class="line">        target = target.view(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        logpt = F.log_softmax(<span class="built_in">input</span>)</span><br><span class="line">        logpt = logpt.gather(<span class="number">1</span>,target)</span><br><span class="line">        logpt = logpt.view(-<span class="number">1</span>)</span><br><span class="line">        pt = Variable(logpt.data.exp())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.alpha <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.alpha.<span class="built_in">type</span>()!=<span class="built_in">input</span>.data.<span class="built_in">type</span>():</span><br><span class="line">                <span class="variable language_">self</span>.alpha = <span class="variable language_">self</span>.alpha.type_as(<span class="built_in">input</span>.data)</span><br><span class="line">            at = <span class="variable language_">self</span>.alpha.gather(<span class="number">0</span>,target.data.view(-<span class="number">1</span>))</span><br><span class="line">            logpt = logpt * Variable(at)</span><br><span class="line"></span><br><span class="line">        loss = -<span class="number">1</span> * (<span class="number">1</span>-pt)**<span class="variable language_">self</span>.gamma * logpt</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.size_average: <span class="keyword">return</span> loss.mean()</span><br><span class="line">        <span class="keyword">else</span>: <span class="keyword">return</span> loss.<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="GroundingDINO"><a href="#GroundingDINO" class="headerlink" title="GroundingDINO"></a>GroundingDINO</h3><h2 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h2><h2 id="ViT"><a href="#ViT" class="headerlink" title="ViT"></a>ViT</h2><ul>
+<h2 id="ViT"><a href="#ViT" class="headerlink" title="ViT"></a>ViT</h2><ul>
 <li>ViT的结构描述<blockquote>
 <div aligh="center"><img src="/asset/2/vit.png" class="lazyload" data-srcset="/asset/2/vit.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
 <div aligh="center"><img src="/asset/2/vit_2.png" class="lazyload" data-srcset="/asset/2/vit_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
@@ -189,7 +122,7 @@
 <ul>
 <li>手撕ViT的patchify<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PatchEmbed</span>(nn.Module):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    2D Image to Patch Embedding</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, img_size=<span class="number">224</span>, patch_size=<span class="number">16</span>, in_c=<span class="number">3</span>, embed_dim=<span class="number">768</span>, norm_layer=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        img_size = (img_size, img_size)</span><br><span class="line">        patch_size = (patch_size, patch_size)</span><br><span class="line">        <span class="variable language_">self</span>.img_size = img_size</span><br><span class="line">        <span class="variable language_">self</span>.patch_size = patch_size</span><br><span class="line">        <span class="variable language_">self</span>.grid_size = (img_size[<span class="number">0</span>] // patch_size[<span class="number">0</span>], img_size[<span class="number">1</span>] // patch_size[<span class="number">1</span>])</span><br><span class="line">        <span class="variable language_">self</span>.num_patches = <span class="variable language_">self</span>.grid_size[<span class="number">0</span>] * <span class="variable language_">self</span>.grid_size[<span class="number">1</span>]</span><br><span class="line"> </span><br><span class="line">        <span class="variable language_">self</span>.proj = nn.Conv2d(in_c, embed_dim, kernel_size=patch_size, stride=patch_size)</span><br><span class="line">        <span class="variable language_">self</span>.norm = norm_layer(embed_dim) <span class="keyword">if</span> norm_layer <span class="keyword">else</span> nn.Identity()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        B, C, H, W = x.shape</span><br><span class="line">        <span class="keyword">assert</span> H == <span class="variable language_">self</span>.img_size[<span class="number">0</span>] <span class="keyword">and</span> W == <span class="variable language_">self</span>.img_size[<span class="number">1</span>], \</span><br><span class="line">            <span class="string">f&quot;Input image size (<span class="subst">&#123;H&#125;</span>*<span class="subst">&#123;W&#125;</span>) doesn&#x27;t match model (<span class="subst">&#123;self.img_size[<span class="number">0</span>]&#125;</span>*<span class="subst">&#123;self.img_size[<span class="number">1</span>]&#125;</span>).&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment"># flatten: [B, C, H, W] -&gt; [B, C, HW]</span></span><br><span class="line">        <span class="comment"># transpose: [B, C, HW] -&gt; [B, HW, C]</span></span><br><span class="line">        x = <span class="variable language_">self</span>.proj(x).flatten(<span class="number">2</span>).transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.norm(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure></li>
 </ul>
-]]></content>
+<h2 id="SwinT"><a href="#SwinT" class="headerlink" title="SwinT"></a>SwinT</h2><h2 id="自监督预训练"><a href="#自监督预训练" class="headerlink" title="自监督预训练"></a>自监督预训练</h2><h3 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h3><h3 id="BEiT"><a href="#BEiT" class="headerlink" title="BEiT"></a>BEiT</h3><h3 id="MoCo"><a href="#MoCo" class="headerlink" title="MoCo"></a>MoCo</h3><h3 id="SimCLR"><a href="#SimCLR" class="headerlink" title="SimCLR"></a>SimCLR</h3><h3 id="DINO"><a href="#DINO" class="headerlink" title="DINO"></a>DINO</h3><h2 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h2>]]></content>
       <categories>
         <category>算法岗</category>
         <category>八股文</category>
@@ -347,7 +280,7 @@
 </li>
 <li><p>LLAMA中的RMSNorm</p>
 <blockquote>
-<p>RMSNorm(Root Mean Square Layer Normalization)<br>提出动机：LayerNorm计算量比较大。<br>主要区别：不需要同时计算均值和方差两个统计量，而只需要计算均方根这一个统计量（没有去中心化操作）。同时也减少了Norm中的参数量。</p>
+<p>RMSNorm(Root Mean Square Layer Normalization)<br>提出动机：LayerNorm计算量比较大。<br>优点：（1）计算效率高。不需要同时计算均值和方差两个统计量，而只需要计算均方根这一个统计量（没有去中心化操作）。同时也减少了Norm中的参数量（只有lambda一个参数）。 （2）稳定性好。能缓解梯度消失和梯度爆炸。</p>
 <div aligh="center"><img src="/asset/2/rmsnorm.png" class="lazyload" data-srcset="/asset/2/rmsnorm.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
 </li>
 </ul>
@@ -383,7 +316,48 @@
 <p>Vicuna是在LLaMa-13B的基础上使用监督数据微调得到的模型，数据集来自于ShareGPT.com 产生的用户对话数据，共70K条。</p>
 <p>Vicuna在训练中将序列长度由512扩展到了2048，并且通过梯度检测和flash attention来解决内存问题；调整训练损失考虑多轮对话，并仅根据模型的输出进行微调。</p>
 </blockquote>
-<h2 id="Qwen系列"><a href="#Qwen系列" class="headerlink" title="Qwen系列"></a>Qwen系列</h2><h2 id="InternLM系列"><a href="#InternLM系列" class="headerlink" title="InternLM系列"></a>InternLM系列</h2><h2 id="ChatGLM系列"><a href="#ChatGLM系列" class="headerlink" title="ChatGLM系列"></a>ChatGLM系列</h2><h2 id="Parameter-efficition-finetuning-PEFT"><a href="#Parameter-efficition-finetuning-PEFT" class="headerlink" title="Parameter-efficition finetuning(PEFT)"></a>Parameter-efficition finetuning(PEFT)</h2><h3 id="LoRA"><a href="#LoRA" class="headerlink" title="LoRA"></a>LoRA</h3><ul>
+<h2 id="Qwen系列"><a href="#Qwen系列" class="headerlink" title="Qwen系列"></a>Qwen系列</h2><h3 id="Qwen"><a href="#Qwen" class="headerlink" title="Qwen"></a>Qwen</h3><ul>
+<li><p>Qwen的技术要点</p>
+<blockquote>
+<ul>
+<li>数据：公共网络文档，百科全书，书籍，代码等。此外，数据集是多语言的，其中很大一部分数据是英语和中文的。最终数据集多达3万亿token。</li>
+<li>Tokenizer：采用开源的BPE，并以vocabulary C1100K base作为起始点，增加了常用的中文字符和单词以及其他语言的词汇。此外，仿照LLAMA2，将数字分为单个数字，最终词汇量大约是152K.</li>
+<li>模型结构：<br>(1) Embedding和Output project：解耦嵌入。<br>(2) Positional embedding： RoPE，使用FP32的逆频率矩阵。<br>(3) Bias，除了Attention中的QKV，其他层的bias都去除，以增强外推能力，并防止过拟合。<br>(4) Pre-Norm &amp; RMSNorm<br>(5) Activation：选用SwiGLU。</li>
+<li>对于文本长度的拓展，使用了Dynamic NTK-aware interpolation，可以在无需训练的方法下调整尺度以防止高频信息的丢失，有效地扩展Transformer模型的上下文长度。<div aligh="center"><img src="/asset/2/qwen.png" class="lazyload" data-srcset="/asset/2/qwen.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen的预训练</p>
+<blockquote>
+<ul>
+<li>采用标准的自回归语言模型训练目标</li>
+<li>训练时上下文长度为2048</li>
+<li>注意力模块采用Flash Attention技术，以提高计算效率并减少内存使用</li>
+<li>采用AdamW优化器，设置β1&#x3D;0.9，β2&#x3D;0.95,，&#x3D;1e-8</li>
+<li>使用余弦学习率计划，为每种模型设定一个峰值学习率，学习率会衰减到峰值的10%</li>
+<li>使用BFloat16混合精度加速训练</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen的对齐</p>
+<blockquote>
+<p>SFT:采用ChatML格式的数据进行模型训练。<br>RM：偏好模型预训练和微调<br>PPO：使用RM进行RLHF。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Qwen-2"><a href="#Qwen-2" class="headerlink" title="Qwen-2"></a>Qwen-2</h3><ul>
+<li>Qwen2相对于Qwen的改进<blockquote>
+<ul>
+<li>多种模型规模</li>
+<li>多语言支持：在训练数据中增加了27种语言的高质量数据，增强了模型的多语言能力。</li>
+<li>代码和数学能力</li>
+<li>长文本处理：Qwen2模型能够处理更长的上下文，最高可达128K tokens。</li>
+<li>架构创新：引入了Group Query Attention。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="Parameter-efficition-finetuning-PEFT"><a href="#Parameter-efficition-finetuning-PEFT" class="headerlink" title="Parameter-efficition finetuning(PEFT)"></a>Parameter-efficition finetuning(PEFT)</h2><h3 id="LoRA"><a href="#LoRA" class="headerlink" title="LoRA"></a>LoRA</h3><ul>
 <li><p>LoRA原理</p>
 <blockquote>
 <p>LoRA假设微调变化矩阵的内在秩远低于原矩阵维度d，因此将变化矩阵分解为B和A，而原矩阵的权重不发生变化。这样使得可训练参数数量极大减少，降低显存消耗量。见下图：</p>
@@ -414,25 +388,936 @@
 <li><p>LoRA的几种变种（QLoRA等）</p>
 </li>
 </ul>
-<h3 id="Prompt-tuning"><a href="#Prompt-tuning" class="headerlink" title="Prompt tuning"></a>Prompt tuning</h3><h3 id="Prefix-tuning"><a href="#Prefix-tuning" class="headerlink" title="Prefix tuning"></a>Prefix tuning</h3><h3 id="P-tuning"><a href="#P-tuning" class="headerlink" title="P-tuning"></a>P-tuning</h3><ul>
-<li>LLaMa-Adapter介绍</li>
-<li>Prompt tuning和Prefix tuning</li>
-<li>P-tuning V1&#x2F;V2的原理</li>
+<h3 id="Adapter-tuning"><a href="#Adapter-tuning" class="headerlink" title="Adapter tuning"></a>Adapter tuning</h3><ul>
+<li><p>Adapter tuning原理</p>
+<blockquote>
+<p>在模型内部外置一些轻量级的层，通过训练这些层来适应新的数据变化。下图中为Bottleneck adapter。</p>
+<div aligh="center"><img src="/asset/2/adapter.png" class="lazyload" data-srcset="/asset/2/adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>与LoRA的区别</p>
+<blockquote>
+<p>Adapter会有新的模型层和参数；LoRA训练得到的部分最后会合并回原模型。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Prefix-tuning"><a href="#Prefix-tuning" class="headerlink" title="Prefix tuning"></a>Prefix tuning</h3><ul>
+<li>Prefix tuning原理<blockquote>
+<p>主要适配NLG任务。<br>与Full-finetuning更新所有参数的方式不同，该方法是在输入token之前构造一段任务相关的virtual tokens作为Prefix，然后训练的时候只更新Prefix部分的参数，而Transformer中的其他部分参数固定。(该方法其实和构造Prompt类似，只是Prompt是人为构造的“显式”的提示,并且无法更新参数，而Prefix则是可以学习的“隐式”的提示。)同时，为了防止直接更新Prefix的参数导致训练不稳定的情况，他们在Prefix层前面加了MLP结构(相当于将Prefix分解为更小维度的Input与MLP的组合后输出的结果)，训练完成后，只保留Prefix的参数。在每个Transformer layer前都会有prefix。</p>
+<div aligh="center"><img src="/asset/2/prefix_2.jpeg" class="lazyload" data-srcset="/asset/2/prefix_2.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<div aligh="center"><img src="/asset/2/prefix.png" class="lazyload" data-srcset="/asset/2/prefix.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<div aligh="center"><img src="/asset/2/prefix_3.png" class="lazyload" data-srcset="/asset/2/prefix_3.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+主要适配NLG任务。</blockquote>
+</li>
+</ul>
+<h3 id="Prompt-tuning"><a href="#Prompt-tuning" class="headerlink" title="Prompt tuning"></a>Prompt tuning</h3><ul>
+<li>Prompt tuning原理<blockquote>
+<p>该方法可以看作是 Prefix Tuning 的简化版本，它给每个任务定义了自己的Prompt，然后拼接到数据上作为输入，但只在输入层加入prompt tokens，并且不需要加入 MLP 进行调整来解决难训练的问题。 它在预训练语言模型的输入中添加可学习的嵌入向量作为提示。这些提示被设计成在训练过程中更新，以引导模型输出对特定任务更有用的响应。同时，Prompt Tuning 还提出了 Prompt Ensembling，也就是在一个批次（Batch）里同时训练同一个任务的不同 prompt（即采用多种不同方式询问同一个问题），这样相当于训练了不同模型。</p>
+<div aligh="center"><img src="/asset/2/prompt_tuning.png" class="lazyload" data-srcset="/asset/2/prompt_tuning.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/prompt_ensemble.png" class="lazyload" data-srcset="/asset/2/prompt_ensemble.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
+</li>
+</ul>
+<h3 id="P-tuning"><a href="#P-tuning" class="headerlink" title="P-tuning"></a>P-tuning</h3><ul>
+<li><p>P-tuning V1原理</p>
+<blockquote>
+<p>目的：使GPT适配NLU任务;避免人工设计prompt。<br>做法：该方法将Prompt转换为可以学习的Embedding层，并用MLP+LSTM的方式来对Prompt Embedding进行一层处理。相比Prefix Tuning，P-Tuning加入的可微的virtual token，但仅限于输入层，没有在每一层都加；另外，virtual token的位置也不一定是前缀，插入的位置是可选的。这里的出发点实际是把传统人工设计模版中的真实token替换成可微的virtual token。</p>
+<div aligh="center"><img src="/asset/2/p-tuning.png" class="lazyload" data-srcset="/asset/2/p-tuning.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>P-tuning V2原理</p>
+<blockquote>
+<p>方法：该方法在每一层都加入了Prompts tokens作为输入，而不是仅仅加在输入层，这带来两个方面的好处：（1）更多可学习的参数（从P-tuning和Prompt Tuning的0.01%增加到0.1%-3%），同时也足够参数高效。（2）加入到更深层结构中的Prompt能给模型预测带来更直接的影响（如Prefix tuning）.具体做法基本同Prefix Tuning，可以看作是将文本生成的Prefix Tuning技术适配到NLU任务中.</p>
+<div aligh="center"><img src="/asset/2/p-tuning_v2.png" class="lazyload" data-srcset="/asset/2/p-tuning_v2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>P-tuning V1&#x2F;V2的区别。</p>
+<blockquote>
+<p>参见上图。可以简单的将 P-Tuning 认为是针对 Prompt Tuning 的改进， P-Tuning v2 认为是针对 Prefix Tuning 的改进。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Attention优化"><a href="#Attention优化" class="headerlink" title="Attention优化"></a>Attention优化</h2><blockquote>
+<p>Scaled dot-product attention的时间和空间复杂度都是O(n^2)的，当n较大时，会是很大的占用。</p>
+</blockquote>
+<h3 id="Sparse-attention"><a href="#Sparse-attention" class="headerlink" title="Sparse attention"></a>Sparse attention</h3><blockquote>
+<p>将空洞注意力与局部注意力相结合，使得既可以学到局部的特性，又可以学到远程稀疏的相关性。使得大部分元素为0，时间与空间复杂度下降为O(kn)。但是其是对标准attention的近似。</p>
+<div aligh="center"><img src="/asset/2/sparse_attn.png" class="lazyload" data-srcset="/asset/2/sparse_attn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+<h3 id="Flash-attention"><a href="#Flash-attention" class="headerlink" title="Flash attention"></a>Flash attention</h3><ul>
+<li><p>Flash Attention v1原理</p>
+<blockquote>
+<p>原理：减小MAC。</p>
+<p>大部分的Efficient transformer的目标都是减少FLOPs。Flash Attention的目标是降低MAC(Memory Access cost)，代价是增加了FLOPs. Flash attention是一种精准的优化策略，没有近似损失。</p>
+<div aligh="center"><img src="/asset/2/gpu.png" class="lazyload" data-srcset="/asset/2/gpu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>GPU的存储由SRAM和HBM组成。SRAM的读写速度远大于HBM，但其存储空间远小于HBM。<br>为了减少对HBM的读写，Flash attention将参与计算的矩阵进行分块送进SRAM，来提高整体读写速度。对于Flash attention来说，矩阵分块计算不是难事，重要的是Softmax值的计算——这里采用的是增量计算，具体请参考<a href="https://zhuanlan.zhihu.com/p/642962397">知乎文章</a>及下列伪代码：</p>
+<div aligh="center"><img src="/asset/2/flash_attn.png" class="lazyload" data-srcset="/asset/2/flash_attn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>Flash Attention v1与Transformer的MAC分析。</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/standard_attn.png" class="lazyload" data-srcset="/asset/2/standard_attn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+标准Transformer的MAC次数：
+
+<p>第一行，读Q,K的MAC次数位2Nd，写S的MAC次数为N^2。</p>
+<p>第二行，读S的MAC次数为N^2，写P的MAC次数为N^2。</p>
+<p>第三行，读P的MAC次数为N^2，读V的MAC次数为Nd，写O的MAC次数为Nd。</p>
+<p>上述总MAC开销为4Nd+4N^2，复杂度为O(Nd+N^2)。</p>
+<p>Flash attention v1的MAC开销：</p>
+<p>上述伪代码中，一次完整的内循环需要读取完整的Q，MAC开销为Nd。</p>
+<p>外循环的次数为T_c次，即T_c &#x3D; 4dN&#x2F;M，可知开销为O(N^2 * d^2 * M^-1)。因为M(100KB)通常远远大于d（几K），所以Flash attention的MAC远小于标准attention。</p>
+<p>Flash attention能够将标准的self-attention的计算速度提升2至4倍。</p>
+<div aligh="center"><img src="/asset/2/flash-attn_hf.png" class="lazyload" data-srcset="/asset/2/flash-attn_hf.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
+</li>
+</ul>
+<h3 id="KV-cache"><a href="#KV-cache" class="headerlink" title="KV cache"></a>KV cache</h3><ul>
+<li><p>KV cache的适用范围。</p>
+<blockquote>
+<p>适用于Decoder-only的LLM的推理过程（每一个token的输出只依赖于它自己以及之前的输出）；并且每次新添加token作为输入后，原token的输入输出不会变。（一旦输入预处理层不满足KVCache的条件，后续transformer层的输入（即预处理层的输出）就发生了改变，也将不再适用于KVCache。）</p>
+</blockquote>
+</li>
+<li><p>KV cache的工作原理。</p>
+<blockquote>
+<p>思想：以空间换时间，减少重复计算。将FLOPs从O(n2)降低到O(n)。<br>Decoder-only的attention，每次附加上新的token后，下一个token的生成只依赖于当前token的query以及所有token的key和value。因此在推理的自回归过程中，我们只需要计算当前token的qkv，然后将它的kv与之前的kv进行concat后计算attention score即可，其他部分是不变的。</p>
+<div aligh="center"><img src="/asset/2/kvcache.png" class="lazyload" data-srcset="/asset/2/kvcache.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+<div aligh="center"><img src="/asset/2/kvcache2.png" class="lazyload" data-srcset="/asset/2/kvcache2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>KV cache占用内存大小</p>
+<blockquote>
+<p>假设Transformer有n_layers层，每个多头注意力层有n_heads个头，维度为d_head，需要为K和V都缓存一份；最大上下文长度为n_context，精度为n_bytes，推理的批量为batch_size。</p>
+<p>则KV cache需要的内存大小为2 * n_layers * n_heads * d_head *n_context * n_bytes * batch_size。 </p>
+</blockquote>
+</li>
+<li><p>为什么是KV cache而不是Q cache？</p>
+<blockquote>
+<p>因为下一个token只取决于最新token的Q和所有token的KV（因果性），每一次用的Q都是最新的。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Multi-Query-Attention-MQA-与Group-Query-Attention-GQA"><a href="#Multi-Query-Attention-MQA-与Group-Query-Attention-GQA" class="headerlink" title="Multi Query Attention(MQA)与Group Query Attention(GQA)"></a>Multi Query Attention(MQA)与Group Query Attention(GQA)</h3><ul>
+<li><p>MQA的动机及原理</p>
+<blockquote>
+<p>动机：KV cache中对于多头，每个头都会有一个K,V矩阵。因此KV cache较大。</p>
+<p>原理：MQA让所有头之间共享同一份K和V矩阵，从而大大减少KV参数量和cache量。这样在decoder上推理时，可以大大减少KV cache大小。能提高 30%-40% 的吞吐。</p>
+</blockquote>
+</li>
+<li><p>GQA的原理</p>
+<blockquote>
+<p>将query分为N组，每个组共享一个K和V矩阵。</p>
+<div aligh="center"><img src="/asset/2/mqa_gqa.png" class="lazyload" data-srcset="/asset/2/mqa_gqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>MQA和GQA的共同原理</p>
+<blockquote>
+<ol>
+<li><p>降低了从内存中读取的数据量，所以也就减少了计算单元等待时间，提高了计算利用率；</p>
+</li>
+<li><p>KV cache 变小了 head_num 倍，也就是显存中需要保存的 tensor 变小了，空出来空间就可以加大 batch size，从而又能提高利用率。</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="RAG"><a href="#RAG" class="headerlink" title="RAG"></a>RAG</h2><ul>
+<li>RAG流程<blockquote>
+<div aligh="center"><img src="/asset/2/rag.png" class="lazyload" data-srcset="/asset/2/rag.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
+</li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>如何计算训练大模型需要的显存？</li>
-<li>RAG流程</li>
-<li>如何处理长文本？</li>
-<li>Encoder-only，Decoder-only，Encoder-Decoder的几种模型</li>
-<li>Tokenizer的种类和区别</li>
-<li>Text转Embedding的过程</li>
-<li>Flash attention</li>
-<li>Group Query Attention</li>
-<li>Sparse attention</li>
-<li>KV Cache</li>
-<li>PPO,DPO及其他强化学习算法</li>
+<li><p>FP32,FP16,BF16</p>
+<blockquote>
+<p>FP32:1位符号，8位指数，23位尾数。<br>FP16:1位符号，5位指数，10位尾数。<br>BF16:1位符号，8位指数，7位尾数。BF16提供了与FP32相同的动态范围，但精度低于FP32和FP16。</p>
+</blockquote>
+</li>
+<li><p>如何计算训练大模型需要的显存？</p>
+<blockquote>
+<ul>
+<li>模型参数：如果模型有P个参数，使用FP32保存的话，需要4P字节的显存。</li>
+<li>梯度：大小与模型参数相同。使用FP32保存的话，需要4P字节的显存。</li>
+<li>优化器状态：Adam需要保存参数的一阶和二阶矩估计。因此显存翻倍，使用FP32保存的话，需要4P*2&#x3D;8P字节的显存。</li>
+<li>激活和中间变量：前向传播和反向传播过程中的激活值和中间变量也需要存储，这与批量大小（batch size）和序列长度有关。这些是动态的显存。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Encoder-only，Decoder-only，Encoder-Decoder的几种模型</p>
+<blockquote>
+<p>Encoder-only:BERT，RoBERTa。通常用于需要理解输入数据但不生成输出的任务，如文本分类、问答系统和命名实体识别。<br>Decoder-only:GPT，OPT，LlAMA。通常用于文本生成任务，如语言建模、文本摘要和对话系统。<br>Encoder-Decoder：Transformer，T5，Flan-T5。适用于需要将输入序列转换为输出序列的任务，如机器翻译、文本摘要和问答系统。</p>
+</blockquote>
+</li>
+<li><p>Tokenizer的种类和区别</p>
+</li>
+<li><p>PPO,DPO及其他强化学习算法</p>
+</li>
+<li><p>混合精度训练</p>
+</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>算法岗</category>
+        <category>八股文</category>
+      </categories>
+      <tags>
+        <tag>算法岗</tag>
+        <tag>八股文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法岗知识汇总【多模态】</title>
+    <url>/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>正在更新中……</p>
+<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
+<span id="more"></span>
+<h2 id="CLIP"><a href="#CLIP" class="headerlink" title="CLIP"></a>CLIP</h2><ul>
+<li><p>CLIP模型结构</p>
+<blockquote>
+<p>Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换为注意力池化；第二种是ViT(Pre-norm)。<br>Text Encoder实际上是GPT-2架构，即Transformer decoder，将文本用[SOS]和[EOS]括起来，取[EOS]上的feature过一层Linear作为文本特征。</p>
+</blockquote>
+</li>
+<li><p>CLIP训练时的损失函数</p>
+<blockquote>
+<p>InfoNCE，一种用于自监督学习的特征表示学习损失函数。<br>公式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>n</mi><mi>f</mi><mi>o</mi><mi>N</mi><mi>C</mi><mi>E</mi><mo>=</mo><mo>−</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mfrac><mrow><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>∗</mo><msub><mi>k</mi><mrow><mi>i</mi><mo>+</mo></mrow></msub></mrow><mi>τ</mi></mfrac><mo stretchy="false">)</mo></mrow><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>∗</mo><msub><mi>k</mi><mrow><mi>j</mi><mo>−</mo></mrow></msub></mrow><mi>τ</mi></mfrac><mo stretchy="false">)</mo></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">InfoNCE=-\frac{1}{N}\sum\limits_{i=1}^{N}log(\frac{exp(\frac{q_i*k_{i+}}{\tau})}{\sum_{j=1}^N exp(\frac{q_i * k_{j-}}{\tau})})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.05764em;">NCE</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.506em;vertical-align:-0.9777em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5283em;"><span style="top:-2.1223em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3235em;"><span style="top:-2.3617em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8852em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.8971em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4603em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">p</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1832em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.6872em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0359em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mathnormal mtight">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3147em;"><span></span></span></span></span></span></span><span class="mbin mtight">∗</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0315em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mord mtight">−</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5092em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">p</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1038em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.6078em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0359em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mathnormal mtight">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3147em;"><span></span></span></span></span></span></span><span class="mbin mtight">∗</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0315em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mtight">+</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3981em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9605em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span>，N是样本的数量，q是查询样本的编码，k是与查询样本对应的正样本或负样本的编码。<br>目的：最大化正样本对相似度，最小化负样本对相似度。</p>
+</blockquote>
+</li>
+<li><p>CLIP训练的伪代码</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/clip.png" class="lazyload" data-srcset="/asset/2/clip.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
+</li>
+<li><p>CLIP训练代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">image_embeds = vision_outputs[<span class="number">1</span>]</span><br><span class="line">image_embeds = <span class="variable language_">self</span>.visual_projection(image_embeds)</span><br><span class="line"> </span><br><span class="line">text_embeds = text_outputs[<span class="number">1</span>]</span><br><span class="line">text_embeds = <span class="variable language_">self</span>.text_projection(text_embeds)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># normalized features</span></span><br><span class="line">image_embeds = image_embeds / image_embeds.norm(p=<span class="number">2</span>, dim=-<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">text_embeds = text_embeds / text_embeds.norm(p=<span class="number">2</span>, dim=-<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># cosine similarity as logits</span></span><br><span class="line">logit_scale = <span class="variable language_">self</span>.logit_scale.exp()</span><br><span class="line">logits_per_text = torch.matmul(text_embeds, image_embeds.t()) * logit_scale</span><br><span class="line">logits_per_image = logits_per_text.t()</span><br><span class="line"> </span><br><span class="line">loss = <span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> return_loss:</span><br><span class="line">    loss = clip_loss(logits_per_text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">contrastive_loss</span>(<span class="params">logits: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">    <span class="keyword">return</span> nn.functional.cross_entropy(logits, torch.arange(<span class="built_in">len</span>(logits), device=logits.device))</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clip_loss</span>(<span class="params">similarity: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">    caption_loss = contrastive_loss(similarity)</span><br><span class="line">    image_loss = contrastive_loss(similarity.t())</span><br><span class="line">    <span class="keyword">return</span> (caption_loss + image_loss) / <span class="number">2.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>CLIP损失函数中温度系数的作用</p>
+<blockquote>
+<p>温度系数的作用是调节<strong>对困难样本的关注程度</strong>：越小的温度系数越关注于将本样本和最相似的其他样本分开<br>如果温度系数设的越大，logits分布变得越平滑，那么对比损失会对所有的负样本一视同仁，导致模型学习没有轻重。<br>如果温度系数设的过小，则模型会越关注特别困难的负样本，但其实那些负样本很可能是潜在的正样本，这样会导致模型很难收敛或者泛化能力差。</p>
+</blockquote>
+</li>
+<li><p>CLIP的位置编码，如何外推？</p>
+<blockquote>
+<p>CLIP的text encoder是GPT，因此使用的Learable Positional Encoding，是绝对位置编码。理论上不能外推，但也许可以将超过长度的部分随机初始化然后微调。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="CLIP少样本微调"><a href="#CLIP少样本微调" class="headerlink" title="CLIP少样本微调"></a>CLIP少样本微调</h3><ul>
+<li><p>Linear Probe</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/lp.png" class="lazyload" data-srcset="/asset/2/lp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+Encoder的embedding后接分类头，进行微调。
+</blockquote>
+</li>
+<li><p>Context Optimization</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/coop.png" class="lazyload" data-srcset="/asset/2/coop.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+针对CLIP中直接使用"A photo of"作为prompt可能不是最优的，CoOp提出使用可学习的token embedding，让模型自己调优prompt（可使用前人总结的prompt做初始化）。
+</blockquote>
+</li>
+<li><p>CLIP-Adapter</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/clip_adapter.png" class="lazyload" data-srcset="/asset/2/clip_adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/clip_adapter_1.png" class="lazyload" data-srcset="/asset/2/clip_adapter_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/clip_adapter_2.png" class="lazyload" data-srcset="/asset/2/clip_adapter_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+相较于CoOp，CLIP-Adapter的训练方式更加轻量化，只有两个残差连接的MLP。将两部分按照一定比例进行blend。（为什么要用残差连接？为了保留CLIP的原始能力）(为什么不全参微调？容易Over-fit。)</blockquote>
+</li>
+</ul>
+<h2 id="Flamingo"><a href="#Flamingo" class="headerlink" title="Flamingo"></a>Flamingo</h2><ul>
+<li><p>Flamingo的贡献</p>
+<blockquote>
+<ol>
+<li>桥接预训练好的视觉模型和语言模型</li>
+<li>可以处理任意交错的图文对数据</li>
+<li>可以同时以图像和视频数据作为输入<br>Flamingo实现了多模态领域的Few-shot learning(in-context learning)能力，即多模态领域的GPT-3。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>Flamingo模型结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/flamingo.png" class="lazyload" data-srcset="/asset/2/flamingo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+通过Perceiver Resampler和Gated Xatten-dense，与新插入到LM中的层计算Cross-attention，从而将视觉信息注入的LM的生成过程中。</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>Perceiver Resampler:</p>
+<div aligh="center"><img src="/asset/2/perceiver.png" class="lazyload" data-srcset="/asset/2/perceiver.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+1. 可以接收任意多个的视频帧（如果是图像，可以视作是单帧视频），经过视觉编码器提取特征，加上time embedding 之后全部展平，得到一个视觉 token 序列.
+2. 同时有一个可学习的固定长度的latent query序列。
+3. 计算CA时，Q是learnable query,KV是query和image feature拼接起来的。（这里和Q-former区别，Q-former是Q是query，KV是视觉feature）
+4. 通过该模块，将视觉特征转成了少量低维度的query embedding。
+</blockquote>
+<blockquote>
+<p>Gated Xattn Dense</p>
+<div aligh="center"><img src="/asset/2/gated_xattn.png" class="lazyload" data-srcset="/asset/2/gated_xattn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+将固定长度的视觉 query 注入到语言模型。在预训练好的 LM 的各层交替地插入一些随机初始化的CA。Gated门控，指的是在每一新插入的层之后的残差链接之前添加一个 tanh gating，即tanh(a)，其中a是一个可学习的标量值，初始值为 0，从而保证初始化时的输出与原 LM 一致。
+</blockquote>
+<h2 id="BLIP系列"><a href="#BLIP系列" class="headerlink" title="BLIP系列"></a>BLIP系列</h2><h3 id="BLIP"><a href="#BLIP" class="headerlink" title="BLIP"></a>BLIP</h3><ul>
+<li><p>BLIP的主要贡献</p>
+<blockquote>
+<ol>
+<li>提出了一种Multimodal mixture of Encoder-Decoder(MED)的多模态预训练模式。</li>
+<li>提出了一种Captioning and Filtering的Dataset Bootstrapping机制，对原始数据集进行清洗。</li>
+<li>微调后在下游Image-text retrieval、Image captioning、VQA等任务上达到了SOTA。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>BLIP的模型架构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/blip.png" class="lazyload" data-srcset="/asset/2/blip.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<ul>
+<li><p>Unimodal Vision Encoder：采用的是在ImageNet-1k预训练的ViT（与LLaVa使用的不同）。</p>
+</li>
+<li><p>Unimodal Text Encoder：采用的是Bert-base，取[CLS] token的特征作为文本特征。</p>
+</li>
+<li><p>Image-grounded Text Encoder：采用Bert，在SA和FFN中间加上Cross Attention层，和图像特征交融。对于文本的输入，会在开头加上task-specific的[Encode]。</p>
+</li>
+<li><p>Image-grounded Text Decoder：将Image-grounded Text Encoder中的Bi Self-Att改为Causal Self-Att,同时也会和图像特征通过CA交融。会在开头加上[Decoder]表示序列起点，以及[EOS]表示序列终点。</p>
+</li>
+<li><p>后两部分除了Self-Att层不共享，其余部分参数共享。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP的预训练目标</p>
+<blockquote>
+<ul>
+<li>Image-Text Contrastive Loss：将文本和图像在特征空间对齐，使用的是InfoNCE。实现方式上采用了ALBEF中的Momentum encoder。</li>
+<li>Image-Text Matching Loss：学习文本和图像之间的细粒度匹配，使用的是BCE loss。实现方式上采用了ALBEF中的Hard negative mining策略，即对于一个batch中用于更高对比相似度的负样本，更容易被选择来计算loss。</li>
+<li>Language-modeling loss：以自回归的方式进行极大似然估计，使用的是CE loss。计算时候使用了0.1的label smoothing。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP的CapFilt机制</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/capfilt.png" class="lazyload" data-srcset="/asset/2/capfilt.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+为了对含有噪声的Alt-text对进行过滤清洗，人工标注部分数据集得到高质量文本-图像对，然后分别微调得到一个Filter和一个Captioner，对原数据集进行重Caption与过滤，得到更高质量数据集再重新预训练MED。
+</blockquote>
+</li>
+<li><p>BLIP是如何微调的？</p>
+<blockquote>
+<ul>
+<li>Image-Text Retrieval：对预训练模型使用ITC和ITM loss，在COCO和Flickr30K上进行微调。</li>
+<li>Image Captioning：在COCO上使用LM loss进行微调。</li>
+<li>VQA：如下图，使用LM loss微调。<div aligh="center"><img src="/asset/2/blip_vqa.png" class="lazyload" data-srcset="/asset/2/blip_vqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
+<li>NLVR：略。</li>
+<li>VisDial：略。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP预训练使用的数据集</p>
+<blockquote>
+<p>预训练数据集为:</p>
+<ul>
+<li>Conceptual Captions</li>
+<li>SBU Captions</li>
+<li>COCO</li>
+<li>Visual Genome<br>还引入了噪声更大的Conceptual 12M；还尝试了额外的Web数据集LAION.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="BLIP2"><a href="#BLIP2" class="headerlink" title="BLIP2"></a>BLIP2</h3><ul>
+<li><p>BLIP2与BLIP的区别</p>
+<blockquote>
+<ul>
+<li>BLIP2使用预训练的LLM。</li>
+<li>BLIP2引入了Q-former作为预训练视觉模型与LLM之间的桥梁，大大减少了预训练的训练参数与训练成本。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP2的模型架构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/blip2.png" class="lazyload" data-srcset="/asset/2/blip2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+由一个冻结的Vision Encoder，一个冻结的LLM，一个Q-Former和一个FC的Connector组成。其中在预训练过程中，Vision encoder和LLM始终冻结。其中Vision Encoder采用了两种 (1) CLIP-ViT-L/14 (2) EVA-CLIP-VIT-g/14。LLM有两种：(1) Decoder-based的OPT （2）Encoder-Decoder-based FlanT5。
+<div aligh="center"><img src="/asset/2/qformer.png" class="lazyload" data-srcset="/asset/2/qformer.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+Q-former 由两个Transformer子模块组成，两部分共享Self-attention层。Image transformer通过Cross attention与图片特征交互，Text transformer可以通过Self attention从可学习Queries获取视觉特征。根据预训练任务的不同，Self-attention的mask也会不同。Q-former的权重由预训练的BERT-base初始化来，而Cross attention部分随机初始化。BLIP-2中使用了32个Queries，每个维度768，这远小于提取到的图像特征(32x768 << 257x1024)。
+</blockquote>
+</li>
+<li><p>BLIP2的预训练过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/blip2_pretrain.png" class="lazyload" data-srcset="/asset/2/blip2_pretrain.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+由两阶段组成：第一阶段Vision-language表征学习，第二阶段Vision-to-language生成学习。
+
+<p>(1) 第一阶段：表征学习，将冻结的Image encoder和可学习的Q-former连在一起，同时优化三种优化目标。</p>
+<ul>
+<li>Image-Text Contrastive Learning：对齐文本与图像，最大化两者之间的互信息。这一部分采用的是Image transformer输出的Query representation和Text transformer输出的[CLS] token。由于Queries有32个，因此这里会每个计算相似度然后取最高的作为Image-Text similarity。为了避免信息泄露，这里采用的是Unimodal self-attention mask。</li>
+<li>Image-grounded Text Generation：训练Q-former根据图像生成文本。由于text transformer不能直接和视觉特征交互，因此首先由Queries提取视觉信息，然后通过Self attention传递给text token。这里采用了Multimodel causal Self-attention mask。同时也会将开头的[CLS] token更换为[DEC]。</li>
+<li>Image-Text Matching：对文本和图像进行更细粒度的对齐。这里采用了Bi-directional Self-attention mask，因此输出的query embedding能够捕获多模态信息。然后将query embedding输入二分类头获得logit后进行average得到输出的matching score。<br>(这一部分实现原理是：attenion时把query和text 拼接起来输入到一个self-attention模块,然后通过mask控制query和text之间的交互,然后attention之后再把query和text分开进行后面的操作，所以实际上是同一个Bert模型。参考BLIP2官方代码)</li>
+</ul>
+<p>(2) 第二阶段：视觉到语言生成学习。将Q-former和冻结的LLM连接，并通过FC对齐query embedding和text embedding的维度。然后将投影过的query embeddings附加在text input embedding的前面，作为Soft Visual Prompt，为LLM提供有用的视觉信息并去除无关的视觉信息。这里进行了两种LLM的实验，对于Decoder-based使用LM loss，对于Encoder-decoder的使用Prefix LM loss。</p>
+</blockquote>
+</li>
+<li><p>BLIP2预训练使用的数据集</p>
+<blockquote>
+<p>和BLIP一样使用下面6个数据集，图片加起来约为129M.</p>
+<ul>
+<li>Conceptual Captions</li>
+<li>SBU Captions</li>
+<li>COCO</li>
+<li>Visual Genome</li>
+<li>噪声更大的Conceptual 12M</li>
+<li>额外的Web数据集LAION400M的一部分。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP2是如何微调的？</p>
+<blockquote>
+<ul>
+<li><p>Image Cptioning：用”A photo of”作为初始输入给LLM，使用LM loss训练。<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong></p>
+</li>
+<li><p>VQA：<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong> 使用Open-ended answer generation loss微调。同时额外为Q-former注入question信息，能够知道Q-former在cross attention层聚焦于更含信息的区域。</p>
+<div aligh="center"><img src="/asset/2/blip2_vqa.png" class="lazyload" data-srcset="/asset/2/blip2_vqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</li>
+<li><p>Image-Text Retrieval：直接在第一阶段预训练模型上微调。同时微调Image encoder和Q-former。推理时，先根据Image-text feature similarity选出128个candidate，然后根据成对的Image-text matching scores进行重排序。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BLIP-2的局限性</p>
+<blockquote>
+<p>LLM 一般具备 In-Contet Learning 的能力，但是在 In-Context VQA 的场景下，BLIP-2 没观察到好的结果。对于这种上下文学习能力的缺失，作者把原因归结为预训练数据集中的每个数据只包含一个图像-文本对，导致 LLM 无法从中学习单个序列中多个图像-文本对之间的相关性。</p>
+<p>BLIP-2 的图文生成能力不够令人满意，可能是 LLM 知识不准确带来的。同时 BLIP-2 继承了冻结参数的 LLM 的风险，比如输出攻击性语言，传播社会偏见。解决的办法是指令微调，或者过滤掉有害的数据集。</p>
+</blockquote>
+</li>
+<li><p>Q-former作用？</p>
+<blockquote>
+<p>图文对齐、维度压缩。</p>
+</blockquote>
+</li>
+<li><p>可学习的Query作用是什么？</p>
+<blockquote>
+<ul>
+<li>从视觉信息中提取与文本最相关的信息。</li>
+<li>使得提取出的信息能够被LLM理解</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Q-former和MLP的优劣在哪里？</p>
+<blockquote>
+<p>(1) Q-former会导致视觉token的有损压缩，会把任意长度的visual token转译成32个token，丢失部分空间信息。<br>(2) Q-former相比于MLP参数量更大，收敛更慢，小数据量不如MLP，大数据量对比MLP也没有优势。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="InstructBLIP"><a href="#InstructBLIP" class="headerlink" title="InstructBLIP"></a>InstructBLIP</h3><h2 id="LLaVa系列"><a href="#LLaVa系列" class="headerlink" title="LLaVa系列"></a>LLaVa系列</h2><h3 id="LLaVa"><a href="#LLaVa" class="headerlink" title="LLaVa"></a>LLaVa</h3><ul>
+<li><p>LLaVa数据集的构建</p>
+<blockquote>
+<p>根据COCO中的caption和bbox，可以利用language-only GPT-4生成三种instruction data.</p>
+<ul>
+<li>Conversation: 多轮对话，根据caption中的每一部分，生成一个人不断提问某张图片的instruction数据。</li>
+<li>Detailed description：详细描述，由原始caption生成详细的描述。</li>
+<li>Complex reasoning：对图片中内容的一些复杂推理。<br>LLaVa收集了158K的instruction-following数据，包括58K的conversations，23K的detailed description，77K的complex reasoning。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>LLaVa的结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/llava.png" class="lazyload" data-srcset="/asset/2/llava.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层特征;language decoder采用Vicuna。视觉与文本之间的对齐通过一层线性层对齐。</blockquote>
+</li>
+<li><p>LLaVa训练过程</p>
+<blockquote>
+<ul>
+<li>第一阶段：特征对齐预训练。训练数据为过滤后的595K对CC3M.每个图片文本对被视为单轮对话数据（即response为图片的caption）。该过程中冻结Vision encoder和LLM，仅训练Projector。</li>
+<li>第二阶段：端到端微调。这一过程中将Vision encoder冻结，训练LLM和projector。有两种场景的微调：多模态聊天机器人，使用前面采集的三种response作为训练数据，训练过程中均匀采样；SicenceQA，对于给定的问题提供完整的推理过程和选择的答案，训练数据以单轮对话形式输入。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>LLaVa实验设置</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/llava_exp.png" class="lazyload" data-srcset="/asset/2/llava_exp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
+</li>
+</ul>
+<h3 id="LLaVa-v1-5"><a href="#LLaVa-v1-5" class="headerlink" title="LLaVa-v1.5"></a>LLaVa-v1.5</h3><ul>
+<li><p>LLaVa1.5的改进</p>
+<blockquote>
+<ul>
+<li>结构改进：Projector换成了2层MLP，Vision encoder变成了CLIP-ViT-L-336px，LLM升级为Vicuna1.5。LLaVa-v1.5-HD版本增加了对高分辨率图片的支持，将高分辨率分成多个grid分别输入原始encoder，然后concat起来获得视觉信息。</li>
+<li>数据改进：</li>
+</ul>
+<ol>
+<li>增加了具有简单响应格式提示词的学术导向的VQA数据集，其中简单格式响应提示词例如：Answer the question using a single word or phrase，主要是为了配合数据集简短的答案，避免歧义。</li>
+<li>预训练数据集使用LAION&#x2F;COC&#x2F;SBU的子集，共558K；instruction数据集共665K，在1.0基础上增加了ShareGPT数据集、学术导向的VQA数据集、OCR数据集、Region-level的VQA数据集。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>LLaVa1.5存在的限制</p>
+<blockquote>
+<ul>
+<li>使用全图补丁，增加了训练时间。</li>
+<li>不能处理多图，因为缺少这样的指令微调数据，以及上下文长度的限制。</li>
+<li>在一些特定领域效果不佳。</li>
+<li>依旧存在幻觉和错误信息。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="MiniGPT-4"><a href="#MiniGPT-4" class="headerlink" title="MiniGPT-4"></a>MiniGPT-4</h2><ul>
+<li><p>MiniGPT-4模型结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/minigpt4.png" class="lazyload" data-srcset="/asset/2/minigpt4.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>视觉部分： BLIP2中预训练的ViT-G&#x2F;14和Q-former；<br>LLM部分：Vicuna<br>模态对齐：一个Linear Projection Layer<br>所有过程中，LLM和视觉部分都冻结，仅训练Linear Projection。</p>
+</blockquote>
+</li>
+<li><p>MiniGPT-4训练过程</p>
+<blockquote>
+<p>第一阶段预训练，模态对齐。使用Conceptual Caption、SBU和LAION等数据集训练，仅训练Linear Projection。经过第一阶段的pretrain，作者发现了一些模型很难产生连贯的语言输出的例子，而且会输出一些重复的单词或句子、支离破碎的句子或无关的内容。<br>第二阶段微调，与人类对话对齐。在构建的包含3500对&lt;图片，Instruction，Answer&gt;数据集上进行微调。仅训练Linear Projection。</p>
+</blockquote>
+</li>
+<li><p>MiniGPT-4数据集构建</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/minigpt4_ds.png" class="lazyload" data-srcset="/asset/2/minigpt4_ds.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<ul>
+<li>从Conceptual Caption中采样5000张图片，让第一阶段的模型去输出详细的描述。如果模型输出的token不够80个token，就使用continue命令让模型一直输出，直到产生足够的图片描述。</li>
+<li>数据后处理，使用ChatGPT对图像描述进行纠错，然后人工核验数据。最终从5000条数据中得到3500条高质量训练数据。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="Qwen-VL系列"><a href="#Qwen-VL系列" class="headerlink" title="Qwen-VL系列"></a>Qwen-VL系列</h2><h3 id="Qwen-VL"><a href="#Qwen-VL" class="headerlink" title="Qwen-VL"></a>Qwen-VL</h3><ul>
+<li><p>Qwen-VL的模型架构</p>
+<blockquote>
+<p>LLM：使用Qwen-7B初始化<br>Vision Encoder：采用OpenCLIP-ViT-bigG-14<br>Adapter：Position-aware VL Adapter。</p>
+<ul>
+<li>该adapter包含一个随机初始化的单层cross-attention模块，该模块使用一组可训练的embedding作为query向量，使用视觉编码器输出的图像特征作为key、value。</li>
+<li>另外，考虑到位置信息对细粒度图像理解的重要性，2D绝对位置编码被结合到cross-attention的query-key pairs中，以减轻压缩过程中位置细节的潜在损失。<br>作用：（1）对图片token数压缩，压缩到固定长度256；（2）同时与LLM文本模态对齐<div aligh="center"><img src="/asset/2/qwen-vl.png" class="lazyload" data-srcset="/asset/2/qwen-vl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen-VL的输入和输出</p>
+<blockquote>
+<p>输入：</p>
+<ul>
+<li>文本输入。</li>
+<li>图像输入：与其他MLM一样。</li>
+<li>bbox输入：为了增强模型对细粒度视觉理解和定位的能力，Qwen-VL的训练涉及区域描述、问题和检测的数据形式。对于任何给定的边界框，会进行归一化处理 (在[0,1000)范围内)，并转换为指定的字符串格式：”(X_{topleft},Y_{topleft}),(X_{bottomright},Y_{bottomright})”。该字符串作为文本被token化，不需要额外的位置词汇表。为了区分检测字符串和常规文本字符串，在边界框字符串的开头和结尾添加两个特殊token (<box>和</box>)。另外，为了适当地将边界框与其对应的描述词或句子相关联，引入了另一组特殊token (<ref>和</ref>)，标记边界框所指的内容。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen-VL的训练过程</p>
+<blockquote>
+<p>训练由三个阶段组成，见上图。<br>Stage 1：预训练。使用清洗后的图文对，原始有5B的数据，清洗后有1.4B。此阶段冻结LLM，训练视觉编码器和Adapter，输入分辨率224。</p>
+<div aligh="center"><img src="/asset/2/qwen-vl_ds1.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>Stage 2：多任务预训练。使用更好的图文对数据，包括captioning、VQA、Grounding、OCR等。此阶段所有部分都要训练。使用更大分辨率448.</p>
+<div aligh="center"><img src="/asset/2/qwen-vl_ds2.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>Stage 3：SFT。采用多模态数据和纯文本数据混合微调，得到350K指令微调数据，以增强其遵循指令和对话能力，得到Qwen-VL-Chat（数据中有多图数据，能够有多图对话的能力）。此阶段冻结视觉编码器，训练LLM和Adapter。这样的好处是，减弱文本能力的遗忘。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Qwen-VL2"><a href="#Qwen-VL2" class="headerlink" title="Qwen-VL2"></a>Qwen-VL2</h3><blockquote>
+<p>Qwen2-VL相对于Qwen1的改进主要体现在以下几个方面：</p>
+<ol>
+<li><strong>增强的图像理解能力</strong>：Qwen2-VL显著提高了模型理解和解释视觉信息的能力，为关键性能指标设定了新的基准 。</li>
+<li><strong>高级视频理解能力</strong>：Qwen2-VL具有卓越的在线流媒体功能，能够以很高的精度实时分析动态视频内容 。</li>
+<li><strong>集成的可视化agent功能</strong>：Qwen2-VL现在无缝整合了复杂的系统集成，将Qwen2-VL转变为能够进行复杂推理和决策的强大可视化代理 。</li>
+<li><strong>扩展的多语言支持</strong>：Qwen2-VL扩展了语言能力，以更好地服务于多样化的全球用户群，使Qwen2-VL在不同语言环境中更易于访问和有效 。</li>
+<li><strong>模型结构</strong>：Qwen2-VL实现了动态分辨率支持（Naive Dynamic Resolution support），能够处理任意分辨率的图像，而无需将其分割成块，从而确保模型输入与图像固有信息之间的一致性 。</li>
+<li><strong>Multimodal Rotary Position Embedding</strong>：通过将original rotary embedding分解为代表时间和空间（高度和宽度）信息的三个部分，M-ROPE使LLM能够同时捕获和集成1D文本、2D视觉和3D视频位置信息 。</li>
+<li><strong>模型效果</strong>：Qwen2-VL-7B在文档理解任务（例如DocVQA）和通过MTVQA评估的图像多语言文本理解方面表现出色，建立了非常优秀的性能 。</li>
+<li><strong>视频支持</strong>：Qwen2-VL增加了对视频的支持，能够理解长视频，并将其用于基于视频的问答、对话和内容创作等应用中 。</li>
+<li><strong>Visual Agent能力</strong>：Qwen2-VL提升了function call以及Agent能力，能够与环境实现交互，进行复杂任务的执行 。</li>
+</ol>
+</blockquote>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li><p>多模态的发展路径</p>
+<blockquote>
+<p>双塔型：CLIP,Prefix型：ViLT-&gt;多模态的GPT-3：Flamingo，先对齐再融合：ALBEF，多任务预训练：BLIP-&gt;使用LLM：BLIP-2,LLaVa,Instruct-BLIP,Qwen-VL等-&gt;全模态：ImageBind</p>
+</blockquote>
+</li>
+<li><p>多模态模型支持的任务类型</p>
+<blockquote>
+<ul>
+<li>Image-Text Retrieval</li>
+<li>Image Captioning</li>
+<li>Visual Question Answering, VQA</li>
+<li>Natural Language Visual Reasoning, NLVR</li>
+<li>Visual Dialogue</li>
+</ul>
+</blockquote>
+</li>
+<li><p>对比学习的本质是在解决什么问题，目的是什么？</p>
+<blockquote>
+<p>本质上是自监督学习，即学习一个编码器，此编码器对同类数据进行相似的编码，并使不同类的数据的编码结果尽可能的不同。使模态间的互信息最大化。</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法岗</category>
+        <category>八股文</category>
+      </categories>
+      <tags>
+        <tag>算法岗</tag>
+        <tag>八股文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法岗知识汇总【AIGC】</title>
+    <url>/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>正在更新中……</p>
+<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
+<span id="more"></span>
+
+<h2 id="VAE"><a href="#VAE" class="headerlink" title="VAE"></a>VAE</h2><h3 id="VAE-1"><a href="#VAE-1" class="headerlink" title="VAE"></a>VAE</h3><ul>
+<li><p>VAE模型</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/vae_1.png" class="lazyload" data-srcset="/asset/2/vae_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>VAE公式推导</p>
+<blockquote>
+<p>见<a href="https://zhuanlan.zhihu.com/p/711402258">知乎文章</a>。</p>
+</blockquote>
+</li>
+<li><p>KL项的作用</p>
+<blockquote>
+<p>KL loss类似于一个正则项，用于规范latent的范围，这也是与AE的最大区别。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="VQ-VAE"><a href="#VQ-VAE" class="headerlink" title="VQ-VAE"></a>VQ-VAE</h3><ul>
+<li><p>VQ-VAE模型结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/vq-vae.png" class="lazyload" data-srcset="/asset/2/vq-vae.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+前向时，Encoder出来的latent会与codebook中的code做最近邻，直接使用codebook中的code作为latent。
+
+<p>VQ-VAE实质上是AE，用来将图像进行压缩。如果要做到图像生成，可以使用PixelCNN来拟合离散的分布。（原文中做法）</p>
+</blockquote>
+</li>
+<li><p>VQ-VAE的优化目标</p>
+<blockquote>
+<p>有三部分组成：reconstruction loss，VQ loss, commitment loss。</p>
+<ul>
+<li><p>Reconstruction loss： 反向过程，encoder无法得到反传的梯度，这里采取的方法是将decoder的梯度复制到encoder。具体实现如下图。</p>
+<div aligh="center"><img src="/asset/2/vq_recon.png" class="lazyload" data-srcset="/asset/2/vq_recon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+即 L = x - decoder(z_e+(z_q-z_e).detach())
+</li>
+<li><p>VQ loss：为了学习codebook，将codebook中的code与encoder的输出拉近。这一部分不反传给encoder。可以使用EMA算法实现。</p>
+<div aligh="center"><img src="/asset/2/vq_loss.png" class="lazyload" data-srcset="/asset/2/vq_loss.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</li>
+<li><p>Commitment loss：Encoder和codebook的学习速度不同，为了不让encoder的输出偏离codebook太多，使用了commitment loss。这一部分不反传给codebook。</p>
+<div aligh="center"><img src="/asset/2/vq_commit.png" class="lazyload" data-srcset="/asset/2/vq_commit.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>Encoder由Reconstruction loss和commitment loss优化，Decoder由Reconstruction loss优化，Codebook由VQ loss优化。</p>
+</blockquote>
+<ul>
+<li>VAE与VQ-VAE的区别<blockquote>
+<p>VAE是假设latent分布为高斯分布；VQ-VAE则是假设latent分布为类别分布。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><h3 id="GAN-1"><a href="#GAN-1" class="headerlink" title="GAN"></a>GAN</h3><ul>
+<li><p>GAN模型结构</p>
+<blockquote>
+<p>生成器G,判别器D，先验分布Z（可以采用高斯噪声）。</p>
+<div aligh="center"><img src="/asset/2/gan.png" class="lazyload" data-srcset="/asset/2/gan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>GAN的损失函数</p>
+<blockquote>
+<p>首先考虑判别器D，这是一个二分类问题，那么其损失函数为:</p>
+<div aligh="center"><img src="/asset/2/gan_d.png" class="lazyload" data-srcset="/asset/2/gan_d.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+再考虑生成器G。G是要与D唱反调，那么G的目标就是最小化-L_D,即：
+<div aligh="center"><img src="/asset/2/gan_g.png" class="lazyload" data-srcset="/asset/2/gan_g.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+最终形成的损失函数，是如下的形式：
+<div aligh="center"><img src="/asset/2/gan_loss.png" class="lazyload" data-srcset="/asset/2/gan_loss.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+改进的版本如下：
+<div aligh="center"><img src="/asset/2/gan_loss_2.png" class="lazyload" data-srcset="/asset/2/gan_loss_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+该损失函数可以证明其收敛性。（如果D对于所有的G都能够迅速变化为最优判别器，那么生成器G实际上是在最小化真实数据分布P_r与伪造数据分布P_f之间的JS散度）
+</blockquote>
+</li>
+<li><p>GAN的训练流程</p>
+<blockquote>
+<p>每一轮更新中，（1）固定G，更新D；（2）固定D，更新G。</p>
+<div aligh="center"><img src="/asset/2/gan_train.png" class="lazyload" data-srcset="/asset/2/gan_train.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>GAN的问题</p>
+<blockquote>
+<ul>
+<li>Mode collapse：生成器生成的图像都特别像。可能是数据集过小导致过拟合。</li>
+<li>Diminished gradient：判别器太强，导致gradients vanish使得生成器学不到新东西。</li>
+<li>不收敛、经常过拟合、对超参数敏感。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>WGAN与GAN的区别</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/wgan.png" class="lazyload" data-srcset="/asset/2/wgan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+除此之外还需要做梯度裁剪。</blockquote>
+</li>
+</ul>
+<h3 id="VQ-GAN"><a href="#VQ-GAN" class="headerlink" title="VQ-GAN"></a>VQ-GAN</h3><div aligh="center"><img src="/asset/2/vq_gan.png" class="lazyload" data-srcset="/asset/2/vq_gan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<ul>
+<li><p>VQ-GAN与VQ-VAE的区别</p>
+<blockquote>
+<ul>
+<li>将VQ-VAE中的先验生成器从PixelCNN改成了Transformer。</li>
+<li>重建损失中将L2 loss换成了Perceptual loss。</li>
+<li>在训练过程中使用PatchGAN的判别器加入对抗损失。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>VQ-GAN的GAN部分训练过程</p>
+<blockquote>
+<p>这一部分学习训练CNN Encoder,CNN Decoder和Codebook。</p>
+<p>对于VQ部分，与VQ-VAE类似。将图片H* W* 3经过卷积后得到h* w* n的feature，与codebook进行最近邻后得到新的latent。这里将重建的L2 loss换成了Perceptual loss。</p>
+<div aligh="center"><img src="/asset/2/vq_gan_1.png" class="lazyload" data-srcset="/asset/2/vq_gan_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+判别器使用了PatchGAN，这部分的loss为：
+<div aligh="center"><img src="/asset/2/vq_gan_2.png" class="lazyload" data-srcset="/asset/2/vq_gan_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+最后的优化目标为：
+<div aligh="center"><img src="/asset/2/vq_gan_3.png" class="lazyload" data-srcset="/asset/2/vq_gan_3.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>Perceptual loss是什么？</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/per_loss.png" class="lazyload" data-srcset="/asset/2/per_loss.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>VQ-GAN的Transformer部分</p>
+<blockquote>
+<p>这一部分训练Transformer作为先验分布来自回归地生成图像code，然后送给decoder得到生成的图像。训练过程与GPT训练过程类似，做Next-word-prediction；同时这里还进行了mask，所以不是传统的GPT训练方法。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Diffusion"><a href="#Diffusion" class="headerlink" title="Diffusion"></a>Diffusion</h2><h3 id="DDPM"><a href="#DDPM" class="headerlink" title="DDPM"></a>DDPM</h3><blockquote>
+<div aligh="center"><img src="/asset/2/ddpm_process.png" class="lazyload" data-srcset="/asset/2/ddpm_process.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+<ul>
+<li><p>DDPM的前向加噪过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/forward_diffusion.jpg" class="lazyload" data-srcset="/asset/2/forward_diffusion.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>DDPM的反向去噪过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/denoise.jpg" class="lazyload" data-srcset="/asset/2/denoise.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>DDPM的训练过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/ddpm_train.png" class="lazyload" data-srcset="/asset/2/ddpm_train.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>随机采样时间步t和前向噪声epsilon，用神经网络拟合该epsilon。</p>
+</blockquote>
+</li>
+<li><p>DDPM的采样过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/ddpm_sample.png" class="lazyload" data-srcset="/asset/2/ddpm_sample.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>首先从高斯分布采样初始噪声xt，然后每一步预测出epsilon来还原x_{t-1}。由于x_{t-1}是有均值方差的高斯分布，因此<br>预测出epsilon还原出均值后，还需要从标准正态分布中随机采样一个z来加上方差。</p>
+</blockquote>
+</li>
+<li><p>DDPM的生成是随机性过程吗？</p>
+<blockquote>
+<p>是的。在DDPM的反向过程中，每一步都会采样一个噪声，然后利用这个噪声和前一步的输出来生成下一步的图像。这个过程是随机的，因为每一步都会引入新的随机性。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="DDIM"><a href="#DDIM" class="headerlink" title="DDIM"></a>DDIM</h3><ul>
+<li><p>DDIM的采样过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/ddim.jpg" class="lazyload" data-srcset="/asset/2/ddim.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>DDIM的采样过程是非马尔可夫的，且由于eta设置为0，每一步去噪无需重采样高斯噪声（除了第一步采样x_t），因此采样过程是一个确定性过程。</p>
+<p>单独DIIM并没有加速，加速使用respacing（按照一定间隔减小采样步数）。只不过respacing对DDPM使用会大幅降低生成效果，但是DDIM不会。所以DDIM+respacing又快又好。</p>
+</blockquote>
+</li>
+<li><p>DDIM的Inversion</p>
+<blockquote>
+<p>DDIM除了可以确定性去噪外，还可以确定性加噪，从而实现Image editing。</p>
+</blockquote>
+</li>
+<li><p>DDPM与DDIM的区别</p>
+<blockquote>
+<p>DDPM：固定sample方差为beta或者\hat{beta}。<br>DDIM：固定方差为0，配合respacing实现加速。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Score-based"><a href="#Score-based" class="headerlink" title="Score-based"></a>Score-based</h3><h3 id="DiT"><a href="#DiT" class="headerlink" title="DiT"></a>DiT</h3><ul>
+<li><p>DiT的主要结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/dit.png" class="lazyload" data-srcset="/asset/2/dit.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然使用Stable Diffusion的。
+
+<p>最后一个DiT block之后，将tokens decode为output noise prediction和covariance prediction。</p>
+</blockquote>
+</li>
+<li><p>DiT的Patchify过程</p>
+<blockquote>
+<p>与ViT的一样，使用卷积将压缩后的z切分成一个一个的token，并嵌入位置信息。</p>
+</blockquote>
+</li>
+<li><p>DiT的不同条件注入机制</p>
+<blockquote>
+<ul>
+<li>In-context conditioning：将去噪时间步和条件c作为额外两个token附在输入序列前；最后一个block之后再将它们移除。</li>
+<li>Cross-attnetion：将去噪时间步和条件c连接成一个长度为2的序列，在原始transformer block中插入cross attention并注入条件。</li>
+<li>adaLN：将原始layerNorm替换为adaLN,即从t和c中回归得到scale和shift。</li>
+<li>adaLN-Zero：将每个ResBlock初始化为identity function。同时除了回归scale和shift外，同时在每个Residual connection前回归dimension-wise scale的参数。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>AdaLN的实现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AdaLayerNorm</span>(nn.Module):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, embedding_dim: <span class="built_in">int</span>, num_embeddings: <span class="built_in">int</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.emb = nn.Embedding(num_embeddings, embedding_dim)</span><br><span class="line">        <span class="variable language_">self</span>.silu = nn.SiLU()</span><br><span class="line">        <span class="variable language_">self</span>.linear = nn.Linear(embedding_dim, embedding_dim * <span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">self</span>.norm = nn.LayerNorm(embedding_dim, elementwise_affine=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x: torch.Tensor, timestep: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">        emb = <span class="variable language_">self</span>.linear(<span class="variable language_">self</span>.silu(<span class="variable language_">self</span>.emb(timestep)))</span><br><span class="line">        scale, shift = torch.chunk(emb, <span class="number">2</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.norm(x) * (<span class="number">1</span> + scale) + shift <span class="comment"># 用 timestep 进行 affine</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Classifier-Guidance"><a href="#Classifier-Guidance" class="headerlink" title="Classifier Guidance"></a>Classifier Guidance</h3><ul>
+<li><p>Classifier Guidance的推导</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/cls_guidance.jpg" class="lazyload" data-srcset="/asset/2/cls_guidance.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>分类器是需要预训练的，训练数据和扩散模型的训练数据一致，且由于分类过程贯穿整个采样（i.e. t从T到0），因此分类器的训练数据还需要加上不同程度的噪音，来使得该分类器在噪音图片下依然可以起到引导作用。</p>
+<p>s是一个大于1的系数。当s较大时，会更关注分类器，生成样本更符合y，但多样性更低，因此是一个保真度与多样性之间的trade-off。</p>
+</blockquote>
+</li>
+<li><p>DDPM中Classifier Guidance采样过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/cls_guidance_ddpm.png" class="lazyload" data-srcset="/asset/2/cls_guidance_ddpm.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>DDIM中Classifier Guidance采样过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/cls_guidance_ddim.png" class="lazyload" data-srcset="/asset/2/cls_guidance_ddim.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>Classifier Guidance的优点和缺点</p>
+<blockquote>
+<p>优点： 不需要重新训练扩散模型，只需要在采样时根据分类器梯度修改采样的均值即可。</p>
+<p>缺点：推理时每一步需要过分类器，速度较慢。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Classifier-free-Guidance"><a href="#Classifier-free-Guidance" class="headerlink" title="Classifier-free Guidance"></a>Classifier-free Guidance</h3><ul>
+<li><p>CFG的推导</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/cfg.jpg" class="lazyload" data-srcset="/asset/2/cfg.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>CFG的训练过程</p>
+<blockquote>
+<p>训练时，Classifier-Free Guidance需要训练两个模型，一个是无条件生成模型，另一个是条件生成模型。但这两个模型可以用同一个模型表示，训练时只需要以一定概率将条件置空即可。</p>
+</blockquote>
+</li>
+<li><p>CFG的推理过程</p>
+<blockquote>
+<p>推理时，需要同时得到cond和uncond的推理结果，按照上述公式对预测噪声进行线性外推。</p>
+<p>其中，uncond也可以用negative prompt代替，这样可以实现不生成某些内容。</p>
+</blockquote>
+</li>
+<li><p>为什么需要两次推理分别得到cond和uncond？</p>
+<blockquote>
+<p>通过线性外推方式，获得更多的生成多样性。</p>
+</blockquote>
+</li>
+<li><p>CFG的guidance_scale的作用</p>
+<blockquote>
+<p>一般取7.5。guidance scale越大，生成的结果越倾向于输入条件，图像质量更高，多样性会下降；越小，多样性越大。</p>
+</blockquote>
+</li>
+<li><p>相比于Classifier Guidance的优点</p>
+<blockquote>
+<ol>
+<li>不需要额外训练分类器。</li>
+<li>更加灵活，因为它不依赖于特定的分类器，可以处理更广泛的条件。</li>
+<li>采样时效率更高。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="其他加速采样"><a href="#其他加速采样" class="headerlink" title="其他加速采样"></a>其他加速采样</h3><ul>
+<li>DPM,DPM++</li>
+</ul>
+<h2 id="文生图模型"><a href="#文生图模型" class="headerlink" title="文生图模型"></a>文生图模型</h2><h3 id="Stable-Diffusion-LDM"><a href="#Stable-Diffusion-LDM" class="headerlink" title="Stable Diffusion(LDM)"></a>Stable Diffusion(LDM)</h3><h4 id="SD-1-x-2-x"><a href="#SD-1-x-2-x" class="headerlink" title="SD 1.x&#x2F;2.x"></a>SD 1.x&#x2F;2.x</h4><ul>
+<li><p>SD中的VAE。</p>
+<blockquote>
+<p>Perceptual loss，Patch-based GAN loss。</p>
+<p>为了避免latent太过无序，使用正则项对latent space进行规范。原文中使用了两种：（1）KL-reg，但权重设置得很小（过强的正则化会导致生成的图像模糊）；（2）VQ-reg，使用很大的codebook。</p>
+<p>SD中的VAE不具有生成功能，主要起的是压缩作用。</p>
+</blockquote>
+</li>
+<li><p>SD中VAE与普通VAE的区别</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/ldm_vae.png" class="lazyload" data-srcset="/asset/2/ldm_vae.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+这里的KL只是起了规范latent的作用。而且原文中设置的KL设置的极小。（ELBO中过强的正则化会导致生成的图像模糊）
+</blockquote>
+</li>
+<li><p>SD的U-Net结构及与DDPM中U-Net的区别。</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/sd_unet.png" class="lazyload" data-srcset="/asset/2/sd_unet.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+其中时间步t在ResBlock中过线性层后与x相加；文本c在SpatialTransformer的cross attention中与flatten的x交互。</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>区别：（1）DDPM中是自注意力模块，而SD中替换成Transformer block。<br>(2) DDPM中自注意力仅在较深的几层，而SD中每个层都有Transformer block。</p>
+</blockquote>
+<ul>
+<li><p>SD的训练过程</p>
+<blockquote>
+<p>训练：首先预训练Autoencoder，然后训练LDM（LDM恢复的是latent）。</p>
+</blockquote>
+</li>
+<li><p>SD的生成结果评估指标</p>
+<blockquote>
+<p>IS(Inception Score)：<strong>用分类模型评测样本集的“类别确定性”和“类别多样性”，越大越好</strong>。用了一个图像分类网络来评估生成图片的质量。这个分类网络是在 ImageNet 数据集上训的，一共有1000类。</p>
+<div aligh="center"><img src="/asset/2/is.png" class="lazyload" data-srcset="/asset/2/is.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ul>
+<li>清晰度上：把一张生成的图像喂给分类模型，让模型输出最后一层的1000维向量，如果图像更清晰，那么分类的置信度会很高，其中的某个值会更接近1，其他值更接近0，这个1000维向量的熵就会更低。</li>
+<li>多样性上：生成5000张图片给分类模型去分类，如果图像更多样，那么分出来的类型会更均匀，总体接近均匀分布，熵更高。</li>
+</ul>
+<p>IS指标就是在计算这两个熵的KL散度（可以简单理解为一种距离），图像越清晰、多样性约高，前一个熵越低，后一个熵越高，KL散度越大，所以 IS 指标越大表示生成的效果越好。</p>
+<p>缺点： 评测方式的前提是，图像生成所用的训练图片必须得是与分类模型训练数据相同，否则这种评测方式就是有问题的。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>FID(Fréchet Inception Distance)：<strong>用两个分布的期望和方差，计算两个分布的距离，越小越好</strong>。</p>
+<div aligh="center"><img src="/asset/2/fid.png" class="lazyload" data-srcset="/asset/2/fid.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ul>
+<li>用一个去掉分类头的分类模型推理出生成图像和真实图像的特征层（一般是2048维）.</li>
+<li>假设两个数据的特征层都服从正态分布</li>
+<li>用上面这个公式计算两个分布的均值和协方差的“距离”</li>
+</ul>
+<p>缺点：没法衡量是否过拟合的问题。</p>
+</blockquote>
+<blockquote>
+<p>CLIP score：计算prompt与生成图片的cos相似度。用于评测遵守prompt的程度。</p>
+</blockquote>
+<blockquote>
+<p>R-precision：对提取的图像和文本特征之间的检索结果进行排序，来衡量文本描述和生成的图像之间的视觉语义相似性。</p>
+</blockquote>
+<h4 id="SD-XL"><a href="#SD-XL" class="headerlink" title="SD-XL"></a>SD-XL</h4><ul>
+<li><p>SD-XL与SD 1.x的区别</p>
+<blockquote>
+<ul>
+<li><p>增加一个 Refiner 模型，用于对图像进一步地精细化</p>
+</li>
+<li><p>使用 CLIP ViT-L 和 OpenCLIP ViT-bigG 两个 text encoder</p>
+</li>
+<li><p>基于 OpenCLIP 的 text embedding 增加了一个 pooled text embedding</p>
+</li>
+<li><p>训练方式上：（1）以图像大小作为条件。提出将原始图像分辨率作用于 U-Net 模型，并提供图像的原始长和宽（csize &#x3D; (h, w)）作为附加条件。 （2） 以裁剪参数作为条件。将裁剪的左上坐标（top, left）作为条件输入模型，和 size 类似。(3)基于多尺度分辨率训练。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>SD-XL-turbo的改进</p>
+<blockquote>
+<p>引入蒸馏技术，以便减少 LDM 的生成步数，提升生成速度。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<div aligh="center"><img src="/asset/2/sdxl.png" class="lazyload" data-srcset="/asset/2/sdxl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+<h3 id="IMAGEN"><a href="#IMAGEN" class="headerlink" title="IMAGEN"></a>IMAGEN</h3><h3 id="DALLE"><a href="#DALLE" class="headerlink" title="DALLE"></a>DALLE</h3><h3 id="GLIDE"><a href="#GLIDE" class="headerlink" title="GLIDE"></a>GLIDE</h3><h2 id="额外控制"><a href="#额外控制" class="headerlink" title="额外控制"></a>额外控制</h2><h3 id="ControlNet"><a href="#ControlNet" class="headerlink" title="ControlNet"></a>ControlNet</h3><h3 id="T2I-Adapter"><a href="#T2I-Adapter" class="headerlink" title="T2I-Adapter"></a>T2I-Adapter</h3><h2 id="私人定制"><a href="#私人定制" class="headerlink" title="私人定制"></a>私人定制</h2><h3 id="Textual-Inversion"><a href="#Textual-Inversion" class="headerlink" title="Textual Inversion"></a>Textual Inversion</h3><h3 id="DreamBooth"><a href="#DreamBooth" class="headerlink" title="DreamBooth"></a>DreamBooth</h3><h2 id="图像编辑"><a href="#图像编辑" class="headerlink" title="图像编辑"></a>图像编辑</h2><h3 id="Prompt-to-Prompt"><a href="#Prompt-to-Prompt" class="headerlink" title="Prompt-to-Prompt"></a>Prompt-to-Prompt</h3><h3 id="InstructPix2Pix"><a href="#InstructPix2Pix" class="headerlink" title="InstructPix2Pix"></a>InstructPix2Pix</h3>]]></content>
       <categories>
         <category>算法岗</category>
         <category>八股文</category>
@@ -682,316 +1567,6 @@
       </tags>
   </entry>
   <entry>
-    <title>算法岗知识汇总【多模态】</title>
-    <url>/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>正在更新中……</p>
-<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
-<span id="more"></span>
-<h2 id="CLIP"><a href="#CLIP" class="headerlink" title="CLIP"></a>CLIP</h2><ul>
-<li><p>CLIP模型结构</p>
-<blockquote>
-<p>Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换为注意力池化；第二种是ViT(Pre-norm)。<br>Text Encoder实际上是GPT-2架构，即Transformer decoder，将文本用[SOS]和[EOS]括起来，取[EOS]上的feature过一层Linear作为文本特征。</p>
-</blockquote>
-</li>
-<li><p>CLIP训练时的损失函数</p>
-<blockquote>
-<p>InfoNCE，一种用于自监督学习的特征表示学习损失函数。<br>公式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>n</mi><mi>f</mi><mi>o</mi><mi>N</mi><mi>C</mi><mi>E</mi><mo>=</mo><mo>−</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mfrac><mrow><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>∗</mo><msub><mi>k</mi><mrow><mi>i</mi><mo>+</mo></mrow></msub></mrow><mi>τ</mi></mfrac><mo stretchy="false">)</mo></mrow><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>∗</mo><msub><mi>k</mi><mrow><mi>j</mi><mo>−</mo></mrow></msub></mrow><mi>τ</mi></mfrac><mo stretchy="false">)</mo></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">InfoNCE=-\frac{1}{N}\sum\limits_{i=1}^{N}log(\frac{exp(\frac{q_i*k_{i+}}{\tau})}{\sum_{j=1}^N exp(\frac{q_i * k_{j-}}{\tau})})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.05764em;">NCE</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.506em;vertical-align:-0.9777em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5283em;"><span style="top:-2.1223em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3235em;"><span style="top:-2.3617em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8852em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.8971em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4603em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">p</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1832em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.6872em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0359em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mathnormal mtight">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3147em;"><span></span></span></span></span></span></span><span class="mbin mtight">∗</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0315em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mord mtight">−</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5092em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">p</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1038em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.6078em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0359em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mathnormal mtight">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3147em;"><span></span></span></span></span></span></span><span class="mbin mtight">∗</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0315em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mtight">+</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3981em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9605em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span>，N是样本的数量，q是查询样本的编码，k是与查询样本对应的正样本或负样本的编码。<br>目的：最大化正样本对相似度，最小化负样本对相似度。</p>
-</blockquote>
-</li>
-<li><p>CLIP训练的伪代码</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/clip.png" class="lazyload" data-srcset="/asset/2/clip.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
-</li>
-<li><p>CLIP训练代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">image_embeds = vision_outputs[<span class="number">1</span>]</span><br><span class="line">image_embeds = <span class="variable language_">self</span>.visual_projection(image_embeds)</span><br><span class="line"> </span><br><span class="line">text_embeds = text_outputs[<span class="number">1</span>]</span><br><span class="line">text_embeds = <span class="variable language_">self</span>.text_projection(text_embeds)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># normalized features</span></span><br><span class="line">image_embeds = image_embeds / image_embeds.norm(p=<span class="number">2</span>, dim=-<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">text_embeds = text_embeds / text_embeds.norm(p=<span class="number">2</span>, dim=-<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># cosine similarity as logits</span></span><br><span class="line">logit_scale = <span class="variable language_">self</span>.logit_scale.exp()</span><br><span class="line">logits_per_text = torch.matmul(text_embeds, image_embeds.t()) * logit_scale</span><br><span class="line">logits_per_image = logits_per_text.t()</span><br><span class="line"> </span><br><span class="line">loss = <span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> return_loss:</span><br><span class="line">    loss = clip_loss(logits_per_text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">contrastive_loss</span>(<span class="params">logits: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">    <span class="keyword">return</span> nn.functional.cross_entropy(logits, torch.arange(<span class="built_in">len</span>(logits), device=logits.device))</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clip_loss</span>(<span class="params">similarity: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">    caption_loss = contrastive_loss(similarity)</span><br><span class="line">    image_loss = contrastive_loss(similarity.t())</span><br><span class="line">    <span class="keyword">return</span> (caption_loss + image_loss) / <span class="number">2.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>CLIP损失函数中温度系数的作用</p>
-<blockquote>
-<p>温度系数的作用是调节<strong>对困难样本的关注程度</strong>：越小的温度系数越关注于将本样本和最相似的其他样本分开<br>如果温度系数设的越大，logits分布变得越平滑，那么对比损失会对所有的负样本一视同仁，导致模型学习没有轻重。<br>如果温度系数设的过小，则模型会越关注特别困难的负样本，但其实那些负样本很可能是潜在的正样本，这样会导致模型很难收敛或者泛化能力差。</p>
-</blockquote>
-</li>
-<li><p>CLIP的位置编码，如何外推？</p>
-<blockquote>
-<p>CLIP的text encoder是GPT，因此使用的Learable Positional Encoding，是绝对位置编码。理论上不能外推，但也许可以将超过长度的部分随机初始化然后微调。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="CLIP少样本微调"><a href="#CLIP少样本微调" class="headerlink" title="CLIP少样本微调"></a>CLIP少样本微调</h3><ul>
-<li><p>Linear Probe</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/lp.png" class="lazyload" data-srcset="/asset/2/lp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-Encoder的embedding后接分类头，进行微调。
-</blockquote>
-</li>
-<li><p>Context Optimization</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/coop.png" class="lazyload" data-srcset="/asset/2/coop.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-针对CLIP中直接使用"A photo of"作为prompt可能不是最优的，CoOp提出使用可学习的token embedding，让模型自己调优prompt（可使用前人总结的prompt做初始化）。
-</blockquote>
-</li>
-<li><p>CLIP-Adapter</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/clip_adapter.png" class="lazyload" data-srcset="/asset/2/clip_adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-<div aligh="center"><img src="/asset/2/clip_adapter_1.png" class="lazyload" data-srcset="/asset/2/clip_adapter_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-<div aligh="center"><img src="/asset/2/clip_adapter_2.png" class="lazyload" data-srcset="/asset/2/clip_adapter_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-相较于CoOp，CLIP-Adapter的训练方式更加轻量化，只有两个残差连接的MLP。将两部分按照一定比例进行blend。（为什么要用残差连接？为了保留CLIP的原始能力）(为什么不全参微调？容易Over-fit。)</blockquote>
-</li>
-</ul>
-<h2 id="BLIP系列"><a href="#BLIP系列" class="headerlink" title="BLIP系列"></a>BLIP系列</h2><h3 id="BLIP"><a href="#BLIP" class="headerlink" title="BLIP"></a>BLIP</h3><ul>
-<li><p>BLIP的主要贡献</p>
-<blockquote>
-<ol>
-<li>提出了一种Multimodal mixture of Encoder-Decoder(MED)的多模态预训练模式。</li>
-<li>提出了一种Captioning and Filtering的Dataset Bootstrapping机制，对原始数据集进行清洗。</li>
-<li>微调后在下游Image-text retrieval、Image captioning、VQA等任务上达到了SOTA。</li>
-</ol>
-</blockquote>
-</li>
-<li><p>BLIP的模型架构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/blip.png" class="lazyload" data-srcset="/asset/2/blip.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<ul>
-<li><p>Unimodal Vision Encoder：采用的是在ImageNet-1k预训练的ViT（与LLaVa使用的不同）。</p>
-</li>
-<li><p>Unimodal Text Encoder：采用的是Bert-base，取[CLS] token的特征作为文本特征。</p>
-</li>
-<li><p>Image-grounded Text Encoder：采用Bert，在SA和FFN中间加上Cross Attention层，和图像特征交融。对于文本的输入，会在开头加上task-specific的[Encode]。</p>
-</li>
-<li><p>Image-grounded Text Decoder：将Image-grounded Text Encoder中的Bi Self-Att改为Causal Self-Att,同时也会和图像特征通过CA交融。会在开头加上[Decoder]表示序列起点，以及[EOS]表示序列终点。</p>
-</li>
-<li><p>后两部分除了Self-Att层不共享，其余部分参数共享。</p>
-</li>
-</ul>
-</blockquote>
-</li>
-<li><p>BLIP的预训练目标</p>
-<blockquote>
-<ul>
-<li>Image-Text Contrastive Loss：将文本和图像在特征空间对齐，使用的是InfoNCE。实现方式上采用了ALBEF中的Momentum encoder。</li>
-<li>Image-Text Matching Loss：学习文本和图像之间的细粒度匹配，使用的是BCE loss。实现方式上采用了ALBEF中的Hard negative mining策略，即对于一个batch中用于更高对比相似度的负样本，更容易被选择来计算loss。</li>
-<li>Language-modeling loss：以自回归的方式进行极大似然估计，使用的是CE loss。计算时候使用了0.1的label smoothing。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>BLIP的CapFilt机制</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/capfilt.png" class="lazyload" data-srcset="/asset/2/capfilt.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-为了对含有噪声的Alt-text对进行过滤清洗，人工标注部分数据集得到高质量文本-图像对，然后分别微调得到一个Filter和一个Captioner，对原数据集进行重Caption与过滤，得到更高质量数据集再重新预训练MED。
-</blockquote>
-</li>
-<li><p>BLIP是如何微调的？</p>
-<blockquote>
-<ul>
-<li>Image-Text Retrieval：对预训练模型使用ITC和ITM loss，在COCO和Flickr30K上进行微调。</li>
-<li>Image Captioning：在COCO上使用LM loss进行微调。</li>
-<li>VQA：如下图，使用LM loss微调。<div aligh="center"><img src="/asset/2/blip_vqa.png" class="lazyload" data-srcset="/asset/2/blip_vqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
-<li>NLVR：略。</li>
-<li>VisDial：略。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>BLIP预训练使用的数据集</p>
-<blockquote>
-<p>预训练数据集为:</p>
-<ul>
-<li>Conceptual Captions</li>
-<li>SBU Captions</li>
-<li>COCO</li>
-<li>Visual Genome<br>还引入了噪声更大的Conceptual 12M；还尝试了额外的Web数据集LAION.</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h3 id="BLIP2"><a href="#BLIP2" class="headerlink" title="BLIP2"></a>BLIP2</h3><ul>
-<li><p>BLIP2与BLIP的区别</p>
-<blockquote>
-<ul>
-<li>BLIP2使用预训练的LLM。</li>
-<li>BLIP2引入了Q-former作为预训练视觉模型与LLM之间的桥梁，大大减少了预训练的训练参数与训练成本。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>BLIP2的模型架构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/blip2.png" class="lazyload" data-srcset="/asset/2/blip2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-由一个冻结的Vision Encoder，一个冻结的LLM，一个Q-Former和一个FC的Connector组成。其中在预训练过程中，Vision encoder和LLM始终冻结。其中Vision Encoder采用了两种 (1) CLIP-ViT-L/14 (2) EVA-CLIP-VIT-g/14。LLM有两种：(1) Decoder-based的OPT （2）Encoder-Decoder-based FlanT5。
-<div aligh="center"><img src="/asset/2/qformer.png" class="lazyload" data-srcset="/asset/2/qformer.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-Q-former 由两个Transformer子模块组成，两部分共享Self-attention层。Image transformer通过Cross attention与图片特征交互，Text transformer可以通过Self attention从可学习Queries获取视觉特征。根据预训练任务的不同，Self-attention的mask也会不同。Q-former的权重由预训练的BERT-base初始化来，而Cross attention部分随机初始化。BLIP-2中使用了32个Queries，每个维度768，这远小于提取到的图像特征(32x768 << 257x1024)。
-</blockquote>
-</li>
-<li><p>BLIP2的预训练过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/blip2_pretrain.png" class="lazyload" data-srcset="/asset/2/blip2_pretrain.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-由两阶段组成：第一阶段Vision-language表征学习，第二阶段Vision-to-language生成学习。
-
-<p>(1) 第一阶段：表征学习，将冻结的Image encoder和可学习的Q-former连在一起，同时优化三种优化目标。</p>
-<ul>
-<li>Image-Text Contrastive Learning：对齐文本与图像，最大化两者之间的互信息。这一部分采用的是Image transformer输出的Query representation和Text transformer输出的[CLS] token。由于Queries有32个，因此这里会每个计算相似度然后取最高的作为Image-Text similarity。为了避免信息泄露，这里采用的是Unimodal self-attention mask。</li>
-<li>Image-grounded Text Generation：训练Q-former根据图像生成文本。由于text transformer不能直接和视觉特征交互，因此首先由Queries提取视觉信息，然后通过Self attention传递给text token。这里采用了Multimodel causal Self-attention mask。同时也会将开头的[CLS] token更换为[DEC]。</li>
-<li>Image-Text Matching：对文本和图像进行更细粒度的对齐。这里采用了Bi-directional Self-attention mask，因此输出的query embedding能够捕获多模态信息。然后将query embedding输入二分类头获得logit后进行average得到输出的matching score。<br>(这一部分实现原理是：attenion时把query和text 拼接起来输入到一个self-attention模块,然后通过mask控制query和text之间的交互,然后attention之后再把query和text分开进行后面的操作，所以实际上是同一个Bert模型。参考BLIP2官方代码)</li>
-</ul>
-<p>(2) 第二阶段：视觉到语言生成学习。将Q-former和冻结的LLM连接，并通过FC对齐query embedding和text embedding的维度。然后将投影过的query embeddings附加在text input embedding的前面，作为Soft Visual Prompt，为LLM提供有用的视觉信息并去除无关的视觉信息。这里进行了两种LLM的实验，对于Decoder-based使用LM loss，对于Encoder-decoder的使用Prefix LM loss。</p>
-</blockquote>
-</li>
-<li><p>BLIP2预训练使用的数据集</p>
-<blockquote>
-<p>和BLIP一样使用下面6个数据集，图片加起来约为129M.</p>
-<ul>
-<li>Conceptual Captions</li>
-<li>SBU Captions</li>
-<li>COCO</li>
-<li>Visual Genome</li>
-<li>噪声更大的Conceptual 12M</li>
-<li>额外的Web数据集LAION400M的一部分。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>BLIP2是如何微调的？</p>
-<blockquote>
-<ul>
-<li><p>Image Cptioning：用”A photo of”作为初始输入给LLM，使用LM loss训练。<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong></p>
-</li>
-<li><p>VQA：<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong> 使用Open-ended answer generation loss微调。同时额外为Q-former注入question信息，能够知道Q-former在cross attention层聚焦于更含信息的区域。</p>
-<div aligh="center"><img src="/asset/2/blip2_vqa.png" class="lazyload" data-srcset="/asset/2/blip2_vqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</li>
-<li><p>Image-Text Retrieval：直接在第一阶段预训练模型上微调。同时微调Image encoder和Q-former。推理时，先根据Image-text feature similarity选出128个candidate，然后根据成对的Image-text matching scores进行重排序。</p>
-</li>
-</ul>
-</blockquote>
-</li>
-<li><p>BLIP-2的局限性</p>
-<blockquote>
-<p>LLM 一般具备 In-Contet Learning 的能力，但是在 In-Context VQA 的场景下，BLIP-2 没观察到好的结果。对于这种上下文学习能力的缺失，作者把原因归结为预训练数据集中的每个数据只包含一个图像-文本对，导致 LLM 无法从中学习单个序列中多个图像-文本对之间的相关性。</p>
-<p>BLIP-2 的图文生成能力不够令人满意，可能是 LLM 知识不准确带来的。同时 BLIP-2 继承了冻结参数的 LLM 的风险，比如输出攻击性语言，传播社会偏见。解决的办法是指令微调，或者过滤掉有害的数据集。</p>
-</blockquote>
-</li>
-<li><p>Q-former作用？</p>
-<blockquote>
-<p>图文对齐、维度压缩。</p>
-</blockquote>
-</li>
-<li><p>可学习的Query作用是什么？</p>
-<blockquote>
-<ul>
-<li>从视觉信息中提取与文本最相关的信息。</li>
-<li>使得提取出的信息能够被LLM理解</li>
-</ul>
-</blockquote>
-</li>
-<li><p>Q-former和MLP的优劣在哪里？</p>
-<blockquote>
-<p>(1) Q-former会导致视觉token的有损压缩，会把任意长度的visual token转译成32个token，丢失部分空间信息。<br>(2) Q-former相比于MLP参数量更大，收敛更慢，小数据量不如MLP，大数据量对比MLP也没有优势。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="InstructBLIP"><a href="#InstructBLIP" class="headerlink" title="InstructBLIP"></a>InstructBLIP</h3><h2 id="LLaVa系列"><a href="#LLaVa系列" class="headerlink" title="LLaVa系列"></a>LLaVa系列</h2><h3 id="LLaVa"><a href="#LLaVa" class="headerlink" title="LLaVa"></a>LLaVa</h3><ul>
-<li><p>LLaVa数据集的构建</p>
-<blockquote>
-<p>根据COCO中的caption和bbox，可以利用language-only GPT-4生成三种instruction data.</p>
-<ul>
-<li>Conversation: 多轮对话，根据caption中的每一部分，生成一个人不断提问某张图片的instruction数据。</li>
-<li>Detailed description：详细描述，由原始caption生成详细的描述。</li>
-<li>Complex reasoning：对图片中内容的一些复杂推理。<br>LLaVa收集了158K的instruction-following数据，包括58K的conversations，23K的detailed description，77K的complex reasoning。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>LLaVa的结构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/llava.png" class="lazyload" data-srcset="/asset/2/llava.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层特征;language decoder采用Vicuna。视觉与文本之间的对齐通过一层线性层对齐。</blockquote>
-</li>
-<li><p>LLaVa训练过程</p>
-<blockquote>
-<ul>
-<li>第一阶段：特征对齐预训练。训练数据为过滤后的595K对CC3M.每个图片文本对被视为单轮对话数据（即response为图片的caption）。该过程中冻结Vision encoder和LLM，仅训练Projector。</li>
-<li>第二阶段：端到端微调。这一过程中将Vision encoder冻结，训练LLM和projector。有两种场景的微调：多模态聊天机器人，使用前面采集的三种response作为训练数据，训练过程中均匀采样；SicenceQA，对于给定的问题提供完整的推理过程和选择的答案，训练数据以单轮对话形式输入。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>LLaVa实验设置</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/llava_exp.png" class="lazyload" data-srcset="/asset/2/llava_exp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
-</li>
-</ul>
-<h3 id="LLaVa-v1-5"><a href="#LLaVa-v1-5" class="headerlink" title="LLaVa-v1.5"></a>LLaVa-v1.5</h3><ul>
-<li><p>LLaVa1.5的改进</p>
-<blockquote>
-<ul>
-<li>结构改进：Projector换成了2层MLP，Vision encoder变成了CLIP-ViT-L-336px，LLM升级为Vicuna1.5。LLaVa-v1.5-HD版本增加了对高分辨率图片的支持，将高分辨率分成多个grid分别输入原始encoder，然后concat起来获得视觉信息。</li>
-<li>数据改进：</li>
-</ul>
-<ol>
-<li>增加了具有简单响应格式提示词的学术导向的VQA数据集，其中简单格式响应提示词例如：Answer the question using a single word or phrase，主要是为了配合数据集简短的答案，避免歧义。</li>
-<li>预训练数据集使用LAION&#x2F;COC&#x2F;SBU的子集，共558K；instruction数据集共665K，在1.0基础上增加了ShareGPT数据集、学术导向的VQA数据集、OCR数据集、Region-level的VQA数据集。</li>
-</ol>
-</blockquote>
-</li>
-<li><p>LLaVa1.5存在的限制</p>
-<blockquote>
-<ul>
-<li>使用全图补丁，增加了训练时间。</li>
-<li>不能处理多图，因为缺少这样的指令微调数据，以及上下文长度的限制。</li>
-<li>在一些特定领域效果不佳。</li>
-<li>依旧存在幻觉和错误信息。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h2 id="MiniGPT-4"><a href="#MiniGPT-4" class="headerlink" title="MiniGPT-4"></a>MiniGPT-4</h2><ul>
-<li><p>MiniGPT-4模型结构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/minigpt4.png" class="lazyload" data-srcset="/asset/2/minigpt4.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>视觉部分： BLIP2中预训练的ViT-G&#x2F;14和Q-former；<br>LLM部分：Vicuna<br>模态对齐：一个Linear Projection Layer<br>所有过程中，LLM和视觉部分都冻结，仅训练Linear Projection。</p>
-</blockquote>
-</li>
-<li><p>MiniGPT-4训练过程</p>
-<blockquote>
-<p>第一阶段预训练，模态对齐。使用Conceptual Caption、SBU和LAION等数据集训练，仅训练Linear Projection。经过第一阶段的pretrain，作者发现了一些模型很难产生连贯的语言输出的例子，而且会输出一些重复的单词或句子、支离破碎的句子或无关的内容。<br>第二阶段微调，与人类对话对齐。在构建的包含3500对&lt;图片，Instruction，Answer&gt;数据集上进行微调。仅训练Linear Projection。</p>
-</blockquote>
-</li>
-<li><p>MiniGPT-4数据集构建</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/minigpt4_ds.png" class="lazyload" data-srcset="/asset/2/minigpt4_ds.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<ul>
-<li>从Conceptual Caption中采样5000张图片，让第一阶段的模型去输出详细的描述。如果模型输出的token不够80个token，就使用continue命令让模型一直输出，直到产生足够的图片描述。</li>
-<li>数据后处理，使用ChatGPT对图像描述进行纠错，然后人工核验数据。最终从5000条数据中得到3500条高质量训练数据。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h2 id="Qwen-VL系列"><a href="#Qwen-VL系列" class="headerlink" title="Qwen-VL系列"></a>Qwen-VL系列</h2><h2 id="InternVL系列"><a href="#InternVL系列" class="headerlink" title="InternVL系列"></a>InternVL系列</h2><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
-<li><p>多模态模型支持的任务类型</p>
-<blockquote>
-<ul>
-<li>Image-Text Retrieval</li>
-<li>Image Captioning</li>
-<li>Visual Question Answering, VQA</li>
-<li>Natural Language Visual Reasoning, NLVR</li>
-<li>Visual Dialogue</li>
-</ul>
-</blockquote>
-</li>
-<li><p>对比学习的本质是在解决什么问题，目的是什么？</p>
-<blockquote>
-<p>本质上是自监督学习，即学习一个编码器，此编码器对同类数据进行相似的编码，并使不同类的数据的编码结果尽可能的不同。使模态间的互信息最大化。</p>
-</blockquote>
-</li>
-<li><p>其他对比学习方法（SimCLR等）</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法岗</category>
-        <category>八股文</category>
-      </categories>
-      <tags>
-        <tag>算法岗</tag>
-        <tag>八股文</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>算法岗知识汇总【深度学习基础】</title>
     <url>/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E3%80%91/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>正在更新中……</p>
@@ -1046,17 +1621,20 @@ Softmax函数常在神经网络输出层充当激活函数，将输出层的值�
 <p>Swish<br>数学表达式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>w</mi><mi>i</mi><mi>s</mi><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mi>σ</mi><mo stretchy="false">(</mo><mi>β</mi><mi>x</mi><mo stretchy="false">)</mo><mtext> </mtext><mo>=</mo><mi>x</mi><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mo>−</mo><mi>β</mi><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">Swish(x)=x\sigma(\beta x) \ =x \frac{1}{1+exp(-\beta x)} </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">Sw</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3651em;vertical-align:-0.52em;"></span><span class="mord mathnormal">x</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">p</span><span class="mopen mtight">(</span><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.05278em;">β</span><span class="mord mathnormal mtight">x</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span></span>是sigmoid函数。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>是超参数。当<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>是1时，就是SiLU激活函数。<br>函数图像：<div aligh="center"><img src="/asset/2/swish.png" class="lazyload" data-srcset="/asset/2/swish.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%"/></div></p>
 </blockquote>
 <blockquote>
-<p>SwiGLU</p>
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><mo>⊙</mo><mi>σ</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">GLU(a,b) = a \odot \sigma(b) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊙</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span> , <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊙</mo></mrow><annotation encoding="application/x-tex">\odot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">⊙</span></span></span></span>是矩阵的按元素乘。
-<p>数学表达式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>w</mi><mi>i</mi><mi>G</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>W</mi><mo separator="true">,</mo><mi>V</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mi>S</mi><mi>w</mi><mi>i</mi><mi>s</mi><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mi>W</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo><mo>⊙</mo><mo stretchy="false">(</mo><mi>x</mi><mi>V</mi><mo>+</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">SwiGLU(x,W,V,b,c)=Swish(xW+b) \odot (xV+c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">Sw</span><span class="mord mathnormal">i</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">Sw</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊙</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span>, W,V,b,c为可学习参数。</p>
+<p>GLU(Gated Linear Unit)<br>数学表达式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>W</mi><mo separator="true">,</mo><mi>V</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mi>s</mi><mi>i</mi><mi>g</mi><mi>m</mi><mi>o</mi><mi>i</mi><mi>d</mi><mo stretchy="false">(</mo><mi>x</mi><mi>W</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo><mo>⊙</mo><mo stretchy="false">(</mo><mi>x</mi><mi>V</mi><mo>+</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">GLU(x,W,V,b,c) = sigmoid(xW+b) \odot (xV+c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">m</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊙</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span> , <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊙</mo></mrow><annotation encoding="application/x-tex">\odot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">⊙</span></span></span></span>是矩阵的按元素乘, W,V,b,c为可学习参数。</p>
+</blockquote>
+<blockquote>
+<p>SwiGLU<br>数学表达式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>w</mi><mi>i</mi><mi>G</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>W</mi><mo separator="true">,</mo><mi>V</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mi>S</mi><mi>w</mi><mi>i</mi><mi>s</mi><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mi>W</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo><mo>⊙</mo><mo stretchy="false">(</mo><mi>x</mi><mi>V</mi><mo>+</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">SwiGLU(x,W,V,b,c)=Swish(xW+b) \odot (xV+c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">Sw</span><span class="mord mathnormal">i</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">Sw</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊙</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span>，将GLU中的sigmoid换成了Swish。</p>
 <p>相对于ReLU的优势：</p>
 <ol>
 <li>平滑的转换：SwiGLU在0附近提供了更平滑的转换，这有助于更好的优化过程。</li>
 <li>门控特性：SwiGLU继承了GLU的门控机制，可以根据输入情况决定哪些信息应该通过，哪些应该被过滤，这有助于提高模型的泛化能力，特别是在处理长序列、长距离依赖的文本时。</li>
 <li>可学习参数：SwiGLU中的参数可以通过训练学习，使得模型可以根据不同任务和数据集动态调整这些参数，增强了模型的灵活性和适应性。</li>
-<li>非线性能力：SwiGLU相比于ReLU，在负值区域也有响应，这克服了ReLU在负输入下输出始终为零的缺点，使得网络可以更有效地学习到有用的表示。(DeadReLU,有助于缓解梯度消失)</li>
+<li>非线性能力：SwiGLU相比于ReLU，在负值区域也有响应，这克服了ReLU在负输入下输出始终为零的缺点，使得网络可以更有效地学习到有用的表示。(DeadReLU,有助于缓解梯度消失)<br>SwiGLU代码：</li>
 </ol>
 </blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FeedForward</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, hidden_size: <span class="built_in">int</span>, intermediate_size: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">       	<span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.w1 = nn.Linear(hidden_size, intermediate_size, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.w2 = nn.Linear(intermediate_size, hidden_size, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.w3 = nn.Linear(hidden_size, intermediate_size, bias=<span class="literal">False</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">        <span class="comment"># x: (batch_size, seq_len, hidden_size)</span></span><br><span class="line">        <span class="comment"># w1(x) -&gt; (batch_size, seq_len, intermediate_size)</span></span><br><span class="line">        <span class="comment"># w3(x) -&gt; (batch_size, seq_len, intermediate_size)</span></span><br><span class="line">        <span class="comment"># w2(*) -&gt; (batch_size, seq_len, hidden_size)</span></span><br><span class="line">    	<span class="keyword">return</span> <span class="variable language_">self</span>.w2(F.silu(<span class="variable language_">self</span>.w1(x)) * <span class="variable language_">self</span>.w3(x))</span><br></pre></td></tr></table></figure>
+
 <h2 id="RNN-GRU-LSTM"><a href="#RNN-GRU-LSTM" class="headerlink" title="RNN&#x2F;GRU&#x2F;LSTM"></a>RNN&#x2F;GRU&#x2F;LSTM</h2><h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2><h3 id="Encoder-Decoder"><a href="#Encoder-Decoder" class="headerlink" title="Encoder,Decoder"></a>Encoder,Decoder</h3><ul>
 <li><p>Transformer结构描述</p>
 <blockquote>
@@ -1146,7 +1724,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </li>
 </ul>
 <blockquote>
-<p>尽管Multi-head attention引入了多个头，但由于每个头的维度减小，并且计算可以并行进行，其总计算复杂度与单头Attention相同，即O(L⋅M⋅d)O(L⋅M⋅d)。然而，实际应用中，由于并行计算和维度分割，Multi-head attention通常能够更有效地利用计算资源。</p>
+<p>尽管Multi-head attention引入了多个头，但由于每个头的维度减小，并且计算可以并行进行，其总计算复杂度与单头Attention相同，即O(L⋅M⋅d)。然而，实际应用中，由于并行计算和维度分割，Multi-head attention通常能够更有效地利用计算资源。</p>
 </blockquote>
 <ul>
 <li><p>Attention中为什么除以sqrt(k)？</p>
@@ -1256,7 +1834,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </blockquote>
 <ul>
 <li>Transformer中用BatchNorm可以吗？<blockquote>
-<p>LN是针对每个样本序列进行归一化，没有样本间依赖，对一个序列的不同特征维度进行归一化。<br>CV使用BN是因为认为通道维度的信息对cv方面有重要意义，如果对通道维度也归一化会造成不同通道信息一定的损失。NLP认为句子长短不一，且各batch之间的信息没有什么关系，因此只考虑句子内信息的归一化。</p>
+<p>LN是针对每个样本序列进行归一化，没有批量依赖，不会因为batchsize变化而变化，对一个序列的不同特征维度进行归一化。<br>CV使用BN是因为认为通道维度的信息对cv方面有重要意义，如果对通道维度也归一化会造成不同通道信息一定的损失。NLP认为句子长短不一，且各batch之间的信息没有什么关系，因此只考虑句子内信息的归一化。</p>
 </blockquote>
 </li>
 </ul>
@@ -1273,7 +1851,8 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <li><p>Pre norm和Post norm的区别</p>
 <blockquote>
 <div aligh="center"><img src="/asset/2/pre_post.png" class="lazyload" data-srcset="/asset/2/pre_post.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-Pre-norm训练更稳定，Post-norm效果更好但是需要warm up，且对超参数敏感。
+Pre-norm训练更稳定，更容易收敛。
+Post-norm性能更好，但是需要warm up，且对超参数敏感，训练初期可能会有梯度消失或梯度爆炸，比较难训练。
 </blockquote>
 </li>
 <li><p>Dropout在训练和推理时的区别</p>

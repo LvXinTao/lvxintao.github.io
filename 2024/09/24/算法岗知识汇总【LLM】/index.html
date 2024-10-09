@@ -60,7 +60,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-09-24T10:33:42.000Z">
-<meta property="article:modified_time" content="2024-09-24T11:00:44.074Z">
+<meta property="article:modified_time" content="2024-09-28T03:30:42.853Z">
 <meta property="article:author" content="Xintao Lv">
 <meta property="article:tag" content="算法岗">
 <meta property="article:tag" content="八股文">
@@ -1924,7 +1924,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1727175680734),
+    lastupdate: new Date(1728513976946),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2945,7 +2945,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li><p>LLAMA中的RMSNorm</p>
 <blockquote>
-<p>RMSNorm(Root Mean Square Layer Normalization)<br>提出动机：LayerNorm计算量比较大。<br>主要区别：不需要同时计算均值和方差两个统计量，而只需要计算均方根这一个统计量（没有去中心化操作）。同时也减少了Norm中的参数量。</p>
+<p>RMSNorm(Root Mean Square Layer Normalization)<br>提出动机：LayerNorm计算量比较大。<br>优点：（1）计算效率高。不需要同时计算均值和方差两个统计量，而只需要计算均方根这一个统计量（没有去中心化操作）。同时也减少了Norm中的参数量（只有lambda一个参数）。 （2）稳定性好。能缓解梯度消失和梯度爆炸。</p>
 <div aligh="center"><img src="/asset/2/rmsnorm.png" class="lazyload" data-srcset="/asset/2/rmsnorm.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
 </li>
 </ul>
@@ -2981,7 +2981,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>Vicuna是在LLaMa-13B的基础上使用监督数据微调得到的模型，数据集来自于ShareGPT.com 产生的用户对话数据，共70K条。</p>
 <p>Vicuna在训练中将序列长度由512扩展到了2048，并且通过梯度检测和flash attention来解决内存问题；调整训练损失考虑多轮对话，并仅根据模型的输出进行微调。</p>
 </blockquote>
-<h2 id="Qwen系列"><a href="#Qwen系列" class="headerlink" title="Qwen系列"></a>Qwen系列</h2><h2 id="InternLM系列"><a href="#InternLM系列" class="headerlink" title="InternLM系列"></a>InternLM系列</h2><h2 id="ChatGLM系列"><a href="#ChatGLM系列" class="headerlink" title="ChatGLM系列"></a>ChatGLM系列</h2><h2 id="Parameter-efficition-finetuning-PEFT"><a href="#Parameter-efficition-finetuning-PEFT" class="headerlink" title="Parameter-efficition finetuning(PEFT)"></a>Parameter-efficition finetuning(PEFT)</h2><h3 id="LoRA"><a href="#LoRA" class="headerlink" title="LoRA"></a>LoRA</h3><ul>
+<h2 id="Qwen系列"><a href="#Qwen系列" class="headerlink" title="Qwen系列"></a>Qwen系列</h2><h3 id="Qwen"><a href="#Qwen" class="headerlink" title="Qwen"></a>Qwen</h3><ul>
+<li><p>Qwen的技术要点</p>
+<blockquote>
+<ul>
+<li>数据：公共网络文档，百科全书，书籍，代码等。此外，数据集是多语言的，其中很大一部分数据是英语和中文的。最终数据集多达3万亿token。</li>
+<li>Tokenizer：采用开源的BPE，并以vocabulary C1100K base作为起始点，增加了常用的中文字符和单词以及其他语言的词汇。此外，仿照LLAMA2，将数字分为单个数字，最终词汇量大约是152K.</li>
+<li>模型结构：<br>(1) Embedding和Output project：解耦嵌入。<br>(2) Positional embedding： RoPE，使用FP32的逆频率矩阵。<br>(3) Bias，除了Attention中的QKV，其他层的bias都去除，以增强外推能力，并防止过拟合。<br>(4) Pre-Norm &amp; RMSNorm<br>(5) Activation：选用SwiGLU。</li>
+<li>对于文本长度的拓展，使用了Dynamic NTK-aware interpolation，可以在无需训练的方法下调整尺度以防止高频信息的丢失，有效地扩展Transformer模型的上下文长度。<div aligh="center"><img src="/asset/2/qwen.png" class="lazyload" data-srcset="/asset/2/qwen.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen的预训练</p>
+<blockquote>
+<ul>
+<li>采用标准的自回归语言模型训练目标</li>
+<li>训练时上下文长度为2048</li>
+<li>注意力模块采用Flash Attention技术，以提高计算效率并减少内存使用</li>
+<li>采用AdamW优化器，设置β1&#x3D;0.9，β2&#x3D;0.95,，&#x3D;1e-8</li>
+<li>使用余弦学习率计划，为每种模型设定一个峰值学习率，学习率会衰减到峰值的10%</li>
+<li>使用BFloat16混合精度加速训练</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen的对齐</p>
+<blockquote>
+<p>SFT:采用ChatML格式的数据进行模型训练。<br>RM：偏好模型预训练和微调<br>PPO：使用RM进行RLHF。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Qwen-2"><a href="#Qwen-2" class="headerlink" title="Qwen-2"></a>Qwen-2</h3><ul>
+<li>Qwen2相对于Qwen的改进<blockquote>
+<ul>
+<li>多种模型规模</li>
+<li>多语言支持：在训练数据中增加了27种语言的高质量数据，增强了模型的多语言能力。</li>
+<li>代码和数学能力</li>
+<li>长文本处理：Qwen2模型能够处理更长的上下文，最高可达128K tokens。</li>
+<li>架构创新：引入了Group Query Attention。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="Parameter-efficition-finetuning-PEFT"><a href="#Parameter-efficition-finetuning-PEFT" class="headerlink" title="Parameter-efficition finetuning(PEFT)"></a>Parameter-efficition finetuning(PEFT)</h2><h3 id="LoRA"><a href="#LoRA" class="headerlink" title="LoRA"></a>LoRA</h3><ul>
 <li><p>LoRA原理</p>
 <blockquote>
 <p>LoRA假设微调变化矩阵的内在秩远低于原矩阵维度d，因此将变化矩阵分解为B和A，而原矩阵的权重不发生变化。这样使得可训练参数数量极大减少，降低显存消耗量。见下图：</p>
@@ -3012,23 +3053,171 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>LoRA的几种变种（QLoRA等）</p>
 </li>
 </ul>
-<h3 id="Prompt-tuning"><a href="#Prompt-tuning" class="headerlink" title="Prompt tuning"></a>Prompt tuning</h3><h3 id="Prefix-tuning"><a href="#Prefix-tuning" class="headerlink" title="Prefix tuning"></a>Prefix tuning</h3><h3 id="P-tuning"><a href="#P-tuning" class="headerlink" title="P-tuning"></a>P-tuning</h3><ul>
-<li>LLaMa-Adapter介绍</li>
-<li>Prompt tuning和Prefix tuning</li>
-<li>P-tuning V1&#x2F;V2的原理</li>
+<h3 id="Adapter-tuning"><a href="#Adapter-tuning" class="headerlink" title="Adapter tuning"></a>Adapter tuning</h3><ul>
+<li><p>Adapter tuning原理</p>
+<blockquote>
+<p>在模型内部外置一些轻量级的层，通过训练这些层来适应新的数据变化。下图中为Bottleneck adapter。</p>
+<div aligh="center"><img src="/asset/2/adapter.png" class="lazyload" data-srcset="/asset/2/adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>与LoRA的区别</p>
+<blockquote>
+<p>Adapter会有新的模型层和参数；LoRA训练得到的部分最后会合并回原模型。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Prefix-tuning"><a href="#Prefix-tuning" class="headerlink" title="Prefix tuning"></a>Prefix tuning</h3><ul>
+<li>Prefix tuning原理<blockquote>
+<p>主要适配NLG任务。<br>与Full-finetuning更新所有参数的方式不同，该方法是在输入token之前构造一段任务相关的virtual tokens作为Prefix，然后训练的时候只更新Prefix部分的参数，而Transformer中的其他部分参数固定。(该方法其实和构造Prompt类似，只是Prompt是人为构造的“显式”的提示,并且无法更新参数，而Prefix则是可以学习的“隐式”的提示。)同时，为了防止直接更新Prefix的参数导致训练不稳定的情况，他们在Prefix层前面加了MLP结构(相当于将Prefix分解为更小维度的Input与MLP的组合后输出的结果)，训练完成后，只保留Prefix的参数。在每个Transformer layer前都会有prefix。</p>
+<div aligh="center"><img src="/asset/2/prefix_2.jpeg" class="lazyload" data-srcset="/asset/2/prefix_2.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<div aligh="center"><img src="/asset/2/prefix.png" class="lazyload" data-srcset="/asset/2/prefix.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<div aligh="center"><img src="/asset/2/prefix_3.png" class="lazyload" data-srcset="/asset/2/prefix_3.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+主要适配NLG任务。</blockquote>
+</li>
+</ul>
+<h3 id="Prompt-tuning"><a href="#Prompt-tuning" class="headerlink" title="Prompt tuning"></a>Prompt tuning</h3><ul>
+<li>Prompt tuning原理<blockquote>
+<p>该方法可以看作是 Prefix Tuning 的简化版本，它给每个任务定义了自己的Prompt，然后拼接到数据上作为输入，但只在输入层加入prompt tokens，并且不需要加入 MLP 进行调整来解决难训练的问题。 它在预训练语言模型的输入中添加可学习的嵌入向量作为提示。这些提示被设计成在训练过程中更新，以引导模型输出对特定任务更有用的响应。同时，Prompt Tuning 还提出了 Prompt Ensembling，也就是在一个批次（Batch）里同时训练同一个任务的不同 prompt（即采用多种不同方式询问同一个问题），这样相当于训练了不同模型。</p>
+<div aligh="center"><img src="/asset/2/prompt_tuning.png" class="lazyload" data-srcset="/asset/2/prompt_tuning.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/prompt_ensemble.png" class="lazyload" data-srcset="/asset/2/prompt_ensemble.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
+</li>
+</ul>
+<h3 id="P-tuning"><a href="#P-tuning" class="headerlink" title="P-tuning"></a>P-tuning</h3><ul>
+<li><p>P-tuning V1原理</p>
+<blockquote>
+<p>目的：使GPT适配NLU任务;避免人工设计prompt。<br>做法：该方法将Prompt转换为可以学习的Embedding层，并用MLP+LSTM的方式来对Prompt Embedding进行一层处理。相比Prefix Tuning，P-Tuning加入的可微的virtual token，但仅限于输入层，没有在每一层都加；另外，virtual token的位置也不一定是前缀，插入的位置是可选的。这里的出发点实际是把传统人工设计模版中的真实token替换成可微的virtual token。</p>
+<div aligh="center"><img src="/asset/2/p-tuning.png" class="lazyload" data-srcset="/asset/2/p-tuning.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+</blockquote>
+</li>
+<li><p>P-tuning V2原理</p>
+<blockquote>
+<p>方法：该方法在每一层都加入了Prompts tokens作为输入，而不是仅仅加在输入层，这带来两个方面的好处：（1）更多可学习的参数（从P-tuning和Prompt Tuning的0.01%增加到0.1%-3%），同时也足够参数高效。（2）加入到更深层结构中的Prompt能给模型预测带来更直接的影响（如Prefix tuning）.具体做法基本同Prefix Tuning，可以看作是将文本生成的Prefix Tuning技术适配到NLU任务中.</p>
+<div aligh="center"><img src="/asset/2/p-tuning_v2.png" class="lazyload" data-srcset="/asset/2/p-tuning_v2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>P-tuning V1&#x2F;V2的区别。</p>
+<blockquote>
+<p>参见上图。可以简单的将 P-Tuning 认为是针对 Prompt Tuning 的改进， P-Tuning v2 认为是针对 Prefix Tuning 的改进。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Attention优化"><a href="#Attention优化" class="headerlink" title="Attention优化"></a>Attention优化</h2><blockquote>
+<p>Scaled dot-product attention的时间和空间复杂度都是O(n^2)的，当n较大时，会是很大的占用。</p>
+</blockquote>
+<h3 id="Sparse-attention"><a href="#Sparse-attention" class="headerlink" title="Sparse attention"></a>Sparse attention</h3><blockquote>
+<p>将空洞注意力与局部注意力相结合，使得既可以学到局部的特性，又可以学到远程稀疏的相关性。使得大部分元素为0，时间与空间复杂度下降为O(kn)。但是其是对标准attention的近似。</p>
+<div aligh="center"><img src="/asset/2/sparse_attn.png" class="lazyload" data-srcset="/asset/2/sparse_attn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+<h3 id="Flash-attention"><a href="#Flash-attention" class="headerlink" title="Flash attention"></a>Flash attention</h3><ul>
+<li><p>Flash Attention v1原理</p>
+<blockquote>
+<p>原理：减小MAC。</p>
+<p>大部分的Efficient transformer的目标都是减少FLOPs。Flash Attention的目标是降低MAC(Memory Access cost)，代价是增加了FLOPs. Flash attention是一种精准的优化策略，没有近似损失。</p>
+<div aligh="center"><img src="/asset/2/gpu.png" class="lazyload" data-srcset="/asset/2/gpu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>GPU的存储由SRAM和HBM组成。SRAM的读写速度远大于HBM，但其存储空间远小于HBM。<br>为了减少对HBM的读写，Flash attention将参与计算的矩阵进行分块送进SRAM，来提高整体读写速度。对于Flash attention来说，矩阵分块计算不是难事，重要的是Softmax值的计算——这里采用的是增量计算，具体请参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/642962397">知乎文章</a>及下列伪代码：</p>
+<div aligh="center"><img src="/asset/2/flash_attn.png" class="lazyload" data-srcset="/asset/2/flash_attn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>Flash Attention v1与Transformer的MAC分析。</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/standard_attn.png" class="lazyload" data-srcset="/asset/2/standard_attn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+标准Transformer的MAC次数：
+
+<p>第一行，读Q,K的MAC次数位2Nd，写S的MAC次数为N^2。</p>
+<p>第二行，读S的MAC次数为N^2，写P的MAC次数为N^2。</p>
+<p>第三行，读P的MAC次数为N^2，读V的MAC次数为Nd，写O的MAC次数为Nd。</p>
+<p>上述总MAC开销为4Nd+4N^2，复杂度为O(Nd+N^2)。</p>
+<p>Flash attention v1的MAC开销：</p>
+<p>上述伪代码中，一次完整的内循环需要读取完整的Q，MAC开销为Nd。</p>
+<p>外循环的次数为T_c次，即T_c &#x3D; 4dN&#x2F;M，可知开销为O(N^2 * d^2 * M^-1)。因为M(100KB)通常远远大于d（几K），所以Flash attention的MAC远小于标准attention。</p>
+<p>Flash attention能够将标准的self-attention的计算速度提升2至4倍。</p>
+<div aligh="center"><img src="/asset/2/flash-attn_hf.png" class="lazyload" data-srcset="/asset/2/flash-attn_hf.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
+</li>
+</ul>
+<h3 id="KV-cache"><a href="#KV-cache" class="headerlink" title="KV cache"></a>KV cache</h3><ul>
+<li><p>KV cache的适用范围。</p>
+<blockquote>
+<p>适用于Decoder-only的LLM的推理过程（每一个token的输出只依赖于它自己以及之前的输出）；并且每次新添加token作为输入后，原token的输入输出不会变。（一旦输入预处理层不满足KVCache的条件，后续transformer层的输入（即预处理层的输出）就发生了改变，也将不再适用于KVCache。）</p>
+</blockquote>
+</li>
+<li><p>KV cache的工作原理。</p>
+<blockquote>
+<p>思想：以空间换时间，减少重复计算。将FLOPs从O(n2)降低到O(n)。<br>Decoder-only的attention，每次附加上新的token后，下一个token的生成只依赖于当前token的query以及所有token的key和value。因此在推理的自回归过程中，我们只需要计算当前token的qkv，然后将它的kv与之前的kv进行concat后计算attention score即可，其他部分是不变的。</p>
+<div aligh="center"><img src="/asset/2/kvcache.png" class="lazyload" data-srcset="/asset/2/kvcache.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+<div aligh="center"><img src="/asset/2/kvcache2.png" class="lazyload" data-srcset="/asset/2/kvcache2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>KV cache占用内存大小</p>
+<blockquote>
+<p>假设Transformer有n_layers层，每个多头注意力层有n_heads个头，维度为d_head，需要为K和V都缓存一份；最大上下文长度为n_context，精度为n_bytes，推理的批量为batch_size。</p>
+<p>则KV cache需要的内存大小为2 * n_layers * n_heads * d_head *n_context * n_bytes * batch_size。 </p>
+</blockquote>
+</li>
+<li><p>为什么是KV cache而不是Q cache？</p>
+<blockquote>
+<p>因为下一个token只取决于最新token的Q和所有token的KV（因果性），每一次用的Q都是最新的。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Multi-Query-Attention-MQA-与Group-Query-Attention-GQA"><a href="#Multi-Query-Attention-MQA-与Group-Query-Attention-GQA" class="headerlink" title="Multi Query Attention(MQA)与Group Query Attention(GQA)"></a>Multi Query Attention(MQA)与Group Query Attention(GQA)</h3><ul>
+<li><p>MQA的动机及原理</p>
+<blockquote>
+<p>动机：KV cache中对于多头，每个头都会有一个K,V矩阵。因此KV cache较大。</p>
+<p>原理：MQA让所有头之间共享同一份K和V矩阵，从而大大减少KV参数量和cache量。这样在decoder上推理时，可以大大减少KV cache大小。能提高 30%-40% 的吞吐。</p>
+</blockquote>
+</li>
+<li><p>GQA的原理</p>
+<blockquote>
+<p>将query分为N组，每个组共享一个K和V矩阵。</p>
+<div aligh="center"><img src="/asset/2/mqa_gqa.png" class="lazyload" data-srcset="/asset/2/mqa_gqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>MQA和GQA的共同原理</p>
+<blockquote>
+<ol>
+<li><p>降低了从内存中读取的数据量，所以也就减少了计算单元等待时间，提高了计算利用率；</p>
+</li>
+<li><p>KV cache 变小了 head_num 倍，也就是显存中需要保存的 tensor 变小了，空出来空间就可以加大 batch size，从而又能提高利用率。</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="RAG"><a href="#RAG" class="headerlink" title="RAG"></a>RAG</h2><ul>
+<li>RAG流程<blockquote>
+<div aligh="center"><img src="/asset/2/rag.png" class="lazyload" data-srcset="/asset/2/rag.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
+</li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>如何计算训练大模型需要的显存？</li>
-<li>RAG流程</li>
-<li>如何处理长文本？</li>
-<li>Encoder-only，Decoder-only，Encoder-Decoder的几种模型</li>
-<li>Tokenizer的种类和区别</li>
-<li>Text转Embedding的过程</li>
-<li>Flash attention</li>
-<li>Group Query Attention</li>
-<li>Sparse attention</li>
-<li>KV Cache</li>
-<li>PPO,DPO及其他强化学习算法</li>
+<li><p>FP32,FP16,BF16</p>
+<blockquote>
+<p>FP32:1位符号，8位指数，23位尾数。<br>FP16:1位符号，5位指数，10位尾数。<br>BF16:1位符号，8位指数，7位尾数。BF16提供了与FP32相同的动态范围，但精度低于FP32和FP16。</p>
+</blockquote>
+</li>
+<li><p>如何计算训练大模型需要的显存？</p>
+<blockquote>
+<ul>
+<li>模型参数：如果模型有P个参数，使用FP32保存的话，需要4P字节的显存。</li>
+<li>梯度：大小与模型参数相同。使用FP32保存的话，需要4P字节的显存。</li>
+<li>优化器状态：Adam需要保存参数的一阶和二阶矩估计。因此显存翻倍，使用FP32保存的话，需要4P*2&#x3D;8P字节的显存。</li>
+<li>激活和中间变量：前向传播和反向传播过程中的激活值和中间变量也需要存储，这与批量大小（batch size）和序列长度有关。这些是动态的显存。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Encoder-only，Decoder-only，Encoder-Decoder的几种模型</p>
+<blockquote>
+<p>Encoder-only:BERT，RoBERTa。通常用于需要理解输入数据但不生成输出的任务，如文本分类、问答系统和命名实体识别。<br>Decoder-only:GPT，OPT，LlAMA。通常用于文本生成任务，如语言建模、文本摘要和对话系统。<br>Encoder-Decoder：Transformer，T5，Flan-T5。适用于需要将输入序列转换为输出序列的任务，如机器翻译、文本摘要和问答系统。</p>
+</blockquote>
+</li>
+<li><p>Tokenizer的种类和区别</p>
+</li>
+<li><p>PPO,DPO及其他强化学习算法</p>
+</li>
+<li><p>混合精度训练</p>
+</li>
 </ul>
 
   </div>
@@ -3054,10 +3243,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-09-24T19:00:44+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-09-28T11:30:42+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年9月24日</p>
+    <p>更新于：2024年9月28日</p>
   </a>
 </div>
 
@@ -3155,17 +3344,15 @@ Cin×Cout×K×K+CoutC_{in}\times ...</p>
         </a>
       
       
-        <a class='next' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/'>
-          <p class='title'>算法岗知识汇总【机器学习】<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+        <a class='next' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/'>
+          <p class='title'>算法岗知识汇总【多模态】<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>正在更新中……
 秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。
 
+CLIP
+CLIP模型结构
 
-
-损失函数
-常用损失函数
-
-均方误差（MSE,L2）:L=(y−y^)2L=(y-\hat{y})^2L=(...</p>
+Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换...</p>
         </a>
       
     </div>
@@ -3341,7 +3528,7 @@ Cin×Cout×K×K+CoutC_{in}\times ...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPT%E7%B3%BB%E5%88%97"><span class="toc-text">GPT系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT-1"><span class="toc-text">GPT-1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT-2"><span class="toc-text">GPT-2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT-3"><span class="toc-text">GPT-3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instruct-GPT"><span class="toc-text">Instruct-GPT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BERT%E7%B3%BB%E5%88%97"><span class="toc-text">BERT系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BERT"><span class="toc-text">BERT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BERT-wwm"><span class="toc-text">BERT-wwm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoBERTa"><span class="toc-text">RoBERTa</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLAMA%E7%B3%BB%E5%88%97"><span class="toc-text">LLAMA系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LLAMA"><span class="toc-text">LLAMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLAMA2"><span class="toc-text">LLAMA2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLAMA3"><span class="toc-text">LLAMA3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vicuna"><span class="toc-text">Vicuna</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qwen%E7%B3%BB%E5%88%97"><span class="toc-text">Qwen系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InternLM%E7%B3%BB%E5%88%97"><span class="toc-text">InternLM系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ChatGLM%E7%B3%BB%E5%88%97"><span class="toc-text">ChatGLM系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parameter-efficition-finetuning-PEFT"><span class="toc-text">Parameter-efficition finetuning(PEFT)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LoRA"><span class="toc-text">LoRA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prompt-tuning"><span class="toc-text">Prompt tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prefix-tuning"><span class="toc-text">Prefix tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P-tuning"><span class="toc-text">P-tuning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPT%E7%B3%BB%E5%88%97"><span class="toc-text">GPT系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT-1"><span class="toc-text">GPT-1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT-2"><span class="toc-text">GPT-2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT-3"><span class="toc-text">GPT-3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instruct-GPT"><span class="toc-text">Instruct-GPT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BERT%E7%B3%BB%E5%88%97"><span class="toc-text">BERT系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BERT"><span class="toc-text">BERT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BERT-wwm"><span class="toc-text">BERT-wwm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoBERTa"><span class="toc-text">RoBERTa</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLAMA%E7%B3%BB%E5%88%97"><span class="toc-text">LLAMA系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LLAMA"><span class="toc-text">LLAMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLAMA2"><span class="toc-text">LLAMA2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLAMA3"><span class="toc-text">LLAMA3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vicuna"><span class="toc-text">Vicuna</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qwen%E7%B3%BB%E5%88%97"><span class="toc-text">Qwen系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Qwen"><span class="toc-text">Qwen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qwen-2"><span class="toc-text">Qwen-2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parameter-efficition-finetuning-PEFT"><span class="toc-text">Parameter-efficition finetuning(PEFT)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LoRA"><span class="toc-text">LoRA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adapter-tuning"><span class="toc-text">Adapter tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prefix-tuning"><span class="toc-text">Prefix tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prompt-tuning"><span class="toc-text">Prompt tuning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P-tuning"><span class="toc-text">P-tuning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attention%E4%BC%98%E5%8C%96"><span class="toc-text">Attention优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sparse-attention"><span class="toc-text">Sparse attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flash-attention"><span class="toc-text">Flash attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KV-cache"><span class="toc-text">KV cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multi-Query-Attention-MQA-%E4%B8%8EGroup-Query-Attention-GQA"><span class="toc-text">Multi Query Attention(MQA)与Group Query Attention(GQA)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAG"><span class="toc-text">RAG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol>
     </div>
   </section>
 
@@ -4009,7 +4196,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【LLM】/","name":"算法岗知识汇总【LLM】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【LLM】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90LLM%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90LLM%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-09-24T11:00:44.074Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【LLM】/","name":"算法岗知识汇总【LLM】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【LLM】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90LLM%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90LLM%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-09-28T03:30:42.853Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
