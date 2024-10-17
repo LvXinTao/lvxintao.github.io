@@ -122,7 +122,7 @@
 <ul>
 <li>手撕ViT的patchify<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PatchEmbed</span>(nn.Module):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    2D Image to Patch Embedding</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, img_size=<span class="number">224</span>, patch_size=<span class="number">16</span>, in_c=<span class="number">3</span>, embed_dim=<span class="number">768</span>, norm_layer=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        img_size = (img_size, img_size)</span><br><span class="line">        patch_size = (patch_size, patch_size)</span><br><span class="line">        <span class="variable language_">self</span>.img_size = img_size</span><br><span class="line">        <span class="variable language_">self</span>.patch_size = patch_size</span><br><span class="line">        <span class="variable language_">self</span>.grid_size = (img_size[<span class="number">0</span>] // patch_size[<span class="number">0</span>], img_size[<span class="number">1</span>] // patch_size[<span class="number">1</span>])</span><br><span class="line">        <span class="variable language_">self</span>.num_patches = <span class="variable language_">self</span>.grid_size[<span class="number">0</span>] * <span class="variable language_">self</span>.grid_size[<span class="number">1</span>]</span><br><span class="line"> </span><br><span class="line">        <span class="variable language_">self</span>.proj = nn.Conv2d(in_c, embed_dim, kernel_size=patch_size, stride=patch_size)</span><br><span class="line">        <span class="variable language_">self</span>.norm = norm_layer(embed_dim) <span class="keyword">if</span> norm_layer <span class="keyword">else</span> nn.Identity()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        B, C, H, W = x.shape</span><br><span class="line">        <span class="keyword">assert</span> H == <span class="variable language_">self</span>.img_size[<span class="number">0</span>] <span class="keyword">and</span> W == <span class="variable language_">self</span>.img_size[<span class="number">1</span>], \</span><br><span class="line">            <span class="string">f&quot;Input image size (<span class="subst">&#123;H&#125;</span>*<span class="subst">&#123;W&#125;</span>) doesn&#x27;t match model (<span class="subst">&#123;self.img_size[<span class="number">0</span>]&#125;</span>*<span class="subst">&#123;self.img_size[<span class="number">1</span>]&#125;</span>).&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment"># flatten: [B, C, H, W] -&gt; [B, C, HW]</span></span><br><span class="line">        <span class="comment"># transpose: [B, C, HW] -&gt; [B, HW, C]</span></span><br><span class="line">        x = <span class="variable language_">self</span>.proj(x).flatten(<span class="number">2</span>).transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.norm(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="SwinT"><a href="#SwinT" class="headerlink" title="SwinT"></a>SwinT</h2><h2 id="自监督预训练"><a href="#自监督预训练" class="headerlink" title="自监督预训练"></a>自监督预训练</h2><h3 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h3><h3 id="BEiT"><a href="#BEiT" class="headerlink" title="BEiT"></a>BEiT</h3><h3 id="MoCo"><a href="#MoCo" class="headerlink" title="MoCo"></a>MoCo</h3><h3 id="SimCLR"><a href="#SimCLR" class="headerlink" title="SimCLR"></a>SimCLR</h3><h3 id="DINO"><a href="#DINO" class="headerlink" title="DINO"></a>DINO</h3><h2 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h2>]]></content>
+<h2 id="SwinT"><a href="#SwinT" class="headerlink" title="SwinT"></a>SwinT</h2><h2 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h2><h2 id="自监督预训练"><a href="#自监督预训练" class="headerlink" title="自监督预训练"></a>自监督预训练</h2><h3 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h3><h3 id="BEiT"><a href="#BEiT" class="headerlink" title="BEiT"></a>BEiT</h3><h3 id="MoCo"><a href="#MoCo" class="headerlink" title="MoCo"></a>MoCo</h3><h3 id="SimCLR"><a href="#SimCLR" class="headerlink" title="SimCLR"></a>SimCLR</h3><h3 id="DINO"><a href="#DINO" class="headerlink" title="DINO"></a>DINO</h3>]]></content>
       <categories>
         <category>算法岗</category>
         <category>八股文</category>
@@ -385,10 +385,8 @@
 <p>对于一般的任务，r&#x3D;1,2,4,8 就足够了。而一些领域差距比较大的任务可能需要更大的r 。</p>
 </blockquote>
 </li>
-<li><p>LoRA的几种变种（QLoRA等）</p>
-</li>
 </ul>
-<h3 id="Adapter-tuning"><a href="#Adapter-tuning" class="headerlink" title="Adapter tuning"></a>Adapter tuning</h3><ul>
+<h3 id="QLoRA"><a href="#QLoRA" class="headerlink" title="QLoRA"></a>QLoRA</h3><h3 id="Adapter-tuning"><a href="#Adapter-tuning" class="headerlink" title="Adapter tuning"></a>Adapter tuning</h3><ul>
 <li><p>Adapter tuning原理</p>
 <blockquote>
 <p>在模型内部外置一些轻量级的层，通过训练这些层来适应新的数据变化。下图中为Bottleneck adapter。</p>
@@ -448,7 +446,7 @@
 <h3 id="Flash-attention"><a href="#Flash-attention" class="headerlink" title="Flash attention"></a>Flash attention</h3><ul>
 <li><p>Flash Attention v1原理</p>
 <blockquote>
-<p>原理：减小MAC。</p>
+<p>原理：减小MAC：使用Tiling技巧将Q,K,V分块后存入SRAM中，使用增量更新的技巧来计算Softmax值以及加权后的V值，再存回HBM，极大地减小了与HBM的IO开销。</p>
 <p>大部分的Efficient transformer的目标都是减少FLOPs。Flash Attention的目标是降低MAC(Memory Access cost)，代价是增加了FLOPs. Flash attention是一种精准的优化策略，没有近似损失。</p>
 <div aligh="center"><img src="/asset/2/gpu.png" class="lazyload" data-srcset="/asset/2/gpu.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
 
@@ -469,7 +467,15 @@
 <p>上述伪代码中，一次完整的内循环需要读取完整的Q，MAC开销为Nd。</p>
 <p>外循环的次数为T_c次，即T_c &#x3D; 4dN&#x2F;M，可知开销为O(N^2 * d^2 * M^-1)。因为M(100KB)通常远远大于d（几K），所以Flash attention的MAC远小于标准attention。</p>
 <p>Flash attention能够将标准的self-attention的计算速度提升2至4倍。</p>
-<div aligh="center"><img src="/asset/2/flash-attn_hf.png" class="lazyload" data-srcset="/asset/2/flash-attn_hf.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
+<div aligh="center"><img src="/asset/2/flash-attn_hf.png" class="lazyload" data-srcset="/asset/2/flash-attn_hf.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>代码见<a href="https://zhuanlan.zhihu.com/p/696850636">此知乎文章</a></p>
+</blockquote>
+</li>
+<li><p>Flash attention如何减少显存？</p>
+<blockquote>
+<p>与Gradient checkpointing类似，只保存部分中间激活值，在反向传播时重新计算。用时间换空间。</p>
+</blockquote>
 </li>
 </ul>
 <h3 id="KV-cache"><a href="#KV-cache" class="headerlink" title="KV cache"></a>KV cache</h3><ul>
@@ -521,6 +527,70 @@
 </blockquote>
 </li>
 </ul>
+<h2 id="Tokenizer"><a href="#Tokenizer" class="headerlink" title="Tokenizer"></a>Tokenizer</h2><ul>
+<li>Tokenizer的种类和区别<blockquote>
+<p>Tokenize有三种粒度：</p>
+<ol>
+<li>Word：对于英文等自然语言来说，存在着天然的分隔符；但是对于一些东亚文字包括中文来说，就需要某种分词算法才行。由于长尾现象的存在，词汇表可能会超大。</li>
+<li>Char：词汇表只有最基本的字符。这样做的问题是，由于字符数量太小，我们在为每个字符学习嵌入向量的时候，每个向量就容纳了太多的语义在内，学习起来非常困难。</li>
+<li>Subword：介于字符和单词之间，平衡了词汇量和语义独立性。处理原则是，常用词应该保持原状，生僻词应该拆分成子词以共享token压缩空间。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>常用的BPE、WordPiece等都属于Subword的tokenization。</p>
+</blockquote>
+<h3 id="BPE-Byte-Pair-Encoding"><a href="#BPE-Byte-Pair-Encoding" class="headerlink" title="BPE(Byte Pair Encoding)"></a>BPE(Byte Pair Encoding)</h3><ul>
+<li><p>BPE的原理</p>
+<blockquote>
+<p>BPE每一步都将最常见的一对相邻数据单位替换为该数据中没有出现过的一个新单位，反复迭代直到满足停止条件。</p>
+<ol>
+<li>首先Pre-tokenization得到所有单词及频次的集合，初始的vocabulary为基础字符。（每个单词末尾会添加&lt;/w&gt;来区分词尾和词中）</li>
+<li>挑选出频次最高的vocab pair，将其合并然后加入到vocabulary中构成新token。</li>
+<li>将（单词，频次）集合中的单词使用vocabulary更新。</li>
+<li>重复上述2-3，直到vocab达到要求。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>BPE的编码与解码</p>
+<blockquote>
+<p>编码：对于每个空格分开的单词使用merge rule进行贪婪匹配。编码时对于没见过的用<unk> token代替，BPE 只会将不在词汇表中的单个字符 tokenize 为 unknown 。 例如 “bum”，由于”##m” 不在词表中，由此产生的tokenization 是 [“b”, “##u”, “[UNK]”]。</p>
+<p>解码：对于每个token，根据是否有&lt;/w&gt;加上空格，然后进行拼接。</p>
+</blockquote>
+</li>
+<li><p>Byte-level BPE</p>
+<blockquote>
+<p>BPE的一个问题是，如果遇到了unicode，基本字符集可能会很大。一种处理方法是我们以一个字节为一种“字符”，不管实际字符集用了几个字节来表示一个字符。这样的话，基础字符集的大小就锁定在了256。</p>
+<p>例如，像GPT-2的词汇表大小为50257 &#x3D; 256 + <EOS> + 50000 mergers，<EOS>是句子结尾的特殊标记。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="WordPiece"><a href="#WordPiece" class="headerlink" title="WordPiece"></a>WordPiece</h3><p>很多著名的Transformer模型如BERT&#x2F;DistilBERT都使用了它。</p>
+<ul>
+<li><p>WordPiece的原理。</p>
+<blockquote>
+<p>与BPE一样，WordPiece从一个小的vocab开始学习merge规则。二者的区别在于：WordPiece不是选择最高频的pair，而是选择最大化如下score的一对token。</p>
+<p>score(t1,t2) &#x3D; freq(t12) &#x2F; (freq(t1)*freq(t2))，freq(t)为t在语料库中出现的频次。<br>WordPiece的物理意义为：通过将t1和t2合并为t12后，语料库的对数似然的增量最大化。<br>具体步骤与BPE相似。注意：注意：WordPiece 通过添加前缀（在 BERT 中是 ##）来识别子词，这可以识别一个子词是否是单词的开始。这里通过将前缀添加到单词内的每个字符来拆分的，单词的首字符不添加前缀。</p>
+</blockquote>
+</li>
+<li><p>WordPiece的编码和解码</p>
+<blockquote>
+<p>编码： 找到词表中能够匹配到的最长的子词，然后对单词进行拆分。当tokenization 无法在词表中找到子词时，整个单词被 tokenize 为 unknown 。 例如 “bum”，由于”##m” 不在词表中，由此产生的tokenization 将只是 [“[UNK]”], 不是 [“b”, “##u”, “[UNK]”]。<br>解码：与BPE类似，对于有前缀的合并成一个单词，无前缀的加上空格。</p>
+</blockquote>
+</li>
+<li><p>WordPiece与BPE的区别</p>
+<blockquote>
+<ol>
+<li>WordPiece 仅保存最终词表，而不保存学到的 merge rule 。</li>
+<li>对于Unknown字符的处理不同。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="SentencePiece"><a href="#SentencePiece" class="headerlink" title="SentencePiece"></a>SentencePiece</h3><blockquote>
+<p>一般与Unigram算法连用。Unigram的算法思想是从一个巨大的词汇表出发，再逐渐删除trim down其中的词汇，直到size满足预定义。初始的词汇表可以采用所有预分词器分出来的词，再加上所有高频的子串。每次从词汇表中删除词汇的原则是使预定义的损失最小。<br>Unigram算法每次会从词汇表中挑出使得loss增长最小的10%~20%的词汇来删除。</p>
+</blockquote>
 <h2 id="RAG"><a href="#RAG" class="headerlink" title="RAG"></a>RAG</h2><ul>
 <li>RAG流程<blockquote>
 <div aligh="center"><img src="/asset/2/rag.png" class="lazyload" data-srcset="/asset/2/rag.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
@@ -542,16 +612,71 @@
 </ul>
 </blockquote>
 </li>
+<li><p>混合精度训练</p>
+<blockquote>
+<p>使用混合精度训练，内存占用更少，计算更快（不少GPU都有对fp16计算的优化）。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>FP16存在的问题：</p>
+<ol>
+<li>数据溢出：容易上溢或者下溢。</li>
+<li>舍入误差。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>解决办法：</p>
+<ol>
+<li><p>FP32权重备份：用于解决舍入误差。weights, activations, gradients 等数据在训练中都利用FP16来存储，同时拷贝一份FP32的weights，用于更新。<br>这主要是因为，权重&#x3D;旧权重+lr*梯度，而lr * 梯度往往很小，使用fp16相加会有舍入误差。，在训练过程中，内存中占据大部分的基本都是 activations 的值（动态内存）。特别是在batchsize 很大的情况下， activations 更是特别占据空间（一般为静态内存的3-4倍），因此使用fp16可以大大减少显存占用。</p>
+</li>
+<li><p>Loss Scale：主要为了解决fp16下溢的问题。训练到了后期，梯度会特别小（特别是激活函数饱和段的梯度），fp16会产生下溢现象。<br>对计算出来的loss进行scale，由于链式法则的存在，loss上的scale也会作用到梯度上。这样，scaled-gradient 就可以一直使用 fp16 进行存储了。只有在进行更新的时候，才会将 scaled-gradient 转化为 fp32，同时将scale抹去。</p>
+</li>
+<li><p>精度累加：主要是为了减少加法过程中的舍入误差，保证精度不损失。在某些模型中，fp16矩阵乘法的过程中，需要利用 fp32 来进行矩阵乘法中间的累加(accumulated)，然后再将 fp32 的值转化为 fp16 进行存储。即利用fp16进行乘法和存储，利用fp32来进行加法计算。</p>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>具体步骤：</p>
+<ol>
+<li>维护一个 FP32 数值精度模型的副本</li>
+<li>在每个iteration</li>
+</ol>
+<ul>
+<li>拷贝并且转换成 FP16 模型</li>
+<li>前向传播（FP16 的模型参数)，此时 weights, activations 都是 FP16</li>
+<li>loss 乘 scale factor s</li>
+<li>反向传播（FP16 的模型参数和参数梯度)， 此时 gradients 也是 FP16</li>
+<li>参数梯度乘 1&#x2F;s</li>
+<li>利用 FP16 的梯度更新 FP32 的模型参数</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Pytorch中amp(automatic mixed precision)示例</span></span><br><span class="line"><span class="keyword">from</span> torch.cuda.amp <span class="keyword">import</span> autocast, GradScaler</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">scaler = GradScaler()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> step, batch <span class="keyword">in</span> <span class="built_in">enumerate</span>(loader, <span class="number">1</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># prepare inputs and targets for the model and loss function respectively.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># forward pass with `autocast` context manager</span></span><br><span class="line">    <span class="keyword">with</span> autocast(enabled=<span class="literal">True</span>):</span><br><span class="line">        outputs = model(inputs)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># computing loss</span></span><br><span class="line">    loss = loss_fn(outputs, targets)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># scale gradint and perform backward pass</span></span><br><span class="line">    scaler.scale(loss).backward()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># before gradient clipping the optimizer parameters must be unscaled.</span></span><br><span class="line">    scaler.unscale_(optimizer)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># perform optimization step</span></span><br><span class="line">    torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm)</span><br><span class="line"></span><br><span class="line">    scaler.step(optimizer)</span><br><span class="line">    scaler.update()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>解决训练显存不够的几种办法。</p>
+<blockquote>
+<ol>
+<li>减小batchsize。通过减小中间激活值来减少显存占用量。</li>
+<li>使用混合精度训练。</li>
+<li>梯度累积(Gradient accumulation)：在多个小批次（mini-batches）上累积梯度，然后一次性更新模型参数。这样可以在不增加显存消耗的情况下，模拟更大的批次大小，从而提高训练速度和模型性能（可以证明与大batchsize训练效果完全等价：只需要将每次计算出的loss除以一个accumulation step，就能保证最后的梯度一致）。 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimizer.zero_grad()</span><br><span class="line"><span class="keyword">for</span> i, (inputs, labels) <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">zip</span>(mini_batches, mini_targets)):</span><br><span class="line">    outputs = model(inputs)</span><br><span class="line">    loss = criterion(outputs, labels)</span><br><span class="line">    </span><br><span class="line">    loss = loss / accumulation_steps  </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 反向传播，累积梯度</span></span><br><span class="line">    loss.backward()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 每 accumulation_steps 步进行一次参数更新</span></span><br><span class="line">    <span class="keyword">if</span> (i + <span class="number">1</span>) % accumulation_steps == <span class="number">0</span>:</span><br><span class="line">        optimizer.step()</span><br><span class="line">        optimizer.zero_grad()</span><br></pre></td></tr></table></figure></li>
+<li>梯度检查点(Gradient checkpointing)：在反向传播时重新计算中间层的激活值，而不是在整个训练过程中都保持它们。这样可以大大减少显存占用，但可能会增加一些计算成本。（前向传播过程中，以torch.no_grad()方式运行，不保存中间激活；反向时，检索保证的输入和函数，然后计算梯度）</li>
+</ol>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.utils.checkpoint <span class="keyword">as</span> checkpoint</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SimpleModel</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(SimpleModel, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.layer1 = nn.Linear(<span class="number">100</span>, <span class="number">200</span>)</span><br><span class="line">        <span class="variable language_">self</span>.layer2 = nn.Linear(<span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">        <span class="variable language_">self</span>.layer3 = nn.Linear(<span class="number">200</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = checkpoint.checkpoint(<span class="variable language_">self</span>.layer1, x)  <span class="comment"># 在第一层使用梯度检查点</span></span><br><span class="line">        x = checkpoint.checkpoint(<span class="variable language_">self</span>.layer2, x)  <span class="comment"># 在第二层使用梯度检查点</span></span><br><span class="line">        x = <span class="variable language_">self</span>.layer3(x)  <span class="comment"># 第三层不使用梯度检查点</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol start="5">
+<li>Parameter Efficient Finetuning。</li>
+<li>ZeRO-Offload：将未使用的数据暂时卸载到CPU或不同的设备中，然后在需要时再将其读回，参数动态地从 GPU -&gt; CPU, CPU -&gt; GPU 进行转移，从而节省 GPU 内存。这个想法的一个具体实现是ZeRO，它将参数、梯度和优化器状态分割到所有可用的硬件上，并根据实际需要再将它们具体化。</li>
+</ol>
+</blockquote>
+</li>
 <li><p>Encoder-only，Decoder-only，Encoder-Decoder的几种模型</p>
 <blockquote>
 <p>Encoder-only:BERT，RoBERTa。通常用于需要理解输入数据但不生成输出的任务，如文本分类、问答系统和命名实体识别。<br>Decoder-only:GPT，OPT，LlAMA。通常用于文本生成任务，如语言建模、文本摘要和对话系统。<br>Encoder-Decoder：Transformer，T5，Flan-T5。适用于需要将输入序列转换为输出序列的任务，如机器翻译、文本摘要和问答系统。</p>
 </blockquote>
 </li>
-<li><p>Tokenizer的种类和区别</p>
-</li>
 <li><p>PPO,DPO及其他强化学习算法</p>
-</li>
-<li><p>混合精度训练</p>
 </li>
 </ul>
 ]]></content>
@@ -796,7 +921,7 @@ Q-former 由两个Transformer子模块组成，两部分共享Self-attention层�
 </blockquote>
 </li>
 </ul>
-<h3 id="InstructBLIP"><a href="#InstructBLIP" class="headerlink" title="InstructBLIP"></a>InstructBLIP</h3><h2 id="LLaVa系列"><a href="#LLaVa系列" class="headerlink" title="LLaVa系列"></a>LLaVa系列</h2><h3 id="LLaVa"><a href="#LLaVa" class="headerlink" title="LLaVa"></a>LLaVa</h3><ul>
+<h3 id="InstructBLIP"><a href="#InstructBLIP" class="headerlink" title="InstructBLIP"></a>InstructBLIP</h3><h3 id="BLIP3"><a href="#BLIP3" class="headerlink" title="BLIP3"></a>BLIP3</h3><h2 id="LLaVa系列"><a href="#LLaVa系列" class="headerlink" title="LLaVa系列"></a>LLaVa系列</h2><h3 id="LLaVa"><a href="#LLaVa" class="headerlink" title="LLaVa"></a>LLaVa</h3><ul>
 <li><p>LLaVa数据集的构建</p>
 <blockquote>
 <p>根据COCO中的caption和bbox，可以利用language-only GPT-4生成三种instruction data.</p>
@@ -849,7 +974,7 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
 </blockquote>
 </li>
 </ul>
-<h2 id="MiniGPT-4"><a href="#MiniGPT-4" class="headerlink" title="MiniGPT-4"></a>MiniGPT-4</h2><ul>
+<h3 id="LLaVa-NEXT"><a href="#LLaVa-NEXT" class="headerlink" title="LLaVa-NEXT"></a>LLaVa-NEXT</h3><h2 id="MiniGPT-4"><a href="#MiniGPT-4" class="headerlink" title="MiniGPT-4"></a>MiniGPT-4</h2><ul>
 <li><p>MiniGPT-4模型结构</p>
 <blockquote>
 <div aligh="center"><img src="/asset/2/minigpt4.png" class="lazyload" data-srcset="/asset/2/minigpt4.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
@@ -919,7 +1044,7 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
 <li><strong>Visual Agent能力</strong>：Qwen2-VL提升了function call以及Agent能力，能够与环境实现交互，进行复杂任务的执行 。</li>
 </ol>
 </blockquote>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<h2 id="LLaMa-3-2-Vision"><a href="#LLaMa-3-2-Vision" class="headerlink" title="LLaMa 3.2-Vision"></a>LLaMa 3.2-Vision</h2><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
 <li><p>多模态的发展路径</p>
 <blockquote>
 <p>双塔型：CLIP,Prefix型：ViLT-&gt;多模态的GPT-3：Flamingo，先对齐再融合：ALBEF，多任务预训练：BLIP-&gt;使用LLM：BLIP-2,LLaVa,Instruct-BLIP,Qwen-VL等-&gt;全模态：ImageBind</p>
@@ -1236,7 +1361,9 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 <h2 id="文生图模型"><a href="#文生图模型" class="headerlink" title="文生图模型"></a>文生图模型</h2><h3 id="Stable-Diffusion-LDM"><a href="#Stable-Diffusion-LDM" class="headerlink" title="Stable Diffusion(LDM)"></a>Stable Diffusion(LDM)</h3><h4 id="SD-1-x-2-x"><a href="#SD-1-x-2-x" class="headerlink" title="SD 1.x&#x2F;2.x"></a>SD 1.x&#x2F;2.x</h4><ul>
 <li><p>SD中的VAE。</p>
 <blockquote>
-<p>Perceptual loss，Patch-based GAN loss。</p>
+<div aligh="center"><img src="/asset/2/sd_vae.jpeg" class="lazyload" data-srcset="/asset/2/sd_vae.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+重构损失：L1 loss,Perceptual loss，对抗损失：Patch-based GAN loss,正则化：KL loss.
+
 <p>为了避免latent太过无序，使用正则项对latent space进行规范。原文中使用了两种：（1）KL-reg，但权重设置得很小（过强的正则化会导致生成的图像模糊）；（2）VQ-reg，使用很大的codebook。</p>
 <p>SD中的VAE不具有生成功能，主要起的是压缩作用。</p>
 </blockquote>
@@ -1249,8 +1376,8 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 </li>
 <li><p>SD的U-Net结构及与DDPM中U-Net的区别。</p>
 <blockquote>
-<div aligh="center"><img src="/asset/2/sd_unet.png" class="lazyload" data-srcset="/asset/2/sd_unet.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-其中时间步t在ResBlock中过线性层后与x相加；文本c在SpatialTransformer的cross attention中与flatten的x交互。</blockquote>
+<div aligh="center"><img src="/asset/2/sd_unet.jpeg" class="lazyload" data-srcset="/asset/2/sd_unet.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+其中时间步t在ResBlock中过线性层后与x相加；文本c在SpatialTransformer的cross attention中与flatten的x交互。Unet中的连接方式是直接concat。</blockquote>
 </li>
 </ul>
 <blockquote>
@@ -1293,11 +1420,17 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 <blockquote>
 <p>R-precision：对提取的图像和文本特征之间的检索结果进行排序，来衡量文本描述和生成的图像之间的视觉语义相似性。</p>
 </blockquote>
+<ul>
+<li>SD 2.x与SD 1.x最主要区别<blockquote>
+<p>SD 2.x使用了v-prediction，见下图</p>
+<div aligh="center"><img src="/asset/2/v_pred.png" class="lazyload" data-srcset="/asset/2/v_pred.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
+</li>
+</ul>
 <h4 id="SD-XL"><a href="#SD-XL" class="headerlink" title="SD-XL"></a>SD-XL</h4><ul>
 <li><p>SD-XL与SD 1.x的区别</p>
 <blockquote>
 <ul>
-<li><p>增加一个 Refiner 模型，用于对图像进一步地精细化</p>
+<li><p>增加一个 Refiner 模型，用于对图像进一步地精细化。</p>
 </li>
 <li><p>使用 CLIP ViT-L 和 OpenCLIP ViT-bigG 两个 text encoder</p>
 </li>
@@ -1317,7 +1450,175 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 <blockquote>
 <div aligh="center"><img src="/asset/2/sdxl.png" class="lazyload" data-srcset="/asset/2/sdxl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
 </blockquote>
-<h3 id="IMAGEN"><a href="#IMAGEN" class="headerlink" title="IMAGEN"></a>IMAGEN</h3><h3 id="DALLE"><a href="#DALLE" class="headerlink" title="DALLE"></a>DALLE</h3><h3 id="GLIDE"><a href="#GLIDE" class="headerlink" title="GLIDE"></a>GLIDE</h3><h2 id="额外控制"><a href="#额外控制" class="headerlink" title="额外控制"></a>额外控制</h2><h3 id="ControlNet"><a href="#ControlNet" class="headerlink" title="ControlNet"></a>ControlNet</h3><h3 id="T2I-Adapter"><a href="#T2I-Adapter" class="headerlink" title="T2I-Adapter"></a>T2I-Adapter</h3><h2 id="私人定制"><a href="#私人定制" class="headerlink" title="私人定制"></a>私人定制</h2><h3 id="Textual-Inversion"><a href="#Textual-Inversion" class="headerlink" title="Textual Inversion"></a>Textual Inversion</h3><h3 id="DreamBooth"><a href="#DreamBooth" class="headerlink" title="DreamBooth"></a>DreamBooth</h3><h2 id="图像编辑"><a href="#图像编辑" class="headerlink" title="图像编辑"></a>图像编辑</h2><h3 id="Prompt-to-Prompt"><a href="#Prompt-to-Prompt" class="headerlink" title="Prompt-to-Prompt"></a>Prompt-to-Prompt</h3><h3 id="InstructPix2Pix"><a href="#InstructPix2Pix" class="headerlink" title="InstructPix2Pix"></a>InstructPix2Pix</h3>]]></content>
+<h4 id="SD-3-x"><a href="#SD-3-x" class="headerlink" title="SD 3.x"></a>SD 3.x</h4><ul>
+<li>SD 3的改动<blockquote>
+<ol>
+<li>全面拥抱DiT架构。</li>
+<li>替换ODE&#x2F;SDE噪声预测步骤，使用Rectified Flow。（使用Flow matching objective）</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="IDDPM"><a href="#IDDPM" class="headerlink" title="IDDPM"></a>IDDPM</h3><ul>
+<li>IDDPM的原理<blockquote>
+<ol>
+<li>DDPM中将方差设置为常数。而IDDPM中，提出了可学习的方差（模型会额外输出一个向量用于预测方差），并把它加入到loss中（L_{vlb}），其中L_{vlb}表示变分下界损失（优化时采用重要性采样）。</li>
+<li>IDDPM认为DDPM的加噪方式会导致早期阶段加噪过快，因此提出了<strong>cosine schedule</strong>的加噪方式。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="ADM（Guided-diffusion）"><a href="#ADM（Guided-diffusion）" class="headerlink" title="ADM（Guided-diffusion）"></a>ADM（Guided-diffusion）</h3><ul>
+<li><p>Guided-diffusion模型结构的改进</p>
+<blockquote>
+<ul>
+<li>保持模型大小不变，增加深度，降低宽度</li>
+<li>增加 Attention 头的数量</li>
+<li>不只是在 16x16 分比率使用 Attention，在 32x32 和 8x8 也使用</li>
+<li>在上采样和下采样激活时使用 BigGAN 的 residual block</li>
+<li>在 residual connection 中采用 1&#x2F;sqrt(2) 的缩放</li>
+</ul>
+</blockquote>
+</li>
+<li><p>ADM使用的条件引导</p>
+<blockquote>
+<p>使用了Classifier Guidance。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="GLIDE"><a href="#GLIDE" class="headerlink" title="GLIDE"></a>GLIDE</h3><ul>
+<li>GLIDE的贡献<blockquote>
+<p>将Diffusion用于文本条件图像生成，并比较了两种不同的引导策略：CLIP Guidance和Classifier Free Guidance。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="DALL-E"><a href="#DALL-E" class="headerlink" title="DALL-E"></a>DALL-E</h3><h4 id="DALL-E-1"><a href="#DALL-E-1" class="headerlink" title="DALL-E 1"></a>DALL-E 1</h4><ul>
+<li>DALL-E 1的模型架构<blockquote>
+<div aligh="center"><img src="/asset/2/dalle.png" class="lazyload" data-srcset="/asset/2/dalle.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>第一阶段，训练一个VQVAE。第二阶段，训练一个自回归的prior模型，这里用的是decoder-only的Transformer（与VQGAN很像，但是这里将文本作为prefix预置条件，实现了Text-conditional生成）</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="DALL-E-2-unCLIP"><a href="#DALL-E-2-unCLIP" class="headerlink" title="DALL-E 2(unCLIP)"></a>DALL-E 2(unCLIP)</h4><ul>
+<li><p>DALL-E 2的模型结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/dalle2.png" class="lazyload" data-srcset="/asset/2/dalle2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+共由三部分组成，预训练的CLIP，prior模型，decoder模型。之所以叫unCLIP，是因为这里是和CLIP反过来的，将Image embedding还原成图片。
+</blockquote>
+</li>
+<li><p>DALL-E 2训练过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/dalle2_train.png" class="lazyload" data-srcset="/asset/2/dalle2_train.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ol>
+<li>在图文对上预训练CLIP模型，之后一直是冻结的。</li>
+<li>训练Prior模型，由文本embedding还原得到对应的图片embedding。实现上使用了两种结构：（1）自回归Prior。（2）扩散模型prior。最终选用了扩散模型Prior。</li>
+<li>训练Decoder模型，由CLIP图片embedding解码为真实的图片（因此叫unCLIP）。生成分辨率为64*64，为了生成高清大图，还训练了两个扩散模型的超分模型，上采样到 256 * 256和1024 * 1024.</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="DALL-E-3"><a href="#DALL-E-3" class="headerlink" title="DALL-E 3"></a>DALL-E 3</h4><ul>
+<li>DALL-E 3主要贡献<blockquote>
+<p>对图文数据集recaptioning，即训练一个 captioner 模型，来为图片生成更完整的文本描述。用这种合成的（synthetic）图像文本对数据集，来训练文生图模型，prompt following 能力显著提升。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="IMAGEN"><a href="#IMAGEN" class="headerlink" title="IMAGEN"></a>IMAGEN</h3><ul>
+<li>IMAGEN的模型结构<blockquote>
+<div aligh="center"><img src="/asset/2/imagen.png" class="lazyload" data-srcset="/asset/2/imagen.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>文本编码器使用T5，训练过程中始终冻结。<br>扩散模型级联了三层，第一层去噪生成图像，第二、三层是超分辨率。<br>训练及采样过程中同样使用了CFG。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="额外控制"><a href="#额外控制" class="headerlink" title="额外控制"></a>额外控制</h2><h3 id="ControlNet"><a href="#ControlNet" class="headerlink" title="ControlNet"></a>ControlNet</h3><ul>
+<li><p>ControlNet可以添加的控制条件类型</p>
+<blockquote>
+<p>Canny Edge, Hough lines, User scrobbles, Human Keypoints, Segmentation maps, shape normals ,depth.</p>
+<p>多个条件可以叠加，将controlnet的结果相加即可。</p>
+</blockquote>
+</li>
+<li><p>ControlNet的结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/controlnet.png" class="lazyload" data-srcset="/asset/2/controlnet.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>会将SD的Unet的Encoder和Middle做trainable copy，并且条件输入时和输出时会过一个Zero-initialized conv。然后在Skip connection时，与原网络的部分相加后，与Decoder的concat。</p>
+</blockquote>
+</li>
+<li><p>Zero-conv的结构？为什么要零初始化？</p>
+<blockquote>
+<p>Zero-conv是w和b初始化为0的1*1卷积层。使用零初始化的目的是：在训练初期时，trainable copy不会对原始模型产生有害的噪声。</p>
+</blockquote>
+</li>
+<li><p>ControlNet推理时的条件控制</p>
+<blockquote>
+<p>CFG resolution weighting：使用CFG推理时，会同时计算cond和uncond。如果同时将conditioning image加到uncond和cond，会完全忽视CFG guidance；如果只加到cond，将会使得guidance太强。</p>
+<p>提出的方法是：将conditioning image只加到cond，但是每次在skip connectionn加的时候会根据分辨率添加一个权重w&#x3D;64&#x2F;h，h为分辨率大小。通过这样，可以减轻guidance的强度。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="T2I-Adapter"><a href="#T2I-Adapter" class="headerlink" title="T2I-Adapter"></a>T2I-Adapter</h3><ul>
+<li><p>T2I-Adapter可以添加的控制条件类型</p>
+<blockquote>
+<p>Sketch map, Semantic segmentation map, Keypoints , color , depth maps</p>
+</blockquote>
+</li>
+<li><p>T2I-Adapter的模型结构，以及它作用的位置</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/t2i_adapter.png" class="lazyload" data-srcset="/asset/2/t2i_adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>Adapter结构由四个特征提取block和三个downsample block组成，输入分辨率为512 * 512。初始时，将condition map使用pixel unshuffle降采样到64 * 64。然后在每一层scale会输出一个feature，对应SD encoder中的分辨率大小。这四个feature会分别加到SD的UNet encoder的中间feature上。</p>
+<p>起作用的位置是Unet的encoder层，会在每个scale与中间feature相加。</p>
+</blockquote>
+</li>
+<li><p>T2I-Adapter的多条件控制</p>
+<blockquote>
+<p>无需额外训练，只需要将多个条件的feature加权相加即可。</p>
+</blockquote>
+</li>
+<li><p>T2I-Adapter的采样策略</p>
+<blockquote>
+<p>实验中发现，将time embedding输入adapter对guidance能力有帮助，但如果每个去噪步都加guidance会过于繁琐。</p>
+<p>文中最后发现，在去噪的中后阶段guidance几乎不起作用，大部分内容都是在早期起作用。因此在训练时，当采集的t是中后期的t，则忽略guidance；如果是早期的，则正常加guidance。推理使用DDIM采样时，也采用non-uniform sampling。即增大t落在早期阶段的概率（这里采用了cubic function）</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="私人定制"><a href="#私人定制" class="headerlink" title="私人定制"></a>私人定制</h2><h3 id="Textual-Inversion"><a href="#Textual-Inversion" class="headerlink" title="Textual Inversion"></a>Textual Inversion</h3><ul>
+<li><p>Texual Inversion做的事情</p>
+<blockquote>
+<p>给定3-5张某个主体的图片，冻结T2I模型，通过优化一个pseudo-word的embedding来使得模型学会生成该主体。在2张V100上优化了5000个steps。</p>
+</blockquote>
+</li>
+<li><p>Textual Inversion的优化流程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/textual_inversion.png" class="lazyload" data-srcset="/asset/2/textual_inversion.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>将placeholder的embedding vector设置为可学习的embedding（使用其coarse description的token进行初始化），将输入图片的prompt设置为”A photo of S*”,”A rendition of S*”等。然后使用LDM的reconstruction loss（去噪损失）对该embedding进行优化。（注意，该优化过程中，除了此可学习embedding，其他所有参数冻结）</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="DreamBooth"><a href="#DreamBooth" class="headerlink" title="DreamBooth"></a>DreamBooth</h3><ul>
+<li><p>DreamBooth做的事情</p>
+<blockquote>
+<p>给定3-5张某个主体的图片，通过微调T2I模型，使得模型能够生成该主体的图片，同时保持原有类别的生成能力。在单张A100上微调SD约需要5min。</p>
+</blockquote>
+</li>
+<li><p>DreamBooth的微调流程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/dreambooth.png" class="lazyload" data-srcset="/asset/2/dreambooth.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ol>
+<li><p>对于输入主体的照片，为其打上标签“a [identifier] [class noun]”，其中identifier是词汇表中的rare tokens，class是一个粗粒度的描述主体类别的词。</p>
+</li>
+<li><p>接下来微调SD的所有层，但是这样会造成language drift（忘记原来的类别如何生成），并且生成多样性降低。采取的办法是除了reconstruction loss之外，还使用了class-specific preservation loss。具体做法是：从原始SD中生成一些“A [class noun]”的样本，然后将这些sample加入训练数据来同时微调SD。通过这个loss可以避免few-shot微调之后忘记原本属于该class的信息。</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="IP-Adapter"><a href="#IP-Adapter" class="headerlink" title="IP-Adapter"></a>IP-Adapter</h3><h2 id="图像编辑"><a href="#图像编辑" class="headerlink" title="图像编辑"></a>图像编辑</h2><h3 id="Prompt-to-Prompt"><a href="#Prompt-to-Prompt" class="headerlink" title="Prompt-to-Prompt"></a>Prompt-to-Prompt</h3><h3 id="InstructPix2Pix"><a href="#InstructPix2Pix" class="headerlink" title="InstructPix2Pix"></a>InstructPix2Pix</h3>]]></content>
       <categories>
         <category>算法岗</category>
         <category>八股文</category>
@@ -1330,12 +1631,7 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
   <entry>
     <title>算法岗知识汇总【机器学习】</title>
     <url>/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>正在更新中……</p>
-<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
-<span id="more"></span>
-
-
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><ul>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><ul>
 <li><p>常用损失函数</p>
 <blockquote>
 <p>均方误差（MSE,L2）:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">L=(y-\hat{y})^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> （回归任务常用，隐含的预设是数据误差符合高斯分布）<br>绝对误差（MAE,L1）:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi mathvariant="normal">∣</mi><mi>y</mi><mo>−</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">L=|y-\hat{y}|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mord">∣</span></span></span></span><br>二值交叉熵（BCE）：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><msub><mo>∑</mo><mi>i</mi></msub><mo>−</mo><mo stretchy="false">[</mo><msub><mi>y</mi><mi>i</mi></msub><mo>∗</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>∗</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L=\frac{1}{N}\sum_i -[ y_i* log(p_i)+(1-y_i)*log(1-p_i)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)]</span></span></span></span>;<br>交叉熵（CE）：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><msub><mo>∑</mo><mi>i</mi></msub><msubsup><mo>∑</mo><mrow><mi>c</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></msubsup><mo>−</mo><msub><mi>y</mi><mrow><mi>i</mi><mi>c</mi></mrow></msub><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mrow><mi>i</mi><mi>c</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L=\frac{1}{N}\sum_i\sum\limits_{c=1}^M -y_{ic}log(p_{ic})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4954em;vertical-align:-0.9671em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5283em;"><span style="top:-2.1329em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>;（倾向于任务数据接近多项式分布）</p>
@@ -1398,7 +1694,12 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">	exps = np.exp(x - np.<span class="built_in">max</span>(x)) <span class="comment"># 防止上溢</span></span><br><span class="line">    <span class="keyword">return</span> exps / np.<span class="built_in">sum</span>(exps)</span><br><span class="line">	</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cross_entropy_error</span>(<span class="params">p,y</span>):</span><br><span class="line">    delta=<span class="number">1e-7</span>       <span class="comment">#添加一个微小值可以防止负无限大(np.log(0))的发生。</span></span><br><span class="line">	p = softmax(p)   <span class="comment"># 通过 softmax 变为概率分布，并且sum(p) = 1</span></span><br><span class="line">    <span class="keyword">return</span> -np.<span class="built_in">sum</span>(y*np.log(p+delta))</span><br></pre></td></tr></table></figure></li>
 <li><p>分类任务为什么常用交叉熵而不是MSE？</p>
 <blockquote>
-<p>问题本质：交叉熵损失函数是为分类问题设计的，而均方误差是为回归问题设计的。分类问题的目标是预测一个离散的标签，而回归问题的目标是预测一个连续的值。交叉熵直接衡量的是预测概率分布与真实分布之间的差异。<br>梯度大小：交叉熵损失函数的梯度在预测错误时相对较大，这有助于模型在训练初期快速学习。而MSE的梯度随着预测值接近真实值而减小，这可能导致训练过程在后期变得缓慢。<br>归一化：交叉熵损失函数对类别进行了归一化处理，这意味着不同类别的预测误差对损失的贡献是相等的。而MSE可能会偏向于数值较大的类别。</p>
+<ul>
+<li>问题本质：交叉熵损失函数是为分类问题设计的，而均方误差是为回归问题设计的。分类问题的目标是预测一个离散的标签，而回归问题的目标是预测一个连续的值。交叉熵直接衡量的是预测概率分布与真实分布之间的差异。</li>
+<li>梯度大小：交叉熵损失函数的梯度在预测错误时相对较大，这有助于模型在训练初期快速学习。而MSE的梯度随着预测值接近真实值而减小，这可能导致训练过程在后期变得缓慢。</li>
+<li>优化问题：MSE在分类问题中是一个非凸优化，可能收敛到局部最优值；而交叉熵是凸优化，能够收敛到全局最优值。</li>
+<li>归一化：交叉熵损失函数对类别进行了归一化处理，这意味着不同类别的预测误差对损失的贡献是相等的。而MSE可能会偏向于数值较大的类别。</li>
+</ul>
 </blockquote>
 </li>
 <li><p>如何选择损失函数？</p>
@@ -1415,19 +1716,51 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 </li>
 <li><p>Accuracy,Precision,Recall,F-Score</p>
 <blockquote>
-<p>Accuracy &#x3D; (TP+TN)&#x2F;N<br>Precision &#x3D; TP&#x2F;(TP+FP)<br>Recall &#x3D; TP&#x2F;(TP+FN)<br>F1-Score &#x3D; (2* Precision * Recall)&#x2F;(Precision+Recall)</p>
+<p>Accuracy &#x3D; (TP+TN)&#x2F;N<br>Precision &#x3D; TP&#x2F;(TP+FP)<br>Recall &#x3D; TP&#x2F;(TP+FN)<br>F1-Score &#x3D; (2* Precision * Recall)&#x2F;(Precision+Recall)<br>上述指标用于评估二分类问题。</p>
 </blockquote>
 </li>
-<li><p>P-R曲线，ROC, AUC</p>
+<li><p>P-R曲线</p>
 <blockquote>
-<p>P-R曲线：横轴是Recall，纵轴是Precision。<br>ROC曲线：横轴是FPR&#x3D;FP&#x2F;N，纵轴是TPR&#x3D;TP&#x2F;N。<br>AUC(Area Under Curve)：ROC曲线下的面积大小，AUC越大，说明分类器越可能把真正的正样本排在前面，分类性能越好。</p>
+<p>P-R曲线：横轴是Recall，纵轴是Precision。</p>
 </blockquote>
 </li>
-<li><p>解释AUC的定义，它解决了什么问题，优缺点是什么，工业界如何计算AUC？</p>
+<li><p>ROC曲线</p>
+<blockquote>
+<p>ROC曲线：横轴是FPR&#x3D;FP&#x2F;(FP+TN),表示所有真实为负的样本中，被错误预测为正的比例；纵轴是TPR&#x3D;TP&#x2F;(TP+FN)，表示所有真实为正的样本中，被正确预测为正的比例。<br>如何画ROC曲线？</p>
+<p>假设我们预测出（z,0.08）,(a,0.1),(b,0.2),(c,0.4),(d,0.5)，然后我们在预测结果中选择每一个样本的分值作为阈值，比如第一个数据（a,0.1）则分值大于等于0.1的都为正样本，小于0.1的为负样本，然后便根据这些样本算出一组FPR,与TPR值，得到ROC曲线上的一点，对所有测试用例做一遍操作，便可以绘制得到ROC曲线图。</p>
+</blockquote>
+</li>
+<li><p>AUC的定义</p>
+<blockquote>
+<p>AUC(Area Under Curve)：</p>
+<ul>
+<li>第一个定义：ROC曲线下的面积大小，AUC越大，说明分类器越可能把真正的正样本排在前面，分类性能越好。</li>
+<li>第二个定义：正样本被预测成正样本(TP)的得分大于负样本被预测成正样本(FP)的得分的概率。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>AUC的计算方法</p>
+<blockquote>
+<ul>
+<li>ROC曲线方法：</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">roc_point = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">        i = pred_prob[i]</span><br><span class="line">        TP = <span class="number">0</span>  <span class="comment"># 真阳样本数</span></span><br><span class="line">        FP = <span class="number">0</span>  <span class="comment"># 假阳样本数</span></span><br><span class="line">        TP_rate = <span class="number">0.</span>  <span class="comment"># 真阳率</span></span><br><span class="line">        FP_rate = <span class="number">0.</span>  <span class="comment"># 假阳率</span></span><br><span class="line">        pos_num = <span class="number">0</span>   <span class="comment"># 预测真样本数</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 计数过程</span></span><br><span class="line">        <span class="keyword">for</span> ind, prob <span class="keyword">in</span> <span class="built_in">enumerate</span>(pred_prob):</span><br><span class="line">            <span class="keyword">if</span> prob&gt;i:</span><br><span class="line">                pos_num += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> prob&gt;i <span class="keyword">and</span> labels[ind]&gt;<span class="number">0.5</span>:</span><br><span class="line">                TP+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> prob&gt;i <span class="keyword">and</span> labels[ind]&lt;<span class="number">0.5</span>:</span><br><span class="line">                FP+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> pos_num!=<span class="number">0</span>:</span><br><span class="line">            TP_rate = TP / <span class="built_in">sum</span>(labels)</span><br><span class="line">            FP_rate = FP / (num-<span class="built_in">sum</span>(labels))</span><br><span class="line">        roc_point.append([FP_rate, TP_rate])  <span class="comment"># 记录ROC中的点</span></span><br><span class="line">    <span class="comment"># 画出ROC曲线</span></span><br><span class="line">    roc_point.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line">    plt.plot(np.array(roc_point)[<span class="number">1</span>:, <span class="number">0</span>], np.array(roc_point)[<span class="number">1</span>: ,<span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">&quot;FPR&quot;</span>)</span><br><span class="line">    plt.ylabel(<span class="string">&quot;TPR&quot;</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算每个小长方形的面积，求和即为auc</span></span><br><span class="line">    lastx = <span class="number">0.</span></span><br><span class="line">    <span class="keyword">for</span> x,y <span class="keyword">in</span> roc_point:</span><br><span class="line">        auc1 += (x-lastx)*y  <span class="comment"># 底乘高</span></span><br><span class="line">        lastx = x</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;方法一 auc:&quot;</span>, auc1)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>排序方法<div aligh="center"><img src="/asset/2/auc.jpeg" class="lazyload" data-srcset="/asset/2/auc.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></li>
+</ul>
+<p>其中\sum{rank}为正样本序号之和，M为正样本数，N为负样本数。（正样本这里有个特殊情况在于当正负样本概率相等时，可能排在前面也可能在后面，如果单纯将正样本排在前面或者后面计算，计算结果与前面的会有偏差。可以将两者样本序号取平均）</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 时间复杂度为O(nlogn)</span></span><br><span class="line">    new_data = [[p, l] <span class="keyword">for</span> p, l <span class="keyword">in</span> <span class="built_in">zip</span>(pred_prob, labels)]</span><br><span class="line">    new_data.sort(key=<span class="keyword">lambda</span> x:x[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 求正样本rank之和</span></span><br><span class="line">    rank_sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> ind, [prob,label] <span class="keyword">in</span> <span class="built_in">enumerate</span>(new_data):</span><br><span class="line">        <span class="keyword">if</span> label&gt;<span class="number">0.5</span>:</span><br><span class="line">            rank_sum+=ind</span><br><span class="line">    auc3 = (rank_sum - <span class="built_in">len</span>(P_ind)*(<span class="number">1</span>+<span class="built_in">len</span>(P_ind))/<span class="number">2</span>) / (<span class="built_in">len</span>(P_ind)*<span class="built_in">len</span>(F_ind))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;方法二 auc:&quot;</span>, auc3)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解释AUC的定义，它解决了什么问题，优缺点是什么</p>
+</li>
+</ul>
 <blockquote>
 <p>当AUC&#x3D;1时，分类器能够正确区分所有的正类点和负类点；当AUC&#x3D;0.5时，分类器无法区分正类点和负类点，即相当于随机猜测。<br>AUC的优点包括：</p>
 <ul>
-<li>衡量排序能力，适合排序类任务。</li>
+<li>AUC本身与模型预测score绝对值无关，只关注排序效果，衡量排序能力，适合排序类任务。</li>
 <li>对正负样本均衡不敏感，在样本不均衡情况下也能够合理评估。</li>
 <li>不需要手动设置阈值，是一种整体上的衡量方法。</li>
 </ul>
@@ -1438,8 +1771,40 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 <li>没有给出模型误差的空间分布信息，只关心正负样本之间的排序，并不关心正负样本内部的排序，难以衡量样本对于实际程度的刻画能力。</li>
 </ul>
 </blockquote>
+<ul>
+<li>多分类问题评价指标<blockquote>
+<ul>
+<li>micro-F1<br>取值范围：（0，1）<br>权重倾向：每一个样本的权重都相同<br>适用环境：多分类不平衡，若数据极度不平衡会影响结果。<br>计算方式:<div aligh="center"><img src="/asset/2/micro_f1.png" class="lazyload" data-srcset="/asset/2/micro_f1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></li>
+</ul>
+<p>由micro-F1计算方式可以得知，</p>
+<div aligh="center"><img src="/asset/2/micro_f1_2.png" class="lazyload" data-srcset="/asset/2/micro_f1_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
 </li>
 </ul>
+<blockquote>
+<ul>
+<li>macro-F1<br>取值范围：（0,1）<br>权重倾向：每一类别的权重都相同；<br>适用环境：多分类问题，不受数据不平衡影响，容易受到高识别性（高recall，高precision）的类别影响。<br>计算方式：<div aligh="center"><img src="/asset/2/macro_f1.png" class="lazyload" data-srcset="/asset/2/macro_f1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>weighted-F1<br>macro-F1的变种，将F1-score乘以该类的比例之后相加。</li>
+</ul>
+</blockquote>
+<h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><blockquote>
+<p>逻辑回归是一种二分类算法，目的是预测二元输出变量（比如0和1）。</p>
+<p>其使用一个参数化函数计算给定输入变量的输出概率。</p>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>z</mi></mrow></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">g(z)=\frac{1}{1+e^{-z}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7027em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，z是输入变量的线性组合，可以表示为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>b</mi><mo>+</mo><msub><mi>w</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>w</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><msub><mi>w</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">z=b+w_1x_1+w_2x_2+...+w_nx_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">...</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>
+
+<p>其训练的损失函数为最大化对数似然函数，这里即BCE。</p>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>∑</mo><mrow><msub><mi>y</mi><mi>i</mi></msub><mi>l</mi><mi>o</mi><mi>g</mi><mtext> </mtext><mi>g</mi><mo stretchy="false">(</mo><msub><mi>z</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><msub><mi>z</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">J(w) = -\frac{1}{n}\sum{y_i log\ g(z_i)+(1-y_i)log(1-g(z_i))}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">))</span></span></span></span></span>
+
+<p>训练完成后，我们可以使用模型来预测新的样本的类别标签。预测类别标签的方法是，将新样本的特征向量代入 sigmoid 函数，计算输出概率，如果概率大于0.5，则预测为正例，否则预测为负例。</p>
+</blockquote>
+<blockquote>
+<p>Python实现如下：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.</span>/(<span class="number">1</span>+np.exp(-x))</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LogisticRegression</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, learning_rate=<span class="number">0.003</span>, iterations=<span class="number">100</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.learning_rate = learning_rate <span class="comment"># 学习率</span></span><br><span class="line">        <span class="variable language_">self</span>.iterations = iterations <span class="comment"># 迭代次数</span></span><br><span class="line">        <span class="variable language_">self</span>.weights = <span class="literal">None</span></span><br><span class="line">        <span class="variable language_">self</span>.bias = <span class="literal">None</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fit</span>(<span class="params">self, X, y</span>):</span><br><span class="line">        <span class="comment"># X [N,d] , y [N]</span></span><br><span class="line">        <span class="comment"># 初始化参数</span></span><br><span class="line">        <span class="variable language_">self</span>.weights = np.random.randn(X.shape[<span class="number">1</span>])</span><br><span class="line">        <span class="variable language_">self</span>.bias = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 梯度下降</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="variable language_">self</span>.iterations):</span><br><span class="line">            <span class="comment"># 计算sigmoid函数的预测值, y_hat = w * x + b</span></span><br><span class="line">            y_hat = sigmoid(np.dot(X, <span class="variable language_">self</span>.weights) + <span class="variable language_">self</span>.bias)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 计算损失函数</span></span><br><span class="line">             loss = -np.mean(y*np.log(y_hat)+(<span class="number">1</span>-y)*np.log(<span class="number">1</span>-y_hat))</span><br><span class="line">            <span class="comment"># 计算梯度</span></span><br><span class="line">            dw = np.dot(X.T,(y_hat-y)) / X.shape[<span class="number">0</span>]</span><br><span class="line">            db = np.mean(y_hat-y)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 更新参数</span></span><br><span class="line">            <span class="variable language_">self</span>.weights -= <span class="variable language_">self</span>.learning_rate * dw</span><br><span class="line">            <span class="variable language_">self</span>.bias -= <span class="variable language_">self</span>.learning_rate * db</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 打印损失函数值</span></span><br><span class="line">            <span class="keyword">if</span> i % <span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Loss after iteration <span class="subst">&#123;i&#125;</span>: <span class="subst">&#123;loss&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="comment"># 预测</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">predict</span>(<span class="params">self, X</span>):</span><br><span class="line">        y_hat = sigmoid(np.dot(X, <span class="variable language_">self</span>.weights) + <span class="variable language_">self</span>.bias)</span><br><span class="line">        y_hat[y_hat &gt;= <span class="number">0.5</span>] = <span class="number">1</span></span><br><span class="line">        y_hat[y_hat &lt; <span class="number">0.5</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> y_hat</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 精度</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">score</span>(<span class="params">self, y_pred, y</span>):</span><br><span class="line">        accuracy = (y_pred == y).<span class="built_in">sum</span>() / <span class="built_in">len</span>(y)</span><br><span class="line">        <span class="keyword">return</span> accuracy</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><blockquote>
 <p>支持向量机（supporr vector machine，SVM）是一种二类分类模型，该模型是定义在特征空间上的间隔最大的线性分类器。间隔最大使它有区别于感知机；支持向量机还包括核技巧，这使它成为实质上的非线性分类器。支持向量机的学习策略就是间隔最大化，可形式化为一个求解凸二次规划的最小化问题。使用Hinge loss训练。</p>
 </blockquote>
@@ -1474,7 +1839,7 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 </blockquote>
 </li>
 <li><p>手撕KNN</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">knn_code</span>(<span class="params">loc, k=<span class="number">5</span>, order=<span class="number">2</span> </span>):  <span class="comment"># k order是超参</span></span><br><span class="line">    <span class="comment"># print(order)</span></span><br><span class="line">    diff_loc = X - loc</span><br><span class="line">    dis_loc = np.linalg.norm(diff_loc, <span class="built_in">ord</span>=order, axis=<span class="number">1</span>) <span class="comment"># 没有axis得到一个数，矩阵的泛数。axis=0，得到两个数</span></span><br><span class="line">    knn = y[dis_loc.argsort()[:k]]</span><br><span class="line">    counts = np.bincount(knn)</span><br><span class="line">    <span class="keyword">return</span> np.argmax(counts)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">KNNClassifier</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,k=<span class="number">3</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.k = k</span><br><span class="line">        <span class="variable language_">self</span>.x_train = <span class="literal">None</span></span><br><span class="line">        <span class="variable language_">self</span>.y_train = <span class="literal">None</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fit</span>(<span class="params">self,x_train,y_train</span>):</span><br><span class="line">        <span class="variable language_">self</span>.x_train = x_train</span><br><span class="line">        <span class="variable language_">self</span>.y_train = y_train</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">predict</span>(<span class="params">self,x_predict</span>):</span><br><span class="line">        y_predict = [<span class="variable language_">self</span>._predict(x) <span class="keyword">for</span> x <span class="keyword">in</span> x_predict]</span><br><span class="line">        <span class="keyword">return</span> np.array(y_predict)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_predict</span>(<span class="params">self,x</span>):</span><br><span class="line">        distances = [np.sqrt(np.<span class="built_in">sum</span>((x_train - x)**<span class="number">2</span>)) <span class="keyword">for</span> x_train <span class="keyword">in</span> <span class="variable language_">self</span>.x_train]</span><br><span class="line">        nearest = np.argsort(distances)[:<span class="variable language_">self</span>.k]</span><br><span class="line">        top_k_y = [<span class="variable language_">self</span>.y_train[index] <span class="keyword">for</span> index <span class="keyword">in</span> nearest]</span><br><span class="line">        votes = np.bincount(top_k_y)</span><br><span class="line">        <span class="keyword">return</span> votes.argmax()</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h2><blockquote>
 <p>对原始样本进行中心化处理，即零均值化.<br>求出样本的协方差矩阵。<br>求解协方差矩阵的特征值和特征向量。<br>将特征值由大到小排列，取出前 k 个特征值对应的特征向量。<br>将 n 维样本映射到 k 维，实现降维处理。</p>
@@ -1955,7 +2320,13 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
 <li><p>梯度消失和梯度爆炸及解决办法</p>
 <blockquote>
-<p>梯度消失：梯度趋近于零，网络权重无法更新或更新的很微小，网络训练再久也不会有效果<br>原因：激活函数偏导过小，梯度连乘导致很低。<br>梯度爆炸：梯度呈指数级增长，变的非常大，然后导致网络权重的大幅更新，使网络变得不稳定<br>解决方法：梯度截断、梯度正则；使用ReLU、LeakyReLU等激活函数；引入BN层；使用残差结构。</p>
+<p>梯度消失：梯度趋近于零，网络权重无法更新或更新的很微小，网络训练再久也不会有效果<br>原因：激活函数偏导过小，梯度连乘导致很低。<br>梯度爆炸：梯度呈指数级增长，变的非常大，然后导致网络权重的大幅更新，使网络变得不稳定.<br>原因：模型初始化权重可能很大。连乘导致爆炸。<br>解决方法：</p>
+<ul>
+<li>梯度截断、梯度正则；</li>
+<li>使用ReLU、LeakyReLU等激活函数；</li>
+<li>引入BN层；</li>
+<li>使用残差结构。</li>
+</ul>
 </blockquote>
 </li>
 <li><p>什么是warm up？</p>
@@ -1973,16 +2344,39 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <div aligh="center"><img src="/asset/2/nneval.png" class="lazyload" data-srcset="/asset/2/nneval.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
 </blockquote>
 </li>
+<li><p>权重初始化的方法</p>
+<blockquote>
+<ul>
+<li>常数初始化： 把权值或者偏置初始化为一个常数，例如设置为0，偏置初始化为0较为常见，权重很少会初始化为0。</li>
+<li>随机分布初始化：可以使用均匀分布或高斯分布初始化(uniform)。</li>
+<li>xavier初始化：目的是为了使得模型各层的激活值和梯度在传播过程中的方差保持一致。在Tanh中表现好，在ReLU中表现差。</li>
+<li>Kaiming初始化：针对于Relu的初始化方法。本质上是高斯分布初始化，与上述高斯分布初始化有所不同，其是个满足均值为0，方差为2&#x2F;n的高斯分布。</li>
+</ul>
+</blockquote>
+</li>
 <li><p>DDP时训练细节</p>
 </li>
 <li><p>并行训练的方式</p>
 </li>
-<li><p>模型加速、剪枝、量化的方法</p>
-</li>
-<li><p>权重初始化的方法</p>
-</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>算法岗</category>
+        <category>八股文</category>
+      </categories>
+      <tags>
+        <tag>算法岗</tag>
+        <tag>八股文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法岗知识汇总【图像处理】</title>
+    <url>/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>正在更新中……</p>
+<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
+<span id="more"></span>
+
+<h2 id="图像滤波"><a href="#图像滤波" class="headerlink" title="图像滤波"></a>图像滤波</h2><h2 id="图像插值"><a href="#图像插值" class="headerlink" title="图像插值"></a>图像插值</h2>]]></content>
       <categories>
         <category>算法岗</category>
         <category>八股文</category>

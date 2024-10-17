@@ -60,7 +60,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-09-24T10:33:42.000Z">
-<meta property="article:modified_time" content="2024-10-09T22:33:21.578Z">
+<meta property="article:modified_time" content="2024-10-17T09:15:46.233Z">
 <meta property="article:author" content="Xintao Lv">
 <meta property="article:tag" content="算法岗">
 <meta property="article:tag" content="八股文">
@@ -1924,7 +1924,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1728513976946),
+    lastupdate: new Date(1729161510130),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -3081,7 +3081,9 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 <h2 id="文生图模型"><a href="#文生图模型" class="headerlink" title="文生图模型"></a>文生图模型</h2><h3 id="Stable-Diffusion-LDM"><a href="#Stable-Diffusion-LDM" class="headerlink" title="Stable Diffusion(LDM)"></a>Stable Diffusion(LDM)</h3><h4 id="SD-1-x-2-x"><a href="#SD-1-x-2-x" class="headerlink" title="SD 1.x&#x2F;2.x"></a>SD 1.x&#x2F;2.x</h4><ul>
 <li><p>SD中的VAE。</p>
 <blockquote>
-<p>Perceptual loss，Patch-based GAN loss。</p>
+<div aligh="center"><img src="/asset/2/sd_vae.jpeg" class="lazyload" data-srcset="/asset/2/sd_vae.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+重构损失：L1 loss,Perceptual loss，对抗损失：Patch-based GAN loss,正则化：KL loss.
+
 <p>为了避免latent太过无序，使用正则项对latent space进行规范。原文中使用了两种：（1）KL-reg，但权重设置得很小（过强的正则化会导致生成的图像模糊）；（2）VQ-reg，使用很大的codebook。</p>
 <p>SD中的VAE不具有生成功能，主要起的是压缩作用。</p>
 </blockquote>
@@ -3094,8 +3096,8 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 </li>
 <li><p>SD的U-Net结构及与DDPM中U-Net的区别。</p>
 <blockquote>
-<div aligh="center"><img src="/asset/2/sd_unet.png" class="lazyload" data-srcset="/asset/2/sd_unet.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-其中时间步t在ResBlock中过线性层后与x相加；文本c在SpatialTransformer的cross attention中与flatten的x交互。</blockquote>
+<div aligh="center"><img src="/asset/2/sd_unet.jpeg" class="lazyload" data-srcset="/asset/2/sd_unet.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+其中时间步t在ResBlock中过线性层后与x相加；文本c在SpatialTransformer的cross attention中与flatten的x交互。Unet中的连接方式是直接concat。</blockquote>
 </li>
 </ul>
 <blockquote>
@@ -3138,11 +3140,17 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 <blockquote>
 <p>R-precision：对提取的图像和文本特征之间的检索结果进行排序，来衡量文本描述和生成的图像之间的视觉语义相似性。</p>
 </blockquote>
+<ul>
+<li>SD 2.x与SD 1.x最主要区别<blockquote>
+<p>SD 2.x使用了v-prediction，见下图</p>
+<div aligh="center"><img src="/asset/2/v_pred.png" class="lazyload" data-srcset="/asset/2/v_pred.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
+</li>
+</ul>
 <h4 id="SD-XL"><a href="#SD-XL" class="headerlink" title="SD-XL"></a>SD-XL</h4><ul>
 <li><p>SD-XL与SD 1.x的区别</p>
 <blockquote>
 <ul>
-<li><p>增加一个 Refiner 模型，用于对图像进一步地精细化</p>
+<li><p>增加一个 Refiner 模型，用于对图像进一步地精细化。</p>
 </li>
 <li><p>使用 CLIP ViT-L 和 OpenCLIP ViT-bigG 两个 text encoder</p>
 </li>
@@ -3162,7 +3170,175 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 <blockquote>
 <div aligh="center"><img src="/asset/2/sdxl.png" class="lazyload" data-srcset="/asset/2/sdxl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
 </blockquote>
-<h3 id="IMAGEN"><a href="#IMAGEN" class="headerlink" title="IMAGEN"></a>IMAGEN</h3><h3 id="DALLE"><a href="#DALLE" class="headerlink" title="DALLE"></a>DALLE</h3><h3 id="GLIDE"><a href="#GLIDE" class="headerlink" title="GLIDE"></a>GLIDE</h3><h2 id="额外控制"><a href="#额外控制" class="headerlink" title="额外控制"></a>额外控制</h2><h3 id="ControlNet"><a href="#ControlNet" class="headerlink" title="ControlNet"></a>ControlNet</h3><h3 id="T2I-Adapter"><a href="#T2I-Adapter" class="headerlink" title="T2I-Adapter"></a>T2I-Adapter</h3><h2 id="私人定制"><a href="#私人定制" class="headerlink" title="私人定制"></a>私人定制</h2><h3 id="Textual-Inversion"><a href="#Textual-Inversion" class="headerlink" title="Textual Inversion"></a>Textual Inversion</h3><h3 id="DreamBooth"><a href="#DreamBooth" class="headerlink" title="DreamBooth"></a>DreamBooth</h3><h2 id="图像编辑"><a href="#图像编辑" class="headerlink" title="图像编辑"></a>图像编辑</h2><h3 id="Prompt-to-Prompt"><a href="#Prompt-to-Prompt" class="headerlink" title="Prompt-to-Prompt"></a>Prompt-to-Prompt</h3><h3 id="InstructPix2Pix"><a href="#InstructPix2Pix" class="headerlink" title="InstructPix2Pix"></a>InstructPix2Pix</h3>
+<h4 id="SD-3-x"><a href="#SD-3-x" class="headerlink" title="SD 3.x"></a>SD 3.x</h4><ul>
+<li>SD 3的改动<blockquote>
+<ol>
+<li>全面拥抱DiT架构。</li>
+<li>替换ODE&#x2F;SDE噪声预测步骤，使用Rectified Flow。（使用Flow matching objective）</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="IDDPM"><a href="#IDDPM" class="headerlink" title="IDDPM"></a>IDDPM</h3><ul>
+<li>IDDPM的原理<blockquote>
+<ol>
+<li>DDPM中将方差设置为常数。而IDDPM中，提出了可学习的方差（模型会额外输出一个向量用于预测方差），并把它加入到loss中（L_{vlb}），其中L_{vlb}表示变分下界损失（优化时采用重要性采样）。</li>
+<li>IDDPM认为DDPM的加噪方式会导致早期阶段加噪过快，因此提出了<strong>cosine schedule</strong>的加噪方式。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="ADM（Guided-diffusion）"><a href="#ADM（Guided-diffusion）" class="headerlink" title="ADM（Guided-diffusion）"></a>ADM（Guided-diffusion）</h3><ul>
+<li><p>Guided-diffusion模型结构的改进</p>
+<blockquote>
+<ul>
+<li>保持模型大小不变，增加深度，降低宽度</li>
+<li>增加 Attention 头的数量</li>
+<li>不只是在 16x16 分比率使用 Attention，在 32x32 和 8x8 也使用</li>
+<li>在上采样和下采样激活时使用 BigGAN 的 residual block</li>
+<li>在 residual connection 中采用 1&#x2F;sqrt(2) 的缩放</li>
+</ul>
+</blockquote>
+</li>
+<li><p>ADM使用的条件引导</p>
+<blockquote>
+<p>使用了Classifier Guidance。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="GLIDE"><a href="#GLIDE" class="headerlink" title="GLIDE"></a>GLIDE</h3><ul>
+<li>GLIDE的贡献<blockquote>
+<p>将Diffusion用于文本条件图像生成，并比较了两种不同的引导策略：CLIP Guidance和Classifier Free Guidance。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="DALL-E"><a href="#DALL-E" class="headerlink" title="DALL-E"></a>DALL-E</h3><h4 id="DALL-E-1"><a href="#DALL-E-1" class="headerlink" title="DALL-E 1"></a>DALL-E 1</h4><ul>
+<li>DALL-E 1的模型架构<blockquote>
+<div aligh="center"><img src="/asset/2/dalle.png" class="lazyload" data-srcset="/asset/2/dalle.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>第一阶段，训练一个VQVAE。第二阶段，训练一个自回归的prior模型，这里用的是decoder-only的Transformer（与VQGAN很像，但是这里将文本作为prefix预置条件，实现了Text-conditional生成）</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="DALL-E-2-unCLIP"><a href="#DALL-E-2-unCLIP" class="headerlink" title="DALL-E 2(unCLIP)"></a>DALL-E 2(unCLIP)</h4><ul>
+<li><p>DALL-E 2的模型结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/dalle2.png" class="lazyload" data-srcset="/asset/2/dalle2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+共由三部分组成，预训练的CLIP，prior模型，decoder模型。之所以叫unCLIP，是因为这里是和CLIP反过来的，将Image embedding还原成图片。
+</blockquote>
+</li>
+<li><p>DALL-E 2训练过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/dalle2_train.png" class="lazyload" data-srcset="/asset/2/dalle2_train.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ol>
+<li>在图文对上预训练CLIP模型，之后一直是冻结的。</li>
+<li>训练Prior模型，由文本embedding还原得到对应的图片embedding。实现上使用了两种结构：（1）自回归Prior。（2）扩散模型prior。最终选用了扩散模型Prior。</li>
+<li>训练Decoder模型，由CLIP图片embedding解码为真实的图片（因此叫unCLIP）。生成分辨率为64*64，为了生成高清大图，还训练了两个扩散模型的超分模型，上采样到 256 * 256和1024 * 1024.</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="DALL-E-3"><a href="#DALL-E-3" class="headerlink" title="DALL-E 3"></a>DALL-E 3</h4><ul>
+<li>DALL-E 3主要贡献<blockquote>
+<p>对图文数据集recaptioning，即训练一个 captioner 模型，来为图片生成更完整的文本描述。用这种合成的（synthetic）图像文本对数据集，来训练文生图模型，prompt following 能力显著提升。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="IMAGEN"><a href="#IMAGEN" class="headerlink" title="IMAGEN"></a>IMAGEN</h3><ul>
+<li>IMAGEN的模型结构<blockquote>
+<div aligh="center"><img src="/asset/2/imagen.png" class="lazyload" data-srcset="/asset/2/imagen.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>文本编码器使用T5，训练过程中始终冻结。<br>扩散模型级联了三层，第一层去噪生成图像，第二、三层是超分辨率。<br>训练及采样过程中同样使用了CFG。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="额外控制"><a href="#额外控制" class="headerlink" title="额外控制"></a>额外控制</h2><h3 id="ControlNet"><a href="#ControlNet" class="headerlink" title="ControlNet"></a>ControlNet</h3><ul>
+<li><p>ControlNet可以添加的控制条件类型</p>
+<blockquote>
+<p>Canny Edge, Hough lines, User scrobbles, Human Keypoints, Segmentation maps, shape normals ,depth.</p>
+<p>多个条件可以叠加，将controlnet的结果相加即可。</p>
+</blockquote>
+</li>
+<li><p>ControlNet的结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/controlnet.png" class="lazyload" data-srcset="/asset/2/controlnet.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>会将SD的Unet的Encoder和Middle做trainable copy，并且条件输入时和输出时会过一个Zero-initialized conv。然后在Skip connection时，与原网络的部分相加后，与Decoder的concat。</p>
+</blockquote>
+</li>
+<li><p>Zero-conv的结构？为什么要零初始化？</p>
+<blockquote>
+<p>Zero-conv是w和b初始化为0的1*1卷积层。使用零初始化的目的是：在训练初期时，trainable copy不会对原始模型产生有害的噪声。</p>
+</blockquote>
+</li>
+<li><p>ControlNet推理时的条件控制</p>
+<blockquote>
+<p>CFG resolution weighting：使用CFG推理时，会同时计算cond和uncond。如果同时将conditioning image加到uncond和cond，会完全忽视CFG guidance；如果只加到cond，将会使得guidance太强。</p>
+<p>提出的方法是：将conditioning image只加到cond，但是每次在skip connectionn加的时候会根据分辨率添加一个权重w&#x3D;64&#x2F;h，h为分辨率大小。通过这样，可以减轻guidance的强度。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="T2I-Adapter"><a href="#T2I-Adapter" class="headerlink" title="T2I-Adapter"></a>T2I-Adapter</h3><ul>
+<li><p>T2I-Adapter可以添加的控制条件类型</p>
+<blockquote>
+<p>Sketch map, Semantic segmentation map, Keypoints , color , depth maps</p>
+</blockquote>
+</li>
+<li><p>T2I-Adapter的模型结构，以及它作用的位置</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/t2i_adapter.png" class="lazyload" data-srcset="/asset/2/t2i_adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>Adapter结构由四个特征提取block和三个downsample block组成，输入分辨率为512 * 512。初始时，将condition map使用pixel unshuffle降采样到64 * 64。然后在每一层scale会输出一个feature，对应SD encoder中的分辨率大小。这四个feature会分别加到SD的UNet encoder的中间feature上。</p>
+<p>起作用的位置是Unet的encoder层，会在每个scale与中间feature相加。</p>
+</blockquote>
+</li>
+<li><p>T2I-Adapter的多条件控制</p>
+<blockquote>
+<p>无需额外训练，只需要将多个条件的feature加权相加即可。</p>
+</blockquote>
+</li>
+<li><p>T2I-Adapter的采样策略</p>
+<blockquote>
+<p>实验中发现，将time embedding输入adapter对guidance能力有帮助，但如果每个去噪步都加guidance会过于繁琐。</p>
+<p>文中最后发现，在去噪的中后阶段guidance几乎不起作用，大部分内容都是在早期起作用。因此在训练时，当采集的t是中后期的t，则忽略guidance；如果是早期的，则正常加guidance。推理使用DDIM采样时，也采用non-uniform sampling。即增大t落在早期阶段的概率（这里采用了cubic function）</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="私人定制"><a href="#私人定制" class="headerlink" title="私人定制"></a>私人定制</h2><h3 id="Textual-Inversion"><a href="#Textual-Inversion" class="headerlink" title="Textual Inversion"></a>Textual Inversion</h3><ul>
+<li><p>Texual Inversion做的事情</p>
+<blockquote>
+<p>给定3-5张某个主体的图片，冻结T2I模型，通过优化一个pseudo-word的embedding来使得模型学会生成该主体。在2张V100上优化了5000个steps。</p>
+</blockquote>
+</li>
+<li><p>Textual Inversion的优化流程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/textual_inversion.png" class="lazyload" data-srcset="/asset/2/textual_inversion.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>将placeholder的embedding vector设置为可学习的embedding（使用其coarse description的token进行初始化），将输入图片的prompt设置为”A photo of S*”,”A rendition of S*”等。然后使用LDM的reconstruction loss（去噪损失）对该embedding进行优化。（注意，该优化过程中，除了此可学习embedding，其他所有参数冻结）</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="DreamBooth"><a href="#DreamBooth" class="headerlink" title="DreamBooth"></a>DreamBooth</h3><ul>
+<li><p>DreamBooth做的事情</p>
+<blockquote>
+<p>给定3-5张某个主体的图片，通过微调T2I模型，使得模型能够生成该主体的图片，同时保持原有类别的生成能力。在单张A100上微调SD约需要5min。</p>
+</blockquote>
+</li>
+<li><p>DreamBooth的微调流程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/dreambooth.png" class="lazyload" data-srcset="/asset/2/dreambooth.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ol>
+<li><p>对于输入主体的照片，为其打上标签“a [identifier] [class noun]”，其中identifier是词汇表中的rare tokens，class是一个粗粒度的描述主体类别的词。</p>
+</li>
+<li><p>接下来微调SD的所有层，但是这样会造成language drift（忘记原来的类别如何生成），并且生成多样性降低。采取的办法是除了reconstruction loss之外，还使用了class-specific preservation loss。具体做法是：从原始SD中生成一些“A [class noun]”的样本，然后将这些sample加入训练数据来同时微调SD。通过这个loss可以避免few-shot微调之后忘记原本属于该class的信息。</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="IP-Adapter"><a href="#IP-Adapter" class="headerlink" title="IP-Adapter"></a>IP-Adapter</h3><h2 id="图像编辑"><a href="#图像编辑" class="headerlink" title="图像编辑"></a>图像编辑</h2><h3 id="Prompt-to-Prompt"><a href="#Prompt-to-Prompt" class="headerlink" title="Prompt-to-Prompt"></a>Prompt-to-Prompt</h3><h3 id="InstructPix2Pix"><a href="#InstructPix2Pix" class="headerlink" title="InstructPix2Pix"></a>InstructPix2Pix</h3>
   </div>
   
   
@@ -3186,10 +3362,10 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-10-10T06:33:21+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-10-17T17:15:46+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年10月10日</p>
+    <p>更新于：2024年10月17日</p>
   </a>
 </div>
 
@@ -3286,15 +3462,10 @@ Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换..
       
         <a class='next' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/'>
           <p class='title'>算法岗知识汇总【机器学习】<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>正在更新中……
-秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。
-
-
-
-损失函数
+          <p class='content'>损失函数
 常用损失函数
 
-均方误差（MSE,L2）:L=(y−y^)2L=(y-\hat{y})^2L=(...</p>
+均方误差（MSE,L2）:L=(y−y^)2L=(y-\hat{y})^2L=(y−y^​)2 （回归任务常用，隐含的预设是数据误差符合高斯分布）绝对误差（MAE,L1...</p>
         </a>
       
     </div>
@@ -3406,12 +3577,12 @@ Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换..
           <li><a class="flat-box"
             title="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/"
             active-action="action-categoriesE7AE97E6B395E5B297"
-            ><div class='name'>算法岗</div><div class='badge'>(6)</div></a></li>
+            ><div class='name'>算法岗</div><div class='badge'>(7)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/"
             active-action="action-categoriesE7AE97E6B395E5B297E585ABE882A1E69687"
-            ><div class='name'>八股文</div><div class='badge'>(6)</div></a></li>
+            ><div class='name'>八股文</div><div class='badge'>(7)</div></a></li>
         
       </ul>
     </div>
@@ -3470,7 +3641,7 @@ Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换..
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VAE"><span class="toc-text">VAE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VAE-1"><span class="toc-text">VAE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VQ-VAE"><span class="toc-text">VQ-VAE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GAN"><span class="toc-text">GAN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GAN-1"><span class="toc-text">GAN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VQ-GAN"><span class="toc-text">VQ-GAN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffusion"><span class="toc-text">Diffusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DDPM"><span class="toc-text">DDPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDIM"><span class="toc-text">DDIM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Score-based"><span class="toc-text">Score-based</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DiT"><span class="toc-text">DiT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Classifier-Guidance"><span class="toc-text">Classifier Guidance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Classifier-free-Guidance"><span class="toc-text">Classifier-free Guidance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8A%A0%E9%80%9F%E9%87%87%E6%A0%B7"><span class="toc-text">其他加速采样</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%94%9F%E5%9B%BE%E6%A8%A1%E5%9E%8B"><span class="toc-text">文生图模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stable-Diffusion-LDM"><span class="toc-text">Stable Diffusion(LDM)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SD-1-x-2-x"><span class="toc-text">SD 1.x&#x2F;2.x</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SD-XL"><span class="toc-text">SD-XL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IMAGEN"><span class="toc-text">IMAGEN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DALLE"><span class="toc-text">DALLE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GLIDE"><span class="toc-text">GLIDE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E6%8E%A7%E5%88%B6"><span class="toc-text">额外控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ControlNet"><span class="toc-text">ControlNet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2I-Adapter"><span class="toc-text">T2I-Adapter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6"><span class="toc-text">私人定制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Textual-Inversion"><span class="toc-text">Textual Inversion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DreamBooth"><span class="toc-text">DreamBooth</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91"><span class="toc-text">图像编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prompt-to-Prompt"><span class="toc-text">Prompt-to-Prompt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InstructPix2Pix"><span class="toc-text">InstructPix2Pix</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VAE"><span class="toc-text">VAE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VAE-1"><span class="toc-text">VAE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VQ-VAE"><span class="toc-text">VQ-VAE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GAN"><span class="toc-text">GAN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GAN-1"><span class="toc-text">GAN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VQ-GAN"><span class="toc-text">VQ-GAN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffusion"><span class="toc-text">Diffusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DDPM"><span class="toc-text">DDPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDIM"><span class="toc-text">DDIM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Score-based"><span class="toc-text">Score-based</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DiT"><span class="toc-text">DiT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Classifier-Guidance"><span class="toc-text">Classifier Guidance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Classifier-free-Guidance"><span class="toc-text">Classifier-free Guidance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8A%A0%E9%80%9F%E9%87%87%E6%A0%B7"><span class="toc-text">其他加速采样</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%94%9F%E5%9B%BE%E6%A8%A1%E5%9E%8B"><span class="toc-text">文生图模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stable-Diffusion-LDM"><span class="toc-text">Stable Diffusion(LDM)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SD-1-x-2-x"><span class="toc-text">SD 1.x&#x2F;2.x</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SD-XL"><span class="toc-text">SD-XL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SD-3-x"><span class="toc-text">SD 3.x</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDDPM"><span class="toc-text">IDDPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADM%EF%BC%88Guided-diffusion%EF%BC%89"><span class="toc-text">ADM（Guided-diffusion）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GLIDE"><span class="toc-text">GLIDE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DALL-E"><span class="toc-text">DALL-E</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DALL-E-1"><span class="toc-text">DALL-E 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DALL-E-2-unCLIP"><span class="toc-text">DALL-E 2(unCLIP)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DALL-E-3"><span class="toc-text">DALL-E 3</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IMAGEN"><span class="toc-text">IMAGEN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E6%8E%A7%E5%88%B6"><span class="toc-text">额外控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ControlNet"><span class="toc-text">ControlNet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2I-Adapter"><span class="toc-text">T2I-Adapter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6"><span class="toc-text">私人定制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Textual-Inversion"><span class="toc-text">Textual Inversion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DreamBooth"><span class="toc-text">DreamBooth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-Adapter"><span class="toc-text">IP-Adapter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91"><span class="toc-text">图像编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prompt-to-Prompt"><span class="toc-text">Prompt-to-Prompt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InstructPix2Pix"><span class="toc-text">InstructPix2Pix</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -4138,7 +4309,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【AIGC】/","name":"算法岗知识汇总【AIGC】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【AIGC】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-10-09T22:33:21.578Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【AIGC】/","name":"算法岗知识汇总【AIGC】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【AIGC】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-10-17T09:15:46.233Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

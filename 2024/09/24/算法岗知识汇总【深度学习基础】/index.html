@@ -60,7 +60,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-09-24T10:33:42.000Z">
-<meta property="article:modified_time" content="2024-09-27T10:22:59.013Z">
+<meta property="article:modified_time" content="2024-10-14T15:52:03.836Z">
 <meta property="article:author" content="Xintao Lv">
 <meta property="article:tag" content="算法岗">
 <meta property="article:tag" content="八股文">
@@ -1924,7 +1924,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1728513976946),
+    lastupdate: new Date(1729161510130),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -3186,7 +3186,13 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
 <li><p>梯度消失和梯度爆炸及解决办法</p>
 <blockquote>
-<p>梯度消失：梯度趋近于零，网络权重无法更新或更新的很微小，网络训练再久也不会有效果<br>原因：激活函数偏导过小，梯度连乘导致很低。<br>梯度爆炸：梯度呈指数级增长，变的非常大，然后导致网络权重的大幅更新，使网络变得不稳定<br>解决方法：梯度截断、梯度正则；使用ReLU、LeakyReLU等激活函数；引入BN层；使用残差结构。</p>
+<p>梯度消失：梯度趋近于零，网络权重无法更新或更新的很微小，网络训练再久也不会有效果<br>原因：激活函数偏导过小，梯度连乘导致很低。<br>梯度爆炸：梯度呈指数级增长，变的非常大，然后导致网络权重的大幅更新，使网络变得不稳定.<br>原因：模型初始化权重可能很大。连乘导致爆炸。<br>解决方法：</p>
+<ul>
+<li>梯度截断、梯度正则；</li>
+<li>使用ReLU、LeakyReLU等激活函数；</li>
+<li>引入BN层；</li>
+<li>使用残差结构。</li>
+</ul>
 </blockquote>
 </li>
 <li><p>什么是warm up？</p>
@@ -3204,13 +3210,19 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <div aligh="center"><img src="/asset/2/nneval.png" class="lazyload" data-srcset="/asset/2/nneval.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
 </blockquote>
 </li>
+<li><p>权重初始化的方法</p>
+<blockquote>
+<ul>
+<li>常数初始化： 把权值或者偏置初始化为一个常数，例如设置为0，偏置初始化为0较为常见，权重很少会初始化为0。</li>
+<li>随机分布初始化：可以使用均匀分布或高斯分布初始化(uniform)。</li>
+<li>xavier初始化：目的是为了使得模型各层的激活值和梯度在传播过程中的方差保持一致。在Tanh中表现好，在ReLU中表现差。</li>
+<li>Kaiming初始化：针对于Relu的初始化方法。本质上是高斯分布初始化，与上述高斯分布初始化有所不同，其是个满足均值为0，方差为2&#x2F;n的高斯分布。</li>
+</ul>
+</blockquote>
+</li>
 <li><p>DDP时训练细节</p>
 </li>
 <li><p>并行训练的方式</p>
-</li>
-<li><p>模型加速、剪枝、量化的方法</p>
-</li>
-<li><p>权重初始化的方法</p>
 </li>
 </ul>
 
@@ -3237,10 +3249,10 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-09-27T18:22:59+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-10-14T23:52:03+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年9月27日</p>
+    <p>更新于：2024年10月14日</p>
   </a>
 </div>
 
@@ -3325,24 +3337,20 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
       
         <a class='prev' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>算法岗知识汇总【机器学习】</p>
+          <p class='content'>损失函数
+常用损失函数
+
+均方误差（MSE,L2）:L=(y−y^)2L=(y-\hat{y})^2L=(y−y^​)2 （回归任务常用，隐含的预设是数据误差符合高斯分布）绝对误差（MAE,L1...</p>
+        </a>
+      
+      
+        <a class='next' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91/'>
+          <p class='title'>算法岗知识汇总【图像处理】<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>正在更新中……
 秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。
 
 
-
-损失函数
-常用损失函数
-
-均方误差（MSE,L2）:L=(y−y^)2L=(y-\hat{y})^2L=(...</p>
-        </a>
-      
-      
-        <a class='next' href='/2024/08/03/%E7%AE%80%E6%98%93%E7%9A%84Selenium%E7%88%AC%E8%99%AB%E5%B7%A5%E5%85%B7/'>
-          <p class='title'>简易的Selenium爬虫工具<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>尝试使用Selenium自动化测试库对Github中指定topic的所有库信息进行爬取！
-
-
-首先简单介绍下Selenium库。这是一个针对浏览器应用的自动化测试库，能够模拟人类的点击、敲击键盘...</p>
+图像滤波图像插值</p>
         </a>
       
     </div>
@@ -3454,12 +3462,12 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
           <li><a class="flat-box"
             title="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/"
             active-action="action-categoriesE7AE97E6B395E5B297"
-            ><div class='name'>算法岗</div><div class='badge'>(6)</div></a></li>
+            ><div class='name'>算法岗</div><div class='badge'>(7)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/"
             active-action="action-categoriesE7AE97E6B395E5B297E585ABE882A1E69687"
-            ><div class='name'>八股文</div><div class='badge'>(6)</div></a></li>
+            ><div class='name'>八股文</div><div class='badge'>(7)</div></a></li>
         
       </ul>
     </div>
@@ -4186,7 +4194,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【深度学习基础】/","name":"算法岗知识汇总【深度学习基础】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【深度学习基础】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-09-27T10:22:59.013Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【深度学习基础】/","name":"算法岗知识汇总【深度学习基础】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【深度学习基础】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-10-14T15:52:03.836Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
