@@ -69,7 +69,7 @@
 <p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
 <span id="more"></span>
 
-<h2 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h2><ul>
+<h2 id="视觉Backbone"><a href="#视觉Backbone" class="headerlink" title="视觉Backbone"></a>视觉Backbone</h2><h3 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h3><ul>
 <li><p>CNN的感受野</p>
 </li>
 <li><p>CNN的参数量计算</p>
@@ -78,6 +78,25 @@
 </li>
 <li><p>Numpy手搓卷积</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">filter2d</span>(<span class="params">image, kernel</span>):</span><br><span class="line">    <span class="comment"># 获取输入图像和卷积核的维度</span></span><br><span class="line">    image_height, image_width = image.shape</span><br><span class="line">    kernel_height, kernel_width = kernel.shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算滤波结果的维度</span></span><br><span class="line">    output_height = image_height - kernel_height + <span class="number">1</span></span><br><span class="line">    output_width = image_width - kernel_width + <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 初始化滤波结果数组</span></span><br><span class="line">    filtered_image = np.zeros((output_height, output_width))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 进行滤波操作（实际上是二维卷积操作）</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(output_height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(output_width):</span><br><span class="line">            <span class="comment"># 提取当前窗口的像素值</span></span><br><span class="line">            window = image[i:i+kernel_height, j:j+kernel_width]</span><br><span class="line">            <span class="comment"># 计算当前位置的卷积和</span></span><br><span class="line">            filtered_image[i, j] = np.<span class="built_in">sum</span>(window * kernel)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> filtered_image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个图像和卷积核（滤波器）</span></span><br><span class="line">image = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">                  [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br><span class="line">kernel = np.array([[<span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                   [<span class="number">0</span>, -<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用滤波器</span></span><br><span class="line">filtered_image = filter2d(image, kernel)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(filtered_image)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="ViT"><a href="#ViT" class="headerlink" title="ViT"></a>ViT</h3><ul>
+<li>ViT的结构描述<blockquote>
+<div aligh="center"><img src="/asset/2/vit.png" class="lazyload" data-srcset="/asset/2/vit.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/vit_2.png" class="lazyload" data-srcset="/asset/2/vit_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>将图片patchify成P*P的patch，共N个patch。将每个patch进行flatten之后过一层线性层之后得到embedding。</li>
+<li>与BERT类似，在patched embedding序列开头附加一个可学习的[class] token，来表示整个图片representation。</li>
+<li>使用的位置编码为learnable 1D position embedding。</li>
+<li>整体的结构为Transformer Encoder。</li>
+<li>最后将[class] token的embedding过分类头。</li>
+<li>微调时通常会使用更高分辨率，此时保持patch size不变，这样sequence length会变大，position embedding会不够用。文中采取的做法是进行2D插值拟合得到position embedding。</li>
+</ul>
+</blockquote>
+<ul>
+<li>手撕ViT的patchify<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PatchEmbed</span>(nn.Module):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    2D Image to Patch Embedding</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, img_size=<span class="number">224</span>, patch_size=<span class="number">16</span>, in_c=<span class="number">3</span>, embed_dim=<span class="number">768</span>, norm_layer=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        img_size = (img_size, img_size)</span><br><span class="line">        patch_size = (patch_size, patch_size)</span><br><span class="line">        <span class="variable language_">self</span>.img_size = img_size</span><br><span class="line">        <span class="variable language_">self</span>.patch_size = patch_size</span><br><span class="line">        <span class="variable language_">self</span>.grid_size = (img_size[<span class="number">0</span>] // patch_size[<span class="number">0</span>], img_size[<span class="number">1</span>] // patch_size[<span class="number">1</span>])</span><br><span class="line">        <span class="variable language_">self</span>.num_patches = <span class="variable language_">self</span>.grid_size[<span class="number">0</span>] * <span class="variable language_">self</span>.grid_size[<span class="number">1</span>]</span><br><span class="line"> </span><br><span class="line">        <span class="variable language_">self</span>.proj = nn.Conv2d(in_c, embed_dim, kernel_size=patch_size, stride=patch_size)</span><br><span class="line">        <span class="variable language_">self</span>.norm = norm_layer(embed_dim) <span class="keyword">if</span> norm_layer <span class="keyword">else</span> nn.Identity()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        B, C, H, W = x.shape</span><br><span class="line">        <span class="keyword">assert</span> H == <span class="variable language_">self</span>.img_size[<span class="number">0</span>] <span class="keyword">and</span> W == <span class="variable language_">self</span>.img_size[<span class="number">1</span>], \</span><br><span class="line">            <span class="string">f&quot;Input image size (<span class="subst">&#123;H&#125;</span>*<span class="subst">&#123;W&#125;</span>) doesn&#x27;t match model (<span class="subst">&#123;self.img_size[<span class="number">0</span>]&#125;</span>*<span class="subst">&#123;self.img_size[<span class="number">1</span>]&#125;</span>).&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment"># flatten: [B, C, H, W] -&gt; [B, C, HW]</span></span><br><span class="line">        <span class="comment"># transpose: [B, C, HW] -&gt; [B, HW, C]</span></span><br><span class="line">        x = <span class="variable language_">self</span>.proj(x).flatten(<span class="number">2</span>).transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.norm(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h2><ul>
 <li><p>IOU计算及手写</p>
@@ -103,26 +122,84 @@
 <li><p>手撕Focal loss</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FocalLoss</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, gamma=<span class="number">0</span>, alpha=<span class="literal">None</span>, size_average=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(FocalLoss, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.gamma = gamma</span><br><span class="line">        <span class="variable language_">self</span>.alpha = alpha</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(alpha,(<span class="built_in">float</span>,<span class="built_in">int</span>,long)): <span class="variable language_">self</span>.alpha = torch.Tensor([alpha,<span class="number">1</span>-alpha])</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(alpha,<span class="built_in">list</span>): <span class="variable language_">self</span>.alpha = torch.Tensor(alpha)</span><br><span class="line">        <span class="variable language_">self</span>.size_average = size_average</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, <span class="built_in">input</span>, target</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">input</span>.dim()&gt;<span class="number">2</span>:</span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.view(<span class="built_in">input</span>.size(<span class="number">0</span>),<span class="built_in">input</span>.size(<span class="number">1</span>),-<span class="number">1</span>)  <span class="comment"># N,C,H,W =&gt; N,C,H*W</span></span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.transpose(<span class="number">1</span>,<span class="number">2</span>)    <span class="comment"># N,C,H*W =&gt; N,H*W,C</span></span><br><span class="line">            <span class="built_in">input</span> = <span class="built_in">input</span>.contiguous().view(-<span class="number">1</span>,<span class="built_in">input</span>.size(<span class="number">2</span>))   <span class="comment"># N,H*W,C =&gt; N*H*W,C</span></span><br><span class="line">        target = target.view(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        logpt = F.log_softmax(<span class="built_in">input</span>)</span><br><span class="line">        logpt = logpt.gather(<span class="number">1</span>,target)</span><br><span class="line">        logpt = logpt.view(-<span class="number">1</span>)</span><br><span class="line">        pt = Variable(logpt.data.exp())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.alpha <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.alpha.<span class="built_in">type</span>()!=<span class="built_in">input</span>.data.<span class="built_in">type</span>():</span><br><span class="line">                <span class="variable language_">self</span>.alpha = <span class="variable language_">self</span>.alpha.type_as(<span class="built_in">input</span>.data)</span><br><span class="line">            at = <span class="variable language_">self</span>.alpha.gather(<span class="number">0</span>,target.data.view(-<span class="number">1</span>))</span><br><span class="line">            logpt = logpt * Variable(at)</span><br><span class="line"></span><br><span class="line">        loss = -<span class="number">1</span> * (<span class="number">1</span>-pt)**<span class="variable language_">self</span>.gamma * logpt</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.size_average: <span class="keyword">return</span> loss.mean()</span><br><span class="line">        <span class="keyword">else</span>: <span class="keyword">return</span> loss.<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="ViT"><a href="#ViT" class="headerlink" title="ViT"></a>ViT</h2><ul>
-<li>ViT的结构描述<blockquote>
-<div aligh="center"><img src="/asset/2/vit.png" class="lazyload" data-srcset="/asset/2/vit.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-<div aligh="center"><img src="/asset/2/vit_2.png" class="lazyload" data-srcset="/asset/2/vit_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
-</li>
-</ul>
+<h2 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h2><h3 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h3><h3 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h3><h2 id="自监督预训练"><a href="#自监督预训练" class="headerlink" title="自监督预训练"></a>自监督预训练</h2><h3 id="DINO"><a href="#DINO" class="headerlink" title="DINO"></a>DINO</h3><ul>
+<li><p>DINO的特性是什么？</p>
 <blockquote>
+<p>Self-distillation with no label.</p>
 <ul>
-<li>将图片patchify成P*P的patch，共N个patch。将每个patch进行flatten之后过一层线性层之后得到embedding。</li>
-<li>与BERT类似，在patched embedding序列开头附加一个可学习的[class] token，来表示整个图片representation。</li>
-<li>使用的位置编码为learnable 1D position embedding。</li>
-<li>整体的结构为Transformer Encoder。</li>
-<li>最后将[class] token的embedding过分类头。</li>
-<li>微调时通常会使用更高分辨率，此时保持patch size不变，这样sequence length会变大，position embedding会不够用。文中采取的做法是进行2D插值拟合得到position embedding。</li>
+<li>通过完全自监督的学习方式，ViT学得了图片的语义分割的信息！</li>
+<li>对提取出的feature仅使用KNN分类器，就能在ImageNet上达到78.3%的top1准确率。</li>
 </ul>
 </blockquote>
+</li>
+<li><p>DINO的自监督学习方式</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/dino.png" class="lazyload" data-srcset="/asset/2/dino.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<div aligh="center"><img src="/asset/2/dino_code.png" class="lazyload" data-srcset="/asset/2/dino_code.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>包含teacher和student网络，两部分是完全同样的结构：ViT（patch 8或16）后接一层linear，输出K维的logit，然后经过一个带temperature的softmax。最终的优化目标是两部分分布的交叉熵。</p>
+<p>对于teacher和student的输入不同：首先会将一张图片进行两种不同的RandomResizedCrop，得到两个分辨率较大的global view；然后会使用multi-crop得到多个较小分辨率的local views。<br>然后将local and global views输入给student，global views给teacher，然后分别计算每一对之间的交叉熵损失。这样可以鼓励模型学到local-to-global的对应关系。</p>
+<p>对于teacher网络的更新，其不使用梯度更新（stop gradient），而是使用EMA（指数移动平均）的方式使用student的权重来更新。</p>
+<p>为了避免collape（K维的feature集中在某一维或均匀分布在K维），对teacher网络的输出采取了centering和sharpening的策略。</p>
 <ul>
-<li>手撕ViT的patchify<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PatchEmbed</span>(nn.Module):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    2D Image to Patch Embedding</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, img_size=<span class="number">224</span>, patch_size=<span class="number">16</span>, in_c=<span class="number">3</span>, embed_dim=<span class="number">768</span>, norm_layer=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        img_size = (img_size, img_size)</span><br><span class="line">        patch_size = (patch_size, patch_size)</span><br><span class="line">        <span class="variable language_">self</span>.img_size = img_size</span><br><span class="line">        <span class="variable language_">self</span>.patch_size = patch_size</span><br><span class="line">        <span class="variable language_">self</span>.grid_size = (img_size[<span class="number">0</span>] // patch_size[<span class="number">0</span>], img_size[<span class="number">1</span>] // patch_size[<span class="number">1</span>])</span><br><span class="line">        <span class="variable language_">self</span>.num_patches = <span class="variable language_">self</span>.grid_size[<span class="number">0</span>] * <span class="variable language_">self</span>.grid_size[<span class="number">1</span>]</span><br><span class="line"> </span><br><span class="line">        <span class="variable language_">self</span>.proj = nn.Conv2d(in_c, embed_dim, kernel_size=patch_size, stride=patch_size)</span><br><span class="line">        <span class="variable language_">self</span>.norm = norm_layer(embed_dim) <span class="keyword">if</span> norm_layer <span class="keyword">else</span> nn.Identity()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        B, C, H, W = x.shape</span><br><span class="line">        <span class="keyword">assert</span> H == <span class="variable language_">self</span>.img_size[<span class="number">0</span>] <span class="keyword">and</span> W == <span class="variable language_">self</span>.img_size[<span class="number">1</span>], \</span><br><span class="line">            <span class="string">f&quot;Input image size (<span class="subst">&#123;H&#125;</span>*<span class="subst">&#123;W&#125;</span>) doesn&#x27;t match model (<span class="subst">&#123;self.img_size[<span class="number">0</span>]&#125;</span>*<span class="subst">&#123;self.img_size[<span class="number">1</span>]&#125;</span>).&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment"># flatten: [B, C, H, W] -&gt; [B, C, HW]</span></span><br><span class="line">        <span class="comment"># transpose: [B, C, HW] -&gt; [B, HW, C]</span></span><br><span class="line">        x = <span class="variable language_">self</span>.proj(x).flatten(<span class="number">2</span>).transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.norm(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure></li>
+<li>对于centering，会使用teacher输出的EMA维护一个center值，计算softmax值时减去该center。这样可以避免K维feature集中在某一维。</li>
+<li>对于sharpening，实现方式是在softmax中使用一个较小的temperature，这样可以使得softmax之后的分布更加尖锐。<br>两种策略同时使用，会互相制衡，最后避免collape。</li>
 </ul>
-<h2 id="SwinT"><a href="#SwinT" class="headerlink" title="SwinT"></a>SwinT</h2><h2 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h2><h2 id="自监督预训练"><a href="#自监督预训练" class="headerlink" title="自监督预训练"></a>自监督预训练</h2><h3 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h3><h3 id="BEiT"><a href="#BEiT" class="headerlink" title="BEiT"></a>BEiT</h3><h3 id="MoCo"><a href="#MoCo" class="headerlink" title="MoCo"></a>MoCo</h3><h3 id="SimCLR"><a href="#SimCLR" class="headerlink" title="SimCLR"></a>SimCLR</h3><h3 id="DINO"><a href="#DINO" class="headerlink" title="DINO"></a>DINO</h3>]]></content>
+</blockquote>
+</li>
+<li><p>DINO中softmax的temperature的作用</p>
+<blockquote>
+<p>较小的temperature会将输出数值放大，差异更大，从而输出的softmax分布更加尖锐。</p>
+<p>较大的temperature会使得softmax分布更加平滑。</p>
+</blockquote>
+</li>
+<li><p>DINO中应用于下游任务中是哪个网络？</p>
+<blockquote>
+<p>学生网络负责从输入的图像中学习特征表示，而教师网络则提供一个稳定的目标，帮助学生网络学习。具体来说，学生网络接收所有预处理过的图像裁剪（包括局部和全局视图），而教师网络仅接收全局视图的裁剪图。学生网络的输出会模仿教师网络的输出，通过这种方式，学生网络可以学习到更好的特征表示.<br>因此在下游任务中使用的是学生网络。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h3><ul>
+<li><p>MAE的主要特点</p>
+<blockquote>
+<ul>
+<li>非对称的Encoder-Decoder结构：Encoder只encode没有被mask掉的tokens，而Decoder需要decode所有token。</li>
+<li>极大的mask比例（75%）：相比于BERT的15%掩码概率，MAE使用了75%的掩码概率。这样的好处是既能增大task的难度，又能极大减少encoder的计算量。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>MAE的模型结构与训练pipeline</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/mae.png" class="lazyload" data-srcset="/asset/2/mae.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ul>
+<li>首先会将图片切成patch（一般是16 * 16），然后取75%的patch进行mask。</li>
+<li>MAE Encoder：是ViT，但是输入的只有unmasked patches，被mask的patch不输入。</li>
+<li>MAE Decoder：是ViT，输入的是完整的token 列表，包括：编码后的visible patches、masked patches。每一个mask token是一个共享的可学习的向量，同时会添加PE为mask token注入位置信息。（下游任务时，decoder不使用，因此decoder与encoder的结构可以是解耦的）</li>
+<li>Linear：decoder出来的vector会过一个linear将维度转换到P * P * C，对应的是patch内的像素值。</li>
+<li>Loss：使用MSE loss对mask的patch的像素值进行计算。与BERT相同，只对mask掉的部分进行loss计算。同时作者还实验了一种变种，预测一个patch内的normalized pixel value，这样可以涨点。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>MAE为什么能很好地学到视觉特征？</p>
+<blockquote>
+<ul>
+<li>mask比例很高（75%），对于encoder是个非常有挑战性的pretext task。</li>
+<li>被mask掉的部分通过周边可见的patch来恢复信息，这导致了encoder学得的视觉特征本身就得包含语义信息。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>MAE的encoder和decoder为什么是非对称的结构？</p>
+<blockquote>
+<ul>
+<li>这是因为上下游任务的gap。在BERT中，预训练的输入中是包含mask的，这与下游微调任务的输入存在gap。因此在MAE中，为了与下游任务的输入对齐，在Encoder的输入中也不引入mask。</li>
+<li>同时，encoder输入中只输入25%的patch，对模型训练速度大大提升（三倍以上）。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="BEiT"><a href="#BEiT" class="headerlink" title="BEiT"></a>BEiT</h3><h3 id="MoCo-v1-v2-v3"><a href="#MoCo-v1-v2-v3" class="headerlink" title="MoCo v1&#x2F;v2&#x2F;v3"></a>MoCo v1&#x2F;v2&#x2F;v3</h3><h3 id="SimCLR"><a href="#SimCLR" class="headerlink" title="SimCLR"></a>SimCLR</h3><h3 id="SimMIM"><a href="#SimMIM" class="headerlink" title="SimMIM"></a>SimMIM</h3>]]></content>
       <categories>
         <category>算法岗</category>
         <category>八股文</category>
@@ -714,7 +791,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">image_embeds = vision_outputs[<span class="number">1</span>]</span><br><span class="line">image_embeds = <span class="variable language_">self</span>.visual_projection(image_embeds)</span><br><span class="line"> </span><br><span class="line">text_embeds = text_outputs[<span class="number">1</span>]</span><br><span class="line">text_embeds = <span class="variable language_">self</span>.text_projection(text_embeds)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># normalized features</span></span><br><span class="line">image_embeds = image_embeds / image_embeds.norm(p=<span class="number">2</span>, dim=-<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">text_embeds = text_embeds / text_embeds.norm(p=<span class="number">2</span>, dim=-<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># cosine similarity as logits</span></span><br><span class="line">logit_scale = <span class="variable language_">self</span>.logit_scale.exp()</span><br><span class="line">logits_per_text = torch.matmul(text_embeds, image_embeds.t()) * logit_scale</span><br><span class="line">logits_per_image = logits_per_text.t()</span><br><span class="line"> </span><br><span class="line">loss = <span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> return_loss:</span><br><span class="line">    loss = clip_loss(logits_per_text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">contrastive_loss</span>(<span class="params">logits: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">    <span class="keyword">return</span> nn.functional.cross_entropy(logits, torch.arange(<span class="built_in">len</span>(logits), device=logits.device))</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clip_loss</span>(<span class="params">similarity: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">    caption_loss = contrastive_loss(similarity)</span><br><span class="line">    image_loss = contrastive_loss(similarity.t())</span><br><span class="line">    <span class="keyword">return</span> (caption_loss + image_loss) / <span class="number">2.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li><p>CLIP损失函数中温度系数的作用</p>
 <blockquote>
-<p>温度系数的作用是调节<strong>对困难样本的关注程度</strong>：越小的温度系数越关注于将本样本和最相似的其他样本分开<br>如果温度系数设的越大，logits分布变得越平滑，那么对比损失会对所有的负样本一视同仁，导致模型学习没有轻重。<br>如果温度系数设的过小，则模型会越关注特别困难的负样本，但其实那些负样本很可能是潜在的正样本，这样会导致模型很难收敛或者泛化能力差。</p>
+<p>温度系数的作用是调节<strong>对困难样本的关注程度</strong>：越小的温度系数越关注于将本样本和最相似的其他样本分开<br>如果温度系数设的越大，logits分布变得越平滑，那么对比损失会对所有的负样本一视同仁，导致模型学习没有轻重。<br>如果温度系数设的过小，logits分布会很尖锐，则模型会越关注特别困难的负样本，但其实那些负样本很可能是潜在的正样本，这样会导致模型很难收敛或者泛化能力差。</p>
 </blockquote>
 </li>
 <li><p>CLIP的位置编码，如何外推？</p>
@@ -1618,7 +1695,30 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
 </blockquote>
 </li>
 </ul>
-<h3 id="IP-Adapter"><a href="#IP-Adapter" class="headerlink" title="IP-Adapter"></a>IP-Adapter</h3><h2 id="图像编辑"><a href="#图像编辑" class="headerlink" title="图像编辑"></a>图像编辑</h2><h3 id="Prompt-to-Prompt"><a href="#Prompt-to-Prompt" class="headerlink" title="Prompt-to-Prompt"></a>Prompt-to-Prompt</h3><h3 id="InstructPix2Pix"><a href="#InstructPix2Pix" class="headerlink" title="InstructPix2Pix"></a>InstructPix2Pix</h3>]]></content>
+<h3 id="IP-Adapter"><a href="#IP-Adapter" class="headerlink" title="IP-Adapter"></a>IP-Adapter</h3><ul>
+<li><p>IP-Adapter做了什么事情？</p>
+<blockquote>
+<p>IP（Image Prompt），即生成图片时使用图片作为prompt。IP-Adapter可以在冻结原模型的情况下，为模型注入Image prompt，使得生成图片拥有image prompt的内容和风格；并且同时能够保留text prompt的能力。模型轻量化，仅包含22M参数。</p>
+</blockquote>
+</li>
+<li><p>IP-Adapter的模型结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/ip_adapter.png" class="lazyload" data-srcset="/asset/2/ip_adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ol>
+<li>包含了一个冻结的CLIP image encoder，一个可训练的linear和LN，提取image promt的feature并将维度与text feature的维度一样。</li>
+<li>在SD的Unet的每个cross attention层都会额外添加一个cross attention。这个cross attention的query以及W_q都与text的cross attention一致，不同的部分是kv输入的image prompt，以及W_k,W_v也不同。因此在这一部分，可训练的参数是W_k,W_v。然后将image cross-attention和text cross-attention相加，继续传回Unet。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>IP-Adapter的训练与推理</p>
+<blockquote>
+<p>训练：训练数据使用了大规模图文对数据。可训练模块只有上面所述的模块，其中SD始终保持冻结。为了支持CFG，以0.05概率丢掉文本，以0.05概率同时丢掉文本和image prompt。</p>
+<p>推理：在text cross-attention和image cross-attention相加时，可以以一定的权重加上image feature。当仅有image prompt时，权重设为1.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="图像编辑"><a href="#图像编辑" class="headerlink" title="图像编辑"></a>图像编辑</h2><h3 id="Prompt-to-Prompt"><a href="#Prompt-to-Prompt" class="headerlink" title="Prompt-to-Prompt"></a>Prompt-to-Prompt</h3><h3 id="InstructPix2Pix"><a href="#InstructPix2Pix" class="headerlink" title="InstructPix2Pix"></a>InstructPix2Pix</h3>]]></content>
       <categories>
         <category>算法岗</category>
         <category>八股文</category>
