@@ -60,7 +60,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-09-24T10:33:42.000Z">
-<meta property="article:modified_time" content="2024-10-18T16:42:14.421Z">
+<meta property="article:modified_time" content="2024-10-22T06:20:30.011Z">
 <meta property="article:author" content="Xintao Lv">
 <meta property="article:tag" content="算法岗">
 <meta property="article:tag" content="八股文">
@@ -1924,7 +1924,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1729322573625),
+    lastupdate: new Date(1729579874257),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2814,6 +2814,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>InfoNCE，一种用于自监督学习的特征表示学习损失函数。<br>公式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>n</mi><mi>f</mi><mi>o</mi><mi>N</mi><mi>C</mi><mi>E</mi><mo>=</mo><mo>−</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mfrac><mrow><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>∗</mo><msub><mi>k</mi><mrow><mi>i</mi><mo>+</mo></mrow></msub></mrow><mi>τ</mi></mfrac><mo stretchy="false">)</mo></mrow><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>∗</mo><msub><mi>k</mi><mrow><mi>j</mi><mo>−</mo></mrow></msub></mrow><mi>τ</mi></mfrac><mo stretchy="false">)</mo></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">InfoNCE=-\frac{1}{N}\sum\limits_{i=1}^{N}log(\frac{exp(\frac{q_i*k_{i+}}{\tau})}{\sum_{j=1}^N exp(\frac{q_i * k_{j-}}{\tau})})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.05764em;">NCE</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.506em;vertical-align:-0.9777em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5283em;"><span style="top:-2.1223em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3235em;"><span style="top:-2.3617em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8852em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.8971em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4603em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">p</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1832em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.6872em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0359em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mathnormal mtight">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3147em;"><span></span></span></span></span></span></span><span class="mbin mtight">∗</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0315em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mord mtight">−</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5092em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">p</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1038em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.6078em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0359em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mathnormal mtight">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3147em;"><span></span></span></span></span></span></span><span class="mbin mtight">∗</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.0315em;margin-right:0.1em;"><span class="pstrut" style="height:2.6595em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mtight">+</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3981em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9605em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span>，N是样本的数量，q是查询样本的编码，k是与查询样本对应的正样本或负样本的编码。<br>目的：最大化正样本对相似度，最小化负样本对相似度。</p>
 </blockquote>
 </li>
+<li><p>CLIP的loss中为什么是加上两部分的CE？</p>
+<blockquote>
+<p>仅优化I(i,t)是最大化单向的互信息，CLIP的目标是学习联合分布，因此是两项之和，即每一项在一个方向上最大化互信息。</p>
+</blockquote>
+</li>
 <li><p>CLIP训练的伪代码</p>
 <blockquote>
 <div aligh="center"><img src="/asset/2/clip.png" class="lazyload" data-srcset="/asset/2/clip.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
@@ -2827,7 +2832,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li><p>CLIP的位置编码，如何外推？</p>
 <blockquote>
-<p>CLIP的text encoder是GPT，因此使用的Learable Positional Encoding，是绝对位置编码。理论上不能外推，但也许可以将超过长度的部分随机初始化然后微调。</p>
+<p>CLIP的text encoder是GPT2，因此使用的Learable Positional Encoding，是绝对位置编码。理论上不能外推，但也许可以将超过长度的部分随机初始化然后微调。</p>
 </blockquote>
 </li>
 </ul>
@@ -2849,7 +2854,30 @@ Encoder的embedding后接分类头，进行微调。
 <div aligh="center"><img src="/asset/2/clip_adapter.png" class="lazyload" data-srcset="/asset/2/clip_adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
 <div aligh="center"><img src="/asset/2/clip_adapter_1.png" class="lazyload" data-srcset="/asset/2/clip_adapter_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
 <div aligh="center"><img src="/asset/2/clip_adapter_2.png" class="lazyload" data-srcset="/asset/2/clip_adapter_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-相较于CoOp，CLIP-Adapter的训练方式更加轻量化，只有两个残差连接的MLP。将两部分按照一定比例进行blend。（为什么要用残差连接？为了保留CLIP的原始能力）(为什么不全参微调？容易Over-fit。)</blockquote>
+相较于CoOp，CLIP-Adapter的训练方式更加轻量化，只有两个残差连接的MLP。将两部分按照一定比例进行blend。（为什么要用残差连接？为了保留CLIP的原始能力）(为什么不全参微调？容易Over-fit以及catastrophic forgetting。)</blockquote>
+</li>
+</ul>
+<h2 id="SigLIP"><a href="#SigLIP" class="headerlink" title="SigLIP"></a>SigLIP</h2><ul>
+<li><p>SigLIP的主要改进点</p>
+<blockquote>
+<p>CLIP的对比学习损失InfoNCE，需要对一整个batch内的sample求L2 norm，这对多机不友好；并且性能也受到batch size大小的限制。</p>
+<p>SigLIP提出使用每一对之间的sigmoid loss来作为学习目标，这样在概念上不受到batch size的限制；其次，也能通过一种高效的实现方式来对多卡通信速度进行提升。</p>
+</blockquote>
+</li>
+<li><p>SigLIP的损失项以及训练伪代码</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/siglip_loss.png" class="lazyload" data-srcset="/asset/2/siglip_loss.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>其中当为正样本对时，z为1；为负样本对时，z为-1。b是一个可学习的偏置项，其使用原因是训练样本中大部分为负样本对，需要在训练初期纠正这种偏置。t为可学习的温度参数。</p>
+<div aligh="center"><img src="/asset/2/siglip_train.png" class="lazyload" data-srcset="/asset/2/siglip_train.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+</li>
+<li><p>SigLIP如何在多卡之间减少gather开销？</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/siglip_chunk.png" class="lazyload" data-srcset="/asset/2/siglip_chunk.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>每次计算本卡上batch size的loss，然后每次互相交换text embeddings，最后将每个chunk的loss相加。</p>
+</blockquote>
 </li>
 </ul>
 <h2 id="Flamingo"><a href="#Flamingo" class="headerlink" title="Flamingo"></a>Flamingo</h2><ul>
@@ -2881,6 +2909,12 @@ Encoder的embedding后接分类头，进行微调。
 <div aligh="center"><img src="/asset/2/gated_xattn.png" class="lazyload" data-srcset="/asset/2/gated_xattn.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
 将固定长度的视觉 query 注入到语言模型。在预训练好的 LM 的各层交替地插入一些随机初始化的CA。Gated门控，指的是在每一新插入的层之后的残差链接之前添加一个 tanh gating，即tanh(a)，其中a是一个可学习的标量值，初始值为 0，从而保证初始化时的输出与原 LM 一致。
 </blockquote>
+<ul>
+<li>Flamingo的输入以及训练数据<blockquote>
+<p>Flamingo的few-show能力来自交错图文对。训练数据中每次最多输入5个交错的图文对。</p>
+</blockquote>
+</li>
+</ul>
 <h2 id="BLIP系列"><a href="#BLIP系列" class="headerlink" title="BLIP系列"></a>BLIP系列</h2><h3 id="BLIP"><a href="#BLIP" class="headerlink" title="BLIP"></a>BLIP</h3><ul>
 <li><p>BLIP的主要贡献</p>
 <blockquote>
@@ -2893,7 +2927,7 @@ Encoder的embedding后接分类头，进行微调。
 </li>
 <li><p>BLIP的模型架构</p>
 <blockquote>
-<div aligh="center"><img src="/asset/2/blip.png" class="lazyload" data-srcset="/asset/2/blip.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/blip.png" class="lazyload" data-srcset="/asset/2/blip.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
 
 <ul>
 <li><p>Unimodal Vision Encoder：采用的是在ImageNet-1k预训练的ViT（与LLaVa使用的不同）。</p>
@@ -2920,7 +2954,7 @@ Encoder的embedding后接分类头，进行微调。
 </li>
 <li><p>BLIP的CapFilt机制</p>
 <blockquote>
-<div aligh="center"><img src="/asset/2/capfilt.png" class="lazyload" data-srcset="/asset/2/capfilt.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/capfilt.png" class="lazyload" data-srcset="/asset/2/capfilt.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
 为了对含有噪声的Alt-text对进行过滤清洗，人工标注部分数据集得到高质量文本-图像对，然后分别微调得到一个Filter和一个Captioner，对原数据集进行重Caption与过滤，得到更高质量数据集再重新预训练MED。
 </blockquote>
 </li>
@@ -2958,9 +2992,9 @@ Encoder的embedding后接分类头，进行微调。
 </li>
 <li><p>BLIP2的模型架构</p>
 <blockquote>
-<div aligh="center"><img src="/asset/2/blip2.png" class="lazyload" data-srcset="/asset/2/blip2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/blip2.png" class="lazyload" data-srcset="/asset/2/blip2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
 由一个冻结的Vision Encoder，一个冻结的LLM，一个Q-Former和一个FC的Connector组成。其中在预训练过程中，Vision encoder和LLM始终冻结。其中Vision Encoder采用了两种 (1) CLIP-ViT-L/14 (2) EVA-CLIP-VIT-g/14。LLM有两种：(1) Decoder-based的OPT （2）Encoder-Decoder-based FlanT5。
-<div aligh="center"><img src="/asset/2/qformer.png" class="lazyload" data-srcset="/asset/2/qformer.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<div aligh="center"><img src="/asset/2/qformer.png" class="lazyload" data-srcset="/asset/2/qformer.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
 Q-former 由两个Transformer子模块组成，两部分共享Self-attention层。Image transformer通过Cross attention与图片特征交互，Text transformer可以通过Self attention从可学习Queries获取视觉特征。根据预训练任务的不同，Self-attention的mask也会不同。Q-former的权重由预训练的BERT-base初始化来，而Cross attention部分随机初始化。BLIP-2中使用了32个Queries，每个维度768，这远小于提取到的图像特征(32x768 << 257x1024)。
 </blockquote>
 </li>
@@ -2972,7 +3006,7 @@ Q-former 由两个Transformer子模块组成，两部分共享Self-attention层�
 <p>(1) 第一阶段：表征学习，将冻结的Image encoder和可学习的Q-former连在一起，同时优化三种优化目标。</p>
 <ul>
 <li>Image-Text Contrastive Learning：对齐文本与图像，最大化两者之间的互信息。这一部分采用的是Image transformer输出的Query representation和Text transformer输出的[CLS] token。由于Queries有32个，因此这里会每个计算相似度然后取最高的作为Image-Text similarity。为了避免信息泄露，这里采用的是Unimodal self-attention mask。</li>
-<li>Image-grounded Text Generation：训练Q-former根据图像生成文本。由于text transformer不能直接和视觉特征交互，因此首先由Queries提取视觉信息，然后通过Self attention传递给text token。这里采用了Multimodel causal Self-attention mask。同时也会将开头的[CLS] token更换为[DEC]。</li>
+<li>Image-grounded Text Generation：训练Q-former根据图像生成文本。由于text transformer不能直接和视觉特征交互，因此首先由Queries提取视觉信息，然后通过Self attention传递给text token。这里采用了Multimodal causal Self-attention mask。同时也会将开头的[CLS] token更换为[DEC]。</li>
 <li>Image-Text Matching：对文本和图像进行更细粒度的对齐。这里采用了Bi-directional Self-attention mask，因此输出的query embedding能够捕获多模态信息。然后将query embedding输入二分类头获得logit后进行average得到输出的matching score。<br>(这一部分实现原理是：attenion时把query和text 拼接起来输入到一个self-attention模块,然后通过mask控制query和text之间的交互,然后attention之后再把query和text分开进行后面的操作，所以实际上是同一个Bert模型。参考BLIP2官方代码)</li>
 </ul>
 <p>(2) 第二阶段：视觉到语言生成学习。将Q-former和冻结的LLM连接，并通过FC对齐query embedding和text embedding的维度。然后将投影过的query embeddings附加在text input embedding的前面，作为Soft Visual Prompt，为LLM提供有用的视觉信息并去除无关的视觉信息。这里进行了两种LLM的实验，对于Decoder-based使用LM loss，对于Encoder-decoder的使用Prefix LM loss。</p>
@@ -2996,7 +3030,7 @@ Q-former 由两个Transformer子模块组成，两部分共享Self-attention层�
 <ul>
 <li><p>Image Cptioning：用”A photo of”作为初始输入给LLM，使用LM loss训练。<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong></p>
 </li>
-<li><p>VQA：<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong> 使用Open-ended answer generation loss微调。同时额外为Q-former注入question信息，能够知道Q-former在cross attention层聚焦于更含信息的区域。</p>
+<li><p>VQA：<strong>保持LLM冻结，更新Q-former和Image encoder的参数。</strong> 使用Open-ended answer generation loss微调。同时额外为Q-former注入question信息，能够指导Q-former在cross attention层聚焦于更含信息的区域。</p>
 <div aligh="center"><img src="/asset/2/blip2_vqa.png" class="lazyload" data-srcset="/asset/2/blip2_vqa.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
 </li>
 <li><p>Image-Text Retrieval：直接在第一阶段预训练模型上微调。同时微调Image encoder和Q-former。推理时，先根据Image-text feature similarity选出128个candidate，然后根据成对的Image-text matching scores进行重排序。</p>
@@ -3008,6 +3042,7 @@ Q-former 由两个Transformer子模块组成，两部分共享Self-attention层�
 <blockquote>
 <p>LLM 一般具备 In-Contet Learning 的能力，但是在 In-Context VQA 的场景下，BLIP-2 没观察到好的结果。对于这种上下文学习能力的缺失，作者把原因归结为预训练数据集中的每个数据只包含一个图像-文本对，导致 LLM 无法从中学习单个序列中多个图像-文本对之间的相关性。</p>
 <p>BLIP-2 的图文生成能力不够令人满意，可能是 LLM 知识不准确带来的。同时 BLIP-2 继承了冻结参数的 LLM 的风险，比如输出攻击性语言，传播社会偏见。解决的办法是指令微调，或者过滤掉有害的数据集。</p>
+<p>BLIP-2生成的caption一般比较简短，这与训练数据集有关。</p>
 </blockquote>
 </li>
 <li><p>Q-former作用？</p>
@@ -3029,14 +3064,35 @@ Q-former 由两个Transformer子模块组成，两部分共享Self-attention层�
 </blockquote>
 </li>
 </ul>
-<h3 id="InstructBLIP"><a href="#InstructBLIP" class="headerlink" title="InstructBLIP"></a>InstructBLIP</h3><h3 id="BLIP3"><a href="#BLIP3" class="headerlink" title="BLIP3"></a>BLIP3</h3><h2 id="LLaVa系列"><a href="#LLaVa系列" class="headerlink" title="LLaVa系列"></a>LLaVa系列</h2><h3 id="LLaVa"><a href="#LLaVa" class="headerlink" title="LLaVa"></a>LLaVa</h3><ul>
+<h3 id="InstructBLIP"><a href="#InstructBLIP" class="headerlink" title="InstructBLIP"></a>InstructBLIP</h3><h3 id="BLIP3（xGen-MM）"><a href="#BLIP3（xGen-MM）" class="headerlink" title="BLIP3（xGen-MM）"></a>BLIP3（xGen-MM）</h3><ul>
+<li><p>BLIP3的模型结构</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/blip3.png" class="lazyload" data-srcset="/asset/2/blip3.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<p>Vision encoder采用了SigLIP，Adaptor使用了Flamingo的perceiver resampler，LLM使用了Phi3-mini。</p>
+<p>同时，采用了LLaVa-v1.5中的Any-Res策略（动态分辨率），将高分辨率图片切分成patch过后，分别进行encoding后拼接，同时将downsize的原图也进行encoding后接在后面。然后分别将每个patch过resampler，concat之后作为visual prompt。</p>
+<p>在所有阶段中，Vision encoder冻结，只训练resampler和LLM。</p>
+</blockquote>
+</li>
+<li><p>BLIP3的训练recipe</p>
+<blockquote>
+<ol>
+<li>Pre-training：不再使用（ITC,ITG,ITM），统一使用Next token prediction作为loss。预训练时图像分辨率为384x384，这与SigLIP对齐。使用的数据集包括：图文交错数据集；高质量Caption和OCR数据集；高质量Visual Grounding数据集；其他公共数据集的混合。只训练resampler和LLM。</li>
+<li>SFT：这一阶段采用Any-Res策略进行动态分辨率的输入。使用的数据集包括：单图的Visual instruction数据（对话，Captioning，VQA，OCR等），以及只有文本的instruction数据。SFT了一个epoch。只训练resampler和LLM。</li>
+<li>Interleaved Multi-Image SFT：同样使用Any-Res策略。使用的数据集包括：单图和多图的Visual instruction数据。这样能够提高模型的in-context能力以及多图推理能力。只训练resampler和LLM。</li>
+<li>Post-training：有两步后训练：第一步使用DPO提高模型的helpfulness和visual faithfulness；第二步使用safety fine-tuning提高模型的harmlessness。这两步都是用LoRA仅训练LLM backbone。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="LLaVa系列"><a href="#LLaVa系列" class="headerlink" title="LLaVa系列"></a>LLaVa系列</h2><h3 id="LLaVa"><a href="#LLaVa" class="headerlink" title="LLaVa"></a>LLaVa</h3><ul>
 <li><p>LLaVa数据集的构建</p>
 <blockquote>
-<p>根据COCO中的caption和bbox，可以利用language-only GPT-4生成三种instruction data.</p>
+<p>根据COCO中的caption和bbox，可以利用language-only GPT-4，对其进行In-context learning来生成三种instruction data.</p>
 <ul>
 <li>Conversation: 多轮对话，根据caption中的每一部分，生成一个人不断提问某张图片的instruction数据。</li>
 <li>Detailed description：详细描述，由原始caption生成详细的描述。</li>
-<li>Complex reasoning：对图片中内容的一些复杂推理。<br>LLaVa收集了158K的instruction-following数据，包括58K的conversations，23K的detailed description，77K的complex reasoning。</li>
+<li>Complex reasoning：对图片中内容的一些复杂推理。<br>LLaVa收集了158K的instruction-following数据，包括58K的conversations，23K的detailed description，77K的complex reasoning。（LLaVa-Instruct-158K）</li>
 </ul>
 </blockquote>
 </li>
@@ -3049,20 +3105,22 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
 <blockquote>
 <ul>
 <li>第一阶段：特征对齐预训练。训练数据为过滤后的595K对CC3M.每个图片文本对被视为单轮对话数据（即response为图片的caption）。该过程中冻结Vision encoder和LLM，仅训练Projector。</li>
-<li>第二阶段：端到端微调。这一过程中将Vision encoder冻结，训练LLM和projector。有两种场景的微调：多模态聊天机器人，使用前面采集的三种response作为训练数据，训练过程中均匀采样；SicenceQA，对于给定的问题提供完整的推理过程和选择的答案，训练数据以单轮对话形式输入。</li>
+<li>第二阶段：端到端SFT。这一过程中将Vision encoder冻结，训练LLM和projector。有两种场景的微调：多模态聊天机器人，使用前面采集的三种response作为训练数据，训练过程中均匀采样；SicenceQA，对于给定的问题提供完整的推理过程和选择的答案，训练数据以单轮对话形式输入。</li>
 </ul>
 </blockquote>
 </li>
 <li><p>LLaVa实验设置</p>
 <blockquote>
-<div aligh="center"><img src="/asset/2/llava_exp.png" class="lazyload" data-srcset="/asset/2/llava_exp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></blockquote>
+<div aligh="center"><img src="/asset/2/llava_exp.png" class="lazyload" data-srcset="/asset/2/llava_exp.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
 </li>
 </ul>
 <h3 id="LLaVa-v1-5"><a href="#LLaVa-v1-5" class="headerlink" title="LLaVa-v1.5"></a>LLaVa-v1.5</h3><ul>
 <li><p>LLaVa1.5的改进</p>
 <blockquote>
+<div aligh="center"><img src="/asset/2/llava_v15.png" class="lazyload" data-srcset="/asset/2/llava_v15.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
 <ul>
-<li>结构改进：Projector换成了2层MLP，Vision encoder变成了CLIP-ViT-L-336px，LLM升级为Vicuna1.5。LLaVa-v1.5-HD版本增加了对高分辨率图片的支持，将高分辨率分成多个grid分别输入原始encoder，然后concat起来获得视觉信息。</li>
+<li>结构改进：(1)Projector换成了2层MLP，Vision encoder变成了CLIP-ViT-L-336px，LLM升级为Vicuna1.5。(2)LLaVa-v1.5-HD版本增加了对高分辨率图片的支持，将高分辨率分成多个grid分别输入原始encoder，然后concat起来获得视觉信息。</li>
 <li>数据改进：</li>
 </ul>
 <ol>
@@ -3074,15 +3132,66 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
 <li><p>LLaVa1.5存在的限制</p>
 <blockquote>
 <ul>
-<li>使用全图补丁，增加了训练时间。</li>
-<li>不能处理多图，因为缺少这样的指令微调数据，以及上下文长度的限制。</li>
+<li>（HD版本）使用全图补丁，增加了训练时间。同时视觉重采样器中引入了更多的可训练参数，当训练数据数量有限时可能不能有效收敛。</li>
+<li>不能处理多图，缺少In-context learning能力，因为缺少这样的指令微调数据，以及上下文长度的限制。</li>
 <li>在一些特定领域效果不佳。</li>
 <li>依旧存在幻觉和错误信息。</li>
 </ul>
 </blockquote>
 </li>
 </ul>
-<h3 id="LLaVa-NEXT"><a href="#LLaVa-NEXT" class="headerlink" title="LLaVa-NEXT"></a>LLaVa-NEXT</h3><h2 id="MiniGPT-4"><a href="#MiniGPT-4" class="headerlink" title="MiniGPT-4"></a>MiniGPT-4</h2><ul>
+<h3 id="LLaVa-NEXT（20240130）"><a href="#LLaVa-NEXT（20240130）" class="headerlink" title="LLaVa-NEXT（20240130）"></a>LLaVa-NEXT（20240130）</h3><div aligh="center"><img src="/asset/2/any_res.png" class="lazyload" data-srcset="/asset/2/any_res.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<blockquote>
+<ol>
+<li>使用Any-Res增加更大的输入分辨率：三种aspect ratio：672x672,336x1344,1344x336。能够捕捉更多的视觉细节。</li>
+<li>更好的Visual reasoning和OCR能力：使用的高质量的User Instruct数据，包括LAION-GPT-V和ShareGPT-4V；使用多模态的表格&#x2F;文档数据。</li>
+<li>对于更多场景的视觉对话能力：拥有更好的world knowledge和逻辑推断能力。</li>
+</ol>
+</blockquote>
+<h3 id="LLaVa-NEXT（20240525）"><a href="#LLaVa-NEXT（20240525）" class="headerlink" title="LLaVa-NEXT（20240525）"></a>LLaVa-NEXT（20240525）</h3><blockquote>
+<p>模型结构：scaling LLM比scaling Vison Encoder更有效提升模型性能。视觉信息的提升主要受分辨率、特征空间token数的限制。选用SigLIP-SO400M-ViT作为vision encoder，Qwen-1.5 0.5B作为LLM。Connector还是2层带ReLu的MLP。</p>
+</blockquote>
+<blockquote>
+<p>视觉表征：使用更多的grid，以及双线性插值。</p>
+<div aligh="center"><img src="/asset/2/higher_any_res.png" class="lazyload" data-srcset="/asset/2/higher_any_res.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+</blockquote>
+<blockquote>
+<p>训练策略：<br>Stage 1-Text-image alignment：使用Public data和Web data做特征对齐。<br>Stage 1.5-High-Quality Knowledge Learning：使用更高质量的数据集强化VLM的知识。包括Re-captioned detailed description data，Document&#x2F;OCR data，ShareGPT4V Chinese detailed caption。<br>Stage 2-Visual Instruction Tuning：与之前的一致。</p>
+</blockquote>
+<h2 id="Qwen-VL系列"><a href="#Qwen-VL系列" class="headerlink" title="Qwen-VL系列"></a>Qwen-VL系列</h2><h3 id="Qwen-VL"><a href="#Qwen-VL" class="headerlink" title="Qwen-VL"></a>Qwen-VL</h3><ul>
+<li><p>Qwen-VL的模型架构</p>
+<blockquote>
+<p>LLM：使用Qwen-7B初始化<br>Vision Encoder：采用OpenCLIP-ViT-bigG-14<br>Adapter：Position-aware VL Adapter。</p>
+<ul>
+<li>该adapter包含一个随机初始化的单层cross-attention模块，该模块使用一组可训练的embedding作为query向量，使用视觉编码器输出的图像特征作为key、value。</li>
+<li>另外，考虑到位置信息对细粒度图像理解的重要性，2D绝对位置编码被结合到cross-attention的query-key pairs中，以减轻压缩过程中位置细节的潜在损失。<br>作用：（1）对图片token数压缩，压缩到固定长度256；（2）同时与LLM文本模态对齐<div aligh="center"><img src="/asset/2/qwen-vl.png" class="lazyload" data-srcset="/asset/2/qwen-vl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen-VL的输入和输出</p>
+<blockquote>
+<p>输入：</p>
+<ul>
+<li>文本输入。</li>
+<li>图像输入：与其他MLM一样。（由<img>和&lt;/img&gt;将图片token框起来）</li>
+<li>bbox输入：为了增强模型对细粒度视觉理解和定位的能力，Qwen-VL的训练涉及区域描述、问题和检测的数据形式。对于任何给定的边界框，会进行归一化处理 (在[0,1000)范围内)，并转换为指定的字符串格式：”(X_{topleft},Y_{topleft}),(X_{bottomright},Y_{bottomright})”。该字符串作为文本被token化，不需要额外的位置词汇表。为了区分检测字符串和常规文本字符串，在边界框字符串的开头和结尾添加两个特殊token (<box>和</box>)。另外，为了适当地将边界框与其对应的描述词或句子相关联，引入了另一组特殊token (<ref>和</ref>)，标记边界框所指的内容。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Qwen-VL的训练过程</p>
+<blockquote>
+<p>训练由三个阶段组成，见上图。<br>Stage 1：预训练。使用清洗后的图文对，原始有5B的数据，清洗后有1.4B。此阶段冻结LLM，训练视觉编码器和Adapter，输入分辨率224。</p>
+<div aligh="center"><img src="/asset/2/qwen-vl_ds1.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>Stage 2：多任务预训练。使用更好的图文对数据以及图文交错数据，包括captioning、VQA、Grounding、OCR等。此阶段所有部分都要训练。使用更大分辨率448.</p>
+<div aligh="center"><img src="/asset/2/qwen-vl_ds2.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+
+<p>Stage 3：SFT。采用多模态数据（图文对和图文交错）和纯文本数据混合微调，得到350K指令微调数据，以增强其遵循指令和对话能力，得到Qwen-VL-Chat（数据中有多图数据，能够有多图对话的能力）。此阶段冻结视觉编码器，训练LLM和Adapter。这样的好处是，减弱文本能力的遗忘。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Qwen-VL2"><a href="#Qwen-VL2" class="headerlink" title="Qwen-VL2"></a>Qwen-VL2</h3><h2 id="MiniGPT-4"><a href="#MiniGPT-4" class="headerlink" title="MiniGPT-4"></a>MiniGPT-4</h2><ul>
 <li><p>MiniGPT-4模型结构</p>
 <blockquote>
 <div aligh="center"><img src="/asset/2/minigpt4.png" class="lazyload" data-srcset="/asset/2/minigpt4.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
@@ -3106,53 +3215,29 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
 </blockquote>
 </li>
 </ul>
-<h2 id="Qwen-VL系列"><a href="#Qwen-VL系列" class="headerlink" title="Qwen-VL系列"></a>Qwen-VL系列</h2><h3 id="Qwen-VL"><a href="#Qwen-VL" class="headerlink" title="Qwen-VL"></a>Qwen-VL</h3><ul>
-<li><p>Qwen-VL的模型架构</p>
+<h2 id="VILA"><a href="#VILA" class="headerlink" title="VILA"></a>VILA</h2><ul>
+<li><p>VILA的贡献</p>
 <blockquote>
-<p>LLM：使用Qwen-7B初始化<br>Vision Encoder：采用OpenCLIP-ViT-bigG-14<br>Adapter：Position-aware VL Adapter。</p>
-<ul>
-<li>该adapter包含一个随机初始化的单层cross-attention模块，该模块使用一组可训练的embedding作为query向量，使用视觉编码器输出的图像特征作为key、value。</li>
-<li>另外，考虑到位置信息对细粒度图像理解的重要性，2D绝对位置编码被结合到cross-attention的query-key pairs中，以减轻压缩过程中位置细节的潜在损失。<br>作用：（1）对图片token数压缩，压缩到固定长度256；（2）同时与LLM文本模态对齐<div aligh="center"><img src="/asset/2/qwen-vl.png" class="lazyload" data-srcset="/asset/2/qwen-vl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
-</ul>
-</blockquote>
-</li>
-<li><p>Qwen-VL的输入和输出</p>
-<blockquote>
-<p>输入：</p>
-<ul>
-<li>文本输入。</li>
-<li>图像输入：与其他MLM一样。</li>
-<li>bbox输入：为了增强模型对细粒度视觉理解和定位的能力，Qwen-VL的训练涉及区域描述、问题和检测的数据形式。对于任何给定的边界框，会进行归一化处理 (在[0,1000)范围内)，并转换为指定的字符串格式：”(X_{topleft},Y_{topleft}),(X_{bottomright},Y_{bottomright})”。该字符串作为文本被token化，不需要额外的位置词汇表。为了区分检测字符串和常规文本字符串，在边界框字符串的开头和结尾添加两个特殊token (<box>和</box>)。另外，为了适当地将边界框与其对应的描述词或句子相关联，引入了另一组特殊token (<ref>和</ref>)，标记边界框所指的内容。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>Qwen-VL的训练过程</p>
-<blockquote>
-<p>训练由三个阶段组成，见上图。<br>Stage 1：预训练。使用清洗后的图文对，原始有5B的数据，清洗后有1.4B。此阶段冻结LLM，训练视觉编码器和Adapter，输入分辨率224。</p>
-<div aligh="center"><img src="/asset/2/qwen-vl_ds1.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>Stage 2：多任务预训练。使用更好的图文对数据，包括captioning、VQA、Grounding、OCR等。此阶段所有部分都要训练。使用更大分辨率448.</p>
-<div aligh="center"><img src="/asset/2/qwen-vl_ds2.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>Stage 3：SFT。采用多模态数据和纯文本数据混合微调，得到350K指令微调数据，以增强其遵循指令和对话能力，得到Qwen-VL-Chat（数据中有多图数据，能够有多图对话的能力）。此阶段冻结视觉编码器，训练LLM和Adapter。这样的好处是，减弱文本能力的遗忘。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="Qwen-VL2"><a href="#Qwen-VL2" class="headerlink" title="Qwen-VL2"></a>Qwen-VL2</h3><blockquote>
-<p>Qwen2-VL相对于Qwen1的改进主要体现在以下几个方面：</p>
 <ol>
-<li><strong>增强的图像理解能力</strong>：Qwen2-VL显著提高了模型理解和解释视觉信息的能力，为关键性能指标设定了新的基准 。</li>
-<li><strong>高级视频理解能力</strong>：Qwen2-VL具有卓越的在线流媒体功能，能够以很高的精度实时分析动态视频内容 。</li>
-<li><strong>集成的可视化agent功能</strong>：Qwen2-VL现在无缝整合了复杂的系统集成，将Qwen2-VL转变为能够进行复杂推理和决策的强大可视化代理 。</li>
-<li><strong>扩展的多语言支持</strong>：Qwen2-VL扩展了语言能力，以更好地服务于多样化的全球用户群，使Qwen2-VL在不同语言环境中更易于访问和有效 。</li>
-<li><strong>模型结构</strong>：Qwen2-VL实现了动态分辨率支持（Naive Dynamic Resolution support），能够处理任意分辨率的图像，而无需将其分割成块，从而确保模型输入与图像固有信息之间的一致性 。</li>
-<li><strong>Multimodal Rotary Position Embedding</strong>：通过将original rotary embedding分解为代表时间和空间（高度和宽度）信息的三个部分，M-ROPE使LLM能够同时捕获和集成1D文本、2D视觉和3D视频位置信息 。</li>
-<li><strong>模型效果</strong>：Qwen2-VL-7B在文档理解任务（例如DocVQA）和通过MTVQA评估的图像多语言文本理解方面表现出色，建立了非常优秀的性能 。</li>
-<li><strong>视频支持</strong>：Qwen2-VL增加了对视频的支持，能够理解长视频，并将其用于基于视频的问答、对话和内容创作等应用中 。</li>
-<li><strong>Visual Agent能力</strong>：Qwen2-VL提升了function call以及Agent能力，能够与环境实现交互，进行复杂任务的执行 。</li>
+<li>预训练时解冻LLM可以模型的in-context learning能力。</li>
+<li>使用图文交错的数据进行预训练对于VLM的多图推理能力和in-context能力有提升，同时能保持住LLM本身的能力。</li>
+<li>SFT时使用混合的text-instruction data和visual-instruction data不仅能够弥补在text-only task上的损失，还能提高VLM task的准确率。</li>
 </ol>
 </blockquote>
-<h2 id="LLaMa-3-2-Vision"><a href="#LLaMa-3-2-Vision" class="headerlink" title="LLaMa 3.2-Vision"></a>LLaMa 3.2-Vision</h2><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+</li>
+<li><p>VILA的训练过程</p>
+<blockquote>
+<div aligh="center"><img src="/asset/2/vila.png" class="lazyload" data-srcset="/asset/2/vila.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
+
+<ol>
+<li>初始化Projector：使用image-caption对初始化Projector，冻结LLM，训练Projector。</li>
+<li>VL预训练：使用图文交错数据(MMC4)和图文对数据(COYO)作图文对齐，同时训练Projector和LLM。</li>
+<li>Visual instruction-tuning：使用FLAN风格的visual instruction数据与text instruction数据混合训练，同时训练LLM和Projector。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
 <li><p>多模态的发展路径</p>
 <blockquote>
 <p>双塔型：CLIP,Prefix型：ViLT-&gt;多模态的GPT-3：Flamingo，先对齐再融合：ALBEF，多任务预训练：BLIP-&gt;使用LLM：BLIP-2,LLaVa,Instruct-BLIP,Qwen-VL等-&gt;全模态：ImageBind</p>
@@ -3199,10 +3284,10 @@ vision encoder采用预训练的CLIP-ViT-L/14,取最后一层或倒数第二层�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-10-19T00:42:14+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-10-22T14:20:30+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年10月19日</p>
+    <p>更新于：2024年10月22日</p>
   </a>
 </div>
 
@@ -3495,7 +3580,7 @@ KL loss类似于一...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CLIP"><span class="toc-text">CLIP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CLIP%E5%B0%91%E6%A0%B7%E6%9C%AC%E5%BE%AE%E8%B0%83"><span class="toc-text">CLIP少样本微调</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flamingo"><span class="toc-text">Flamingo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BLIP%E7%B3%BB%E5%88%97"><span class="toc-text">BLIP系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP"><span class="toc-text">BLIP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP2"><span class="toc-text">BLIP2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InstructBLIP"><span class="toc-text">InstructBLIP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP3"><span class="toc-text">BLIP3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLaVa%E7%B3%BB%E5%88%97"><span class="toc-text">LLaVa系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa"><span class="toc-text">LLaVa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa-v1-5"><span class="toc-text">LLaVa-v1.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa-NEXT"><span class="toc-text">LLaVa-NEXT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MiniGPT-4"><span class="toc-text">MiniGPT-4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qwen-VL%E7%B3%BB%E5%88%97"><span class="toc-text">Qwen-VL系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Qwen-VL"><span class="toc-text">Qwen-VL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qwen-VL2"><span class="toc-text">Qwen-VL2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLaMa-3-2-Vision"><span class="toc-text">LLaMa 3.2-Vision</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-text">其它</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CLIP"><span class="toc-text">CLIP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CLIP%E5%B0%91%E6%A0%B7%E6%9C%AC%E5%BE%AE%E8%B0%83"><span class="toc-text">CLIP少样本微调</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SigLIP"><span class="toc-text">SigLIP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flamingo"><span class="toc-text">Flamingo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BLIP%E7%B3%BB%E5%88%97"><span class="toc-text">BLIP系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP"><span class="toc-text">BLIP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP2"><span class="toc-text">BLIP2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InstructBLIP"><span class="toc-text">InstructBLIP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLIP3%EF%BC%88xGen-MM%EF%BC%89"><span class="toc-text">BLIP3（xGen-MM）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLaVa%E7%B3%BB%E5%88%97"><span class="toc-text">LLaVa系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa"><span class="toc-text">LLaVa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa-v1-5"><span class="toc-text">LLaVa-v1.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa-NEXT%EF%BC%8820240130%EF%BC%89"><span class="toc-text">LLaVa-NEXT（20240130）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLaVa-NEXT%EF%BC%8820240525%EF%BC%89"><span class="toc-text">LLaVa-NEXT（20240525）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qwen-VL%E7%B3%BB%E5%88%97"><span class="toc-text">Qwen-VL系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Qwen-VL"><span class="toc-text">Qwen-VL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qwen-VL2"><span class="toc-text">Qwen-VL2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MiniGPT-4"><span class="toc-text">MiniGPT-4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VILA"><span class="toc-text">VILA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-text">其它</span></a></li></ol>
     </div>
   </section>
 
@@ -4163,7 +4248,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【多模态】/","name":"算法岗知识汇总【多模态】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【多模态】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-10-18T16:42:14.421Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【多模态】/","name":"算法岗知识汇总【多模态】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【多模态】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-10-22T06:20:30.011Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
