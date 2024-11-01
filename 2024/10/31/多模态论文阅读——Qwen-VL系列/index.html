@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://lvxintao.github.io/2024/09/24/算法岗知识汇总【aigc】/"/>
+  <link rel="canonical" href="https://lvxintao.github.io/2024/10/31/多模态论文阅读——qwen-vl系列/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -47,23 +47,22 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>算法岗知识汇总【AIGC】 - Indigo的云上小屋</title>
-  <meta name="keywords" content="算法岗,八股文,Blog, Code, xintao lv, Indigo">
-  <meta desc name="description" content="正在更新中……
-秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。 - Xintao Lv - Indigo的云上小屋">
+  <title>多模态论文阅读——Qwen-VL系列 - Indigo的云上小屋</title>
+  <meta name="keywords" content="论文阅读,多模态,Blog, Code, xintao lv, Indigo">
+  <meta desc name="description" content="A blog about code, life and everything. - Xintao Lv - Indigo的云上小屋">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法岗知识汇总【AIGC】">
-<meta property="og:url" content="https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/index.html">
+<meta property="og:title" content="多模态论文阅读——Qwen-VL系列">
+<meta property="og:url" content="https://lvxintao.github.io/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Qwen-VL%E7%B3%BB%E5%88%97/index.html">
 <meta property="og:site_name" content="Indigo的云上小屋">
-<meta property="og:description" content="正在更新中…… 秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。">
+<meta property="og:description" content="Qwen-VL Qwen-VL的模型架构  LLM：使用Qwen-7B初始化Vision Encoder：采用OpenCLIP-ViT-bigG-14Adapter：Position-aware VL Adapter。  该adapter包含一个随机初始化的单层cross-attention模块，该模块使用一组可训练的embedding作为query向量，使用视觉编码器输出的图像特征作为key">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-09-24T10:33:42.000Z">
-<meta property="article:modified_time" content="2024-10-30T16:47:17.104Z">
+<meta property="article:published_time" content="2024-10-31T14:07:00.000Z">
+<meta property="article:modified_time" content="2024-11-01T02:06:36.463Z">
 <meta property="article:author" content="Xintao Lv">
-<meta property="article:tag" content="算法岗">
-<meta property="article:tag" content="八股文">
+<meta property="article:tag" content="论文阅读">
+<meta property="article:tag" content="多模态">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -1924,7 +1923,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1730307391663),
+    lastupdate: new Date(1730447569178),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2718,7 +2717,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/09/24/算法岗知识汇总【AIGC】/">
+  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/多模态论文阅读——Qwen-VL系列/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Indigo的云上小屋">
   </span>
@@ -2739,7 +2738,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        算法岗知识汇总【AIGC】
+        多模态论文阅读——Qwen-VL系列
       </h1>
       <div class='new-meta-box'>
         
@@ -2758,14 +2757,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/">算法岗</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
+    <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%A4%9A%E6%A8%A1%E6%80%81/">多模态</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/" itemprop="url"><span itemprop="name">算法岗</span></a>
+        <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url"><span itemprop="name">论文阅读</span></a>
       </span>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/" itemprop="url"><span itemprop="name">八股文</span></a>
+        <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%A4%9A%E6%A8%A1%E6%80%81/" itemprop="url"><span itemprop="name">多模态</span></a>
       </span>
     
   </div>
@@ -2774,10 +2773,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-09-24T18:33:42+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-10-31T22:07:00+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2024年9月24日</p>
+    <p>发布于：2024年10月31日</p>
   </a>
 </div>
 
@@ -2800,763 +2799,41 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>正在更新中……</p>
-<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
-<span id="more"></span>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><span id="more"></span>
 
-<h2 id="VAE"><a href="#VAE" class="headerlink" title="VAE"></a>VAE</h2><h3 id="VAE-1"><a href="#VAE-1" class="headerlink" title="VAE"></a>VAE</h3><ul>
-<li><p>VAE模型</p>
+<h2 id="Qwen-VL"><a href="#Qwen-VL" class="headerlink" title="Qwen-VL"></a>Qwen-VL</h2><ul>
+<li><p>Qwen-VL的模型架构</p>
 <blockquote>
-<div aligh="center"><img src="/asset/2/vae_1.png" class="lazyload" data-srcset="/asset/2/vae_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-</blockquote>
-</li>
-<li><p>VAE公式推导</p>
-<blockquote>
-<p>见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/711402258">知乎文章</a>。</p>
-</blockquote>
-</li>
-<li><p>KL项的作用</p>
-<blockquote>
-<p>KL loss类似于一个正则项，用于规范latent的范围，这也是与AE的最大区别。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="VQ-VAE"><a href="#VQ-VAE" class="headerlink" title="VQ-VAE"></a>VQ-VAE</h3><ul>
-<li><p>VQ-VAE模型结构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/vq-vae.png" class="lazyload" data-srcset="/asset/2/vq-vae.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-前向时，Encoder出来的latent会与codebook中的code做最近邻，直接使用codebook中的code作为latent。
-
-<p>VQ-VAE实质上是AE，用来将图像进行压缩。如果要做到图像生成，可以使用PixelCNN来拟合离散的分布。（原文中做法）</p>
-</blockquote>
-</li>
-<li><p>VQ-VAE的优化目标</p>
-<blockquote>
-<p>有三部分组成：reconstruction loss，VQ loss, commitment loss。</p>
+<p>LLM：使用Qwen-7B初始化<br>Vision Encoder：采用OpenCLIP-ViT-bigG-14<br>Adapter：Position-aware VL Adapter。</p>
 <ul>
-<li><p>Reconstruction loss： 反向过程，encoder无法得到反传的梯度，这里采取的方法是将decoder的梯度复制到encoder。具体实现如下图。</p>
-<div aligh="center"><img src="/asset/2/vq_recon.png" class="lazyload" data-srcset="/asset/2/vq_recon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-即 L = x - decoder(z_e+(z_q-z_e).detach())
-</li>
-<li><p>VQ loss：为了学习codebook，将codebook中的code与encoder的输出拉近。这一部分不反传给encoder。可以使用EMA算法实现。</p>
-<div aligh="center"><img src="/asset/2/vq_loss.png" class="lazyload" data-srcset="/asset/2/vq_loss.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-</li>
-<li><p>Commitment loss：Encoder和codebook的学习速度不同，为了不让encoder的输出偏离codebook太多，使用了commitment loss。这一部分不反传给codebook。</p>
-<div aligh="center"><img src="/asset/2/vq_commit.png" class="lazyload" data-srcset="/asset/2/vq_commit.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></li>
+<li>该adapter包含一个随机初始化的单层cross-attention模块，该模块使用一组可训练的embedding作为query向量，使用视觉编码器输出的图像特征作为key、value。</li>
+<li>另外，考虑到位置信息对细粒度图像理解的重要性，2D绝对位置编码被结合到cross-attention的query-key pairs中，以减轻压缩过程中位置细节的潜在损失。<br>作用：（1）对图片token数压缩，压缩到固定长度256；（2）同时与LLM文本模态对齐<div aligh="center"><img src="/asset/2/qwen-vl.png" class="lazyload" data-srcset="/asset/2/qwen-vl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div></li>
 </ul>
 </blockquote>
 </li>
-</ul>
+<li><p>Qwen-VL的输入和输出</p>
 <blockquote>
-<p>Encoder由Reconstruction loss和commitment loss优化，Decoder由Reconstruction loss优化，Codebook由VQ loss优化。</p>
-</blockquote>
+<p>输入：</p>
 <ul>
-<li>VAE与VQ-VAE的区别<blockquote>
-<p>VAE是假设latent分布为高斯分布；VQ-VAE则是假设latent分布为类别分布。</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><h3 id="GAN-1"><a href="#GAN-1" class="headerlink" title="GAN"></a>GAN</h3><ul>
-<li><p>GAN模型结构</p>
-<blockquote>
-<p>生成器G,判别器D，先验分布Z（可以采用高斯噪声）。</p>
-<div aligh="center"><img src="/asset/2/gan.png" class="lazyload" data-srcset="/asset/2/gan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-</blockquote>
-</li>
-<li><p>GAN的损失函数</p>
-<blockquote>
-<p>首先考虑判别器D，这是一个二分类问题，那么其损失函数为:</p>
-<div aligh="center"><img src="/asset/2/gan_d.png" class="lazyload" data-srcset="/asset/2/gan_d.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-再考虑生成器G。G是要与D唱反调，那么G的目标就是最小化-L_D,即：
-<div aligh="center"><img src="/asset/2/gan_g.png" class="lazyload" data-srcset="/asset/2/gan_g.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-最终形成的损失函数，是如下的形式：
-<div aligh="center"><img src="/asset/2/gan_loss.png" class="lazyload" data-srcset="/asset/2/gan_loss.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-改进的版本如下：
-<div aligh="center"><img src="/asset/2/gan_loss_2.png" class="lazyload" data-srcset="/asset/2/gan_loss_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-该损失函数可以证明其收敛性。（如果D对于所有的G都能够迅速变化为最优判别器，那么生成器G实际上是在最小化真实数据分布P_r与伪造数据分布P_f之间的JS散度）
-</blockquote>
-</li>
-<li><p>GAN的训练流程</p>
-<blockquote>
-<p>每一轮更新中，（1）固定G，更新D；（2）固定D，更新G。</p>
-<div aligh="center"><img src="/asset/2/gan_train.png" class="lazyload" data-srcset="/asset/2/gan_train.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</blockquote>
-</li>
-<li><p>GAN的问题</p>
-<blockquote>
-<ul>
-<li>Mode collapse：生成器生成的图像都特别像。可能是数据集过小导致过拟合。</li>
-<li>Diminished gradient：判别器太强，导致gradients vanish使得生成器学不到新东西。</li>
-<li>不收敛、经常过拟合、对超参数敏感。</li>
+<li>文本输入。</li>
+<li>图像输入：与其他MLM一样。（由<img>和&lt;/img&gt;将图片token框起来）</li>
+<li>bbox输入：为了增强模型对细粒度视觉理解和定位的能力，Qwen-VL的训练涉及区域描述、问题和检测的数据形式。对于任何给定的边界框，会进行归一化处理 (在[0,1000)范围内)，并转换为指定的字符串格式：”(X_{topleft},Y_{topleft}),(X_{bottomright},Y_{bottomright})”。该字符串作为文本被token化，不需要额外的位置词汇表。为了区分检测字符串和常规文本字符串，在边界框字符串的开头和结尾添加两个特殊token (<box>和</box>)。另外，为了适当地将边界框与其对应的描述词或句子相关联，引入了另一组特殊token (<ref>和</ref>)，标记边界框所指的内容。</li>
 </ul>
 </blockquote>
 </li>
-<li><p>WGAN与GAN的区别</p>
+<li><p>Qwen-VL的训练过程</p>
 <blockquote>
-<div aligh="center"><img src="/asset/2/wgan.png" class="lazyload" data-srcset="/asset/2/wgan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-除此之外还需要做梯度裁剪。</blockquote>
-</li>
-</ul>
-<h3 id="VQ-GAN"><a href="#VQ-GAN" class="headerlink" title="VQ-GAN"></a>VQ-GAN</h3><div aligh="center"><img src="/asset/2/vq_gan.png" class="lazyload" data-srcset="/asset/2/vq_gan.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<p>训练由三个阶段组成，见上图。<br>Stage 1：预训练。使用清洗后的图文对，原始有5B的数据，清洗后有1.4B。此阶段冻结LLM，训练视觉编码器和Adapter，输入分辨率224。</p>
+<div aligh="center"><img src="/asset/2/qwen-vl_ds1.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
 
-<ul>
-<li><p>VQ-GAN与VQ-VAE的区别</p>
-<blockquote>
-<ul>
-<li>将VQ-VAE中的先验生成器从PixelCNN改成了Transformer。</li>
-<li>重建损失中将L2 loss换成了Perceptual loss。</li>
-<li>在训练过程中使用PatchGAN的判别器加入对抗损失。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>VQ-GAN的GAN部分训练过程</p>
-<blockquote>
-<p>这一部分学习训练CNN Encoder,CNN Decoder和Codebook。</p>
-<p>对于VQ部分，与VQ-VAE类似。将图片H* W* 3经过卷积后得到h* w* n的feature，与codebook进行最近邻后得到新的latent。这里将重建的L2 loss换成了Perceptual loss。</p>
-<div aligh="center"><img src="/asset/2/vq_gan_1.png" class="lazyload" data-srcset="/asset/2/vq_gan_1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-判别器使用了PatchGAN，这部分的loss为：
-<div aligh="center"><img src="/asset/2/vq_gan_2.png" class="lazyload" data-srcset="/asset/2/vq_gan_2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-最后的优化目标为：
-<div aligh="center"><img src="/asset/2/vq_gan_3.png" class="lazyload" data-srcset="/asset/2/vq_gan_3.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</blockquote>
-</li>
-<li><p>Perceptual loss是什么？</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/per_loss.png" class="lazyload" data-srcset="/asset/2/per_loss.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</blockquote>
-</li>
-<li><p>VQ-GAN的Transformer部分</p>
-<blockquote>
-<p>这一部分训练Transformer作为先验分布来自回归地生成图像code，然后送给decoder得到生成的图像。训练过程与GPT训练过程类似，做Next-word-prediction；同时这里还进行了mask，所以不是传统的GPT训练方法。</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Diffusion"><a href="#Diffusion" class="headerlink" title="Diffusion"></a>Diffusion</h2><h3 id="DDPM"><a href="#DDPM" class="headerlink" title="DDPM"></a>DDPM</h3><blockquote>
-<div aligh="center"><img src="/asset/2/ddpm_process.png" class="lazyload" data-srcset="/asset/2/ddpm_process.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</blockquote>
-<ul>
-<li><p>DDPM的前向加噪过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/forward_diffusion.jpg" class="lazyload" data-srcset="/asset/2/forward_diffusion.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</blockquote>
-</li>
-<li><p>DDPM的反向去噪过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/denoise.jpg" class="lazyload" data-srcset="/asset/2/denoise.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</blockquote>
-</li>
-<li><p>DDPM的训练过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/ddpm_train.png" class="lazyload" data-srcset="/asset/2/ddpm_train.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
+<p>Stage 2：多任务预训练。使用更好的图文对数据以及图文交错数据，包括captioning、VQA、Grounding、OCR等。此阶段所有部分都要训练。使用更大分辨率448.</p>
+<div aligh="center"><img src="/asset/2/qwen-vl_ds2.png" class="lazyload" data-srcset="/asset/2/qwen-vl_ds2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
 
-<p>随机采样时间步t和前向噪声epsilon，用神经网络拟合该epsilon。</p>
-</blockquote>
-</li>
-<li><p>DDPM的采样过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/ddpm_sample.png" class="lazyload" data-srcset="/asset/2/ddpm_sample.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>首先从高斯分布采样初始噪声xt，然后每一步预测出epsilon来还原x_{t-1}。由于x_{t-1}是有均值方差的高斯分布，因此<br>预测出epsilon还原出均值后，还需要从标准正态分布中随机采样一个z来加上方差。</p>
-</blockquote>
-</li>
-<li><p>DDPM的生成是随机性过程吗？</p>
-<blockquote>
-<p>是的。在DDPM的反向过程中，每一步都会采样一个噪声，然后利用这个噪声和前一步的输出来生成下一步的图像。这个过程是随机的，因为每一步都会引入新的随机性。</p>
+<p>Stage 3：SFT。采用多模态数据（图文对和图文交错）和纯文本数据混合微调，得到350K指令微调数据，以增强其遵循指令和对话能力，得到Qwen-VL-Chat（数据中有多图数据，能够有多图对话的能力）。此阶段冻结视觉编码器，训练LLM和Adapter。这样的好处是，减弱文本能力的遗忘。</p>
 </blockquote>
 </li>
 </ul>
-<h3 id="DDIM"><a href="#DDIM" class="headerlink" title="DDIM"></a>DDIM</h3><ul>
-<li><p>DDIM的采样过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/ddim.jpg" class="lazyload" data-srcset="/asset/2/ddim.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>DDIM的采样过程是非马尔可夫的，且由于eta设置为0，每一步去噪无需重采样高斯噪声（除了第一步采样x_t），因此采样过程是一个确定性过程。</p>
-<p>单独DIIM并没有加速，加速使用respacing（按照一定间隔减小采样步数）。只不过respacing对DDPM使用会大幅降低生成效果，但是DDIM不会。所以DDIM+respacing又快又好。</p>
-</blockquote>
-</li>
-<li><p>DDIM的Inversion</p>
-<blockquote>
-<p>DDIM除了可以确定性去噪外，还可以确定性加噪，从而实现Image editing。</p>
-</blockquote>
-</li>
-<li><p>DDPM与DDIM的区别</p>
-<blockquote>
-<p>DDPM：固定sample方差为beta或者\hat{beta}。<br>DDIM：固定方差为0，配合respacing实现加速。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="V-Prediction"><a href="#V-Prediction" class="headerlink" title="V-Prediction"></a>V-Prediction</h3><ul>
-<li>V-prediction的原理<blockquote>
-<p>DDPM中，加噪过程公式为</p>
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub><mo>=</mo><msqrt><mover accent="true"><msub><mi>α</mi><mi>t</mi></msub><mo stretchy="true">‾</mo></mover></msqrt><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><msqrt><mrow><mn>1</mn><mo>−</mo><mover accent="true"><msub><mi>α</mi><mi>t</mi></msub><mo stretchy="true">‾</mo></mover></mrow></msqrt><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">x_t=\sqrt{\overline{\alpha_t}}x_0+\sqrt{1-\overline{\alpha_t}}\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.2147em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8253em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.5506em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-2.7853em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
-c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
-c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
-c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
-s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
-c69,-144,104.5,-217.7,106.5,-221
-l0 -0
-c5.3,-9.3,12,-14,20,-14
-H400000v40H845.2724
-s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
-c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2147em;"><span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.2078em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8322em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.5506em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-2.7922em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
-c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
-c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
-c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
-s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
-c69,-144,104.5,-217.7,106.5,-221
-l0 -0
-c5.3,-9.3,12,-14,20,-14
-H400000v40H845.2724
-s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
-c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2078em;"><span></span></span></span></span></span><span class="mord mathnormal">ϵ</span></span></span></span>。
-
-<p>在V-prediction的表示中，该公式被写成</p>
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub><mo>=</mo><msub><mi>α</mi><mi>t</mi></msub><mi>x</mi><mo>+</mo><msub><mi>σ</mi><mi>t</mi></msub><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">x_t=\alpha_tx+\sigma_t\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">ϵ</span></span></span></span>。
-
-<p>这里的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>相当于DDPM中的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mover accent="true"><msub><mi>α</mi><mi>t</mi></msub><mo stretchy="true">‾</mo></mover></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\overline{\alpha_t}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.2147em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8253em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.5506em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-2.7853em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
-c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
-c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
-c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
-s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
-c69,-144,104.5,-217.7,106.5,-221
-l0 -0
-c5.3,-9.3,12,-14,20,-14
-H400000v40H845.2724
-s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
-c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2147em;"><span></span></span></span></span></span></span></span></span>，x相对于DDPM中的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\sigma_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>相当于DDPM中的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><mn>1</mn><mo>−</mo><mover accent="true"><msub><mi>α</mi><mi>t</mi></msub><mo stretchy="true">‾</mo></mover></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{1-\overline{\alpha_t}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.2078em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8322em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.5506em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-2.7922em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
-c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
-c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
-c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
-s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
-c69,-144,104.5,-217.7,106.5,-221
-l0 -0
-c5.3,-9.3,12,-14,20,-14
-H400000v40H845.2724
-s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
-c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2078em;"><span></span></span></span></span></span></span></span></span>。</p>
-<p>易知在单位圆上。速度v定义为这条半径的切线方向，也就是其导数：</p>
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><msub><mi>α</mi><mi>t</mi></msub><mi>ϵ</mi><mo>−</mo><msub><mi>σ</mi><mi>t</mi></msub><mi>x</mi></mrow><annotation encoding="application/x-tex">v=\alpha_t\epsilon-\sigma_tx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">ϵ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span></span></span></span>。
-
-<p>对v的公式和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的公式联立，利用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>α</mi><mi>t</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>σ</mi><mi>t</mi><mn>2</mn></msubsup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha_t^2+\sigma_t^2=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0611em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0611em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，可得到预测的原图的表达式:</p>
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>^</mo></mover><mo>=</mo><msub><mi>α</mi><mi>t</mi></msub><msub><mi>z</mi><mi>t</mi></msub><mo>−</mo><msub><mi>σ</mi><mi>t</mi></msub><mover accent="true"><msub><mi>v</mi><mi>θ</mi></msub><mo>^</mo></mover><mo stretchy="false">(</mo><msub><mi>z</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\hat{x}=\alpha_tz_t-\sigma_t\hat{v_\theta}(z_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，
-
-<p>其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span></span></span></span></span></span></span>为预测的原图，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">z_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>为当前时间步的噪声，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>t</mi></msub><mtext>和</mtext><msub><mi>σ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_t和\sigma_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>参见上面定义，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><msub><mi>v</mi><mi>θ</mi></msub><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{v_\theta}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span>为去噪网络。</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>在训练阶段，依然使用DDPM给原图加噪，不过模型预测目标是v，并用公式计算出的结果监督。</p>
-</blockquote>
-<blockquote>
-<p>在推理阶段，模型预测出速度v，可以用上边的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span></span></span></span></span></span></span>计算出预测的原图，和xt加权求出xt-1再继续去噪。</p>
-</blockquote>
-<blockquote>
-<p>从v的表达式来看，它是原图x0和噪声的加权求和，因此可以把对速度的预测看作介于直接预测原图和直接预测噪声中间的一个预测目标。</p>
-</blockquote>
-<h3 id="Score-based"><a href="#Score-based" class="headerlink" title="Score-based"></a>Score-based</h3><h3 id="DiT"><a href="#DiT" class="headerlink" title="DiT"></a>DiT</h3><ul>
-<li><p>DiT的主要结构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/dit.png" class="lazyload" data-srcset="/asset/2/dit.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然使用Stable Diffusion的。
-
-<p>最后一个DiT block之后，将tokens decode为output noise prediction和covariance prediction。</p>
-</blockquote>
-</li>
-<li><p>DiT的Patchify过程</p>
-<blockquote>
-<p>与ViT的一样，使用卷积将压缩后的z切分成一个一个的token，并嵌入位置信息。</p>
-</blockquote>
-</li>
-<li><p>DiT的不同条件注入机制</p>
-<blockquote>
-<ul>
-<li>In-context conditioning：将去噪时间步和条件c作为额外两个token附在输入序列前；最后一个block之后再将它们移除。</li>
-<li>Cross-attnetion：将去噪时间步和条件c连接成一个长度为2的序列，在原始transformer block中插入cross attention并注入条件。</li>
-<li>adaLN：将原始layerNorm替换为adaLN,即从t和c中回归得到scale和shift。</li>
-<li>adaLN-Zero：将每个ResBlock初始化为identity function。同时除了回归scale和shift外，同时在每个Residual connection前回归dimension-wise scale的参数。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>AdaLN的实现</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AdaLayerNorm</span>(nn.Module):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, embedding_dim: <span class="built_in">int</span>, num_embeddings: <span class="built_in">int</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.emb = nn.Embedding(num_embeddings, embedding_dim)</span><br><span class="line">        <span class="variable language_">self</span>.silu = nn.SiLU()</span><br><span class="line">        <span class="variable language_">self</span>.linear = nn.Linear(embedding_dim, embedding_dim * <span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">self</span>.norm = nn.LayerNorm(embedding_dim, elementwise_affine=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x: torch.Tensor, timestep: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">        emb = <span class="variable language_">self</span>.linear(<span class="variable language_">self</span>.silu(<span class="variable language_">self</span>.emb(timestep)))</span><br><span class="line">        scale, shift = torch.chunk(emb, <span class="number">2</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.norm(x) * (<span class="number">1</span> + scale) + shift <span class="comment"># 用 timestep 进行 affine</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Classifier-Guidance"><a href="#Classifier-Guidance" class="headerlink" title="Classifier Guidance"></a>Classifier Guidance</h3><ul>
-<li><p>Classifier Guidance的推导</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/cls_guidance.jpg" class="lazyload" data-srcset="/asset/2/cls_guidance.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>分类器是需要预训练的，训练数据和扩散模型的训练数据一致，且由于分类过程贯穿整个采样（i.e. t从T到0），因此分类器的训练数据还需要加上不同程度的噪音，来使得该分类器在噪音图片下依然可以起到引导作用。</p>
-<p>s是一个大于1的系数。当s较大时，会更关注分类器，生成样本更符合y，但多样性更低，因此是一个保真度与多样性之间的trade-off。</p>
-</blockquote>
-</li>
-<li><p>DDPM中Classifier Guidance采样过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/cls_guidance_ddpm.png" class="lazyload" data-srcset="/asset/2/cls_guidance_ddpm.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-</blockquote>
-</li>
-<li><p>DDIM中Classifier Guidance采样过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/cls_guidance_ddim.png" class="lazyload" data-srcset="/asset/2/cls_guidance_ddim.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-</blockquote>
-</li>
-<li><p>Classifier Guidance的优点和缺点</p>
-<blockquote>
-<p>优点： 不需要重新训练扩散模型，只需要在采样时根据分类器梯度修改采样的均值即可。</p>
-<p>缺点：推理时每一步需要过分类器，速度较慢。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="Classifier-free-Guidance"><a href="#Classifier-free-Guidance" class="headerlink" title="Classifier-free Guidance"></a>Classifier-free Guidance</h3><ul>
-<li><p>CFG的推导</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/cfg.jpg" class="lazyload" data-srcset="/asset/2/cfg.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-</blockquote>
-</li>
-<li><p>CFG的训练过程</p>
-<blockquote>
-<p>训练时，Classifier-Free Guidance需要训练两个模型，一个是无条件生成模型，另一个是条件生成模型。但这两个模型可以用同一个模型表示，训练时只需要以一定概率将条件置空即可。</p>
-</blockquote>
-</li>
-<li><p>CFG的推理过程</p>
-<blockquote>
-<p>推理时，需要同时得到cond和uncond的推理结果，按照上述公式对预测噪声进行线性外推。</p>
-<p>其中，uncond也可以用negative prompt代替，这样可以实现不生成某些内容。</p>
-</blockquote>
-</li>
-<li><p>为什么需要两次推理分别得到cond和uncond？</p>
-<blockquote>
-<p>通过线性外推方式，获得更多的生成多样性。</p>
-</blockquote>
-</li>
-<li><p>CFG的guidance_scale的作用</p>
-<blockquote>
-<p>一般取7.5。guidance scale越大，生成的结果越倾向于输入条件，图像质量更高，多样性会下降；越小，多样性越大。</p>
-</blockquote>
-</li>
-<li><p>相比于Classifier Guidance的优点</p>
-<blockquote>
-<ol>
-<li>不需要额外训练分类器。</li>
-<li>更加灵活，因为它不依赖于特定的分类器，可以处理更广泛的条件。</li>
-<li>采样时效率更高。</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="其他加速采样"><a href="#其他加速采样" class="headerlink" title="其他加速采样"></a>其他加速采样</h3><ul>
-<li>DPM,DPM++</li>
-</ul>
-<h2 id="文生图模型"><a href="#文生图模型" class="headerlink" title="文生图模型"></a>文生图模型</h2><h3 id="Stable-Diffusion-LDM"><a href="#Stable-Diffusion-LDM" class="headerlink" title="Stable Diffusion(LDM)"></a>Stable Diffusion(LDM)</h3><h4 id="SD-1-x-2-x"><a href="#SD-1-x-2-x" class="headerlink" title="SD 1.x&#x2F;2.x"></a>SD 1.x&#x2F;2.x</h4><ul>
-<li><p>SD中的VAE。</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/sd_vae.jpeg" class="lazyload" data-srcset="/asset/2/sd_vae.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-重构损失：L1 loss,Perceptual loss，对抗损失：Patch-based GAN loss,正则化：KL loss.
-
-<p>为了避免latent太过无序，使用正则项对latent space进行规范。原文中使用了两种：（1）KL-reg，但权重设置得很小（过强的正则化会导致生成的图像模糊）；（2）VQ-reg，使用很大的codebook。</p>
-<p>SD中的VAE不具有生成功能，主要起的是压缩作用。</p>
-</blockquote>
-</li>
-<li><p>SD中VAE与普通VAE的区别</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/ldm_vae.png" class="lazyload" data-srcset="/asset/2/ldm_vae.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-这里的KL只是起了规范latent的作用。而且原文中设置的KL设置的极小。（ELBO中过强的正则化会导致生成的图像模糊）
-</blockquote>
-</li>
-<li><p>SD的U-Net结构及与DDPM中U-Net的区别。</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/sd_unet.jpeg" class="lazyload" data-srcset="/asset/2/sd_unet.jpeg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-其中时间步t在ResBlock中过线性层后与x相加；文本c在SpatialTransformer的cross attention中与flatten的x交互。Unet中的连接方式是直接concat。</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>区别：（1）DDPM中是自注意力模块，而SD中替换成Transformer block。<br>(2) DDPM中自注意力仅在较深的几层，而SD中每个层都有Transformer block。</p>
-</blockquote>
-<ul>
-<li><p>SD的训练过程</p>
-<blockquote>
-<p>训练：首先预训练Autoencoder，然后训练LDM（LDM恢复的是latent）。</p>
-</blockquote>
-</li>
-<li><p>SD的生成结果评估指标</p>
-<blockquote>
-<p>IS(Inception Score)：<strong>用分类模型评测样本集的“类别确定性”和“类别多样性”，越大越好</strong>。用了一个图像分类网络来评估生成图片的质量。这个分类网络是在 ImageNet 数据集上训的，一共有1000类。</p>
-<div aligh="center"><img src="/asset/2/is.png" class="lazyload" data-srcset="/asset/2/is.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<ul>
-<li>清晰度上：把一张生成的图像喂给分类模型，让模型输出最后一层的1000维向量，如果图像更清晰，那么分类的置信度会很高，其中的某个值会更接近1，其他值更接近0，这个1000维向量的熵就会更低。</li>
-<li>多样性上：生成5000张图片给分类模型去分类，如果图像更多样，那么分出来的类型会更均匀，总体接近均匀分布，熵更高。</li>
-</ul>
-<p>IS指标就是在计算这两个熵的KL散度（可以简单理解为一种距离），图像越清晰、多样性约高，前一个熵越低，后一个熵越高，KL散度越大，所以 IS 指标越大表示生成的效果越好。</p>
-<p>缺点： 评测方式的前提是，图像生成所用的训练图片必须得是与分类模型训练数据相同，否则这种评测方式就是有问题的。</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>FID(Fréchet Inception Distance)：<strong>用两个分布的期望和方差，计算两个分布的距离，越小越好</strong>。</p>
-<div aligh="center"><img src="/asset/2/fid.png" class="lazyload" data-srcset="/asset/2/fid.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<ul>
-<li>用一个去掉分类头的分类模型推理出生成图像和真实图像的特征层（一般是2048维）.</li>
-<li>假设两个数据的特征层都服从正态分布</li>
-<li>用上面这个公式计算两个分布的均值和协方差的“距离”</li>
-</ul>
-<p>缺点：没法衡量是否过拟合的问题。</p>
-</blockquote>
-<blockquote>
-<p>CLIP score：计算prompt与生成图片的cos相似度。用于评测遵守prompt的程度。</p>
-</blockquote>
-<blockquote>
-<p>R-precision：对提取的图像和文本特征之间的检索结果进行排序，来衡量文本描述和生成的图像之间的视觉语义相似性。</p>
-</blockquote>
-<ul>
-<li>SD 2.x与SD 1.x最主要区别<blockquote>
-<p>SD 2.x使用了v-prediction，见下图</p>
-<div aligh="center"><img src="/asset/2/v_pred.png" class="lazyload" data-srcset="/asset/2/v_pred.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
-</li>
-</ul>
-<h4 id="SD-XL"><a href="#SD-XL" class="headerlink" title="SD-XL"></a>SD-XL</h4><ul>
-<li><p>SD-XL与SD 1.x的区别</p>
-<blockquote>
-<ul>
-<li><p>增加一个 Refiner 模型，用于对图像进一步地精细化。</p>
-</li>
-<li><p>使用 CLIP ViT-L 和 OpenCLIP ViT-bigG 两个 text encoder</p>
-</li>
-<li><p>基于 OpenCLIP 的 text embedding 增加了一个 pooled text embedding</p>
-</li>
-<li><p>训练方式上：（1）以图像大小作为条件。提出将原始图像分辨率作用于 U-Net 模型，并提供图像的原始长和宽（csize &#x3D; (h, w)）作为附加条件。 （2） 以裁剪参数作为条件。将裁剪的左上坐标（top, left）作为条件输入模型，和 size 类似。(3)基于多尺度分辨率训练。</p>
-</li>
-</ul>
-</blockquote>
-</li>
-<li><p>SD-XL-turbo的改进</p>
-<blockquote>
-<p>引入蒸馏技术，以便减少 LDM 的生成步数，提升生成速度。</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<div aligh="center"><img src="/asset/2/sdxl.png" class="lazyload" data-srcset="/asset/2/sdxl.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-</blockquote>
-<h4 id="SD-3-x"><a href="#SD-3-x" class="headerlink" title="SD 3.x"></a>SD 3.x</h4><ul>
-<li>SD 3的改动<blockquote>
-<ol>
-<li>全面拥抱DiT架构。</li>
-<li>替换ODE&#x2F;SDE噪声预测步骤，使用Rectified Flow。（使用Flow matching objective）</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="IDDPM"><a href="#IDDPM" class="headerlink" title="IDDPM"></a>IDDPM</h3><ul>
-<li>IDDPM的原理<blockquote>
-<ol>
-<li>DDPM中将方差设置为常数。而IDDPM中，提出了可学习的方差（模型会额外输出一个向量用于预测方差），并把它加入到loss中（L_{vlb}），其中L_{vlb}表示变分下界损失（优化时采用重要性采样）。</li>
-<li>IDDPM认为DDPM的加噪方式会导致早期阶段加噪过快，因此提出了<strong>cosine schedule</strong>的加噪方式。</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="ADM（Guided-diffusion）"><a href="#ADM（Guided-diffusion）" class="headerlink" title="ADM（Guided-diffusion）"></a>ADM（Guided-diffusion）</h3><ul>
-<li><p>Guided-diffusion模型结构的改进</p>
-<blockquote>
-<ul>
-<li>保持模型大小不变，增加深度，降低宽度</li>
-<li>增加 Attention 头的数量</li>
-<li>不只是在 16x16 分比率使用 Attention，在 32x32 和 8x8 也使用</li>
-<li>在上采样和下采样激活时使用 BigGAN 的 residual block</li>
-<li>在 residual connection 中采用 1&#x2F;sqrt(2) 的缩放</li>
-</ul>
-</blockquote>
-</li>
-<li><p>ADM使用的条件引导</p>
-<blockquote>
-<p>使用了Classifier Guidance。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="GLIDE"><a href="#GLIDE" class="headerlink" title="GLIDE"></a>GLIDE</h3><ul>
-<li>GLIDE的贡献<blockquote>
-<p>将Diffusion用于文本条件图像生成，并比较了两种不同的引导策略：CLIP Guidance和Classifier Free Guidance。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="DALL-E"><a href="#DALL-E" class="headerlink" title="DALL-E"></a>DALL-E</h3><h4 id="DALL-E-1"><a href="#DALL-E-1" class="headerlink" title="DALL-E 1"></a>DALL-E 1</h4><ul>
-<li>DALL-E 1的模型架构<blockquote>
-<div aligh="center"><img src="/asset/2/dalle.png" class="lazyload" data-srcset="/asset/2/dalle.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<p>第一阶段，训练一个VQVAE。第二阶段，训练一个自回归的prior模型，这里用的是decoder-only的Transformer（与VQGAN很像，但是这里将文本作为prefix预置条件，实现了Text-conditional生成）</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="DALL-E-2-unCLIP"><a href="#DALL-E-2-unCLIP" class="headerlink" title="DALL-E 2(unCLIP)"></a>DALL-E 2(unCLIP)</h4><ul>
-<li><p>DALL-E 2的模型结构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/dalle2.png" class="lazyload" data-srcset="/asset/2/dalle2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-共由三部分组成，预训练的CLIP，prior模型，decoder模型。之所以叫unCLIP，是因为这里是和CLIP反过来的，将Image embedding还原成图片。
-</blockquote>
-</li>
-<li><p>DALL-E 2训练过程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/dalle2_train.png" class="lazyload" data-srcset="/asset/2/dalle2_train.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<ol>
-<li>在图文对上预训练CLIP模型，之后一直是冻结的。</li>
-<li>训练Prior模型，由文本embedding还原得到对应的图片embedding。实现上使用了两种结构：（1）自回归Prior。（2）扩散模型prior。最终选用了扩散模型Prior。</li>
-<li>训练Decoder模型，由CLIP图片embedding解码为真实的图片（因此叫unCLIP）。生成分辨率为64*64，为了生成高清大图，还训练了两个扩散模型的超分模型，上采样到 256 * 256和1024 * 1024.</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h4 id="DALL-E-3"><a href="#DALL-E-3" class="headerlink" title="DALL-E 3"></a>DALL-E 3</h4><ul>
-<li>DALL-E 3主要贡献<blockquote>
-<p>对图文数据集recaptioning，即训练一个 captioner 模型，来为图片生成更完整的文本描述。用这种合成的（synthetic）图像文本对数据集，来训练文生图模型，prompt following 能力显著提升。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="IMAGEN"><a href="#IMAGEN" class="headerlink" title="IMAGEN"></a>IMAGEN</h3><ul>
-<li>IMAGEN的模型结构<blockquote>
-<div aligh="center"><img src="/asset/2/imagen.png" class="lazyload" data-srcset="/asset/2/imagen.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<p>文本编码器使用T5，训练过程中始终冻结。<br>扩散模型级联了三层，第一层去噪生成图像，第二、三层是超分辨率。<br>训练及采样过程中同样使用了CFG。</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="额外控制"><a href="#额外控制" class="headerlink" title="额外控制"></a>额外控制</h2><h3 id="ControlNet"><a href="#ControlNet" class="headerlink" title="ControlNet"></a>ControlNet</h3><ul>
-<li><p>ControlNet可以添加的控制条件类型</p>
-<blockquote>
-<p>Canny Edge, Hough lines, User scrobbles, Human Keypoints, Segmentation maps, shape normals ,depth.</p>
-<p>多个条件可以叠加，将controlnet的结果相加即可。</p>
-</blockquote>
-</li>
-<li><p>ControlNet的结构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/controlnet.png" class="lazyload" data-srcset="/asset/2/controlnet.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<p>会将SD的Unet的Encoder和Middle做trainable copy，并且条件输入时和输出时会过一个Zero-initialized conv。然后在Skip connection时，与原网络的部分相加后，与Decoder的concat。</p>
-</blockquote>
-</li>
-<li><p>Zero-conv的结构？为什么要零初始化？</p>
-<blockquote>
-<p>Zero-conv是w和b初始化为0的1*1卷积层。使用零初始化的目的是：在训练初期时，trainable copy不会对原始模型产生有害的噪声。</p>
-</blockquote>
-</li>
-<li><p>ControlNet推理时的条件控制</p>
-<blockquote>
-<p>CFG resolution weighting：使用CFG推理时，会同时计算cond和uncond。如果同时将conditioning image加到uncond和cond，会完全忽视CFG guidance；如果只加到cond，将会使得guidance太强。</p>
-<p>提出的方法是：将conditioning image只加到cond，但是每次在skip connectionn加的时候会根据分辨率添加一个权重w&#x3D;64&#x2F;h，h为分辨率大小。通过这样，可以减轻guidance的强度。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="T2I-Adapter"><a href="#T2I-Adapter" class="headerlink" title="T2I-Adapter"></a>T2I-Adapter</h3><ul>
-<li><p>T2I-Adapter可以添加的控制条件类型</p>
-<blockquote>
-<p>Sketch map, Semantic segmentation map, Keypoints , color , depth maps</p>
-</blockquote>
-</li>
-<li><p>T2I-Adapter的模型结构，以及它作用的位置</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/t2i_adapter.png" class="lazyload" data-srcset="/asset/2/t2i_adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<p>Adapter结构由四个特征提取block和三个downsample block组成，输入分辨率为512 * 512。初始时，将condition map使用pixel unshuffle降采样到64 * 64。然后在每一层scale会输出一个feature，对应SD encoder中的分辨率大小。这四个feature会分别加到SD的UNet encoder的中间feature上。</p>
-<p>起作用的位置是Unet的encoder层，会在每个scale与中间feature相加。</p>
-</blockquote>
-</li>
-<li><p>T2I-Adapter的多条件控制</p>
-<blockquote>
-<p>无需额外训练，只需要将多个条件的feature加权相加即可。</p>
-</blockquote>
-</li>
-<li><p>T2I-Adapter的采样策略</p>
-<blockquote>
-<p>实验中发现，将time embedding输入adapter对guidance能力有帮助，但如果每个去噪步都加guidance会过于繁琐。</p>
-<p>文中最后发现，在去噪的中后阶段guidance几乎不起作用，大部分内容都是在早期起作用。因此在训练时，当采集的t是中后期的t，则忽略guidance；如果是早期的，则正常加guidance。推理使用DDIM采样时，也采用non-uniform sampling。即增大t落在早期阶段的概率（这里采用了cubic function）</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="私人定制"><a href="#私人定制" class="headerlink" title="私人定制"></a>私人定制</h2><h3 id="Textual-Inversion"><a href="#Textual-Inversion" class="headerlink" title="Textual Inversion"></a>Textual Inversion</h3><ul>
-<li><p>Texual Inversion做的事情</p>
-<blockquote>
-<p>给定3-5张某个主体的图片，冻结T2I模型，通过优化一个pseudo-word的embedding来使得模型学会生成该主体。在2张V100上优化了5000个steps。</p>
-</blockquote>
-</li>
-<li><p>Textual Inversion的优化流程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/textual_inversion.png" class="lazyload" data-srcset="/asset/2/textual_inversion.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<p>将placeholder的embedding vector设置为可学习的embedding（使用其coarse description的token进行初始化），将输入图片的prompt设置为”A photo of S*”,”A rendition of S*”等。然后使用LDM的reconstruction loss（去噪损失）对该embedding进行优化。（注意，该优化过程中，除了此可学习embedding，其他所有参数冻结）</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="DreamBooth"><a href="#DreamBooth" class="headerlink" title="DreamBooth"></a>DreamBooth</h3><ul>
-<li><p>DreamBooth做的事情</p>
-<blockquote>
-<p>给定3-5张某个主体的图片，通过微调T2I模型，使得模型能够生成该主体的图片，同时保持原有类别的生成能力。在单张A100上微调SD约需要5min。</p>
-</blockquote>
-</li>
-<li><p>DreamBooth的微调流程</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/dreambooth.png" class="lazyload" data-srcset="/asset/2/dreambooth.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<ol>
-<li><p>对于输入主体的照片，为其打上标签“a [identifier] [class noun]”，其中identifier是词汇表中的rare tokens，class是一个粗粒度的描述主体类别的词。</p>
-</li>
-<li><p>接下来微调SD的所有层（实际应用起来，同时微调文本编码器效果会更好），但是这样会造成language drift（忘记原来的类别如何生成），并且生成多样性降低。采取的办法是除了reconstruction loss之外，还使用了class-specific preservation loss。具体做法是：从原始SD中生成一些“A [class noun]”的样本，然后将这些sample加入训练数据来同时微调SD。通过这个loss可以避免few-shot微调之后忘记原本属于该class的信息。</p>
-</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="Custom-Diffusion"><a href="#Custom-Diffusion" class="headerlink" title="Custom Diffusion"></a>Custom Diffusion</h3><ul>
-<li><p>Custom Diffusion做的事情</p>
-<blockquote>
-<p>给定4-5张主体图片，对模型进行较少参数的微调使得SD能够生成对应主体的图片。同时能够支持多主体的定制化生成。</p>
-</blockquote>
-</li>
-<li><p>Custom Diffusion对于单概念的微调</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/custom_diffusion.png" class="lazyload" data-srcset="/asset/2/custom_diffusion.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<p>Custom Diffusion对于模型的微调有三个方面：</p>
-<ol>
-<li>对于文本编码，会和Textual Inversion一样引入一个新token与对应的mebedding，同时在该token后加上通用类的名字。训练时，会同时优化这个embedding。</li>
-<li>对于UNet部分，只微调每个Cross attention中的KV矩阵，这些参数量只占了整个UNet的5%。</li>
-<li>对于language drift问题的解决，从LAION-400M中选取了与text prompt高相似度的图片，作为正则集（与DreamBooth类似）。</li>
-</ol>
-</blockquote>
-</li>
-<li><p>Custom Diffusion对于多概念的组合</p>
-<blockquote>
-<ol>
-<li>联合训练。将两种概念的数据集直接进行联合训练。</li>
-<li>合并优化。在已有两个单概念的模型之后，可以通过优化合成目标的方式，仅优化KV矩阵，得到优化之后的组合概念模型。</li>
-</ol>
-</blockquote>
-</li>
-<li><p>Custom Diffusion与Textual Inversion&#x2F;DreamBooth的关系</p>
-<blockquote>
-<ul>
-<li>Custom Diffusion与Textual Inversion类似，会在文本嵌入中加入一个可学习的embedding。</li>
-<li>Custom Diffusion与DreamBooth类似，会有正则集来防止language drift，也会微调UNet。区别在于，Custom Diffusion只微调Cross attention中得KV矩阵，而DreamBooth微调所有；Custom Diffusion得正则集是直接选取得，而DreamBooth的是模型提前生成的。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h2 id="保持ID"><a href="#保持ID" class="headerlink" title="保持ID"></a>保持ID</h2><h3 id="FastComposer"><a href="#FastComposer" class="headerlink" title="FastComposer"></a>FastComposer</h3><ul>
-<li><p>FastComposer做的事情？</p>
-<blockquote>
-<p>给定一张照片，无需test time的微调，能够生成定制化的图片，同时保持一定的文本可编辑性。与Fine-tuning-based方法相比，速度更快且不需要额外存储。同时，FastComposer支持多主体的图像生成。</p>
-</blockquote>
-</li>
-<li><p>FastComposer提出的challenge</p>
-<blockquote>
-<ul>
-<li>之前的Personalization方法大多基于微调，耗时。</li>
-<li>多主体生成过程中的Identity Blending问题：当文本中出现多个个体的，他们的ID会因为Attention中注意到text的每个token而出现混杂。</li>
-<li>在进行Personalization后，可能出现模型不遵循文本prompt的现象。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>FastComposer中对Cross-attention的解释</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/fast_ca.png" class="lazyload" data-srcset="/asset/2/fast_ca.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<p>假设A为cross attention得到的Attention score（即softmax(qk)），则A[i,j,k]表示从k-th token到(i,j)位置的latent pixel的信息流。当某个像素更注意到某个token时，该值应该更大。</p>
-</blockquote>
-</li>
-<li><p>FastComposer的原理</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/fast_composer.png" class="lazyload" data-srcset="/asset/2/fast_composer.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
-</li>
-</ul>
-<blockquote>
-<p><strong>Tuning-Free Subject-Driven Image Generation</strong></p>
-<div aligh="center"><img src="/asset/2/text_embed_aug.png" class="lazyload" data-srcset="/asset/2/text_embed_aug.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>为了达到Tuning-free的目的，这里采用的是augmented的text embedding。<br>具体来说，给定文本Prompt，Reference Image，指定Subject在prompt中的token id，首先将文本和Reference Image分别过CLIP encoders。对于包含主体词的word embedding，将它的embedding和visual feature相连后输入给MLP，得到增强后的文本 embedding。<br>……………………………………..<br>训练时，使用denoising loss训练Image encoder的最后两层，MLP模块以及U-Net。<br>为了训练这一部分，作者创建了一个subject-augmented的图文对数据集，会将主体与对应文本的token对应。同时，训练的时候会将主体的背景使用随机噪声，防止模型对于主体背景的过拟合。</p>
-</blockquote>
-<blockquote>
-<p><strong>Localizing Cross-Attention Maps with Subject Segmentation Masks</strong><br>作者认为，正确的Cross attention map，应该让对应主体的token在主体的instance seg mask处分数高，而不是散布在整张图片。因此，在训练的时候会在Cross attention这里加上一个Regularization项。该项只在训练时使用，推理时不使用。<br>……………………………………..<br>使用的方法是使用reference主体的seg mask来定位cross attention map。A_i&#x3D;[:,:,i]表示第i个subject token的cross attention map,m_j表示第j个subject token。使用m_j来监督A_ij，使用Balanced L1 loss。</p>
-<div aligh="center"><img src="/asset/2/loc_loss.png" class="lazyload" data-srcset="/asset/2/loc_loss.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>最终，FastComposer的训练目标由denoising loss和localization loss组成。其中，localization loss只对Unet的中间5个block使用，因为它们包含更多的语义信息。</p>
-</blockquote>
-<blockquote>
-<p><strong>Delayed Subject Conditioning</strong><br>直接使用augmented text representation可能导致图片很像subject但忽视文字引导。这是因为图片的layout是在去噪早期形成的，而一直的subject augmentation会导致模型忽视文本instruction。<br>…………………………………..<br>因此采用延迟主体条件，即只在去噪过程的后期使用augmented text embedding，而在前期layout形成过程中，只是用text-only prompt。这在identity preservation和editability间达到了平衡。</p>
-<div aligh="center"><img src="/asset/2/delayed_cond.png" class="lazyload" data-srcset="/asset/2/delayed_cond.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="80%"/></div>
-
-<p>其中c指原始的text embedding，c’指使用reference image增强过的text embedding。\alpha通常取[0.6,0.8]</p>
-</blockquote>
-<ul>
-<li>FastComposer的流程。<blockquote>
-<p>训练过程：使用主体增强的图文对数据集。</p>
-<ol>
-<li>文本prompt过Text encoder得到text embedding；每个Subject的图片部分过Image Encoder得到Subject image embedding。</li>
-<li>将Subject embedding与对应token的embedding相连后过MLP得到增强后的text embedding。</li>
-<li>过U-Net，且对中间5个block的cross attention map会使用Localazation loss监督。</li>
-<li>对去噪后的图像使用denoising loss。</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>推理过程：用户输入主体referene照片，以及文本prompt（主体分先后顺序，使用man img来进行标记subject token）。</p>
-<ol>
-<li>文本prompt过text encoder得到text embedding；图片过Image encoder得到Subject embedding。</li>
-<li>Subject embedding与Subject token embedding相连后过MLP得到增强的text embedding。</li>
-<li>输入UNet进行去噪。</li>
-<li>若使用Delayed Subject Conditioning，则去噪前期不增强text embedding，使用原始text embedding。</li>
-</ol>
-</blockquote>
-<h3 id="IP-Adapter"><a href="#IP-Adapter" class="headerlink" title="IP-Adapter"></a>IP-Adapter</h3><ul>
-<li><p>IP-Adapter做了什么事情？</p>
-<blockquote>
-<p>IP（Image Prompt），即生成图片时使用图片作为prompt。IP-Adapter可以在冻结原模型的情况下，为模型注入Image prompt，使得生成图片拥有image prompt的内容和风格；并且同时能够保留text prompt的能力。模型轻量化，仅包含22M参数。同时，IP-Adapter也与其他adpater兼容，例如ControlNet。</p>
-<p>在推理时，给定一张图片，不需要对模型进行test time微调，能生成与图片内容一致（但ID可能不一致）或者风格的图片。</p>
-</blockquote>
-</li>
-<li><p>IP-Adapter的模型结构</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/ip_adapter.png" class="lazyload" data-srcset="/asset/2/ip_adapter.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<ol>
-<li>包含了一个冻结的CLIP image encoder，一个可训练的linear和LN，提取image promt的feature并将维度调整至与text feature的维度一样。</li>
-<li>在SD的Unet的每个cross attention层都会额外添加一个cross attention。这个cross attention的query以及W_q都与text的cross attention一致，不同的部分是kv输入的image prompt，以及W_k,W_v也不同。因此在这一部分，可训练的参数是W_k,W_v。然后将image cross-attention和text cross-attention相加，继续传回Unet。</li>
-</ol>
-</blockquote>
-</li>
-<li><p>IP-Adapter的训练与推理</p>
-<blockquote>
-<p>训练：训练数据使用了大规模图文对数据。可训练模块只有上面所述的模块（Linear，LN,UNet所有Cross attention中的KV矩阵），其中SD始终保持冻结。为了支持CFG，以0.05概率丢掉文本，以0.05概率同时丢掉文本和image prompt。</p>
-<p>推理：在text cross-attention和image cross-attention相加时，可以以一定的权重加上image feature。当仅有image prompt时，权重设为1。使用50步的DDIM采样器，guidance scale设为7.5。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="PhotoMaker"><a href="#PhotoMaker" class="headerlink" title="PhotoMaker"></a>PhotoMaker</h3><h3 id="Instant-ID"><a href="#Instant-ID" class="headerlink" title="Instant ID"></a>Instant ID</h3><ul>
-<li><p>InstantID做的事情</p>
-<blockquote>
-<p>给定一张照片，在test time无需微调，生成高保真ID和具有可编辑性的图片。同时，不需要训练SD的参数，这使得与其他模块如LoRA，ControlNet等兼容。</p>
-</blockquote>
-</li>
-<li><p>InstantID的做法</p>
-<blockquote>
-<div aligh="center"><img src="/asset/2/instantid.png" class="lazyload" data-srcset="/asset/2/instantid.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div>
-
-<ul>
-<li>ID Embedding：IP-Adapter等方法对于图像特征的提取使用CLIP，但这是比较广泛的语义信息，不适合人脸。因此这里使用Face Encoder来提取Face Embedding。</li>
-<li>Image Adapter：与IP-Adapter类似，会有一个decoupled cross attention，区别在于这里输入的是ID Embedding。</li>
-<li>IdentityNet：利用一个类似ControlNet的结构，输入Input是五个脸部的landmarks（可以使用landmarks控制生成脸部姿态），条件为ID embedding，给生成过程添加空间控制，可以达到高保真的目的。</li>
-</ul>
-<p>综上，简单来说就是IP-Adapter+Face controlNet。</p>
-<p>训练时，只训练Image Adapter、IndentityNet部分，其余部分冻结。使用的是denoising loss。</p>
-<p>推理时，可以控制adapter和identitynet的强度（见IP-Adapter）。</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="图像编辑"><a href="#图像编辑" class="headerlink" title="图像编辑"></a>图像编辑</h2><h3 id="Prompt-to-Prompt"><a href="#Prompt-to-Prompt" class="headerlink" title="Prompt-to-Prompt"></a>Prompt-to-Prompt</h3><h3 id="InstructPix2Pix"><a href="#InstructPix2Pix" class="headerlink" title="InstructPix2Pix"></a>InstructPix2Pix</h3><h3 id="Blended-Latent-Diffusion"><a href="#Blended-Latent-Diffusion" class="headerlink" title="Blended Latent Diffusion"></a>Blended Latent Diffusion</h3>
+<h2 id="Qwen-VL2"><a href="#Qwen-VL2" class="headerlink" title="Qwen-VL2"></a>Qwen-VL2</h2>
   </div>
   
   
@@ -3580,10 +2857,10 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-10-31T00:47:17+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-11-01T10:06:36+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年10月31日</p>
+    <p>更新于：2024年11月1日</p>
   </a>
 </div>
 
@@ -3592,8 +2869,8 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AE%97%E6%B3%95%E5%B2%97/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>算法岗</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>八股文</p></a></div>
-  <span hidden itemprop="keywords">算法岗 八股文</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>论文阅读</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%A4%9A%E6%A8%A1%E6%80%81/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>多模态</p></a></div>
+  <span hidden itemprop="keywords">论文阅读 多模态</span>
 
 
         
@@ -3606,8 +2883,7 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/&title=算法岗知识汇总【AIGC】 - Indigo的云上小屋&summary=正在更新中……
-秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lvxintao.github.io/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Qwen-VL%E7%B3%BB%E5%88%97/&title=多模态论文阅读——Qwen-VL系列 - Indigo的云上小屋&summary="
           
           >
           
@@ -3619,8 +2895,7 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/&title=算法岗知识汇总【AIGC】 - Indigo的云上小屋&summary=正在更新中……
-秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lvxintao.github.io/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Qwen-VL%E7%B3%BB%E5%88%97/&title=多模态论文阅读——Qwen-VL系列 - Indigo的云上小屋&summary="
           
           >
           
@@ -3632,8 +2907,7 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/&title=算法岗知识汇总【AIGC】 - Indigo的云上小屋&summary=正在更新中……
-秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lvxintao.github.io/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Qwen-VL%E7%B3%BB%E5%88%97/&title=多模态论文阅读——Qwen-VL系列 - Indigo的云上小屋&summary="
           
           >
           
@@ -3666,24 +2940,22 @@ DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然�
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%A4%9A%E6%A8%A1%E6%80%81%E3%80%91/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>算法岗知识汇总【多模态】</p>
-          <p class='content'>正在更新中……
-秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。
+        <a class='prev' href='/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94LLaVa%E7%B3%BB%E5%88%97/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>多模态论文阅读——LLaVa系列</p>
+          <p class='content'>
 
-CLIP
-CLIP模型结构
+LLaVa
+LLaVa数据集的构建
 
-Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换...</p>
+根据COCO中的caption和bbox，可以利用language-only GPT-4，对其进行In-context learning来生成三种ins...</p>
         </a>
       
       
-        <a class='next' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/'>
-          <p class='title'>算法岗知识汇总【机器学习】<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>损失函数
-常用损失函数
+        <a class='next' href='/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Consistency%20Model%E7%B3%BB%E5%88%97/'>
+          <p class='title'>AIGC论文阅读——Consistency Model系列<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 
-均方误差（MSE,L2）:L=(y−y^)2L=(y-\hat{y})^2L=(y−y^​)2 （回归任务常用，隐含的预设是数据误差符合高斯分布）绝对误差（MAE,L1...</p>
+Consistency ModelLatent Consistency Model(LCM)</p>
         </a>
       
     </div>
@@ -3795,12 +3067,32 @@ Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换..
           <li><a class="flat-box"
             title="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/"
             active-action="action-categoriesE7AE97E6B395E5B297"
-            ><div class='name'>算法岗</div><div class='badge'>(7)</div></a></li>
+            ><div class='name'>算法岗</div><div class='badge'>(4)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/"
             active-action="action-categoriesE7AE97E6B395E5B297E585ABE882A1E69687"
-            ><div class='name'>八股文</div><div class='badge'>(7)</div></a></li>
+            ><div class='name'>八股文</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"
+            active-action="action-categoriesE8AEBAE69687E99885E8AFBB"
+            ><div class='name'>论文阅读</div><div class='badge'>(24)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AIGC/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AIGC/"
+            active-action="action-categoriesE8AEBAE69687E99885E8AFBBAIGC"
+            ><div class='name'>AIGC</div><div class='badge'>(10)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/"
+            active-action="action-categoriesE8AEBAE69687E99885E8AFBBLLM"
+            ><div class='name'>LLM</div><div class='badge'>(9)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%A4%9A%E6%A8%A1%E6%80%81/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%A4%9A%E6%A8%A1%E6%80%81/"
+            active-action="action-categoriesE8AEBAE69687E99885E8AFBBE5A49AE6A8A1E68081"
+            ><div class='name'>多模态</div><div class='badge'>(5)</div></a></li>
         
       </ul>
     </div>
@@ -3825,7 +3117,7 @@ Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换..
 
 
     <div class='content'>
-      <a href="/tags/Crawler/" style="font-size: 14px; color: #999">Crawler</a> <a href="/tags/Selenium/" style="font-size: 14px; color: #999">Selenium</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 24px; color: #555">八股文</a> <a href="/tags/%E5%8F%91%E7%96%AF/" style="font-size: 14px; color: #999">发疯</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/%E7%88%B8%E7%88%B8%E5%A6%88%E5%A6%88%E6%88%91%E5%87%BA%E7%94%9F%E4%BA%86/" style="font-size: 14px; color: #999">爸爸妈妈我出生了</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%B2%97/" style="font-size: 24px; color: #555">算法岗</a>
+      <a href="/tags/AIGC/" style="font-size: 22px; color: #636363">AIGC</a> <a href="/tags/Crawler/" style="font-size: 14px; color: #999">Crawler</a> <a href="/tags/LLM/" style="font-size: 20px; color: #707070">LLM</a> <a href="/tags/Selenium/" style="font-size: 14px; color: #999">Selenium</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 16px; color: #8b8b8b">八股文</a> <a href="/tags/%E5%8F%91%E7%96%AF/" style="font-size: 14px; color: #999">发疯</a> <a href="/tags/%E5%A4%9A%E6%A8%A1%E6%80%81/" style="font-size: 18px; color: #7e7e7e">多模态</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/%E7%88%B8%E7%88%B8%E5%A6%88%E5%A6%88%E6%88%91%E5%87%BA%E7%94%9F%E4%BA%86/" style="font-size: 14px; color: #999">爸爸妈妈我出生了</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%B2%97/" style="font-size: 16px; color: #8b8b8b">算法岗</a> <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" style="font-size: 24px; color: #555">论文阅读</a>
     </div>
   </section>
 
@@ -3859,7 +3151,7 @@ Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换..
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VAE"><span class="toc-text">VAE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VAE-1"><span class="toc-text">VAE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VQ-VAE"><span class="toc-text">VQ-VAE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GAN"><span class="toc-text">GAN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GAN-1"><span class="toc-text">GAN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VQ-GAN"><span class="toc-text">VQ-GAN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffusion"><span class="toc-text">Diffusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DDPM"><span class="toc-text">DDPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDIM"><span class="toc-text">DDIM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#V-Prediction"><span class="toc-text">V-Prediction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Score-based"><span class="toc-text">Score-based</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DiT"><span class="toc-text">DiT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Classifier-Guidance"><span class="toc-text">Classifier Guidance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Classifier-free-Guidance"><span class="toc-text">Classifier-free Guidance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8A%A0%E9%80%9F%E9%87%87%E6%A0%B7"><span class="toc-text">其他加速采样</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%94%9F%E5%9B%BE%E6%A8%A1%E5%9E%8B"><span class="toc-text">文生图模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stable-Diffusion-LDM"><span class="toc-text">Stable Diffusion(LDM)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SD-1-x-2-x"><span class="toc-text">SD 1.x&#x2F;2.x</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SD-XL"><span class="toc-text">SD-XL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SD-3-x"><span class="toc-text">SD 3.x</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDDPM"><span class="toc-text">IDDPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADM%EF%BC%88Guided-diffusion%EF%BC%89"><span class="toc-text">ADM（Guided-diffusion）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GLIDE"><span class="toc-text">GLIDE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DALL-E"><span class="toc-text">DALL-E</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DALL-E-1"><span class="toc-text">DALL-E 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DALL-E-2-unCLIP"><span class="toc-text">DALL-E 2(unCLIP)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DALL-E-3"><span class="toc-text">DALL-E 3</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IMAGEN"><span class="toc-text">IMAGEN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E6%8E%A7%E5%88%B6"><span class="toc-text">额外控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ControlNet"><span class="toc-text">ControlNet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2I-Adapter"><span class="toc-text">T2I-Adapter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6"><span class="toc-text">私人定制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Textual-Inversion"><span class="toc-text">Textual Inversion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DreamBooth"><span class="toc-text">DreamBooth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Custom-Diffusion"><span class="toc-text">Custom Diffusion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E6%8C%81ID"><span class="toc-text">保持ID</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FastComposer"><span class="toc-text">FastComposer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-Adapter"><span class="toc-text">IP-Adapter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PhotoMaker"><span class="toc-text">PhotoMaker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instant-ID"><span class="toc-text">Instant ID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%BC%96%E8%BE%91"><span class="toc-text">图像编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prompt-to-Prompt"><span class="toc-text">Prompt-to-Prompt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InstructPix2Pix"><span class="toc-text">InstructPix2Pix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blended-Latent-Diffusion"><span class="toc-text">Blended Latent Diffusion</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Qwen-VL"><span class="toc-text">Qwen-VL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qwen-VL2"><span class="toc-text">Qwen-VL2</span></a></li></ol>
     </div>
   </section>
 
@@ -4527,7 +3819,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/","name":"算法岗"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/算法岗/八股文/","name":"八股文"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/09/24/算法岗知识汇总【AIGC】/","name":"算法岗知识汇总【AIGC】"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法岗知识汇总【AIGC】","description":"正在更新中……\n秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90AIGC%E3%80%91/","wordCount":40,"datePublished":"2024-09-24T10:33:42.000Z","dateModified":"2024-10-30T16:47:17.104Z","articleSection":"算法岗","keywords":"算法岗,八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/论文阅读/","name":"论文阅读"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/论文阅读/多模态/","name":"多模态"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/10/31/多模态论文阅读——Qwen-VL系列/","name":"多模态论文阅读——Qwen-VL系列"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"多模态论文阅读——Qwen-VL系列","description":"A blog about code, life and everything.","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Qwen-VL%E7%B3%BB%E5%88%97/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Qwen-VL%E7%B3%BB%E5%88%97/","wordCount":0,"datePublished":"2024-10-31T14:07:00.000Z","dateModified":"2024-11-01T02:06:36.463Z","articleSection":"论文阅读","keywords":"论文阅读,多模态","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
