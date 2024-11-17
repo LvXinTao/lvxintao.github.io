@@ -59,7 +59,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-10-31T14:07:00.000Z">
-<meta property="article:modified_time" content="2024-11-01T07:52:32.060Z">
+<meta property="article:modified_time" content="2024-11-09T03:05:46.618Z">
 <meta property="article:author" content="Xintao Lv">
 <meta property="article:tag" content="AIGC">
 <meta property="article:tag" content="论文阅读">
@@ -1923,7 +1923,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1730447619623),
+    lastupdate: new Date(1731850915662),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2868,7 +2868,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 </li>
 </ul>
-<h2 id="Break-A-Scene"><a href="#Break-A-Scene" class="headerlink" title="Break-A-Scene"></a>Break-A-Scene</h2><h2 id="FastComposer"><a href="#FastComposer" class="headerlink" title="FastComposer"></a>FastComposer</h2><ul>
+<h2 id="BLIP-Diffusion"><a href="#BLIP-Diffusion" class="headerlink" title="BLIP-Diffusion"></a>BLIP-Diffusion</h2><ul>
+<li><p>BLIP-Diffusion做的事情？</p>
+<blockquote>
+<p>给定一张照片，无需finetune得到subject representation，然后用于Personalization；同时，也支持对subject进行few-shot的finetune。</p>
+</blockquote>
+</li>
+<li><p>BLIP-Diffusion的做法</p>
+<blockquote>
+<p>使用了两阶段的预训练策略，第一阶段使得模型产生text-aligned image representation；第二阶段是subject representation learning的过程。</p>
+<div aligh="center"><img src="/asset/2/blip_diffusion.png" class="lazyload" data-srcset="/asset/2/blip_diffusion.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100%"/></div></blockquote>
+</li>
+</ul>
+<blockquote>
+<p>Stage 1：Multimodal Representation Learning with BLIP-2<br>第一阶段与BLIP2的预训练一样，使用多目标损失来训练Q-former，区别在于使用的可学习query个数只有16个。</p>
+</blockquote>
+<blockquote>
+<p>Stage 2: Subject Representation Learning</p>
+<p>将Q-former的结果经过FFN后，附加在text embedding的最后作为visual prompt。同时，使用的文本prompt template为”[text prompt] ,the [subject text] is [subject prompt]”</p>
+<p>同时，为了将subject的学习与background的学习解耦，对于训练数据集的构建，是将图片中的subject保留，背景使用随机背景，然后将改变之后的图输入，原图作为目标。</p>
+<p>训练时，冻结image encoder,然后同时训练Q-former、SD的text encoder和U-Net。</p>
+</blockquote>
+<h2 id="FastComposer"><a href="#FastComposer" class="headerlink" title="FastComposer"></a>FastComposer</h2><ul>
 <li><p>FastComposer做的事情？</p>
 <blockquote>
 <p>给定一张照片，无需test time的微调，能够生成定制化的图片，同时保持一定的文本可编辑性。与Fine-tuning-based方法相比，速度更快且不需要额外存储。同时，FastComposer支持多主体的图像生成。</p>
@@ -3091,10 +3112,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-11-01T15:52:32+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-11-09T11:05:46+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年11月1日</p>
+    <p>更新于：2024年11月9日</p>
   </a>
 </div>
 
@@ -3174,17 +3195,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94DiT%E7%B3%BB%E5%88%97/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>AIGC论文阅读——DiT系列</p>
+        <a class='prev' href='/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Editing%E7%B3%BB%E5%88%97/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>AIGC论文阅读——Editing系列</p>
           <p class='content'>
 
-DiT
-DiT的主要结构
+Prompt-to-Prompt
+Prompt-to-Prompt做的事情
 
-
-DiT是从LDM改进而来的，将LDM中的U-Net替换为Transformer，VAE仍然使用Stable Diffusion的。
-
-最后一个DiT block...</p>
+无需mask，仅通过文字prompt，对生成图片进行编辑，且能够保持除编辑区域之外的一致性。该过程中无需任何训练...</p>
         </a>
       
       
@@ -3317,12 +3335,12 @@ DALL-E 1的模型架构
           <li><a class="flat-box"
             title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"
             active-action="action-categoriesE8AEBAE69687E99885E8AFBB"
-            ><div class='name'>论文阅读</div><div class='badge'>(24)</div></a></li>
+            ><div class='name'>论文阅读</div><div class='badge'>(29)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AIGC/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AIGC/"
             active-action="action-categoriesE8AEBAE69687E99885E8AFBBAIGC"
-            ><div class='name'>AIGC</div><div class='badge'>(10)</div></a></li>
+            ><div class='name'>AIGC</div><div class='badge'>(15)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/"
@@ -3391,7 +3409,7 @@ DALL-E 1的模型架构
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Textual-Inversion"><span class="toc-text">Textual Inversion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DreamBooth"><span class="toc-text">DreamBooth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Custom-Diffusion"><span class="toc-text">Custom Diffusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-A-Scene"><span class="toc-text">Break-A-Scene</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FastComposer"><span class="toc-text">FastComposer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP-Adapter"><span class="toc-text">IP-Adapter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PhotoMaker"><span class="toc-text">PhotoMaker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InstantID"><span class="toc-text">InstantID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StoryMaker"><span class="toc-text">StoryMaker</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Textual-Inversion"><span class="toc-text">Textual Inversion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DreamBooth"><span class="toc-text">DreamBooth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Custom-Diffusion"><span class="toc-text">Custom Diffusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BLIP-Diffusion"><span class="toc-text">BLIP-Diffusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FastComposer"><span class="toc-text">FastComposer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP-Adapter"><span class="toc-text">IP-Adapter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PhotoMaker"><span class="toc-text">PhotoMaker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InstantID"><span class="toc-text">InstantID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StoryMaker"><span class="toc-text">StoryMaker</span></a></li></ol>
     </div>
   </section>
 
@@ -4059,7 +4077,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/论文阅读/","name":"论文阅读"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/论文阅读/AIGC/","name":"AIGC"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/10/31/AIGC论文阅读——Personalization系列/","name":"AIGC论文阅读——Personalization系列"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AIGC论文阅读——Personalization系列","description":"A blog about code, life and everything.","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Personalization%E7%B3%BB%E5%88%97/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Personalization%E7%B3%BB%E5%88%97/","wordCount":0,"datePublished":"2024-10-31T14:07:00.000Z","dateModified":"2024-11-01T07:52:32.060Z","articleSection":"论文阅读","keywords":"AIGC,论文阅读","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","sameAs":["https://github.com/volantis-x"],"description":"A blog about code, life and everything."},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://lvxintao.github.io/","name":"Indigo的云上小屋"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/论文阅读/","name":"论文阅读"}},{"@type":"ListItem","position":2,"item":{"@id":"https://lvxintao.github.io/categories/论文阅读/AIGC/","name":"AIGC"}},{"@type":"ListItem","position":3,"item":{"@id":"https://lvxintao.github.io/2024/10/31/AIGC论文阅读——Personalization系列/","name":"AIGC论文阅读——Personalization系列"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","keywords":"Blog, Code, xintao lv, Indigo","description":"A blog about code, life and everything.","author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/","description":"A blog about code, life and everything."},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","url":"https://lvxintao.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://lvxintao.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AIGC论文阅读——Personalization系列","description":"A blog about code, life and everything.","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://lvxintao.github.io/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Personalization%E7%B3%BB%E5%88%97/"},"author":{"@type":"Person","name":"Xintao Lv","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://lvxintao.github.io/"},"publisher":{"@type":"Organization","name":"Indigo的云上小屋","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://lvxintao.github.io/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Personalization%E7%B3%BB%E5%88%97/","wordCount":0,"datePublished":"2024-10-31T14:07:00.000Z","dateModified":"2024-11-09T03:05:46.618Z","articleSection":"论文阅读","keywords":"AIGC,论文阅读","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

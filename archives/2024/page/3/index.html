@@ -1920,7 +1920,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1730447619623),
+    lastupdate: new Date(1731850915662),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2722,6 +2722,458 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/LLM论文阅读——Qwen系列/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Indigo的云上小屋">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Indigo的云上小屋">
+    <meta itemprop="description" content="A blog about code, life and everything.">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/10/31/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Qwen%E7%B3%BB%E5%88%97/"  itemprop="url">
+        LLM论文阅读——Qwen系列
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+Qwen
+Qwen的技术要点
+
+
+数据：公共网络文档，百科全书，书籍，代码等。此外，数据集是多语言的，其中很大一部分数据是英语和中文的。最终数据集多达3万亿token。
+Tokenizer：采用开源的BPE，并以vocabulary C1100K base作为起始点，增加了常用的中文字符和单词以及其他语言的词汇。此外，仿照LLAMA2，将数字分为单个数字，最终词汇量大约是152K.
+模型结...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-10-31T22:07:00+08:00">2024-10-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/">LLM</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url"><span itemprop="name">论文阅读</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/" itemprop="url"><span itemprop="name">LLM</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/10/31/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Qwen%E7%B3%BB%E5%88%97/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/LLM论文阅读——Tokenizer系列/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Indigo的云上小屋">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Indigo的云上小屋">
+    <meta itemprop="description" content="A blog about code, life and everything.">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/10/31/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Tokenizer%E7%B3%BB%E5%88%97/"  itemprop="url">
+        LLM论文阅读——Tokenizer系列
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+
+
+Tokenizer的种类和区别
+Tokenize有三种粒度：
+
+Word：对于英文等自然语言来说，存在着天然的分隔符；但是对于一些东亚文字包括中文来说，就需要某种分词算法才行。由于长尾现象的存在，词汇表可能会超大。
+Char：词汇表只有最基本的字符。这样做的问题是，由于字符数量太小，我们在为每个字符学习嵌入向量的时候，每个向量就容纳了太多的语义在内，学习起来非常困难。
+Subword：...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-10-31T22:07:00+08:00">2024-10-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/">LLM</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url"><span itemprop="name">论文阅读</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/" itemprop="url"><span itemprop="name">LLM</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/10/31/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Tokenizer%E7%B3%BB%E5%88%97/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/LLM论文阅读——RAG系列/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Indigo的云上小屋">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Indigo的云上小屋">
+    <meta itemprop="description" content="A blog about code, life and everything.">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/10/31/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94RAG%E7%B3%BB%E5%88%97/"  itemprop="url">
+        LLM论文阅读——RAG系列
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+
+RAG流程
+
+
+
+
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-10-31T22:07:00+08:00">2024-10-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/">LLM</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url"><span itemprop="name">论文阅读</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/" itemprop="url"><span itemprop="name">LLM</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/10/31/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94RAG%E7%B3%BB%E5%88%97/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/LLM论文阅读——模型训练技巧/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Indigo的云上小屋">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Indigo的云上小屋">
+    <meta itemprop="description" content="A blog about code, life and everything.">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/10/31/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%8A%80%E5%B7%A7/"  itemprop="url">
+        LLM论文阅读——模型训练技巧
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+
+训练显存
+FP32,FP16,BF16
+
+FP32:1位符号，8位指数，23位尾数。FP16:1位符号，5位指数，10位尾数。BF16:1位符号，8位指数，7位尾数。BF16提供了与FP32相同的动态范围，但精度低于FP32和FP16。
+
+
+如何计算训练大模型需要的显存？
+
+
+模型参数：如果模型有P个参数，使用FP32保存的话，需要4P字节的显存。
+梯度：大小与模型参数相同。使用FP32...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-10-31T22:07:00+08:00">2024-10-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/">LLM</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url"><span itemprop="name">论文阅读</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/" itemprop="url"><span itemprop="name">LLM</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/10/31/LLM%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%8A%80%E5%B7%A7/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/多模态论文阅读——BLIP系列/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Indigo的云上小屋">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Indigo的云上小屋">
+    <meta itemprop="description" content="A blog about code, life and everything.">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94BLIP%E7%B3%BB%E5%88%97/"  itemprop="url">
+        多模态论文阅读——BLIP系列
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+
+BLIP
+BLIP的主要贡献
+
+
+提出了一种Multimodal mixture of Encoder-Decoder(MED)的多模态预训练模式。
+提出了一种Captioning and Filtering的Dataset Bootstrapping机制，对原始数据集进行清洗。
+微调后在下游Image-text retrieval、Image captioning、VQA等任务上达到了...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-10-31T22:07:00+08:00">2024-10-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%A4%9A%E6%A8%A1%E6%80%81/">多模态</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url"><span itemprop="name">论文阅读</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%A4%9A%E6%A8%A1%E6%80%81/" itemprop="url"><span itemprop="name">多模态</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94BLIP%E7%B3%BB%E5%88%97/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/多模态论文阅读——CLIP及其微调方法/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Indigo的云上小屋">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Indigo的云上小屋">
+    <meta itemprop="description" content="A blog about code, life and everything.">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94CLIP%E5%8F%8A%E5%85%B6%E5%BE%AE%E8%B0%83%E6%96%B9%E6%B3%95/"  itemprop="url">
+        多模态论文阅读——CLIP及其微调方法
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+CLIP
+CLIP模型结构
+
+Image Encoder有两种架构：一种是ResNet50，将全局平均池化替换为注意力池化；第二种是ViT(Pre-norm)。Text Encoder实际上是GPT-2架构，即Transformer decoder，将文本用[SOS]和[EOS]括起来，取[EOS]上的feature过一层Linear作为文本特征。
+
+
+CLIP训练时的损失函数
+
+Info...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-10-31T22:07:00+08:00">2024-10-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%A4%9A%E6%A8%A1%E6%80%81/">多模态</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url"><span itemprop="name">论文阅读</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%A4%9A%E6%A8%A1%E6%80%81/" itemprop="url"><span itemprop="name">多模态</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/10/31/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94CLIP%E5%8F%8A%E5%85%B6%E5%BE%AE%E8%B0%83%E6%96%B9%E6%B3%95/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/多模态论文阅读——Flamingo,Mini-GPT4,ViLA/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Indigo的云上小屋">
@@ -2953,75 +3405,6 @@ LLM：使用Qwen-7B初始化Vision Encoder：采用OpenCLIP-ViT-bigG-14Adapter�
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/10/31/AIGC论文阅读——Consistency Model系列/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Indigo的云上小屋">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Indigo的云上小屋">
-    <meta itemprop="description" content="A blog about code, life and everything.">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Consistency%20Model%E7%B3%BB%E5%88%97/"  itemprop="url">
-        AIGC论文阅读——Consistency Model系列
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-
-Consistency ModelLatent Consistency Model(LCM)
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-10-31T22:07:00+08:00">2024-10-31</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AIGC/">AIGC</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url"><span itemprop="name">论文阅读</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AIGC/" itemprop="url"><span itemprop="name">AIGC</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/10/31/AIGC%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Consistency%20Model%E7%B3%BB%E5%88%97/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/09/24/算法岗知识汇总【CV】/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Indigo的云上小屋">
@@ -3085,334 +3468,6 @@ Consistency ModelLatent Consistency Model(LCM)
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/09/24/算法岗知识汇总【机器学习】/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Indigo的云上小屋">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Indigo的云上小屋">
-    <meta itemprop="description" content="A blog about code, life and everything.">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/"  itemprop="url">
-        算法岗知识汇总【机器学习】
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        损失函数
-常用损失函数
-
-均方误差（MSE,L2）:L=(y−y^)2L=(y-\hat{y})^2L=(y−y^​)2 （回归任务常用，隐含的预设是数据误差符合高斯分布）绝对误差（MAE,L1）:L=∣y−y^∣L=|y-\hat{y}|L=∣y−y^​∣二值交叉熵（BCE）：L=1N∑i−[yi∗log(pi)+(1−yi)∗log(1−pi)]L=\frac{1}{N}\sum_i -...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-09-24T18:33:42+08:00">2024-09-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/">算法岗</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/" itemprop="url"><span itemprop="name">算法岗</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/" itemprop="url"><span itemprop="name">八股文</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/09/24/算法岗知识汇总【深度学习基础】/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Indigo的云上小屋">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Indigo的云上小屋">
-    <meta itemprop="description" content="A blog about code, life and everything.">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E3%80%91/"  itemprop="url">
-        算法岗知识汇总【深度学习基础】
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>正在更新中……</p>
-<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-09-24T18:33:42+08:00">2024-09-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/">算法岗</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/" itemprop="url"><span itemprop="name">算法岗</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/" itemprop="url"><span itemprop="name">八股文</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E3%80%91/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/09/24/算法岗知识汇总【图像处理】/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Indigo的云上小屋">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Indigo的云上小屋">
-    <meta itemprop="description" content="A blog about code, life and everything.">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91/"  itemprop="url">
-        算法岗知识汇总【图像处理】
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>正在更新中……</p>
-<p>秋招在即，用这篇博客记录一下算法岗求职过程中的一些必备知识汇总。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-09-24T18:33:42+08:00">2024-09-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/">算法岗</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/" itemprop="url"><span itemprop="name">算法岗</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E5%B2%97/%E5%85%AB%E8%82%A1%E6%96%87/" itemprop="url"><span itemprop="name">八股文</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/09/24/%E7%AE%97%E6%B3%95%E5%B2%97%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/08/03/简易的Selenium爬虫工具/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Indigo的云上小屋">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Indigo的云上小屋">
-    <meta itemprop="description" content="A blog about code, life and everything.">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/08/03/%E7%AE%80%E6%98%93%E7%9A%84Selenium%E7%88%AC%E8%99%AB%E5%B7%A5%E5%85%B7/"  itemprop="url">
-        简易的Selenium爬虫工具
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>尝试使用Selenium自动化测试库对Github中指定topic的所有库信息进行爬取！</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-08-03T01:06:03+08:00">2024-08-03</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Coding/">Coding</a><span class="sep"></span><a class="category-link" href="/categories/Coding/%E7%88%AC%E8%99%AB/">爬虫</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Coding/" itemprop="url"><span itemprop="name">Coding</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Coding/%E7%88%AC%E8%99%AB/" itemprop="url"><span itemprop="name">爬虫</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/08/03/%E7%AE%80%E6%98%93%E7%9A%84Selenium%E7%88%AC%E8%99%AB%E5%B7%A5%E5%85%B7/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://lvxintao.github.io/2024/08/01/Indigo的博客出生啦！/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Indigo的云上小屋">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Indigo的云上小屋">
-    <meta itemprop="description" content="A blog about code, life and everything.">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/08/01/Indigo%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%94%9F%E5%95%A6%EF%BC%81/"  itemprop="url">
-        Indigo的博客出生啦！
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>在经过一晚上的折腾后，终于在自己电脑上成功装上了Node.js和Hexo，并通过Github Page搭建起了自己的小站！</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-08-01T11:41:30+08:00">2024-08-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" itemprop="url"><span itemprop="name">碎碎念</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/08/01/Indigo%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%94%9F%E5%95%A6%EF%BC%81/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3427,8 +3482,14 @@ Consistency ModelLatent Consistency Model(LCM)
           </a>
         
         <p class="current">
-          3 / 3
+          3 / 4
         </p>
+        
+          <a class="next" rel="next" href="/archives/2024/page/4/">
+            <section class="post next white-box shadow floatable blur">
+              &nbsp;下一页&nbsp;<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
         
       </div>
     
@@ -3539,12 +3600,12 @@ Consistency ModelLatent Consistency Model(LCM)
           <li><a class="flat-box"
             title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"
             active-action="action-categoriesE8AEBAE69687E99885E8AFBB"
-            ><div class='name'>论文阅读</div><div class='badge'>(24)</div></a></li>
+            ><div class='name'>论文阅读</div><div class='badge'>(29)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AIGC/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AIGC/"
             active-action="action-categoriesE8AEBAE69687E99885E8AFBBAIGC"
-            ><div class='name'>AIGC</div><div class='badge'>(10)</div></a></li>
+            ><div class='name'>AIGC</div><div class='badge'>(15)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LLM/"
