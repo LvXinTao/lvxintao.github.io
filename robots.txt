@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lvxintao.github.io/sitemap-index.xml
